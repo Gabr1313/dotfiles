@@ -1,0 +1,48 @@
+# Default config for sway
+# Copy this to ~/.config/sway/config and edit it to your liking.
+# Read `man 5 sway` for a complete reference.
+
+# mod1 = alt, mod4 = super
+set $mod Mod1
+
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term kitty
+
+set $wallpaper $HOME/wallpapers/0264.jpg
+
+default_border none
+
+font pango: JetBrainsMono Nerd Font 14px
+
+gaps inner 10
+gaps outer 2 
+
+### Key bindings
+# Basics:
+
+bindsym $mod+Shift+r reload
+
+bindsym $mod+Backspace kill
+
+bindsym $mod+Return split h; exec $term
+bindsym $mod+Shift+Return split v; exec $term
+
+bindsym $mod+b split h; exec brave
+bindsym $mod+Shift+b split v; exec brave
+
+bindsym $mod+d exec "rofi -modi drun,run -show drun"
+bindsym $mod+shift+d exec "rofi -modi window,run -show window"
+bindsym $mod+ctrl+d exec "rofi -modi run,run -show run"
+
+bindsym $mod+s split h; exec spotify
+bindsym $mod+shift+s split v; exec spotify
+
+bindsym $mod+t split h; exec thunar
+bindsym $mod+Shift+t split v; exec thunar
+# for_window [class=""] floating enable
+
+include ~/.config/sway/config.d/*

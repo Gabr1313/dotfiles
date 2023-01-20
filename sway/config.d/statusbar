@@ -1,0 +1,7 @@
+# man 5 swaybar
+
+# man waybar
+# see ~/.config/waybar/
+bar {
+  swaybar_command waybar
+}
