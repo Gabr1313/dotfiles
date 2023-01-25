@@ -76,14 +76,14 @@ mode "gammaStep [1-10]" {
 bindsym $mod+y mode "gammaStep [1-10]"
 
 # Screenshots & Clipboard
-bindsym ctrl+shift+Print exec $HOME/.local/bin/screenWindow.sh
-bindsym shift+Print exec $HOME/.local/bin/screenFullscreen.sh
-bindsym ctrl+Print exec $HOME/.local/bin/screenSelection.sh
-bindsym Print exec $HOME/.local/bin/screenSelectionOnlyClip.sh
+bindsym ctrl+shift+Print exec $HOME/.config/sway/scripts/screenWindow.sh
+bindsym shift+Print exec $HOME/.config/sway/scripts/screenFullscreen.sh
+bindsym ctrl+Print exec $HOME/.config/sway/scripts/screenSelection.sh
+bindsym Print exec $HOME/.config/sway/scripts/screenSelectionOnlyClip.sh
 
 mode "Manager: [B]luetooth, [C]tl, [N]m, [W]ifi" {
-  bindsym w exec $HOME/.local/bin/wifiToggle.sh; mode "default"
-  bindsym b exec $HOME/.local/bin/bluetoothToggle.sh; mode "default"
+  bindsym w exec $HOME/.config/sway/scripts/wifiToggle.sh; mode "default"
+  bindsym b exec $HOME/.config/sway/scripts/bluetoothToggle.sh; mode "default"
   bindsym c split h; exec kitty bluetoothctl; mode "default"
   bindsym shift+c split v; exec kitty bluetoothctl; mode "default"
   bindsym n exec nm-connection-editor; mode "default"

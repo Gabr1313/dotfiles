@@ -7,5 +7,5 @@ bar {
   swaybar_command waybar
 }
 
-bindsym $mod+z exec killall waybar; exec waybar
-bindsym $mod+shift+z exec killall waybar
+bindsym $mod+x exec killall waybar; exec waybar
+bindsym $mod+shift+x exec killall waybar

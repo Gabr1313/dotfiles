@@ -75,7 +75,7 @@
         "tooltip-format": "{ipaddr}",
         "format-disconnected": "⚠",
         //"format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "on-click": "$HOME/.local/bin/wifiToggle.sh",
+        "on-click": "$HOME/.config/waybar/scripts/wifiToggle.sh",
         "on-click-right": "nm-connection-editor",
     },
     "pulseaudio": {
@@ -103,7 +103,7 @@
         "disabled": ""
       },
     "tooltip-format": "bluetoothctl",
-    "on-click":"$HOME/.local/bin/bluetoothToggle.sh",
+    "on-click":"$HOME/.config/waybar/scripts/bluetoothToggle.sh",
     "on-click-right":"blueberry"
     },
 }
