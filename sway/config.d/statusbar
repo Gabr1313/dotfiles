@@ -1,7 +1,11 @@
 # man 5 swaybar
 
 # man waybar
-# see ~/.config/waybar/
+# see $HOME/.config/waybar/
+
 bar {
   swaybar_command waybar
 }
+
+bindsym $mod+z exec killall waybar; exec waybar
+bindsym $mod+shift+z exec killall waybar

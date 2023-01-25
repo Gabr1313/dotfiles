@@ -15,6 +15,9 @@ input type:pointer {
 input type:touchpad {
     tap enabled
     dwt enabled  # disable while typing
-    natural_scroll enabled
+    natural_scroll disable
     middle_emulation enabled
 }
+
+#disk automount
+exec udiskie -an --no-tray -f nautilus	

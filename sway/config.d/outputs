@@ -26,3 +26,7 @@ bindsym $mod+shift+m mode "Monitor: [1], [2], [B]oth"
 
 # bindsym $mod+n move workspace to output left
 bindsym $mod+n move workspace to output right
+
+# TODO audio equalizer
+# exec-once=easyeffects --gapplication-service	# https://github.com/JackHack96/EasyEffects-Presets.git
+

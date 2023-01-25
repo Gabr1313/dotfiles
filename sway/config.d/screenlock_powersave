@@ -18,14 +18,30 @@
 # set $i3lockwall i3lock -t -i /home/gabriele/wallpapers/mine/652860.png 
 # FOR i3lockwall WALLPAPER SET ./i3lock-multimonitor/img/background.png
 
-# set $i3lockwall swaylock -e -f -i ~/wallpapers/0108.jpg
+# https://github.com/mortie/swaylock-effects/blob/master/swaylock.1.scd
+set $lockwall swaylock \
+	--screenshots \
+	--clock \
+	--indicator \
+	--indicator-radius 100 \
+	--indicator-thickness 7 \
+	--effect-blur 7x5 \
+	--effect-vignette 0.5:0.5 \
+	--ring-color b48aba \
+	--key-hl-color 880033 \
+	--line-color 00000000 \
+	--inside-color 00000088 \
+	--separator-color 00000000 \
+	--grace 1 \
+	--fade-in 0.2 
+
 mode "[E]xit, [L]ock, [P]owerOff, [R]eboot, [S]uspend" {
   # bindsym e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
   bindsym e exec swaymsg exit ; mode "default"
-  bindsym l exec ~/.config/sway/screenshot/lock.sh ; mode "default"
+  bindsym l exec $lockwall ; mode "default"
   bindsym p exec systemctl poweroff ; mode "default"
   bindsym r exec systemctl reboot ; mode "default"
-  bindsym s exec ~/.config/sway/screenshot/lock.sh && systemctl suspend ; mode "default"
+  bindsym s exec systemctl suspend && $lockwall ; mode "default"
   # back to normal: Enter or Escape
   bindsym Return mode "default"
   bindsym Escape mode "default"

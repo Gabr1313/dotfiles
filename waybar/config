@@ -1,0 +1,111 @@
+{
+    "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 30, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "margin": "7px 10px 0 10px",
+
+    "modules-left": ["wlr/workspaces"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["clock", "battery", "network", "disk", "memory", "cpu", "temperature", "backlight","pulseaudio", "pulseaudio#mic", "bluetooth", "idle_inhibitor"],
+
+    "wlr/workspaces": {
+    	"format": "{name}: {icon}",
+    	"format-icons": {
+        "urgent": "",
+    		"active": "",
+    		"default": ""
+    	},
+        "on-click": "activate",
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "clock": {
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": true
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "disk": {
+        "format": "{percentage_used}% / {total}",
+        "tooltip-format": "{total} - {used} != {free}"
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""],
+        "tooltip": false
+    },
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "on-scroll-up": "brightnessctl set +2%",
+        "on-scroll-down": "brightnessctl set 2%-",
+    },
+    "battery": {
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""],
+        "on-click-right": "gnome-power-statistics"
+    },
+    "network": {
+        "format-wifi": "{ifname} {signalStrength}% ",
+        "format-ethernet": "{ifname} ",
+        // "format-ethernet": "{ipaddr} ",
+        "tooltip-format": "{ipaddr}",
+        "format-disconnected": "⚠",
+        //"format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "on-click": "$HOME/.local/bin/wifiToggle.sh",
+        "on-click-right": "nm-connection-editor",
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-muted": "ﱝ ",
+        "format-icons": ["", "", ""],
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%"
+    },
+    "pulseaudio#mic": {
+      "format": "{format_source}",
+      "format-source": "{volume}% ",
+      "format-source-muted": "",
+      "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+      "on-click-right": "pavucontrol",
+      "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +2%",
+      "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -2%"
+    },
+    "bluetooth": {
+      "format": "{icon}",
+      "format-icons": {
+        "enabled": "",
+        "disabled": ""
+      },
+    "tooltip-format": "bluetoothctl",
+    "on-click":"$HOME/.local/bin/bluetoothToggle.sh",
+    "on-click-right":"blueberry"
+    },
+}
+

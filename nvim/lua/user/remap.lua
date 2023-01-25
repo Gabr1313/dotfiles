@@ -44,9 +44,9 @@ vim.keymap.set("n", "<C-[>", "<C-T>zz", { desc = 'Back form Defition' })
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = '[S]ubsitute word' })
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { desc = 'E[x]ecutable' })
 
-vim.keymap.set("o", "<C-a>", ":<C-u>normal! mzggVG<CR>`z", { desc = '[A]ll buffer' }) -- dA = delete buffer ALL, yA = copy whole buffer ALL
-vim.keymap.set("x", "<C-a>", ":<C-u>normal! ggVG<CR>", { desc = '[A]ll buffer' })
-vim.keymap.set("n", "<C-a>", "v:<C-u>normal! ggVG<CR>", { desc = '[A]ll buffer' })
+vim.keymap.set("o", "<leader>a", ":<C-u>normal! mzggVG<CR>`z", { desc = '[A]ll buffer' }) -- dA = delete buffer ALL, yA = copy whole buffer ALL
+vim.keymap.set("x", "<leader>a", ":<C-u>normal! ggVG<CR>", { desc = '[A]ll buffer' })
+vim.keymap.set("n", "<leader>a", "v:<C-u>normal! ggVG<CR>", { desc = '[A]ll buffer' })
 
 vim.keymap.set("x", "<", "<gv", { desc = 'Indent left' })
 vim.keymap.set("x", ">", ">gv", { desc = 'Indent right' })
@@ -59,13 +59,22 @@ vim.keymap.set("n", "<leader>q", "<cmd>qall<CR>", { desc = '[Q]uit all' })
 
 vim.keymap.set("n", "<leader>cc", "<cmd>w<CR><cmd>!gcc -std=c89 -pedantic -Wall -Wextra -O0 -g -fsanitize=address %<CR>"
   , { desc = '[C]89 [C]ompile' })
-vim.keymap.set("n", "<leader>cl", "<cmd>w<CR>:!gcc -std=c89 -pedantic -Wall -Wextra -O0 -g -fsanitize=address % ",
+vim.keymap.set("n", "<leader>cl", "<cmd>w<CR><cmd>!gcc -std=c89 -pedantic -Wall -Wextra -O0 -g -fsanitize=address % /home/gabri/gitMine/polimi/2022_2023/fi/my_library/ilist.o<CR>",
   { desc = '[C]89 [C]ompile [L]ink' })
-vim.keymap.set("n", "<leader>cs", "<cmd>w<CR>:!gcc -std=c17 -pedantic -Wall -Wextra -O0 -g -fsanitize=address % ",
+vim.keymap.set("n", "<leader>cs", "<cmd>w<CR><cmd>!gcc -std=c17 -pedantic -Wall -Wextra -O0 -g -fsanitize=address % <CR>",
   { desc = '[C]17 [S]anitize Compile' })
 vim.keymap.set("n", "<leader>co", "<cmd>w<CR>:!gcc -std=c17 -O3 %<CR>", { desc = '[C]17 [O]ptimized Compile' })
 
-vim.keymap.set('n', '<right>','<C-w>>', { desc = 'Bigger Horizontal split'})
-vim.keymap.set('n', '<left>','<C-w><', { desc = 'Smaller Horizontal split'})
-vim.keymap.set('n', '<up>','<C-w>+', { desc = 'Bigger Vertical split'})
-vim.keymap.set('n', '<down>','<C-w>-', { desc = 'Smaller Vertical split'})
+vim.keymap.set('n', '<right>', '<C-w>>', { desc = 'Bigger Horizontal split' })
+vim.keymap.set('n', '<left>', '<C-w><', { desc = 'Smaller Horizontal split' })
+vim.keymap.set('n', '<up>', '<C-w>+', { desc = 'Bigger Vertical split' })
+vim.keymap.set('n', '<down>', '<C-w>-', { desc = 'Smaller Vertical split' })
+
+vim.keymap.set('n', '<leader>zm', '<cmd>set foldmethod=marker<CR>', { desc = '[Z]fold [M]arker' })
+
+vim.keymap.set('n', '<leader>cb',
+  '<cmd>LspStop<CR><cmd>lua require("nvim-autopairs").disable()<CR><cmd>IndentBlanklineDisable<CR><cmd>lua require("cmp").setup { enabled = false }<CR>'
+  , { desc = '[C]89 [B]olchini on' })
+vim.keymap.set('n', '<leader>cB',
+  '<cmd>LspStart<CR><cmd>lua require("nvim-autopairs").enable()<CR><cmd>IndentBlanklineEnable<CR><cmd>lua require("cmp").setup { enabled = true }<CR>'
+  , { desc = '[C]89 [B]olchini off' })
