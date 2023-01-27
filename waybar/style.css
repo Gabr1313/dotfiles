@@ -9,6 +9,7 @@ window#waybar {
     background-color: transparent;
 }
 
+#submap,
 #workspaces{
     background-color: transparent;
     margin: 6px 10px;
@@ -22,28 +23,25 @@ window#waybar {
     box-shadow: rgba(0, 0, 0, 0.1) 2 2 3 2px;
     background-color: #fff ;
     margin-right: 10px;
-    padding-top: 4px;
-    padding-bottom: 2px;
+    padding-top: 2px;
+    padding-bottom: 0px;
     padding-right: 10px;
-    font-weight: bolder;
     color: 	#cba6f7 ;
 }
 
 #workspaces button.active{
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
-    padding-right: 16px;
-    padding-left: 16px;
-    padding-bottom: 3px;
+    padding: 0 16px 2px 16px;
     background: rgb(202,158,230);
     color: #fff;
 }
 
+#submap,
 #workspaces button:hover {
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
-    padding-right: 16px;
-    padding-left: 16px;
-    padding-bottom: 3px;
-    background: #e94057;
+    padding: 0 16px 2px 16px;
+    background: linear-gradient(45deg, #8a2387 0%, #e94057 43%, #f27121 80%, #F44336 100%);
+    background-size: 300% 300%;
     color: #fff;
 }
 
@@ -80,15 +78,10 @@ window#waybar {
 #backlight,
 #network,
 #pulseaudio,
-#wireplumber,
-#custom-media,
-#tray,
-#mode,
 #idle_inhibitor,
 #scratchpad,
 #language,
-#bluetooth,
-#mpd {
+#bluetooth {
     padding: 0 10px;
     border-radius: 15px;
     background-color: #cdd6f4;
@@ -102,6 +95,11 @@ window#waybar {
         background-color: #f9e2af;
         color:#96804e;
     }
+}
+
+#clock{
+  background-color:rgba(245,194,231,1);
+  color: #8a2387;
 }
 
 #battery.critical:not(.charging) {

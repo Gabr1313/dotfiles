@@ -24,8 +24,8 @@ mode "Audio: [1-10], [M]ute, [H][h]igher, [L][l]ower, [N]Mic, [P]lay, [J]Previou
   bindsym 0 exec pactl set-sink-volume @DEFAULT_SINK@ 100% ; mode "default"
   bindsym h exec pactl set-sink-volume @DEFAULT_SINK@ +5%
   bindsym l exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-  bindsym shift+h exec pactl set-source-volume @DEFAULT_SINK@ +5%
-  bindsym shift+l exec pactl set-source-volume @DEFAULT_SINK@ -5%
+  bindsym shift+h exec pactl set-source-volume @DEFAULT_SOURCE@ +5%
+  bindsym shift+l exec pactl set-source-volume @DEFAULT_SOURCE@ -5%
   bindsym m exec pactl set-sink-mute @DEFAULT_SINK@ toggle ; mode "default"
   bindsym n exec pactl set-source-mute @DEFAULT_SOURCE@ toggle ; mode "default"
   bindsym p exec playerctl play-pause ; mode "default"
