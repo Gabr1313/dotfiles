@@ -1,15 +1,15 @@
 OUTPUT=`hyprctl monitors`
 WORKSPACE=`hyprctl activewindow -j | jq -r '.workspace.id'`
 
-if [[ "$OUTPUT" == *"DP-2"* ]]
+if [[ "$OUTPUT" == *"$2"* ]]
 then 
-  if [[ "$OUTPUT" == *"eDP-1"* ]]
+  if [[ "$OUTPUT" == *"$1"* ]]
     then
-      hyprctl keyword monitor "eDP-1,disable"
+      hyprctl keyword monitor "$1,disable"
     else
-      hyprctl keyword monitor "eDP-1,1920x1080,0x0,1"
+      hyprctl keyword monitor "$1,1920x1080,0x0,1"
   fi
-elif [[ "$OUTPUT" == *"eDP-1"* ]]
+elif [[ "$OUTPUT" == *"$1"* ]]
 then
   $HOME/.config/hypr/scripts/lock
 fi

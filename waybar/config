@@ -84,7 +84,7 @@
         //"format-alt": "{ifname}: {ipaddr}/{cidr}",
         "on-click": "$HOME/.config/waybar/scripts/wifiToggle.sh",
         "on-click-right": "nm-connection-editor",
-        "on-scroll-up": "kitty --title nmtui --hold nmtu",
+        "on-scroll-up": "kitty --title nmtui --hold nmtui",
     },
     "pulseaudio": {
         "format": "{volume}% {icon}",

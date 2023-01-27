@@ -59,6 +59,8 @@ vim.keymap.set("n", "<leader>q", "<cmd>qall<CR>", { desc = '[Q]uit all' })
 
 vim.keymap.set("n", "<leader>cc", "<cmd>w<CR><cmd>!gcc -std=c89 -pedantic -Wall -Wextra -O0 -g -fsanitize=address %<CR>"
   , { desc = '[C]89 [C]ompile' })
+vim.keymap.set("n", "<leader>cC", "<cmd>w<CR>:!gcc -std=c89 -pedantic -Wall -Wextra -O0 -g -fsanitize=address %"
+  , { desc = '[C]89 [C]ompile' })
 vim.keymap.set("n", "<leader>cl", "<cmd>w<CR><cmd>!gcc -std=c89 -pedantic -Wall -Wextra -O0 -g -fsanitize=address % /home/gabri/gitMine/polimi/2022_2023/fi/my_library/ilist.o<CR>",
   { desc = '[C]89 [C]ompile [L]ink' })
 vim.keymap.set("n", "<leader>cs", "<cmd>w<CR><cmd>!gcc -std=c17 -pedantic -Wall -Wextra -O0 -g -fsanitize=address % <CR>",
