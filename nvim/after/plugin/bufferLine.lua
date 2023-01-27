@@ -1,1 +1,5 @@
-require("bufferline").setup({})
+require("bufferline").setup({
+  options = {
+    close_icon = '',
+  }
+})
