@@ -35,7 +35,7 @@
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format-alt": "{:%H:%M │ %Y-%m-%d}",
     },
     "cpu": {
         "format": "{usage}% ",
@@ -66,7 +66,7 @@
     "battery": {
         "states": {
             "warning": 20,
-            "critical": 10
+            "critical": 10,
         },
         "format": "{capacity}% {icon}",
         "format-charging": "{capacity}% ",
