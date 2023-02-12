@@ -8,6 +8,10 @@ require("indent_blankline").setup({
   -- char_highlight_list = {'Function'},
   show_trailing_blankline_indent = false,
   space_char_blankline = " ",
-  show_current_context = true,
-  show_current_context_start = true,
+  -- show_current_context = true,
+  -- show_current_context_start = true,
 })
+
+-- for ./color.lua (rose-pine)
+-- vim.cmd [[highlight IndentBlanklineContextChar guifg=#8bb8c0 gui=nocombine]]
+-- vim.cmd [[highlight IndentBlanklineContextStart guisp=#8bb8c0 gui=underline]]

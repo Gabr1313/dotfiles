@@ -46,9 +46,9 @@ require("packer").startup(function(use)
   use 'kyazdani42/nvim-web-devicons'
   use 'nvim-tree/nvim-tree.lua'
   use 'windwp/nvim-autopairs'
-  use('folke/zen-mode.nvim')
-  use('github/copilot.vim')
+  use 'folke/zen-mode.nvim'
   -- see `Copilot help`
+  use 'github/copilot.vim'
 
   use {
     'VonHeikemen/lsp-zero.nvim',

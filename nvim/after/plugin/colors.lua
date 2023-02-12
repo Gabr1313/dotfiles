@@ -29,8 +29,8 @@ require('onedark').setup({
 function ColorMyPencils(color)
   color = color or "rose-pine"
   -- for ./bufferLine.lua
-  vim.cmd [[highlight IndentBlanklineContextChar guifg=#8bb8c0 gui=nocombine]]
-  vim.cmd [[highlight IndentBlanklineContextStart guisp=#8bb8c0 gui=underline]]
+  -- vim.cmd [[highlight IndentBlanklineContextChar guifg=#8bb8c0 gui=nocombine]]
+  -- vim.cmd [[highlight IndentBlanklineContextStart guisp=#8bb8c0 gui=underline]]
 
   vim.cmd.colorscheme(color)
 
