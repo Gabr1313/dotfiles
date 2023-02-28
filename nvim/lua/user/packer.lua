@@ -50,6 +50,11 @@ require("packer").startup(function(use)
   -- see `Copilot help`
   use 'github/copilot.vim'
 
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  })
+
   use {
     'VonHeikemen/lsp-zero.nvim',
     requires = {

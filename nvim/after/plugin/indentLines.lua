@@ -12,6 +12,9 @@ require("indent_blankline").setup({
   -- show_current_context_start = true,
 })
 
+vim.keymap.set('n', '<leader>ol', '<cmd>IndentBlanklineEnable<CR>' , { desc = '[O]ption [L]ine on' })
+vim.keymap.set('n', '<leader>oL', '<cmd>IndentBlanklineDisable<CR>' , { desc = '[O]ption [L]ine off' })
+
 -- for ./color.lua (rose-pine)
 -- vim.cmd [[highlight IndentBlanklineContextChar guifg=#8bb8c0 gui=nocombine]]
 -- vim.cmd [[highlight IndentBlanklineContextStart guisp=#8bb8c0 gui=underline]]

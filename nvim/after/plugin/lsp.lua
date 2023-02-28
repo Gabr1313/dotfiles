@@ -4,21 +4,18 @@ lsp.preset("recommended")
 
 lsp.ensure_installed({
   'clangd',
-  -- 'tsserver',
-  -- 'eslint',
-  'sumneko_lua',
-  -- 'rust_analyzer',
+  'rust_analyzer',
 })
 
--- Fix Undefined global 'vim'
-lsp.configure('sumneko_lua', {
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { 'vim' }
-      }
+-- Fix Undefined global 'vim' (now working anymore?)
+lsp.configure('lua-language-server', {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' }
+            }
+        }
     }
-  }
 })
 
 local cmp = require('cmp')

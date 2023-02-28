@@ -56,7 +56,9 @@
   "temperature": {
     "critical-threshold": 70,
     "format": "{temperatureC}°C {icon}",
-    "format-icons": ["", "", ""],
+    "formta-critical": "{temperatureC}°C ",
+    // "format-icons": ["", ""],
+    "format-icons": [""],
     "tooltip": false,
     "on-click-right": "kitty --hold btop --utf-force",
   },
@@ -79,10 +81,10 @@
     "on-click-right": "gnome-power-statistics",
   },
   "network": {
-    "format-wifi": "{ifname} {signalStrength}% ",
+    "format-wifi": "{essid} {signalStrength}% ",
     "format-ethernet": "{ifname} ",
     // "format-ethernet": "{ipaddr} ",
-    "tooltip-format": "{ipaddr}",
+    "tooltip-format": "{ipaddr}\n{bandwidthUpBits} up\n{bandwidthDownBits} down",
     "format-disconnected": "⚠",
     //"format-alt": "{ifname}: {ipaddr}/{cidr}",
     "on-click": "$HOME/.config/waybar/scripts/wifiToggle.sh",

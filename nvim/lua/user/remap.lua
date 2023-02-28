@@ -5,7 +5,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", {desc='Tmux [F]ind'})
 
 vim.keymap.set("n", "<leader>E", "<cmd>Ex<CR>", { desc = '[E]x' })
-vim.keymap.set("n", "<leader>o", "<cmd>e ~/.config/nvim<CR><CR>", { desc = '[E]x' })
+vim.keymap.set("n", "<leader>oo", "<cmd>e ~/.config/nvim<CR><CR>", { desc = '[E]x' })
 vim.keymap.set("n", "<leader><leader>", "<cmd>w<CR><cmd>source %<CR>", { silent = true, desc = '[E]x' })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = 'Move line up' })
@@ -70,6 +70,15 @@ vim.keymap.set("n", "<leader>cb", "<cmd>w<CR><cmd>!cargo build<CR>"
     , { desc = '[C]argo [B]uild' })
 vim.keymap.set("n", "<leader>cc", "<cmd>w<CR><cmd>!cargo check<CR>"
     , { desc = '[C]argo [C]heck' })
+vim.keymap.set("n", "<leader>ct", "<cmd>w<CR><cmd>!cargo test<CR>"
+    , { desc = '[C]argo [T]est' })
+
+vim.keymap.set("n", "<leader>Cr", "<cmd>w<CR><cmd>!cargo run --release<CR>"
+    , { desc = 'Release [C]argo [R]un' })
+vim.keymap.set("n", "<leader>CR", "<cmd>w<CR>:!cargo run --release -- "
+    , { desc = 'Release [C]argo [R]un paramethers' })
+vim.keymap.set("n", "<leader>Cb", "<cmd>w<CR><cmd>!cargo build --release<CR>"
+    , { desc = 'Release [C]argo [B]uild' })
 
 vim.keymap.set("n", "<leader>cs", "<cmd>w<CR><cmd>!gcc -std=c17 -pedantic -Wall -Wextra -O0 -g -fsanitize=address % <CR>",
     { desc = '[C]17 [S]anitize Compile' })
@@ -81,3 +90,8 @@ vim.keymap.set('n', '<up>', '<C-w>+', { desc = 'Bigger Vertical split' })
 vim.keymap.set('n', '<down>', '<C-w>-', { desc = 'Smaller Vertical split' })
 
 vim.keymap.set('n', '<leader>zm', '<cmd>set foldmethod=marker<CR>', { desc = '[Z]fold [M]arker' })
+
+vim.keymap.set('n', '<leader>oP', '<cmd>lua require("nvim-autopairs").disable()<CR>' , { desc = '[O]ption [P]air off' })
+vim.keymap.set('n', '<leader>oL', '<cmd>IndentBlanklineDisable<CR>' , { desc = '[O]ption [L]ine off' })
+vim.keymap.set('n', '<leader>op', '<cmd>lua require("nvim-autopairs").enable()<CR>' , { desc = '[O]ption [P]air on' })
+vim.keymap.set('n', '<leader>ol', '<cmd>IndentBlanklineEnable<CR>' , { desc = '[O]ption [L]ine on' })
