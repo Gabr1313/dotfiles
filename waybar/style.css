@@ -1,8 +1,8 @@
 * {
-  font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 15px;
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 15px;
 }
 
 #clock,
@@ -20,48 +20,48 @@
 #bluetooth,
 #submap,
 #workspaces{
-  margin: 6px;
+    margin: 6px;
 }
 
 window#waybar {
-  background-color: transparent;
+    background-color: transparent;
 }
 
 #submap,
 #workspaces{
-  background-color: transparent;
-  margin-left: 10px;
-  margin-right: 10px;
+    background-color: transparent;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 #workspaces:first-child {
-  margin-left: 10px;
+    margin-left: 10px;
 }
 
 #workspaces button{
-  box-shadow: rgba(0, 0, 0, 0.1) 2 2 3 2px;
-  background-color: #fff ;
-  margin-right: 10px;
-  padding-top: 2px;
-  padding-bottom: 0px;
-  padding-right: 10px;
-  color: 	#cba6f7 ;
+    box-shadow: rgba(0, 0, 0, 0.1) 2 2 3 2px;
+    background-color: #fff ;
+    margin-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 0px;
+    padding-right: 10px;
+    color: 	#cba6f7 ;
 }
 
 #workspaces button.active{
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
-  padding: 0 16px 2px 16px;
-  background: rgb(202,158,230);
-  color: #fff;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
+    padding: 0 16px 2px 16px;
+    background: rgb(202,158,230);
+    color: #fff;
 }
 
 #submap,
 #workspaces button:hover {
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
-  padding: 0 16px 2px 16px;
-  background: linear-gradient(45deg, #8a2387 0%, #e94057 43%, #f27121 80%, #F44336 100%);
-  background-size: 300% 300%;
-  color: #fff;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
+    padding: 0 16px 2px 16px;
+    background: linear-gradient(45deg, #8a2387 0%, #e94057 43%, #f27121 80%, #F44336 100%);
+    background-size: 300% 300%;
+    color: #fff;
 }
 
 /*
@@ -71,21 +71,21 @@ background-size: 300% 300%;
 animation: gradient 10s ease infinite;
 
 @keyframes gradient {
-  0% {
-  background-position: 0% 50%;
-  }
-  50% {
-  background-position: 100% 50%;
-  }
-  100% {
-  background-position: 0% 50%;
-  }
+    0% {
+    background-position: 0% 50%;
+    }
+    50% {
+    background-position: 100% 50%;
+    }
+    100% {
+    background-position: 0% 50%;
+    }
 }
 */
 
 #window {
-  font-size: 17px;
-  color: #000000;
+    font-size: 17px;
+    color: #000000;
 }
 
 #clock,
@@ -101,39 +101,39 @@ animation: gradient 10s ease infinite;
 #scratchpad,
 #language,
 #bluetooth {
-  padding: 0 10px;
-  border-radius: 15px;
-  background-color: #cdd6f4;
-  color: #516079;
-  box-shadow: rgba(0, 0, 0, 0.1) 2 2 3 2px;
+    padding: 0 10px;
+    border-radius: 15px;
+    background-color: #cdd6f4;
+    color: #516079;
+    box-shadow: rgba(0, 0, 0, 0.1) 2 2 3 2px;
 }
 
 #clock{
-  background-color:rgba(245,194,231,1);
-  color: #8a2387;
-  margin-left: 10px;
-  margin-right: 10px;
+    background-color:rgba(245,194,231,1);
+    color: #8a2387;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 @keyframes blink {
-  to {
-    background-color: #fca503;
-  }
+    to {
+      background-color: #fca503;
+    }
 }
 
 #battery.critical:not(.charging) {
-  background-color:  #e94057;
-  animation-name: blink;
-  animation-duration: 0.25s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+    background-color:  #e94057;
+    animation-name: blink;
+    animation-duration: 0.25s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 #battery.warning:not(.charging) {
-  background-color: #fca503;
+    background-color: #fca503;
 }
 
 #idle_inhibitor {
-  margin-right: 10px;
+    margin-right: 10px;
 }
