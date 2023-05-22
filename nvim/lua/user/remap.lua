@@ -25,6 +25,8 @@ vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = '[Y]ank to clipboard' })
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = '[D]elete no yank' })
 
 vim.keymap.set("i", "<C-c>", "<Esc>", { desc = 'Esc' })
+vim.keymap.set("i", "<C-backspace>", "<Esc>vbda", { desc = 'Delete word' })
+vim.keymap.set("n", "<C-backspace>", "<Esc>vbd", { desc = 'Delete word' })
 
 vim.keymap.set("n", "<C-j>", "<C-W><C-j>", { desc = 'Window down' })
 vim.keymap.set("n", "<C-h>", "<C-W><C-h>", { desc = 'Window right' })
@@ -48,6 +50,7 @@ vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], {
 vim.keymap.set("v", "<leader>s", [["sy:%s/\v<C-r>s/<C-r>s/gI<Left><Left><Left>]], { desc = '[S]ubsitute words modify' })
 vim.keymap.set("v", "<leader>S", [["sy:%s/\v<C-r>s//gI<Left><Left><Left>]], { desc = '[S]ubsitute words empty' })
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { desc = 'E[x]ecutable' })
+vim.keymap.set("n", "<leader>X", "<cmd>!chmod -x %<CR>", { desc = 'E[x]ecutable' })
 
 vim.keymap.set("o", "<leader>a", ":<C-u>normal! mzggVG<CR>`z", { desc = '[A]ll buffer' })
 vim.keymap.set("x", "<leader>a", ":<C-u>normal! ggVG<CR>", { desc = '[A]ll buffer' })
@@ -62,36 +65,9 @@ vim.keymap.set("n", "|", "<cmd>split<CR>", { desc = 'Horizontal split' })
 vim.keymap.set("n", "<leader>w", "<cmd>wall<CR>", { desc = '[W]rite all' })
 vim.keymap.set("n", "<leader>q", "<cmd>qall<CR>", { desc = '[Q]uit all' })
 
-vim.keymap.set("n", "<leader>cr", "<cmd>w<CR><cmd>!cargo run<CR>"
-    , { desc = '[C]argo [R]un' })
-vim.keymap.set("n", "<leader>cR", "<cmd>w<CR>:!cargo run -- "
-    , { desc = '[C]argo [R]un paramethers' })
-vim.keymap.set("n", "<leader>cb", "<cmd>w<CR><cmd>!cargo build<CR>"
-    , { desc = '[C]argo [B]uild' })
-vim.keymap.set("n", "<leader>cc", "<cmd>w<CR><cmd>!cargo check<CR>"
-    , { desc = '[C]argo [C]heck' })
-vim.keymap.set("n", "<leader>ct", "<cmd>w<CR><cmd>!cargo test<CR>"
-    , { desc = '[C]argo [T]est' })
-
-vim.keymap.set("n", "<leader>Cr", "<cmd>w<CR><cmd>!cargo run --release<CR>"
-    , { desc = 'Release [C]argo [R]un' })
-vim.keymap.set("n", "<leader>CR", "<cmd>w<CR>:!cargo run --release -- "
-    , { desc = 'Release [C]argo [R]un paramethers' })
-vim.keymap.set("n", "<leader>Cb", "<cmd>w<CR><cmd>!cargo build --release<CR>"
-    , { desc = 'Release [C]argo [B]uild' })
-
-vim.keymap.set("n", "<leader>cs", "<cmd>w<CR><cmd>!gcc -std=c17 -pedantic -Wall -Wextra -O0 -g -fsanitize=address % <CR>",
-    { desc = '[C]17 [S]anitize Compile' })
-vim.keymap.set("n", "<leader>co", "<cmd>w<CR>:!gcc -std=c17 -O3 %<CR>", { desc = '[C]17 [O]ptimized Compile' })
-
-vim.keymap.set('n', '<right>', '<C-w>>', { desc = 'Bigger Horizontal split' })
-vim.keymap.set('n', '<left>', '<C-w><', { desc = 'Smaller Horizontal split' })
-vim.keymap.set('n', '<up>', '<C-w>+', { desc = 'Bigger Vertical split' })
-vim.keymap.set('n', '<down>', '<C-w>-', { desc = 'Smaller Vertical split' })
+vim.keymap.set('n', '<C-right>', '<C-w>>', { desc = 'Bigger Horizontal split' })
+vim.keymap.set('n', '<C-left>', '<C-w><', { desc = 'Smaller Horizontal split' })
+vim.keymap.set('n', '<C-up>', '<C-w>+', { desc = 'Bigger Vertical split' })
+vim.keymap.set('n', '<C-down>', '<C-w>-', { desc = 'Smaller Vertical split' })
 
 vim.keymap.set('n', '<leader>zm', '<cmd>set foldmethod=marker<CR>', { desc = '[Z]fold [M]arker' })
-
-vim.keymap.set('n', '<leader>oP', '<cmd>lua require("nvim-autopairs").disable()<CR>' , { desc = '[O]ption [P]air off' })
-vim.keymap.set('n', '<leader>oL', '<cmd>IndentBlanklineDisable<CR>' , { desc = '[O]ption [L]ine off' })
-vim.keymap.set('n', '<leader>op', '<cmd>lua require("nvim-autopairs").enable()<CR>' , { desc = '[O]ption [P]air on' })
-vim.keymap.set('n', '<leader>ol', '<cmd>IndentBlanklineEnable<CR>' , { desc = '[O]ption [L]ine on' })

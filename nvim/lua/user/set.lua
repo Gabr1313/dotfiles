@@ -37,3 +37,6 @@ vim.opt.colorcolumn = "100"
 vim.opt.history = 256
 
 vim.o.completeopt = 'menuone,noselect'
+
+vim.opt.list = true
+vim.opt.listchars:append "eol:↵"

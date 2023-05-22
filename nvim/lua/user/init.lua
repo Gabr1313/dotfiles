@@ -1,24 +1,26 @@
 require("user.packer")
 require("user.remap")
 require("user.set")
+require("user.rust")
+-- require("user.c")
 
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
 function R(name)
-  require("plenary.reload").reload_module(name)
+    require("plenary.reload").reload_module(name)
 end
 
 local yank_group = augroup('HighlightYank', {})
 autocmd('TextYankPost', {
-  group = yank_group,
-  pattern = '*',
-  callback = function()
-    vim.highlight.on_yank({
-      higroup = 'IncSearch',
-      timeout = 40,
-    })
-  end,
+    group = yank_group,
+    pattern = '*',
+    callback = function()
+        vim.highlight.on_yank({
+            higroup = 'IncSearch',
+            timeout = 40,
+        })
+    end,
 })
 
 -- delete spaces on write in blank line
