@@ -7,8 +7,8 @@ lsp.ensure_installed({
     'rust_analyzer',
 })
 
--- Fix Undefined global 'vim' (now working anymore?)
-lsp.configure('lua-language-server', {
+-- Fix Undefined global 'vim'
+lsp.configure('lua_ls', {
     settings = {
         Lua = {
             diagnostics = {
@@ -78,7 +78,7 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = '[G]oto [D]efinition' })
     vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, { buffer = bufnr, desc = 'Type [D]efinition' })
     vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references,
-    { buffer = bufnr, desc = '[G]oto [R]eferences' })
+        { buffer = bufnr, desc = '[G]oto [R]eferences' })
     vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, { buffer = bufnr, desc = '[G]oto [I]mplementation' })
     -- See `:help K` for why this keymap
     vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = 'Hover Documentation' })
@@ -119,3 +119,4 @@ vim.diagnostic.config({
 })
 
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = '[L]sp [F]ormat' })
+vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<CR>", { desc = '[L]sp [R]estart' })

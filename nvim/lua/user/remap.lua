@@ -4,9 +4,10 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", {desc='Tmux [F]ind'})
 
-vim.keymap.set("n", "<leader>E", "<cmd>Ex<CR>", { desc = '[E]x' })
-vim.keymap.set("n", "<leader>oo", "<cmd>e ~/.config/nvim<CR><CR>", { desc = '[E]x' })
-vim.keymap.set("n", "<leader><leader>", "<cmd>w<CR><cmd>source %<CR>", { silent = true, desc = '[E]x' })
+-- vim.keymap.set("n", "<leader>E", "<cmd>Ex<CR>", { desc = '[E]x' })
+vim.keymap.set("n", "<leader>oo", "<cmd>e ~/.config/nvim<CR><CR>", { desc = 'Nvim config folder' })
+vim.keymap.set("n", "<leader>cD", "<cmd>cd %:p:h<CR>", { desc = 'Change nvim directory' })
+vim.keymap.set("n", "<leader><leader>", "<cmd>w<CR><cmd>source %<CR>", { silent = true, desc = 'Source current file' })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = 'Move line up' })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = 'Move line down' })
@@ -34,7 +35,7 @@ vim.keymap.set("n", "<C-k>", "<C-W><C-k>", { desc = 'Window up' })
 vim.keymap.set("n", "<C-l>", "<C-W><C-l>", { desc = 'Window left' })
 vim.keymap.set("n", "<C-p>", "<cmd>bp<CR>", { desc = '[B]uffer [P]revious' })
 vim.keymap.set("n", "<C-n>", "<cmd>bn<CR>", { desc = '[B]uffer [N]ext' })
-vim.keymap.set("n", "<C-m>", "<cmd>bd<CR>", { desc = '[B]uffer Delete' })
+vim.keymap.set("n", "<C-x>", "<cmd>bd<CR>", { desc = '[B]uffer Delete' })
 vim.keymap.set("n", "<C-,>", "<cmd>cprev<CR>zz", { desc = 'Quick Fix List Previous' })
 vim.keymap.set("n", "<C-.>", "<cmd>cnext<CR>zz", { desc = 'Quick Fix List Next' })
 -- see `:h location`

@@ -1,16 +1,10 @@
 OUTPUT=`hyprctl monitors`
 WORKSPACE=`hyprctl activewindow -j | jq -r '.workspace.id'`
 
-if [[ "$OUTPUT" == *"$2"* ]]
-then 
-  if [[ "$OUTPUT" == *"$1"* ]]
-    then
-      hyprctl keyword monitor "$1,disable"
-    else
-      hyprctl keyword monitor "$1,1920x1080,0x0,1"
-  fi
-elif [[ "$OUTPUT" == *"$1"* ]]
+if [[ "$OUTPUT" == *"$1"* ]] && [[ "$OUTPUT" == *"$2"* ]]
 then
-  $HOME/.config/hypr/scripts/lock
+    hyprctl keyword monitor "$1,disable"
+    hyprctl dispatch workspace $WORKSPACE
+else
+    hyprctl keyword monitor "$1,1920x1080,0x0,1"
 fi
-hyprctl dispatch workspace $WORKSPACE

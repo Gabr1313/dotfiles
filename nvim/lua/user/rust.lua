@@ -8,8 +8,8 @@ vim.keymap.set("n", "<leader>cc", "<cmd>w<CR><cmd>!cargo check<CR>"
 , { desc = '[C]argo [C]heck' })
 vim.keymap.set("n", "<leader>ct", "<cmd>w<CR><cmd>!cargo test<CR>"
 , { desc = '[C]argo [T]est' })
-vim.keymap.set("n", "<leader>cd", "<cmd>w<CR><cmd>!cargo doc --open<CR>"
-, { desc = '[C]argo [T]est' })
+vim.keymap.set("n", "<leader>CD", "<cmd>w<CR><cmd>!cargo doc --open<CR>"
+, { desc = '[C]argo [D]ocumentation' })
 
 vim.keymap.set("n", "<leader>CR", "<cmd>w<CR><cmd>!cargo run --release<CR>"
 , { desc = 'Release [C]argo [R]un' })
