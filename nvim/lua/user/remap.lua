@@ -6,7 +6,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- vim.keymap.set("n", "<leader>E", "<cmd>Ex<CR>", { desc = '[E]x' })
 vim.keymap.set("n", "<leader>oo", "<cmd>e ~/.config/nvim<CR><CR>", { desc = 'Nvim config folder' })
-vim.keymap.set("n", "<leader>cD", "<cmd>cd %:p:h<CR>", { desc = 'Change nvim directory' })
+vim.keymap.set("n", "<leader>CD", "<cmd>cd %:p:h<CR>", { desc = 'Change nvim directory' })
 vim.keymap.set("n", "<leader><leader>", "<cmd>w<CR><cmd>source %<CR>", { silent = true, desc = 'Source current file' })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = 'Move line up' })

@@ -84,4 +84,4 @@ require("nvim-tree").setup({
 })
 
 vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = '[E]x Tree' })
-vim.keymap.set("n", "<leader>cd", "<cmd>vsplit<CR><cmd>e %:p:h<CR><cmd>cd %:p:h<CR>", { desc = 'Change nvim-tree directory' })
+vim.keymap.set("n", "<leader>E", "<cmd>cd %:p:h<CR><cmd>vsplit<CR><cmd>e %:p:h<CR>", { desc = '[E]x Tree current file' })
