@@ -1,8 +1,10 @@
 * {
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    border-radius: 15px;
+    /* font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif; */
+    /* font-size: 15px; */
+    font-family: Cartograph CF Nerd Font, monospace;
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: 5px;
 }
 
 #clock,
@@ -102,7 +104,6 @@ animation: gradient 10s ease infinite;
 #language,
 #bluetooth {
     padding: 0 10px;
-    border-radius: 15px;
     background-color: #cdd6f4;
     color: #516079;
     box-shadow: rgba(0, 0, 0, 0.1) 2 2 3 2px;

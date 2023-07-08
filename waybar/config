@@ -23,8 +23,8 @@
     "on-scroll-down": "hyprctl dispatch workspace e-1",
   },
   "hyprland/language": {
-    "format-en": "us",
-    "format-it": "it",
+    "format-en": "us ",
+    "format-it": "it ",
   },
   "idle_inhibitor": {
     "format": "{icon}",
@@ -35,9 +35,10 @@
     "tooltip": false,
   },
   "clock": {
+    "format": "{:%H:%M} ",
     // "timezone": "America/New_York",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format-alt": "{:%H:%M:%S │ %Y-%m-%d}",
+    "format-alt": "{:%H:%M:%S │ %m/%d/%Y} ",
     "interval": 1,
   },
   "cpu": {
@@ -50,7 +51,7 @@
     "on-click-right": "kitty --hold btop --utf-force",
   },
   "disk": {
-    "format": "{percentage_used}% / {total}",
+    "format": "{percentage_used}%/{total} ",
     "tooltip-format": "{total} - {used} != {free}",
   },
   "temperature": {
@@ -81,12 +82,10 @@
     "on-click-right": "gnome-power-statistics",
   },
   "network": {
-    "format-wifi": "{essid} {signalStrength}% ",
     "format-ethernet": "{ifname} ",
-    // "format-ethernet": "{ipaddr} ",
-    "tooltip-format": "{ipaddr}\n{bandwidthUpBits} up\n{bandwidthDownBits} down",
+    "format-wifi": "{essid} {signalStrength}% ",
+    "tooltip-format": "{ipaddr}/{cidr}\n{bandwidthUpBits} up\n{bandwidthDownBits} down",
     "format-disconnected": "⚠",
-    //"format-alt": "{ifname}: {ipaddr}/{cidr}",
     "on-click": "$HOME/.config/waybar/scripts/wifiToggle.sh",
     "on-click-right": "nm-connection-editor",
     "on-scroll-up": "kitty --title nmtui --hold nmtui",
