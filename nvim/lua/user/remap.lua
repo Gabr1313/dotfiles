@@ -35,7 +35,7 @@ vim.keymap.set("n", "<C-k>", "<C-W><C-k>", { desc = 'Window up' })
 vim.keymap.set("n", "<C-l>", "<C-W><C-l>", { desc = 'Window left' })
 vim.keymap.set("n", "<C-p>", "<cmd>bp<CR>", { desc = '[B]uffer [P]revious' })
 vim.keymap.set("n", "<C-n>", "<cmd>bn<CR>", { desc = '[B]uffer [N]ext' })
-vim.keymap.set("n", "<C-x>", "<cmd>bd<CR>", { desc = '[B]uffer Delete' })
+vim.keymap.set("n", "<C-q>", "<cmd>bd<CR>", { desc = '[B]uffer Delete' })
 vim.keymap.set("n", "<C-,>", "<cmd>cprev<CR>zz", { desc = 'Quick Fix List Previous' })
 vim.keymap.set("n", "<C-.>", "<cmd>cnext<CR>zz", { desc = 'Quick Fix List Next' })
 -- see `:h location`

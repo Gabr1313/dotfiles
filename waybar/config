@@ -2,15 +2,18 @@
   "layer": "top", // Waybar at top layer
   // "position": "bottom", // Waybar position (top|bottom|left|right)
   "height": 30,   // Waybar height (to be removed for auto height)
-  // "width": 1280, // Waybar width
+  // "width": 1280,
 
   "modules-left": ["wlr/workspaces", "hyprland/submap"],
   "modules-center": ["clock"],
-  "modules-right": ["battery", "hyprland/language", "network", "disk", "memory", "cpu", "temperature", "backlight","pulseaudio", "pulseaudio#mic", "bluetooth", "idle_inhibitor"],
+  "modules-right": ["battery", "network", "disk", "memory", "cpu", "temperature", "backlight", "bluetooth", "pulseaudio#mic", "pulseaudio"],
+  // old one
+  // "modules-right": ["battery", "hyprland/language", "network", "disk", "memory", "cpu", "temperature", "backlight","pulseaudio", "pulseaudio#mic", "bluetooth", "idle_inhibitor"],
+  // others
   // "modules-center": ["hyprland/window"],
 
   "wlr/workspaces": {
-    "format": "<span font='15'>{icon}</span>",
+    "format": "{icon}",
     "format-icons": {
       "3": "",
       "6": "",
@@ -35,36 +38,36 @@
     "tooltip": false,
   },
   "clock": {
-    "format": "{:%H:%M} ",
+    "format": " {:%H:%M}",
     // "timezone": "America/New_York",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format-alt": "{:%H:%M:%S │ %m/%d/%Y} ",
+    "format-alt": " {:%H:%M:%S │ %m/%d/%Y}",
     "interval": 1,
   },
   "cpu": {
-    "format": "{usage}% ",
+    "format": " {usage}%",
     "tooltip": true,
     "on-click-right": "kitty --hold btop --utf-force",
   },
   "memory": {
-    "format": "{}% ",
+    "format": " {}%",
     "on-click-right": "kitty --hold btop --utf-force",
   },
   "disk": {
-    "format": "{percentage_used}%/{total} ",
+    "format": " {percentage_used}%/{total}",
     "tooltip-format": "{total} - {used} != {free}",
   },
   "temperature": {
     "critical-threshold": 70,
-    "format": "{temperatureC}°C {icon}",
+    "format": "{icon} {temperatureC}°C",
     "formta-critical": "{temperatureC}°C ",
-    // "format-icons": ["", ""],
+    // "format-icons": ["", ""],
     "format-icons": [""],
     "tooltip": false,
     "on-click-right": "kitty --hold btop --utf-force",
   },
   "backlight": {
-    "format": "{percent}% {icon}",
+    "format": "{icon} {percent}%",
     "format-icons": ["", "", "", "", "", "", "", "", ""],
     "on-scroll-up": "brightnessctl set +2%",
     "on-scroll-down": "brightnessctl set 2%-",
@@ -74,16 +77,17 @@
       "warning": 20,
       "critical": 10,
     },
-    "format": "{capacity}% {icon}",
-    "format-charging": "{capacity}% ",
-    "format-plugged": "{capacity}% ",
-    "format-alt": "{time} {icon}",
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{icon} {time}",
     "format-icons": ["", "", "", "", ""],
     "on-click-right": "gnome-power-statistics",
   },
   "network": {
-    "format-ethernet": "{ifname} ",
-    "format-wifi": "{essid} {signalStrength}% ",
+    "format-ethernet": "󱎔",
+    "format-wifi": "{icon} {signalStrength}% {essid}",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "tooltip-format": "{ipaddr}/{cidr}\n{bandwidthUpBits} up\n{bandwidthDownBits} down",
     "format-disconnected": "⚠",
     "on-click": "$HOME/.config/waybar/scripts/wifiToggle.sh",
@@ -91,9 +95,9 @@
     "on-scroll-up": "kitty --title nmtui --hold nmtui",
   },
   "pulseaudio": {
-    "format": "{volume}% {icon}",
-    "format-muted": "",
-    "format-icons": ["", "", ""],
+    "format": "{icon} {volume}%",
+    "format-muted": "󰖁",
+    "format-icons": ["󰕿", "󰖀", "󰕾"],
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "on-click-right": "pavucontrol",
     "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
@@ -102,8 +106,8 @@
   },
   "pulseaudio#mic": {
     "format": "{format_source}",
-    "format-source": "{volume}% ",
-    "format-source-muted": "",
+    "format-source": "󰍬 {volume}%",
+    "format-source-muted": "󰍭",
     "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
     "on-click-right": "pavucontrol",
     "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +2%",
@@ -113,8 +117,8 @@
   "bluetooth": {
     "format": "{icon}",
     "format-icons": {
-      "enabled": "",
-      "disabled": "",
+      "enabled": "󰂯",
+      "disabled": "󰂲",
     },
     "tooltip-format": "bluetoothctl",
     "on-click":"$HOME/.config/waybar/scripts/bluetoothToggle.sh",
