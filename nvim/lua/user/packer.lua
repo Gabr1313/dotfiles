@@ -14,7 +14,7 @@ vim.cmd([[
   augroup END
 ]])
 
-require("packer").startup(function(use)
+require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
@@ -34,7 +34,7 @@ require("packer").startup(function(use)
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use 'nvim-treesitter/nvim-treesitter-textobjects'
     use 'nvim-treesitter/nvim-treesitter-context'
-    --   use('nvim-treesitter/playground')
+    use('nvim-treesitter/playground')
     use 'theprimeagen/harpoon'
     use 'mbbill/undotree'
     use 'tpope/vim-fugitive'
@@ -42,7 +42,7 @@ require("packer").startup(function(use)
     use 'lewis6991/gitsigns.nvim'
     use 'nvim-lualine/lualine.nvim'
     use 'numToStr/Comment.nvim'
-    use 'lukas-reineke/indent-blankline.nvim'
+    -- use 'lukas-reineke/indent-blankline.nvim'
     use 'akinsho/bufferline.nvim'
     use 'kyazdani42/nvim-web-devicons'
     use 'nvim-tree/nvim-tree.lua'
@@ -52,8 +52,8 @@ require("packer").startup(function(use)
     use 'github/copilot.vim'
 
     use({
-        "iamcco/markdown-preview.nvim",
-        run = function() vim.fn["mkdp#util#install"]() end,
+        'iamcco/markdown-preview.nvim',
+        run = function() vim.fn['mkdp#util#install']() end,
     })
 
     use {
@@ -75,6 +75,7 @@ require("packer").startup(function(use)
             { 'rafamadriz/friendly-snippets' },
         }
     }
+    -- use 'christoomey/vim-tmux-navigator'
 
     if packer_bootstrap then
         require('packer').sync()

@@ -3,10 +3,10 @@ require("lualine").setup({
         icons_enabled = true,
         -- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
         theme = 'auto',
-        -- component_separators = { left = '', right = ''},
-        section_separators = { left = '', right = '' },
+        -- section_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
         component_separators = { left = '|', right = '|' },
-        -- section_separators = { left = '', right = ''},
+        -- component_separators = { left = '', right = ''},
         disabled_filetypes = {
             statusline = {},
             winbar = {},

@@ -9,6 +9,8 @@ vim.keymap.set("n", "<leader>oo", "<cmd>e ~/.config/nvim<CR><CR>", { desc = 'Nvi
 vim.keymap.set("n", "<leader>CD", "<cmd>cd %:p:h<CR>", { desc = 'Change nvim directory' })
 vim.keymap.set("n", "<leader><leader>", "<cmd>w<CR><cmd>source %<CR>", { silent = true, desc = 'Source current file' })
 
+vim.keymap.set("n", "<C-s>", "<cmd>!tmux neww tmux-sessionizer<CR>", { silent = true, desc = 'Tmux-sessionizer' })
+
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = 'Move line up' })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = 'Move line down' })
 
@@ -44,12 +46,10 @@ vim.keymap.set("n", "<C-.>", "<cmd>cnext<CR>zz", { desc = 'Quick Fix List Next' 
 vim.keymap.set("n", "<C-]>", "<C-]>zz", { desc = 'Goto Definition' })
 vim.keymap.set("n", "<C-[>", "<C-T>zz", { desc = 'Back form Defition' })
 
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-    { desc = '[S]ubsitute word modify' })
-vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], { desc = '[S]ubsitute word empty' })
+vim.keymap.set("n", "<leader>se", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+    { desc = '[S]ubsitute [E]nd' })
+vim.keymap.set("n", "<leader>ss", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], { desc = '[S]ubsitute [S]tart' })
 -- TODO: write a function so the following 2 commands work even with `\` and `/`
-vim.keymap.set("v", "<leader>s", [["sy:%s/\v<C-r>s/<C-r>s/gI<Left><Left><Left>]], { desc = '[S]ubsitute words modify' })
-vim.keymap.set("v", "<leader>S", [["sy:%s/\v<C-r>s//gI<Left><Left><Left>]], { desc = '[S]ubsitute words empty' })
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { desc = 'E[x]ecutable' })
 vim.keymap.set("n", "<leader>X", "<cmd>!chmod -x %<CR>", { desc = 'E[x]ecutable' })
 
@@ -60,8 +60,8 @@ vim.keymap.set("n", "<leader>a", "v:<C-u>normal! ggVG<CR>", { desc = '[A]ll buff
 vim.keymap.set("x", "<", "<gv", { desc = 'Indent left' })
 vim.keymap.set("x", ">", ">gv", { desc = 'Indent right' })
 
-vim.keymap.set("n", "<C-\\>", "<cmd>vsplit<CR>", { desc = 'Vertical split' })
-vim.keymap.set("n", "|", "<cmd>split<CR>", { desc = 'Horizontal split' })
+vim.keymap.set("n", "<leader>sv", "<cmd>vsplit<CR>", { desc = '[S]plit [V]ertical' })
+vim.keymap.set("n", "<leader>so", "<cmd>split<CR>", { desc = '[S]plit h[O]rizontal' })
 
 vim.keymap.set("n", "<leader>w", "<cmd>wall<CR>", { desc = '[W]rite all' })
 vim.keymap.set("n", "<leader>q", "<cmd>qall<CR>", { desc = '[Q]uit all' })

@@ -40,7 +40,7 @@
   "clock": {
     "format": " {:%H:%M}",
     // "timezone": "America/New_York",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "tooltip-format": "<tt>{calendar}</tt>",
     "format-alt": " {:%H:%M:%S │ %m/%d/%Y}",
     "interval": 1,
   },
