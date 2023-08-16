@@ -2,7 +2,7 @@ require("user.packer")
 require("user.remap")
 require("user.set")
 require("user.rust")
--- require("user.c")
+require("user.c")
 
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd

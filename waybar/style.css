@@ -5,6 +5,7 @@
     font-size: 17px;
     font-weight: bold;
     border-radius: 5px;
+    transition: none;
 }
 
 #clock,
@@ -20,20 +21,14 @@
 #scratchpad,
 #language,
 #bluetooth,
-#submap,
-#workspaces{
-    margin: 6px;
-}
-
-window#waybar {
-    background-color: transparent;
-}
-
-#submap,
-#workspaces{
-    background-color: transparent;
+#submap {
     margin-left: 10px;
-    margin-right: 10px;
+}
+
+window {
+    background-color: transparent;
+    font-size: 17px;
+    color: #000000;
 }
 
 #workspaces button{
@@ -79,11 +74,6 @@ animation: gradient 10s ease infinite;
 }
 */
 
-#window {
-    font-size: 17px;
-    color: #000000;
-}
-
 #clock,
 #battery,
 #cpu,
@@ -106,8 +96,6 @@ animation: gradient 10s ease infinite;
 #clock{
     background-color:rgba(245,194,231,1);
     color: #8a2387;
-    margin-left: 10px;
-    margin-right: 10px;
 }
 
 @keyframes blink {
@@ -127,8 +115,4 @@ animation: gradient 10s ease infinite;
 
 #battery.warning:not(.charging) {
     background-color: #fca503;
-}
-
-#idle_inhibitor {
-    margin-right: 10px;
 }

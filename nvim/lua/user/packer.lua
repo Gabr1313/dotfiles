@@ -35,21 +35,15 @@ require('packer').startup(function(use)
     use 'nvim-treesitter/nvim-treesitter-textobjects'
     use 'nvim-treesitter/nvim-treesitter-context'
     use('nvim-treesitter/playground')
-    use 'theprimeagen/harpoon'
     use 'mbbill/undotree'
     use 'tpope/vim-fugitive'
     use 'ruifm/gitlinker.nvim'
     use 'lewis6991/gitsigns.nvim'
     use 'nvim-lualine/lualine.nvim'
     use 'numToStr/Comment.nvim'
-    -- use 'lukas-reineke/indent-blankline.nvim'
-    use 'akinsho/bufferline.nvim'
     use 'kyazdani42/nvim-web-devicons'
-    use 'nvim-tree/nvim-tree.lua'
-    use 'windwp/nvim-autopairs'
     use 'folke/zen-mode.nvim'
-    -- see `Copilot help`
-    use 'github/copilot.vim'
+    -- use 'github/copilot.vim'
 
     use({
         'iamcco/markdown-preview.nvim',
@@ -75,7 +69,6 @@ require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' },
         }
     }
-    -- use 'christoomey/vim-tmux-navigator'
 
     if packer_bootstrap then
         require('packer').sync()
