@@ -56,19 +56,18 @@ lsp.setup_nvim_cmp({
     mapping = cmp_mappings
 })
 
-lsp.set_preferences({
-    suggest_lsp_servers = false,
-    sign_icons = {
-        error = '✘',
-        warn = '▲',
-        hint = '󱠃',
-        info = ''
-    }
+lsp.set_sign_icons({
+    error = '✘',
+    warn = '▲',
+    hint = '󱠃',
+    info = ''
 })
 
 lsp.on_attach(function(_, bufnr)
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr, desc = '[R]e[n]ame' })
-    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = '[C]ode [A]ction' }) vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = '[G]oto [D]efinition' }) vim.keymap.set('n', '<leader>td', vim.lsp.buf.type_definition, { buffer = bufnr, desc = '[T]ype [D]efinition' })
+    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = '[C]ode [A]ction' })
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = '[G]oto [D]efinition' })
+    vim.keymap.set('n', '<leader>td', vim.lsp.buf.type_definition, { buffer = bufnr, desc = '[T]ype [D]efinition' })
     vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references,
         { buffer = bufnr, desc = '[G]oto [R]eferences' })
     vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, { buffer = bufnr, desc = '[G]oto [I]mplementation' })
@@ -86,6 +85,7 @@ lsp.on_attach(function(_, bufnr)
 end)
 
 lsp.setup()
+
 vim.diagnostic.config({
     virtual_text = true,
 })
