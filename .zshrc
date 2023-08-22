@@ -127,5 +127,4 @@ alias f="tmux neww $HOME/.local/scripts/tmux-sessionizer"
 bindkey -v
 
 bindkey -s '^F' "find | fzf | xargs -r $EDITOR\n"
-bindkey -s '^S' "tmux neww tmux-sessionizer\n"
-bindkey -s '^K' "tmux-session-killer\n"
+bindkey -s '^S' "tmux-sessionizer\n"

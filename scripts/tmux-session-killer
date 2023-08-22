@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-sessions=$(tmux list-sessions | fzf -m --border=bottom --border-label="| Tab/S-Tab to multiple-select |"| awk 'BEGIN{FS=":"}{print $1}')
-for session in $sessions 
-do
-    tmux kill-session -t $session
-done

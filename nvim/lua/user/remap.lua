@@ -5,10 +5,10 @@ vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Esc" })
 
 vim.keymap.set("n", "<leader>oo", "<cmd>e ~/.config/nvim<CR><CR>", { desc = "Nvim config folder" })
 
-vim.keymap.set("n", "<C-s>", "<cmd>!tmux neww tmux-sessionizer<CR><CR>", { silent = true, desc = "Tmux-sessionizer" })
+vim.keymap.set("n", "<C-s>", "<cmd>!tmux-sessionizer<CR><CR>", { silent = true, desc = "Tmux-sessionizer" })
 
-vim.keymap.set("v", "J", ':m ">+1<CR>gv=gv', { desc = "Move line up" })
-vim.keymap.set("v", "K", ':m "<-2<CR>gv=gv', { desc = "Move line down" })
+vim.keymap.set("v", "J", ':m +1<CR>gv=gv', { desc = "Move line up" })
+vim.keymap.set("v", "K", ':m -2<CR>gv=gv', { desc = "Move line down" })
 
 vim.keymap.set("n", "J", "mzJ`z", { desc = "[J]oin line" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "1/2 page [D]own" })
@@ -40,3 +40,8 @@ vim.keymap.set("x", "<", "<gv", { desc = "Indent left" })
 vim.keymap.set("x", ">", ">gv", { desc = "Indent right" })
 
 vim.keymap.set("n", "<leader>zm", "<cmd>set foldmethod=marker<CR>", { desc = "[Z]fold [M]arker" })
+
+vim.keymap.set("n", "<leader>zz",
+    "<cmd>execute 'topleft' ((&columns - 100) / 2 - 8) . 'vsplit +setlocal\\ nobuflisted _padding_' | wincmd p<CR>",
+    { desc = "Center horizontally" })
+vim.keymap.set("n", "<leader>zc", "<C-w>h<cmd>bd<CR>", { desc = "[C]lose center horizontally" })

@@ -35,5 +35,4 @@ require 'treesitter-context'.setup {
     zindex = 20,
 }
 
-vim.cmd [[highlight TreesitterContextLineNumber guifg=#a8a5b6 ]]
 vim.keymap.set('n', '<leader>oc', '<cmd>TSContextToggle<CR>', { desc = '[O]ption [C]ontext toggle' })

@@ -164,11 +164,6 @@ _G.packer_plugins = {
     path = "/home/gabri/.local/share/nvim/site/pack/packer/start/nvim",
     url = "https://github.com/catppuccin/nvim"
   },
-  ["nvim-autopairs"] = {
-    loaded = true,
-    path = "/home/gabri/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
-    url = "https://github.com/windwp/nvim-autopairs"
-  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/gabri/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -246,11 +241,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gabri/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
-  },
-  ["zen-mode.nvim"] = {
-    loaded = true,
-    path = "/home/gabri/.local/share/nvim/site/pack/packer/start/zen-mode.nvim",
-    url = "https://github.com/folke/zen-mode.nvim"
   }
 }
 
