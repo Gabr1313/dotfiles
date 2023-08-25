@@ -67,6 +67,7 @@ lsp.on_attach(function(_, bufnr)
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr, desc = '[R]e[n]ame' })
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = '[C]ode [A]ction' })
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = '[G]oto [D]efinition' })
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = bufnr, desc = '[G]oto [D]eclaration' })
     vim.keymap.set('n', '<leader>td', vim.lsp.buf.type_definition, { buffer = bufnr, desc = '[T]ype [D]efinition' })
     vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, { buffer = bufnr, desc = '[G]oto [I]mplementation' })
     vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = 'Hover Documentation' })
@@ -75,15 +76,14 @@ lsp.on_attach(function(_, bufnr)
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { buffer = bufnr, desc = 'Previous [D]iagnostic' })
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { buffer = bufnr, desc = 'Next [D]iagnostic' })
     vim.keymap.set({ "i", "n" }, "<C-h>", vim.lsp.buf.signature_help, { buffer = bufnr, desc = 'Help' })
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = bufnr, desc = '[G]oto [D]eclaration' })
 
-    vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references,
-        { buffer = bufnr, desc = '[G]oto [R]eferences' })
-    vim.keymap.set('n', '<leader>gd', require('telescope.builtin').diagnostics, { desc = '[G]oto [D]iagnostics' })
-    vim.keymap.set('n', '<leader>ds', require('telescope.builtin').lsp_document_symbols,
-        { buffer = bufnr, desc = '[D]ocument [S]ymbols' })
-    vim.keymap.set('n', '<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols,
-        { buffer = bufnr, desc = '[W]orkspace [S]ymbol' })
+    vim.keymap.set('n', 'fr', require('telescope.builtin').lsp_references,
+        { buffer = bufnr, desc = '[F]zf [R]eferences' })
+    vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[F]zf [D]iagnostics' })
+    vim.keymap.set('n', '<leader>fsd', require('telescope.builtin').lsp_document_symbols,
+        { buffer = bufnr, desc = '[F]zf [S]ymbols [D]ocument' })
+    vim.keymap.set('n', '<leader>fsw', require('telescope.builtin').lsp_dynamic_workspace_symbols,
+        { buffer = bufnr, desc = '[F]zf [S]ymbol [W]orkspace' })
 end)
 
 lsp.setup()

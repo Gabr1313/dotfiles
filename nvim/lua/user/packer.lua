@@ -24,6 +24,7 @@ require('packer').startup(function(use)
         requires = { 'nvim-lua/plenary.nvim' }
     }
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
+    use 'nvim-tree/nvim-tree.lua'
 
     use 'rose-pine/neovim'
     use 'navarasu/onedark.nvim'
@@ -51,6 +52,7 @@ require('packer').startup(function(use)
 
     use {
         'VonHeikemen/lsp-zero.nvim',
+        branch = 'v1.x',
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
