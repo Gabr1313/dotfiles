@@ -56,11 +56,13 @@ lsp.setup_nvim_cmp({
     mapping = cmp_mappings
 })
 
-lsp.set_sign_icons({
-    error = '✘',
-    warn = '▲',
-    hint = '󱠃',
-    info = ''
+lsp.set_preferences({
+    sign_icons = {
+        error = '✘',
+        warn = '▲',
+        hint = '󱠃',
+        info = ''
+    }
 })
 
 lsp.on_attach(function(_, bufnr)
@@ -75,7 +77,7 @@ lsp.on_attach(function(_, bufnr)
     vim.keymap.set("n", "<leader>rr", vim.lsp.buf.references, { buffer = bufnr, desc = '[R]efe[r]ences' })
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { buffer = bufnr, desc = 'Previous [D]iagnostic' })
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { buffer = bufnr, desc = 'Next [D]iagnostic' })
-    vim.keymap.set({ "i", "n" }, "<C-h>", vim.lsp.buf.signature_help, { buffer = bufnr, desc = 'Help' })
+    vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, { buffer = bufnr, desc = 'Help' })
 
     vim.keymap.set('n', 'fr', require('telescope.builtin').lsp_references,
         { buffer = bufnr, desc = '[F]zf [R]eferences' })

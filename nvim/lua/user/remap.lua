@@ -22,10 +22,10 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "[Y]ank to clipboard
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "[Y]ank to clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "[D]elete no yank" })
 
-vim.keymap.set("n", "<C-p>", "<cmd>cprev<CR>zz", { desc = "Quickfix list previous" })
-vim.keymap.set("n", "<C-n>", "<cmd>cnext<CR>zz", { desc = "Quickfix list next" })
-vim.keymap.set("n", "<leader>lp", "<cmd>lprev<CR>zz", { desc = "[L]ocal quickfix list [P]revious" })
-vim.keymap.set("n", "<leader>ln", "<cmd>lnext<CR>zz", { desc = "[L]ocal quickfix list [N]ext" })
+vim.keymap.set("n", "<C-p>", "<cmd>cprev<CR>zz", { desc = "Quickfix list [P]revious" })
+vim.keymap.set("n", "<C-n>", "<cmd>cnext<CR>zz", { desc = "Quickfix list [N]ext" })
+vim.keymap.set("n", "<C-S-p>", "<cmd>lprev<CR>zz", { desc = "Local quickfix list [P]revious" })
+vim.keymap.set("n", "<C-S-n>", "<cmd>lnext<CR>zz", { desc = "Local quickfix list [V]ext" })
 
 vim.keymap.set("n", "<C-]>", "<C-]>zz", { desc = "Goto Definition" })
 vim.keymap.set("n", "<C-t>", "<C-t>zz", { desc = "Back form Defition" })
@@ -44,6 +44,6 @@ vim.keymap.set("n", "<leader>zm", "<cmd>set foldmethod=marker<CR>", { desc = "[Z
 vim.keymap.set("n", "<leader><leader>", [[<cmd>%s/\s\+$//e<CR>]], { desc = "Remove trailing spaces" })
 
 vim.keymap.set("n", "<leader>zz",
-    "<cmd>execute 'topleft' ((&columns - 100) / 2 - 8) . 'vsplit +setlocal\\ nobuflisted _padding_' | wincmd p<CR>",
+    "<cmd>execute 'topleft' ((&columns - 106) / 2 - 6) . 'vsplit _padding_' | wincmd p<CR>",
     { desc = "Center horizontally" })
-vim.keymap.set("n", "<leader>zc", "<C-w>h<cmd>bd<CR>", { desc = "[C]lose center horizontally" })
+vim.keymap.set("n", "<leader>zc", "<cmd>bd _padding_<CR>", { desc = "[C]lose center horizontally" })
