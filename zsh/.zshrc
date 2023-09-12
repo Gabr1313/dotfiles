@@ -77,7 +77,6 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git
-    colored-man-pages
     #not default but custom ones
     zsh-syntax-highlighting
     zsh-autosuggestions
@@ -126,4 +125,3 @@ alias f="tmux neww $HOME/.local/scripts/tmux-sessionizer"
 bindkey -v
 
 bindkey -s '^F' "find | fzf | xargs -r $EDITOR\n"
-bindkey -s '^S' "tmux-sessionizer\n"

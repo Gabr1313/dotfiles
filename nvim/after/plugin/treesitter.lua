@@ -24,7 +24,7 @@ require('nvim-treesitter.configs').setup {
 }
 
 require 'treesitter-context'.setup {
-    enable = true,
+    enable = false,
     max_lines = -1,
     min_window_height = 0,
     line_numbers = true,

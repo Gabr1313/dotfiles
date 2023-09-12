@@ -26,11 +26,10 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-    ["<C-l>"] = cmp.mapping.complete(),
-    ['<C-Backspace>'] = cmp.mapping.abort(),
+    ['<C-l>'] = cmp.mapping.complete(),
     ['<C-k>'] = cmp.mapping.scroll_docs(-4),
     ['<C-j>'] = cmp.mapping.scroll_docs(4),
-    ["<Tab>"] = cmp.mapping(function(fallback)
+    ['<Tab>'] = cmp.mapping(function(fallback)
         if luasnip.jumpable(1) then
             luasnip.jump(1)
         elseif luasnip.expand_or_jumpable() then
@@ -67,7 +66,7 @@ lsp.set_preferences({
 
 lsp.on_attach(function(_, bufnr)
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr, desc = '[R]e[n]ame' })
-    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = '[C]ode [A]ction' })
+    vim.keymap.set({ "v", "n" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = '[C]ode [A]ction' })
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = '[G]oto [D]efinition' })
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = bufnr, desc = '[G]oto [D]eclaration' })
     vim.keymap.set('n', '<leader>td', vim.lsp.buf.type_definition, { buffer = bufnr, desc = '[T]ype [D]efinition' })
@@ -89,6 +88,8 @@ lsp.on_attach(function(_, bufnr)
 end)
 
 lsp.setup()
+
+vim.opt.completeopt = 'menu,menuone,preview'
 
 vim.diagnostic.config({
     virtual_text = true,

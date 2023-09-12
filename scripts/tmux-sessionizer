@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    folders="../ ./ /home/ $HOME/.config/ $HOME/cp $HOME/projects $HOME/gitPub/ $HOME/gitMine/ $HOME/polimi/*/"
+    folders="/home/ $HOME/ $HOME/.config/ $HOME/cp $HOME/projects $HOME/gitPub/ $HOME/gitMine/ $HOME/polimi/*/"
     selected=$(find -L $(echo $folders) -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 

@@ -24,14 +24,14 @@ vim.keymap.set("n", "<leader>cf", "<cmd>w<CR><cmd>!cargo fix --allow-dirty<CR><C
 vim.keymap.set("n", "<leader>cd", "<cmd>w<CR><cmd>!cargo doc --open<CR>"
 , { desc = '[C]argo [D]ocumentation' })
 
-vim.keymap.set("n", "<leader>ce", "<cmd>w<CR>:!./auto_test %<CR>"
+vim.keymap.set("n", "<leader>ce", "<cmd>w<CR>:!rust-bin %<CR>"
 , { desc = '[C]argo [E]xe bin' })
-vim.keymap.set("n", "<leader>cE", "<cmd>w<CR>:!RUST_BACKTRACE=1 ./auto_test %<CR>"
+vim.keymap.set("n", "<leader>cE", "<cmd>w<CR>:!RUST_BACKTRACE=1 rust-bin %<CR>"
 , { desc = '[C]argo [E]xe Backtrace' })
-vim.keymap.set("n", "<leader>CE", "<cmd>w<CR>:!./auto_test % -release<CR>"
+vim.keymap.set("n", "<leader>CE", "<cmd>w<CR>:!rust-bin % --release<CR>"
 , { desc = 'Release [C]argo [E]xe bin' })
 
-vim.keymap.set("n", "<leader>co", "<cmd>w<CR>:!./auto_test % -output-file<CR>"
+vim.keymap.set("n", "<leader>co", "<cmd>w<CR>:!rust-bin % --output-file<CR>"
 , { desc = '[C]argo [O]utput' })
-vim.keymap.set("n", "<leader>CO", "<cmd>w<CR>:!./auto_test % -release -output-file<CR>"
+vim.keymap.set("n", "<leader>CO", "<cmd>w<CR>:!rust-bin % --release --output-file<CR>"
 , { desc = 'Release [C]argo [O]output' })
