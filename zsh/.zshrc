@@ -124,4 +124,4 @@ alias f="tmux neww $HOME/.local/scripts/tmux-sessionizer"
 # use vim commands on terminal
 bindkey -v
 
-bindkey -s '^F' "find | fzf | xargs -r $EDITOR\n"
+bindkey -s '^S' "find | fzf | xargs -r $EDITOR\n"

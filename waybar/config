@@ -5,20 +5,25 @@
   // "width": 1280,
   "margin": "5px 10px 0px 10px",
 
-  "modules-left": ["wlr/workspaces", "hyprland/submap"],
+  "modules-left": ["hyprland/workspaces", "hyprland/submap"],
   "modules-center": ["clock"],
   "modules-right": ["battery", "network", "disk", "memory", "cpu", "temperature", "backlight", "bluetooth", "pulseaudio#mic", "pulseaudio"],
   // "modules-right": ["battery", "hyprland/language", "network", "disk", "memory", "cpu", "temperature", "backlight","pulseaudio", "pulseaudio#mic", "bluetooth", "idle_inhibitor"],
   // "modules-center": ["hyprland/window"],
 
-  "wlr/workspaces": {
+  "hyprland/workspaces": {
     "format": "{icon}",
     "format-icons": {
+      "1": "1",
+      "2": "2",
       "3": "",
+      "4": "4",
+      "5": "5",
       "6": "",
       "7": "",
       "8": "",
       "9": "",
+      "10": "10",
     },
     "on-click": "activate",
     "on-scroll-up": "hyprctl dispatch workspace e+1",

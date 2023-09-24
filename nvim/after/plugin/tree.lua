@@ -1,70 +1,73 @@
-local function on_attach(bufnr)
+local function my_on_attach(bufnr)
     local api = require('nvim-tree.api')
 
     local function opts(desc)
         return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
     end
 
-    -- vim.keymap.set('n', '<', api.node.navigate.sibling.prev, opts('Previous Sibling'))
-    -- vim.keymap.set('n', '<C-]>', api.tree.change_root_to_node, opts('CD'))
-    -- vim.keymap.set('n', '<C-e>', api.node.open.replace_tree_buffer, opts('Open: In Place'))
-    -- vim.keymap.set('n', '<C-r>', api.fs.rename_sub, opts('Rename: Omit Filename'))
-    -- vim.keymap.set('n', '<C-t>', api.node.open.tab, opts('Open: New Tab'))
-    -- vim.keymap.set('n', '>', api.node.navigate.sibling.next, opts('Next Sibling'))
-    -- vim.keymap.set('n', 'B', api.tree.toggle_no_buffer_filter, opts('Toggle No Buffer'))
-    -- vim.keymap.set('n', 'D', api.fs.trash, opts('Trash'))
-    -- vim.keymap.set('n', 'E', api.fs.rename_basename, opts('Rename: Basename'))
-    -- vim.keymap.set('n', 'F', api.live_filter.clear, opts('Clean Filter'))
-    -- vim.keymap.set('n', 'J', api.node.navigate.sibling.last, opts('Last Sibling'))
-    -- vim.keymap.set('n', 'K', api.node.navigate.sibling.first, opts('First Sibling'))
-    -- vim.keymap.set('n', 'O', api.node.open.no_window_picker, opts('Open: No Window Picker'))
-    -- vim.keymap.set('n', '[c', api.node.navigate.git.prev, opts('Prev Git'))
-    -- vim.keymap.set('n', ']c', api.node.navigate.git.next, opts('Next Git'))
-    -- vim.keymap.set('n', 'f', api.live_filter.start, opts('Filter'))
     vim.keymap.set('n', '<BS>', api.node.navigate.parent_close, opts('Close Directory'))
-    vim.keymap.set('n', '<C-h>', api.node.open.horizontal, opts('Open: Horizontal Split'))
-    vim.keymap.set('n', '<C-v>', api.node.open.vertical, opts('Open: Vertical Split'))
     vim.keymap.set('n', '<CR>', api.node.open.edit, opts('Open'))
     vim.keymap.set('n', '<LeftMouse>', api.node.open.edit, opts('Open'))
     vim.keymap.set('n', '<RightMouse>', api.node.navigate.parent_close, opts('Close Directory'))
     vim.keymap.set('n', '<Tab>', api.node.open.preview, opts('Preview'))
-    vim.keymap.set('n', 'D', api.fs.remove, opts('Delete not yank'))
+    vim.keymap.set('n', 'C', api.tree.collapse_all, opts('[C]ollapse'))
+    vim.keymap.set('n', 'D', api.fs.remove, opts('[D]emove'))
     vim.keymap.set('n', 'K', api.node.show_info_popup, opts('Info'))
-    vim.keymap.set('n', 'P', api.node.navigate.parent, opts('Parent Directory'))
-    vim.keymap.set('n', 'R', api.tree.reload, opts('Refresh'))
-    vim.keymap.set('n', 'T', api.tree.toggle_git_clean_filter, opts('Toggle Git Clean'))
-    vim.keymap.set('n', 'U', api.tree.toggle_custom_filter, opts('Toggle Hidden'))
-    vim.keymap.set('n', 'W', api.tree.collapse_all, opts('Collapse'))
-    vim.keymap.set('n', 'Y', api.fs.copy.filename, opts('Yank Name'))
-    vim.keymap.set('n', '[d', api.node.navigate.diagnostics.prev, opts('Prev Diagnostic'))
-    vim.keymap.set('n', ']d', api.node.navigate.diagnostics.next, opts('Next Diagnostic'))
-    vim.keymap.set('n', 'cD', api.tree.change_root_to_parent, opts('cd parent'))
-    vim.keymap.set('n', 'cd', api.tree.change_root_to_node, opts('cd'))
-    vim.keymap.set('n', 'cm', api.node.run.cmd, opts('Run Cmd'))
-    vim.keymap.set('n', 'd', api.fs.cut, opts('Delete'))
-    vim.keymap.set('n', 'e', api.tree.expand_all, opts('Expand'))
-    vim.keymap.set('n', 'f', api.tree.search_node, opts('Find'))
+    vim.keymap.set('n', 'P', api.node.navigate.parent, opts('[P]arent Directory'))
+    vim.keymap.set('n', '[d', api.node.navigate.diagnostics.prev, opts('Prev [D]iagnostic'))
+    vim.keymap.set('n', ']d', api.node.navigate.diagnostics.next, opts('Next [D]iagnostic'))
+    vim.keymap.set('n', 'cD', api.tree.change_root_to_parent, opts('[C]hange [D]irectory parent'))
+    vim.keymap.set('n', 'cd', api.tree.change_root_to_node, opts('[C]hange [D]irectory'))
+    vim.keymap.set('n', 'd', api.fs.cut, opts('[D]elete and yank'))
+    vim.keymap.set('n', 'e', api.tree.expand_all, opts('[E]xpand'))
+    vim.keymap.set('n', 'f', api.tree.search_node, opts('[F]ind'))
     vim.keymap.set('n', 'g?', api.tree.toggle_help, opts('Help'))
-    vim.keymap.set('n', 'md', api.marks.bulk.delete, opts('Marked Delete'))
-    vim.keymap.set('n', 'mf', api.marks.toggle, opts('Mark file'))
-    vim.keymap.set('n', 'mm', api.marks.bulk.move, opts('Marked Move'))
-    vim.keymap.set('n', 'n', api.fs.create, opts('New'))
-    vim.keymap.set('n', 'p', api.fs.paste, opts('Paste'))
-    vim.keymap.set('n', 'q', api.tree.close, opts('Quit'))
-    vim.keymap.set('n', 'r', api.fs.rename, opts('Rename'))
-    vim.keymap.set('n', 's', api.node.run.system, opts('Run System'))
-    vim.keymap.set('n', 'td', api.tree.toggle_hidden_filter, opts('Toggle Dotfiles'))
-    vim.keymap.set('n', 'tgi', api.tree.toggle_gitignore_filter, opts('Toggle Git Ignore'))
-    vim.keymap.set('n', 'y', api.fs.copy.node, opts('Yank'))
-    vim.keymap.set('n', 'yap', api.fs.copy.absolute_path, opts('Copy Absolute Path'))
-    vim.keymap.set('n', 'yp', api.fs.copy.relative_path, opts('Copy Relative Path'))
+    vim.keymap.set('n', 'md', api.marks.bulk.delete, opts('[M]arked [D]elete'))
+    vim.keymap.set('n', 'mf', api.marks.toggle, opts('[M]ark [F]ile'))
+    vim.keymap.set('n', 'mm', api.marks.bulk.move, opts('[M]arked [M]ove'))
+    vim.keymap.set('n', 'p', api.fs.paste, opts('[P]aste'))
+    vim.keymap.set('n', 'q', api.tree.close, opts('[Q]uit'))
+    vim.keymap.set('n', 'rc', api.node.run.cmd, opts('[R]un [C]md'))
+    vim.keymap.set('n', 'rf', api.tree.reload, opts('[R]e[F]resh'))
+    vim.keymap.set('n', 'rn', api.fs.rename, opts('[R]e[N]ame'))
+    vim.keymap.set('n', 'rs', api.node.run.system, opts('[R]un [S]ystem'))
+    vim.keymap.set('n', 'sd', api.tree.toggle_hidden_filter, opts('[S]how [D]otfiles'))
+    vim.keymap.set('n', 'sg', api.tree.toggle_git_clean_filter, opts('[S]how [G]it clean filter'))
+    vim.keymap.set('n', 'sh', api.tree.toggle_custom_filter, opts('[S]how [H]idden'))
+    vim.keymap.set('n', 'si', api.tree.toggle_gitignore_filter, opts('[S]how Git [I]gnore'))
+    vim.keymap.set('n', 't', api.fs.create, opts('[T]ouch (New)'))
+    vim.keymap.set('n', 'y', api.fs.copy.node, opts('[Y]ank'))
+    vim.keymap.set('n', 'ya', api.fs.copy.absolute_path, opts('[Y]ank [A]bsolute Path'))
+    vim.keymap.set('n', 'yn', api.fs.copy.filename, opts('[Y]ank [N]ame'))
+    vim.keymap.set('n', 'yr', api.fs.copy.relative_path, opts('[Y]ank [R]elative Path'))
 end
 
 require("nvim-tree").setup({
-    on_attach = on_attach,
+    on_attach = my_on_attach,
     sort_by = "case_sensitive",
+    disable_netrw = true,
+    respect_buf_cwd = true,
+    sync_root_with_cwd = true,
     view = {
-        adaptive_size = true,
+        relativenumber = true,
+        float = {
+            enable = true,
+            open_win_config = function()
+                -- local window_w = math.floor(screen_w * 0.4)
+                local window_w = 80
+                local window_h = math.floor((vim.opt.lines:get() - vim.opt.cmdheight:get()) * 0.8)
+                local center_x = (vim.opt.columns:get() - window_w) / 2
+                local center_y = ((vim.opt.lines:get() - window_h) / 2) - vim.opt.cmdheight:get()
+                return {
+                    border = "rounded",
+                    relative = "editor",
+                    row = center_y,
+                    col = center_x,
+                    width = window_w,
+                    height = window_h,
+                }
+            end,
+        },
     },
     renderer = {
         group_empty = true,
@@ -81,4 +84,5 @@ require("nvim-tree").setup({
 })
 
 vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = '[E]x Tree' })
-vim.keymap.set("n", "<leader>E", "<cmd>cd %:p:h<CR><cmd>vs<CR><cmd>e %:p:h<CR>", { desc = 'cd [E]x Tree' })
+vim.keymap.set("n", "<leader>E", "<cmd>cd %:h<CR><cmd>NvimTreeToggle<CR>", { desc = 'cd [E]x Tree' })
+vim.keymap.set("n", "<leader>oo", "<cmd>cd ~/.config/nvim<CR><cmd>NvimTreeToggle<CR>", { desc = '[O]pen [O]ption' })

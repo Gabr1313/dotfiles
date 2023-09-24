@@ -3,9 +3,9 @@ vim.g.maplocalleader = " "
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Esc" })
 
-vim.keymap.set("n", "<leader>oo", "<cmd>e ~/.config/nvim<CR><CR>", { desc = "Nvim config folder" })
+vim.keymap.set("n", "<C-f>", "<cmd>!tmux-sessionizer<CR><CR>", { silent = true, desc = "Tmux-sessionizer" })
 
-vim.keymap.set("n", "<C-s>", "<cmd>!tmux-sessionizer<CR><CR>", { silent = true, desc = "Tmux-sessionizer" })
+vim.keymap.set("n", "<leader>cd", "<cmd>cd %:h<CR>", { silent = true, desc = "Tmux-sessionizer" })
 
 vim.keymap.set("v", "<C-j>", ':m +1<CR>gv=gv', { desc = "Move line up" })
 vim.keymap.set("v", "<C-k>", ':m -2<CR>gv=gv', { desc = "Move line down" })
@@ -27,10 +27,10 @@ vim.keymap.set("n", "<C-n>", "<cmd>cnext<CR>zz", { desc = "Quickfix list [N]ext"
 vim.keymap.set("n", "<C-S-p>", "<cmd>lprev<CR>zz", { desc = "Local quickfix list [P]revious" })
 vim.keymap.set("n", "<C-S-n>", "<cmd>lnext<CR>zz", { desc = "Local quickfix list [V]ext" })
 
-vim.keymap.set("n", "<C-Up>", "<C-w>+", { desc = "Change window bigger vertically" })
-vim.keymap.set("n", "<C-Down>", "<C-w>-", { desc = "Change window smaller vertically" })
-vim.keymap.set("n", "<C-Right>", "<C-w>>", { desc = "Change window bigger horizontally" })
-vim.keymap.set("n", "<C-Left>", "<C-w><", { desc = "Change window smaller horizontally" })
+vim.keymap.set("n", "<C-Up>", "2<C-w>+", { desc = "Change window bigger vertically" })
+vim.keymap.set("n", "<C-Down>", "2<C-w>-", { desc = "Change window smaller vertically" })
+vim.keymap.set("n", "<C-Right>", "2<C-w>>", { desc = "Change window bigger horizontally" })
+vim.keymap.set("n", "<C-Left>", "2<C-w><", { desc = "Change window smaller horizontally" })
 
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Window left" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Window down" })
