@@ -2,6 +2,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Esc" })
+vim.keymap.set("c", "<C-n>", "<C-f>", { desc = "Esc" })
 
 vim.keymap.set("n", "<C-f>", "<cmd>!tmux-sessionizer<CR><CR>", { silent = true, desc = "Tmux-sessionizer" })
 
@@ -32,10 +33,10 @@ vim.keymap.set("n", "<C-Down>", "2<C-w>-", { desc = "Change window smaller verti
 vim.keymap.set("n", "<C-Right>", "2<C-w>>", { desc = "Change window bigger horizontally" })
 vim.keymap.set("n", "<C-Left>", "2<C-w><", { desc = "Change window smaller horizontally" })
 
-vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Window left" })
-vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Window down" })
-vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Window up" })
-vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Window right" })
+vim.keymap.set({ "n", "v" }, "<C-h>", "<C-w>h", { desc = "Window left" })
+vim.keymap.set({ "n", "v" }, "<C-j>", "<C-w>j", { desc = "Window down" })
+vim.keymap.set({ "n", "v" }, "<C-k>", "<C-w>k", { desc = "Window up" })
+vim.keymap.set({ "n", "v" }, "<C-l>", "<C-w>l", { desc = "Window right" })
 
 vim.keymap.set("n", "<C-]>", "<C-]>zz", { desc = "Goto Definition" })
 vim.keymap.set("n", "<C-t>", "<C-t>zz", { desc = "Back form Defition" })
@@ -53,7 +54,18 @@ vim.keymap.set("n", "<leader>zm", "<cmd>set foldmethod=marker<CR>", { desc = "[Z
 
 vim.keymap.set("n", "<leader><leader>", [[<cmd>%s/\s\+$//e<CR>]], { desc = "Remove trailing spaces" })
 
-vim.keymap.set("n", "<leader>zz",
-    "<C-w>o<cmd>execute 'topleft' ((&columns - 106) / 2 - 6) . 'vsplit _padding_' | wincmd p<CR>zz",
-    { desc = "Center horizontally" })
-vim.keymap.set("n", "<leader>zc", "<cmd>bd _padding_<CR>", { desc = "[C]lose center horizontally" })
+vim.keymap.set(
+    "n", "<leader>zz",
+    function()
+        if vim.fn.buflisted("_padding_") == 1 then
+            vim.cmd("bd _padding_")
+        else
+            vim.cmd("only")
+            if vim.fn.winwidth(0) > 114 then
+                vim.cmd("execute 'topleft' ((&columns - 114) / 2) . 'vsplit _padding_' | wincmd p")
+            end
+            vim.cmd("normal zz")
+        end
+    end,
+    { desc = "Screen centering On/Off" }
+)

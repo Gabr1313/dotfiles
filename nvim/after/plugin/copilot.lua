@@ -8,3 +8,7 @@ vim.keymap.set('i', '<A-e>', '<Plug>(copilot-dismiss)'
 , { expr = true, silent = true, desc = 'Copilot [E]xit' })
 vim.keymap.set({ 'n', 'i' }, '<A-r>', '<cmd>Copilot restart<CR>'
 , { silent = true, desc = 'Copilot [R]estart' })
+vim.keymap.set({ 'n', 'i' }, '<A-d>', '<cmd>Copilot disable<CR>'
+, { silent = true, desc = 'Copilot [D]estart' })
+vim.keymap.set({ 'n', 'i' }, '<A-e>', '<cmd>Copilot enable<CR>'
+, { silent = true, desc = 'Copilot [E]nable' })
