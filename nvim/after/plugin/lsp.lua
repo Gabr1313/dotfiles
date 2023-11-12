@@ -97,3 +97,12 @@ vim.diagnostic.config({
 
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = '[L]sp [F]ormat' })
 vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<CR>", { desc = '[L]sp [R]estart' })
+
+local notify = vim.notify
+vim.notify = function(msg, ...)
+    if msg:match("warning: multiple different client offset_encodings") then
+        return
+    end
+
+    notify(msg, ...)
+end

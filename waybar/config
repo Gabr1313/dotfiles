@@ -3,14 +3,35 @@
   // "position": "bottom", // Waybar position (top|bottom|left|right)
   // "height": 30,   // Waybar height (to be removed for auto height)
   // "width": 1280,
-  "margin": "5px 10px 0px 10px",
+  "margin": "8px 8px 0px 8px",
 
   "modules-left": ["hyprland/workspaces", "hyprland/submap"],
   "modules-center": ["clock"],
-  "modules-right": ["battery", "network", "disk", "memory", "cpu", "temperature", "backlight", "bluetooth", "pulseaudio#mic", "pulseaudio"],
+  "modules-right": ["custom/notification", "battery", "network", "memory", "cpu", "backlight", "bluetooth", "pulseaudio#mic", "pulseaudio"],
   // "modules-right": ["battery", "hyprland/language", "network", "disk", "memory", "cpu", "temperature", "backlight","pulseaudio", "pulseaudio#mic", "bluetooth", "idle_inhibitor"],
   // "modules-center": ["hyprland/window"],
 
+
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -d -sw",
+    "on-click-right": "swaync-client -t -sw",
+    "escape": true
+  },
   "hyprland/workspaces": {
     "format": "{icon}",
     "format-icons": {
@@ -51,11 +72,9 @@
   "cpu": {
     "format": " {usage}%",
     "tooltip": true,
-    "on-click-right": "kitty --hold btop --utf-force",
   },
   "memory": {
     "format": " {}%",
-    "on-click-right": "kitty --hold btop --utf-force",
   },
   "disk": {
     "format": " {percentage_used}%/{total}",
@@ -68,7 +87,6 @@
     // "format-icons": ["", ""],
     "format-icons": [""],
     "tooltip": false,
-    "on-click-right": "kitty --hold btop --utf-force",
   },
   "backlight": {
     "format": "{icon} {percent}%",
@@ -82,11 +100,10 @@
       "critical": 10,
     },
     "format": "{icon} {capacity}%",
-    "format-charging": "󰂄 {capacity}%",
+    "format-charging": " {capacity}%",
     "format-plugged": " {capacity}%",
     "format-alt": "{icon} {time}",
     "format-icons": ["", "", "", "", ""],
-    "on-click-right": "gnome-power-statistics",
   },
   "network": {
     "format-ethernet": "󱎔",
@@ -94,16 +111,13 @@
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "tooltip-format": "{ipaddr}/{cidr}\n{bandwidthUpBits} up\n{bandwidthDownBits} down",
     "format-disconnected": "⚠",
-    "on-click": "$HOME/.config/waybar/scripts/wifiToggle.sh",
-    "on-click-right": "nm-connection-editor",
-    "on-scroll-up": "kitty --title nmtui --hold nmtui",
+    "on-click": "wifiToggle.sh",
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
     "format-muted": "󰖁",
     "format-icons": ["󰕿", "󰖀", "󰕾"],
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    "on-click-right": "pavucontrol",
     "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
     "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
     "tooltip": false,
@@ -113,7 +127,6 @@
     "format-source": "󰍬 {volume}%",
     "format-source-muted": "󰍭",
     "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
-    "on-click-right": "pavucontrol",
     "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +2%",
     "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -2%",
     "tooltip": false,
@@ -123,10 +136,9 @@
     "format-icons": {
       "enabled": "󰂯",
       "disabled": "󰂲",
+        "connected": "󰂱"
     },
     "tooltip-format": "bluetoothctl",
-    "on-click":"$HOME/.config/waybar/scripts/bluetoothToggle.sh",
-    "on-click-right":"blueberry",
-    "on-scroll-up": "kitty --title bluetoothctl --hold bluetoothctl",
+    "on-click":"bluetoothToggle.sh",
   },
 }

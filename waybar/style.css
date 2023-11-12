@@ -4,7 +4,7 @@
     font-family: Cartograph CF Nerd Font, monospace;
     font-size: 17px;
     font-weight: bold;
-    border-radius: 5px;
+    border-radius: 4px;
     transition: none;
 }
 
@@ -21,8 +21,13 @@
 #scratchpad,
 #language,
 #bluetooth,
+#custom-notification,
 #submap {
     margin-left: 10px;
+    padding: 0 10px;
+    background-color: #cdd6f4;
+    color: #516079;
+    box-shadow: rgba(0, 0, 0, 0.1) 2px 2px 3px 2px;
 }
 
 window {
@@ -32,7 +37,7 @@ window {
 }
 
 #workspaces button{
-    box-shadow: rgba(0, 0, 0, 0.1) 2 2 3 2px;
+    box-shadow: rgba(0, 0, 0, 0.1) 2px 2px 3px 2px;
     background-color: #fff ;
     margin-right: 10px;
     padding: 2px 10px 0px 7px;
@@ -53,44 +58,6 @@ window {
     background: linear-gradient(45deg, #8a2387 0%, #e94057 43%, #f27121 80%, #F44336 100%);
     background-size: 300% 300%;
     color: #fff;
-}
-
-/*
-background: linear-gradient(45deg, rgba(202,158,230,1) 0%, rgba(245,194,231,1) 43%, rgba(180,190,254,1) 80%, rgba(137,180,250,1) 100%); 
-background: linear-gradient(45deg, #8a2387 0%, #e94057 43%, #f27121 80%, #F44336 100%);
-background-size: 300% 300%;
-animation: gradient 10s ease infinite;
-
-@keyframes gradient {
-    0% {
-    background-position: 0% 50%;
-    }
-    50% {
-    background-position: 100% 50%;
-    }
-    100% {
-    background-position: 0% 50%;
-    }
-}
-*/
-
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#idle_inhibitor,
-#scratchpad,
-#language,
-#bluetooth {
-    padding: 0 10px;
-    background-color: #cdd6f4;
-    color: #516079;
-    box-shadow: rgba(0, 0, 0, 0.1) 2 2 3 2px;
 }
 
 #clock{

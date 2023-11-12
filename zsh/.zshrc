@@ -115,13 +115,12 @@ alias poli='cd $HOME/polimi; lsk'
 alias dot='cd $HOME/gitMine/.dotfiles; ls'
 alias :q='exit'
 alias vi='nvim'
-alias s="find | fzf | xargs -r $EDITOR"
-alias f="tmux neww $HOME/.local/scripts/tmux-sessionizer"
 
 # alias btop='btop --utf-force'
 # Set up the prompt
 
 # use vim commands on terminal
-bindkey -v
+#bindkey -v
+#bindkey '^R' history-incremental-search-backward
 
-bindkey -s '^S' "find | fzf | xargs -r $EDITOR\n"
+bindkey -s '^B' "find | fzf | xargs -r $EDITOR\n"

@@ -4,12 +4,10 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Esc" })
 vim.keymap.set("c", "<C-n>", "<C-f>", { desc = "Esc" })
 
-vim.keymap.set("n", "<C-f>", "<cmd>!tmux-sessionizer<CR><CR>", { silent = true, desc = "Tmux-sessionizer" })
+vim.keymap.set("n", "<leader>cd", "<cmd>cd %:h<CR>", { silent = true, desc = "Change directory" })
 
-vim.keymap.set("n", "<leader>cd", "<cmd>cd %:h<CR>", { silent = true, desc = "Tmux-sessionizer" })
-
-vim.keymap.set("v", "<C-j>", ':m +1<CR>gv=gv', { desc = "Move line up" })
-vim.keymap.set("v", "<C-k>", ':m -2<CR>gv=gv', { desc = "Move line down" })
+vim.keymap.set("v", "<A-j>", ':m +1<CR>gv=gv', { desc = "Move line up" })
+vim.keymap.set("v", "<A-k>", ':m -2<CR>gv=gv', { desc = "Move line down" })
 
 vim.keymap.set("n", "J", "mzJ`z", { desc = "[J]oin line" })
 

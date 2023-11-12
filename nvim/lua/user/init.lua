@@ -1,11 +1,7 @@
 require("user.packer")
 require("user.remap")
 require("user.set")
-
--- I suggest to use only 1 of them because some shorcut overrides each other
--- require("user.rust")
-require("user.cpp")
--- require("user.c")
+require("user.automation")
 
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
