@@ -112,6 +112,30 @@ local s = luasnip.snippet
 local t = luasnip.text_node
 local i = luasnip.insert_node
 local f = luasnip.function_node
+local types = require("luasnip.util.types")
+
+luasnip.setup({
+	keep_roots = true,
+	link_roots = true,
+	link_children = true,
+
+	update_events = "TextChanged,TextChangedI",
+	delete_check_events = "TextChanged",
+	ext_opts = {
+		[types.choiceNode] = {
+			active = {
+				virt_text = { { "choiceNode", "Comment" } },
+			},
+		},
+	},
+	ext_base_prio = 300,
+	ext_prio_increase = 1,
+	enable_autosnippets = true,
+	store_selection_keys = "<Tab>",
+	ft_func = function()
+		return vim.split(vim.bo.filetype, ".", true)
+	end,
+})
 
 local function copy(args)
 	return args[1]
@@ -122,7 +146,7 @@ luasnip.add_snippets("tex", {
 		"beg",
 		{ t({ "\\begin{" }), i(1), t({ "}", "\t" }), i(0), t({ "", "\\end{" }), f(copy, 1), t({ "}" }), }
 	),
-	s( -- dispaly mathk
+	s( -- dispaly math
 		"dm",
 		{ t({ "\\[", "" }), i(0), t({ "", ".\\]" }), }
 	),
