@@ -1,0 +1,78 @@
+* {
+    font-family: Cartograph CF Nerd Font, monospace;
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: none;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#idle_inhibitor,
+#scratchpad,
+#language,
+#bluetooth,
+#custom-notification,
+#submap {
+    margin-left: 10px;
+    padding: 0 10px;
+    background-color: #cdd6f4;
+    color: #516079;
+}
+
+window {
+    background-color: transparent;
+    color: #000000;
+}
+
+#workspaces button{
+    background-color: #fff ;
+    color: #cba6f7 ;
+    margin-right: 10px;
+    padding: 2px 10px 0px 7px;
+}
+
+#workspaces button.active{
+    background: rgb(202,158,230);
+    color: #fff;
+    padding: 0 18px 2px 12px;
+}
+
+#submap,
+#workspaces button:hover {
+    background: linear-gradient(45deg, #8a2387 0%, #e94057 43%, #f27121 80%, #F44336 100%);
+    color: #fff;
+    padding: 2px 10px 0 20px;
+    background-size: 300% 300%;
+}
+
+#clock{
+    background-color:rgba(245,194,231,1);
+    color: #8a2387;
+}
+
+@keyframes blink {
+    to {
+      background-color: #fca503;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color:  #e94057;
+    animation-name: blink;
+    animation-duration: 0.25s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.warning:not(.charging) {
+    background-color: #fca503;
+}

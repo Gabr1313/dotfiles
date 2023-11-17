@@ -3,7 +3,7 @@
   // "position": "bottom", // Waybar position (top|bottom|left|right)
   // "height": 30,   // Waybar height (to be removed for auto height)
   // "width": 1280,
-  "margin": "8px 8px 0px 8px",
+  // "margin": "8px 8px 8px 8px",
 
   "modules-left": ["hyprland/workspaces", "hyprland/submap"],
   "modules-center": ["clock"],
