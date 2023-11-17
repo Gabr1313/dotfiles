@@ -31,11 +31,6 @@ vim.keymap.set("n", "<C-Down>", "2<C-w>-", { desc = "Change window smaller verti
 vim.keymap.set("n", "<C-Right>", "2<C-w>>", { desc = "Change window bigger horizontally" })
 vim.keymap.set("n", "<C-Left>", "2<C-w><", { desc = "Change window smaller horizontally" })
 
-vim.keymap.set({ "n", "v" }, "<C-h>", "<C-w>h", { desc = "Window left" })
-vim.keymap.set({ "n", "v" }, "<C-j>", "<C-w>j", { desc = "Window down" })
-vim.keymap.set({ "n", "v" }, "<C-k>", "<C-w>k", { desc = "Window up" })
-vim.keymap.set({ "n", "v" }, "<C-l>", "<C-w>l", { desc = "Window right" })
-
 vim.keymap.set("n", "<C-]>", "<C-]>zz", { desc = "Goto Definition" })
 vim.keymap.set("n", "<C-t>", "<C-t>zz", { desc = "Back form Defition" })
 
@@ -57,13 +52,22 @@ vim.keymap.set(
     function()
         if vim.fn.buflisted("_padding_") == 1 then
             vim.cmd("bd _padding_")
-        else
-            vim.cmd("only")
-            if vim.fn.winwidth(0) > 114 then
-                vim.cmd("execute 'topleft' ((&columns - 114) / 2) . 'vsplit _padding_' | wincmd p")
-            end
-            vim.cmd("normal zz")
+        end
+        vim.cmd("only")
+        if vim.fn.winwidth(0) > 114 then
+            vim.cmd("execute 'topleft' ((&columns - 114) / 2) . 'vsplit _padding_' | wincmd p")
+        end
+        vim.cmd("normal zz")
+    end,
+    { desc = "Screen centering On" }
+)
+
+vim.keymap.set(
+    "n", "<leader>zc",
+    function()
+        if vim.fn.buflisted("_padding_") == 1 then
+            vim.cmd("bd _padding_")
         end
     end,
-    { desc = "Screen centering On/Off" }
+    { desc = "Screen centering Off" }
 )
