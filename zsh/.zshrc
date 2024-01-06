@@ -13,7 +13,7 @@ export PATH="$HOME/.local/scripts/":$PATH
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="custom"
+ZSH_THEME="gabr1313"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -123,4 +123,11 @@ alias vi='nvim'
 #bindkey -v
 #bindkey '^R' history-incremental-search-backward
 
-bindkey -s '^B' "find | fzf | xargs -r $EDITOR\n"
+bindkey -s '^J' "find | fzf | xargs -r $EDITOR\n"
+
+# cpan YAML::Tiny -> latexindent
+PATH="/home/gabri/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/gabri/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/gabri/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/gabri/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/gabri/perl5"; export PERL_MM_OPT;

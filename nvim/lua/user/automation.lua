@@ -1,5 +1,5 @@
 local function exe()
-    vim.cmd("w")
+    vim.cmd("wall")
     if vim.bo.filetype == "cpp" then
         vim.cmd("!cpp-io %")
     elseif vim.bo.filetype == "rust" then
@@ -8,14 +8,14 @@ local function exe()
 end
 
 local function warning()
-    vim.cmd("w")
+    vim.cmd("wall")
     if vim.bo.filetype == "cpp" then
         vim.cmd("!cpp-io -w %")
     end
 end
 
 local function output()
-    vim.cmd("w")
+    vim.cmd("wall")
     if vim.bo.filetype == "cpp" then
         vim.cmd("!cpp-io -o %")
     elseif vim.bo.filetype == "rust" then
@@ -24,7 +24,7 @@ local function output()
 end
 
 local function release()
-    vim.cmd("w")
+    vim.cmd("wall")
     if vim.bo.filetype == "cpp" then
         vim.cmd("!cpp-io -r %")
     elseif vim.bo.filetype == "rust" then
@@ -33,7 +33,7 @@ local function release()
 end
 
 local function output_release()
-    vim.cmd("w")
+    vim.cmd("wall")
     if vim.bo.filetype == "cpp" then
         vim.cmd("!cpp-io -ro %")
     elseif vim.bo.filetype == "rust" then
@@ -42,7 +42,7 @@ local function output_release()
 end
 
 local function parallel()
-    vim.cmd("w")
+    vim.cmd("wall")
     if vim.bo.filetype == "cpp" then
         vim.cmd("!cpp-io -rp %")
     elseif vim.bo.filetype == "rust" then
@@ -51,7 +51,7 @@ local function parallel()
 end
 
 local function output_parallel()
-    vim.cmd("w")
+    vim.cmd("wall")
     if vim.bo.filetype == "cpp" then
         vim.cmd("!cpp-io -rop %")
     elseif vim.bo.filetype == "rust" then
@@ -60,7 +60,7 @@ local function output_parallel()
 end
 
 local function at_fly()
-    vim.cmd("w")
+    vim.cmd("wall")
     if vim.bo.filetype == "c" then
         vim.cmd("!gcc -O0 -Wall -Wextra -fmax-errors=2 -fsanitize=address,undefined -g %")
         vim.cmd("!./a.out")
@@ -71,7 +71,7 @@ local function at_fly()
 end
 
 local function at_fly_release()
-    vim.cmd("w")
+    vim.cmd("wall")
     if vim.bo.filetype == "c" then
         vim.cmd("!gcc -Ofast %")
         vim.cmd("!./a.out")

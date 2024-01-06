@@ -6,6 +6,8 @@ vim.keymap.set("c", "<C-n>", "<C-f>", { desc = "Esc" })
 
 vim.keymap.set("n", "<leader>cd", "<cmd>cd %:h<CR>", { silent = true, desc = "Change directory" })
 
+vim.keymap.set("n", "<A-j>", ':m +1<CR>', { desc = "Move line up" })
+vim.keymap.set("n", "<A-k>", ':m -2<CR>', { desc = "Move line down" })
 vim.keymap.set("v", "<A-j>", ':m +1<CR>gv=gv', { desc = "Move line up" })
 vim.keymap.set("v", "<A-k>", ':m -2<CR>gv=gv', { desc = "Move line down" })
 
@@ -31,6 +33,11 @@ vim.keymap.set("n", "<C-Down>", "2<C-w>-", { desc = "Change window smaller verti
 vim.keymap.set("n", "<C-Right>", "2<C-w>>", { desc = "Change window bigger horizontally" })
 vim.keymap.set("n", "<C-Left>", "2<C-w><", { desc = "Change window smaller horizontally" })
 
+vim.keymap.set({ "n", "v" }, "<C-h>", "<C-w>h", { desc = "Window left" })
+vim.keymap.set({ "n", "v" }, "<C-j>", "<C-w>j", { desc = "Window down" })
+vim.keymap.set({ "n", "v" }, "<C-k>", "<C-w>k", { desc = "Window up" })
+vim.keymap.set({ "n", "v" }, "<C-l>", "<C-w>l", { desc = "Window right" })
+
 vim.keymap.set("n", "<C-]>", "<C-]>zz", { desc = "Goto Definition" })
 vim.keymap.set("n", "<C-t>", "<C-t>zz", { desc = "Back form Defition" })
 
@@ -48,26 +55,44 @@ vim.keymap.set("n", "<leader>zm", "<cmd>set foldmethod=marker<CR>", { desc = "[Z
 vim.keymap.set("n", "<leader><leader>", [[<cmd>%s/\s\+$//e<CR>]], { desc = "Remove trailing spaces" })
 
 vim.keymap.set(
-    "n", "<leader>zz",
-    function()
-        if vim.fn.buflisted("_padding_") == 1 then
-            vim.cmd("bd _padding_")
-        end
-        vim.cmd("only")
-        if vim.fn.winwidth(0) > 114 then
-            vim.cmd("execute 'topleft' ((&columns - 114) / 2) . 'vsplit _padding_' | wincmd p")
-        end
-        vim.cmd("normal zz")
-    end,
-    { desc = "Screen centering On" }
+	"n", "<leader>zz",
+	function()
+		if vim.fn.buflisted("_padding_") == 1 then
+			vim.cmd("bd _padding_")
+		end
+		vim.cmd("only")
+		if vim.fn.winwidth(0) > 94 then
+			vim.cmd("execute 'topleft' ((&columns - 94) / 2) . 'vsplit _padding_' | wincmd p")
+		end
+		vim.cmd("normal zz")
+	end,
+	{ desc = "Screen centering On" }
 )
 
 vim.keymap.set(
-    "n", "<leader>zc",
-    function()
-        if vim.fn.buflisted("_padding_") == 1 then
-            vim.cmd("bd _padding_")
-        end
-    end,
-    { desc = "Screen centering Off" }
+	"n", "<leader>zc",
+	function()
+		if vim.fn.buflisted("_padding_") == 1 then
+			vim.cmd("bd _padding_")
+		end
+	end,
+	{ desc = "Screen centering Off" }
+)
+
+vim.keymap.set(
+	"n", "<leader>p",
+	function()
+		if vim.fn.buflisted("_padding_") == 1 then
+			vim.cmd("wincmd h")
+			vim.cmd("e input/in.txt")
+			vim.cmd([[normal! ggVG"+p]])
+			vim.cmd("wincmd l")
+		else
+			local current_buffer = vim.fn.bufnr('%')
+			vim.cmd("e input/in.txt")
+			vim.cmd([[normal! ggVG"+p]])
+			vim.cmd("b " .. current_buffer)
+		end
+	end,
+	{ desc = "Paste in input.txt" }
 )

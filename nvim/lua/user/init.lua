@@ -1,6 +1,7 @@
 require("user.packer")
 require("user.remap")
 require("user.set")
+require("user.spell")
 require("user.automation")
 
 local augroup = vim.api.nvim_create_augroup
