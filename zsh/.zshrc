@@ -123,7 +123,7 @@ alias vi='nvim'
 #bindkey -v
 #bindkey '^R' history-incremental-search-backward
 
-bindkey -s '^J' "find | fzf | xargs -r $EDITOR\n"
+bindkey -s '^g' "find | fzf | xargs -r $EDITOR\n"
 
 # cpan YAML::Tiny -> latexindent
 PATH="/home/gabri/perl5/bin${PATH:+:${PATH}}"; export PATH;
