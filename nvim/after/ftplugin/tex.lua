@@ -6,14 +6,13 @@ local function toggle_conceallevel()
 	end
 end
 
-vim.keymap.set("n", ",c", "<cmd>w<CR><cmd>VimtexCompile<CR>", { desc = 'VimTex [C]ompile' })
-vim.keymap.set("v", ",c", "<cmd>VimtexCompileSelected<CR><CR>", { desc = 'VimTex [C]ompile' })
-vim.keymap.set("n", ",s", "<cmd>VimtexStop<CR>", { desc = 'VimTex Compile [S]top' })
-vim.keymap.set("n", ",e", "<cmd>VimtexErrors<CR>", { desc = 'VimTex [E]rrors' })
-vim.keymap.set("n", ",v", "<cmd>VimtexView<CR>", { desc = 'VimTex [V]iew' })
-vim.keymap.set("n", ",t", "<cmd>VimtexTocToggle<CR>", { desc = 'VimTex [T]oc' })
-vim.keymap.set("n", ",i", "<cmd>VimtexInfo<CR>", { desc = 'VimTex [I]nfo' })
-vim.keymap.set("n", ",l", toggle_conceallevel, { desc = '' })
+vim.keymap.set("n", "<bs>c", "<cmd>w<CR><cmd>VimtexCompile<CR>", { desc = 'VimTex [C]ompile' })
+vim.keymap.set("v", "<bs>c", "<cmd>VimtexCompileSelected<CR><CR>", { desc = 'VimTex [C]ompile' })
+vim.keymap.set("n", "<bs>s", "<cmd>VimtexStop<CR>", { desc = 'VimTex Compile [S]top' })
+vim.keymap.set("n", "<bs>e", "<cmd>VimtexErrors<CR>", { desc = 'VimTex [E]rrors' })
+vim.keymap.set("n", "<bs>v", "<cmd>VimtexView<CR>", { desc = 'VimTex [V]iew' })
+vim.keymap.set("n", "<bs>t", "<cmd>VimtexTocToggle<CR>", { desc = 'VimTex [T]oc' })
+vim.keymap.set("n", "<bs>d", toggle_conceallevel, { desc = '' })
 vim.keymap.set({"n", "v"}, ",j", "Jgqq", { desc = 'Join and format' })
 
 vim.keymap.set('n', 'ds$', '<plug>(vimtex-env-delete-math)')

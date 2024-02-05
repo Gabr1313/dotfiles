@@ -111,8 +111,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias poli='cd $HOME/polimi; lsk'
-alias dot='cd $HOME/gitMine/.dotfiles; ls'
 alias :q='exit'
 alias vi='nvim'
 
@@ -120,8 +118,8 @@ alias vi='nvim'
 # Set up the prompt
 
 # use vim commands on terminal
-#bindkey -v
-#bindkey '^R' history-incremental-search-backward
+bindkey -v
+KEYTIMEOUT=1 # min time, so there is almost no delay when pressing esc 
 
 bindkey -s '^g' "find | fzf | xargs -r $EDITOR\n"
 

@@ -1,4 +1,5 @@
 vim.o.mouse = 'a'
+vim.opt.guicursor = "a:blinkwait200-blinkon200-blinkoff200,n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20"
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.tabstop = 4
@@ -17,7 +18,7 @@ vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.termguicolors = true
--- vim.opt.scrolloff = 8
+vim.opt.scrolloff = 6
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
