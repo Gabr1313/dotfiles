@@ -42,46 +42,50 @@ local function my_on_attach(bufnr)
     vim.keymap.set('n', 'yr', api.fs.copy.relative_path, opts('[Y]ank [R]elative Path'))
 end
 
-require("nvim-tree").setup({
-    on_attach = my_on_attach,
-    sort_by = "case_sensitive",
-    respect_buf_cwd = true,
-    sync_root_with_cwd = true,
-    view = {
-        relativenumber = true,
-        float = {
-            enable = true,
-            open_win_config = function()
-                -- local window_w = math.floor(screen_w * 0.4)
-                local window_w = 80
-                local window_h = math.floor((vim.opt.lines:get() - vim.opt.cmdheight:get()) * 0.8)
-                local center_x = (vim.opt.columns:get() - window_w) / 2
-                local center_y = ((vim.opt.lines:get() - window_h) / 2) - vim.opt.cmdheight:get()
-                return {
-                    border = "rounded",
-                    relative = "editor",
-                    row = center_y,
-                    col = center_x,
-                    width = window_w,
-                    height = window_h,
-                }
-            end,
-        },
-    },
-    renderer = {
-        group_empty = true,
-        indent_markers = {
-            enable = true,
-        },
-    },
-    filters = {
-        dotfiles = false,
-    },
-    git = {
-        ignore = false,
-    },
-})
+return {
+    "nvim-tree/nvim-tree.lua",
+    config = function()
+        require("nvim-tree").setup({
+            on_attach = my_on_attach,
+            sort_by = "case_sensitive",
+            respect_buf_cwd = true,
+            sync_root_with_cwd = true,
+            view = {
+                relativenumber = true,
+                float = {
+                    enable = true,
+                    open_win_config = function()
+                        local window_w = 80
+                        local window_h = math.floor((vim.opt.lines:get() - vim.opt.cmdheight:get()) * 0.8)
+                        local center_x = (vim.opt.columns:get() - window_w) / 2
+                        local center_y = ((vim.opt.lines:get() - window_h) / 2) - vim.opt.cmdheight:get()
+                        return {
+                            border = "rounded",
+                            relative = "editor",
+                            row = center_y,
+                            col = center_x,
+                            width = window_w,
+                            height = window_h,
+                        }
+                    end,
+                },
+            },
+            renderer = {
+                group_empty = true,
+                indent_markers = {
+                    enable = true,
+                },
+            },
+            filters = {
+                dotfiles = false,
+            },
+            git = {
+                ignore = false,
+            },
+        })
 
-vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = '[E]x Tree' })
-vim.keymap.set("n", "<leader>E", "<cmd>cd %:h<CR><cmd>NvimTreeToggle<CR>", { desc = 'cd [E]x Tree' })
-vim.keymap.set("n", "<leader>oo", "<cmd>cd ~/.config/nvim<CR><cmd>NvimTreeToggle<CR>", { desc = '[O]pen [O]ption' })
+        vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = '[E]x Tree' })
+        vim.keymap.set("n", "<leader>E", "<cmd>cd %:h<CR><cmd>NvimTreeToggle<CR>", { desc = 'cd [E]x Tree' })
+        vim.keymap.set("n", "<leader>oo", "<cmd>cd ~/.config/nvim<CR><cmd>NvimTreeToggle<CR>", { desc = '[O]pen [O]ption' })
+    end
+}

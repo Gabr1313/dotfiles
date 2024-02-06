@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-rm -rf ~/.config/nvim
+mv ~/.config/nvim ~/.config/nvim.backup
 ln -s $(pwd) ~/.config/nvim
 
