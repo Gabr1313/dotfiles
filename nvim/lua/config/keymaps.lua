@@ -1,10 +1,8 @@
 vim.g.mapleader = " "
-
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set({ "n", "v" }, "<BS>", "<Nop>", { silent = true })
-vim.keymap.set("c", "<C-n>", "<C-f>", { desc = "Esc" })
-
-vim.keymap.set("n", "<BS>/", "<cmd>nohl<CR>", { desc = "No Highlight" })
+vim.keymap.set("c", "<C-n>", "<C-f>", { desc = "Cmd to Normal" })
+vim.keymap.set("n", "<BS>/", "<cmd>nohl<CR>", { desc = "No highlight" })
 
 vim.keymap.set("n", "<leader>cd", "<cmd>cd %:h<CR>", { silent = true, desc = "Change directory" })
 
@@ -35,8 +33,8 @@ vim.keymap.set("n", "<C-Down>", "2<C-w>-", { desc = "Change window smaller verti
 vim.keymap.set("n", "<C-Right>", "2<C-w>>", { desc = "Change window bigger horizontally" })
 vim.keymap.set("n", "<C-Left>", "2<C-w><", { desc = "Change window smaller horizontally" })
 
--- vim.keymap.set("n", "<C-]>", "<C-]>zz", { desc = "Goto Definition" })
 -- vim.keymap.set("n", "<C-t>", "<C-t>zz", { desc = "Back form Defition" })
+-- vim.keymap.set("n", "<C-]>", "<C-]>zz", { desc = "Goto Definition" })
 
 vim.keymap.set("n", "<leader>se", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "[S]ubsitute [E]nd" })
 vim.keymap.set("n", "<leader>sb", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], { desc = "[S]ubsitute [B]eginning" })
@@ -47,27 +45,28 @@ vim.keymap.set("n", "<leader>X", "<cmd>!chmod -x %<CR><CR>", { desc = "No E[x]ec
 vim.keymap.set("x", "<", "<gv", { desc = "Indent left" })
 vim.keymap.set("x", ">", ">gv", { desc = "Indent right" })
 
-vim.keymap.set("n", "<leader>zm", "<cmd>set foldmethod=marker<CR>", { desc = "[Z]fold [M]arker" })
-
-vim.keymap.set("n", "<leader>w", function()
-    vim.opt.wrap = true
-    vim.keymap.set("n", "j", "gj", { desc = "[j] wrapping on" })
-    vim.keymap.set("n", "k", "gk", { desc = "[k] wrapping on" })
-    vim.keymap.set("n", "$", "g$", { desc = "[$] wrapping on" })
-    vim.keymap.set("n", "0", "g0", { desc = "[0] wrapping on" })
-    vim.keymap.set("n", "^", "g^", { desc = "[^] wrapping on" })
-    vim.keymap.set("n", "_", "g_", { desc = "[_] wrapping on" })
+local function wrapped_bindings()
+    vim.keymap.set("n", "j", "gj", { desc = "[j] for wrapped lines" })
 end
-, { desc = "[W]rap on (+keymaps)" })
 
-vim.keymap.set("n", "<leader>W", function()
-    vim.opt.wrap = false
-    vim.keymap.del("n", "j")
-    vim.keymap.del("n", "k")
-    vim.keymap.del("n", "$")
-    vim.keymap.del("n", "0")
-    vim.keymap.del("n", "^")
-    vim.keymap.del("n", "_")
+vim.keymap.set("n", "<leader>si", "<cmd>set spell<cr><cmd>set spelllang=en_us,it<cr>", { desc = "[s]pell [i]t & en_us" })
+vim.keymap.set("n", "<leader>su", "<cmd>set spell<cr><cmd>set spelllang=en_us<cr>", { desc = "[s]pell en_[u]s" })
+vim.keymap.set("n", "<leader>sn", "<cmd>set nospell<cr>", { desc = "[s]pell [n]o" })
+vim.opt.spelllang = "en_gb"
+vim.keymap.set("i", "<c-s>", "<esc>[s1z=`]a", { desc = "[s]pell correct" })
+vim.keymap.set("n", "<c-s>", "[s1z=", { desc = "[s]pell correct" })
+
+local function replace_accented_letters()
+    vim.cmd("%s/\\ca'/à/ge")
+    vim.cmd("%s/\\ce'/è/ge")
+    vim.cmd("%s/\\ci'/ì/ge")
+    vim.cmd("%s/\\co'/ò/ge")
+    vim.cmd("%s/\\cu'/ù/ge")
+    vim.cmd("%s/\\ca'/à/ge")
+    vim.cmd("%s/\\ce'/è/ge")
+    vim.cmd("%s/\\ci'/ì/ge")
+    vim.cmd("%s/\\co'/ò/ge")
+    vim.cmd("%s/\\cu'/ù/ge")
 end
-, { desc = "[W]rap off (+keymaps)" })
 
+vim.keymap.set("n", "<leader>sa", replace_accented_letters, { desc = "[s]pell replace [a]ccented letters" })

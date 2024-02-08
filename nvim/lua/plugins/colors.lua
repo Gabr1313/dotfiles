@@ -14,12 +14,10 @@
 return {
     {
         "rose-pine/neovim",
-        lazy = false,
-        priority = 1000,
         config = function()
             require('rose-pine').setup({
-                disable_background = true,
-                disable_flaoat_background = true,
+                -- disable_background = true,
+                -- disable_flaoat_background = true,
             })
             vim.cmd.colorscheme("rose-pine")
         end
@@ -27,8 +25,6 @@ return {
 
     {
         "catppuccin/nvim",
-        -- lazy = false,
-        -- priority = 1000,
         config = function()
             require('catppuccin').setup({
                 flavour = 'mocha',
@@ -40,8 +36,6 @@ return {
 
     {
         "folke/tokyonight.nvim",
-        -- lazy = false,
-        -- priority = 1000,
         config = function()
             require("tokyonight").setup({
                 style = "storm",
