@@ -24,7 +24,5 @@ return {
         })
         vim.keymap.set("n", "<leader>e", "<cmd>Oil<CR>", { desc = '[E]x Tree' })
         vim.keymap.set("n", "<leader>E", "<cmd>cd %:h<CR><cmd>Oil<CR>", { desc = 'cd [E]x Tree' })
-        vim.keymap.set("n", "<leader>oo", "<cmd>cd ~/.config/nvim/lua/gabri<CR><cmd>Oil<CR>",
-            { desc = '[O]pen [O]ption' })
     end
 }

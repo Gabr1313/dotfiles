@@ -8,7 +8,6 @@ return {
         require('telescope').setup({})
         local builtin = require('telescope.builtin')
         vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[F]ind [B]uffer' })
-        vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, { desc = '[/] Fuzzily search in current buffer]' })
         vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[F]ind [F]iles' })
         vim.keymap.set('n', '<leader>fg', builtin.git_files, { desc = '[F]ind [G]it' })
         vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = '[F]ind [O]ld (recently opened) files' })
