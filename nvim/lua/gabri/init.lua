@@ -42,8 +42,8 @@ autocmd('LspAttach', {
         vim.keymap.set({ "v", "n" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = '[C]ode [A]ction' })
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr, desc = '[R]e[n]ame' })
 
-        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { buffer = bufnr, desc = 'Previous [D]iagnostic' })
-        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { buffer = bufnr, desc = 'Next [D]iagnostic' })
+        vim.keymap.set("n", "][", vim.diagnostic.goto_next, { buffer = bufnr, desc = 'Previous [D]iagnostic' })
+        vim.keymap.set("n", "[]", vim.diagnostic.goto_prev, { buffer = bufnr, desc = 'Next [D]iagnostic' })
 
         vim.keymap.set('n', 'fr', require('telescope.builtin').lsp_references,
             { buffer = bufnr, desc = '[F]zf [R]eferences' })
