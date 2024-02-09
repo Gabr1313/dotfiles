@@ -39,6 +39,6 @@ vim.opt.listchars:append "eol:↵,trail: "
 
 vim.opt.synmaxcol = 256
 
-vim.opt.clipboard = "unnamedplus"
+-- vim.opt.clipboard = "unnamedplus"
 
 vim.opt.completeopt = 'menu,menuone,preview'
