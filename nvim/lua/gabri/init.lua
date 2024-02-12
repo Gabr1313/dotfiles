@@ -20,7 +20,7 @@ autocmd('TextYankPost', {
     end,
 })
 
-autocmd({"BufWritePre"}, {
+autocmd({ "BufWritePre" }, {
     group = gabri_group,
     pattern = "*",
     command = [[%s/\s\+$//e]],
@@ -29,6 +29,7 @@ autocmd({"BufWritePre"}, {
 autocmd('LspAttach', {
     group = gabri_group,
     callback = function(_, bufnr)
+        vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single", })
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = '[G]oto [D]efinition' })
         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = bufnr, desc = '[G]oto [D]eclaration' })
         vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { buffer = bufnr, desc = '[G]oto [T]ype definition' })

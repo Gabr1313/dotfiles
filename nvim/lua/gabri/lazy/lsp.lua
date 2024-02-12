@@ -12,7 +12,6 @@ return {
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
     },
-
     config = function()
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
@@ -57,6 +56,10 @@ return {
         local luasnip = require('luasnip')
 
         cmp.setup({
+            window = {
+                completion = { border = 'single' }, -- single
+                documentation = { border = 'single' },
+            },
             snippet = {
                 expand = function(args)
                     luasnip.lsp_expand(args.body)
@@ -94,9 +97,10 @@ return {
                 { name = 'luasnip' },
             }, {
                 { name = 'buffer' },
-            })
+            }),
         })
 
+        -- what is this for?
         vim.diagnostic.config({
             -- update_in_insert = true,
             float = {
@@ -118,7 +122,7 @@ return {
 
         for type, icon in pairs(signs) do
             local hl = "DiagnosticSign" .. type
-            vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
+            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
         end
     end
 }
