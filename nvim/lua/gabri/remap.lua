@@ -4,9 +4,9 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set({ "n", "v" }, "<BS>", "<Nop>", { silent = true })
 vim.keymap.set("c", "<C-n>", "<C-f>", { desc = "Esc" })
 
-vim.keymap.set("n", "<leader>/", "/\\c", { desc = "[/] ignore case" })
-vim.keymap.set("n", "<leader>?", "?\\c", { desc = "[?] ignore case" })
-vim.keymap.set("n", "<BS>/", function()
+vim.keymap.set("n", "<leader>/", "/\\C", { desc = "[/] ignore case" })
+vim.keymap.set("n", "<leader>?", "?\\C", { desc = "[?] ignore case" })
+vim.keymap.set("n", "<C-/>", function()
         if vim.api.nvim_get_option('hlsearch') == true then
             vim.api.nvim_set_option('hlsearch', false)
         else

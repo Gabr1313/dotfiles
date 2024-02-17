@@ -4,7 +4,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
         require("oil").setup({
-            skip_confirm_for_simple_edits = false,
+            skip_confirm_for_simple_edits = true,
             keymaps = {
                 ["g?"] = "actions.show_help",
                 ["<CR>"] = "actions.select",

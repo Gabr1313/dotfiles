@@ -27,9 +27,9 @@ function precmd() {
     sec=$(printf "%02d" $(($elapsed/1000%60)))
     mil=$(printf "%03d" $(($elapsed%1000)))
     if [ $hrs -gt 0 ]; then
-      elapsed="${hrs}:${min}"
+      elapsed="${hrs}:${min}:${sec}.${mil}"
     elif [ $min -gt 0 ]; then
-      elapsed="${min}:${sec}"
+      elapsed="${min}:${sec}.${mil}"
     elif [ $sec -gt 0 ]; then
       elapsed="${sec}.${mil}"
     else

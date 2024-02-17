@@ -4,7 +4,7 @@ require("gabri.spell")
 require("gabri.lazy_init")
 
 local augroup = vim.api.nvim_create_augroup
-local gabri_group = augroup('Gabri', {})
+local lsp_group = augroup('LspGroup', {})
 
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
@@ -20,14 +20,8 @@ autocmd('TextYankPost', {
     end,
 })
 
-autocmd({ "BufWritePre" }, {
-    group = gabri_group,
-    pattern = "*",
-    command = [[%s/\s\+$//e]],
-})
-
 autocmd('LspAttach', {
-    group = gabri_group,
+    group = lsp_group,
     callback = function(_, bufnr)
         vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single", })
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = '[G]oto [D]efinition' })
