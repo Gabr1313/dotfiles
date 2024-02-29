@@ -79,6 +79,7 @@
   "disk": {
     "format": " {percentage_used}%/{total}",
     "tooltip-format": "{total} - {used} != {free}",
+    "on-click-right": "nemo",
   },
   "temperature": {
     "critical-threshold": 70,
@@ -112,12 +113,14 @@
     "tooltip-format": "{ipaddr}/{cidr}\n{bandwidthUpBits} up\n{bandwidthDownBits} down",
     "format-disconnected": "⚠",
     "on-click": "wifiToggle.sh",
+    "on-click-right": "iwgtk",
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
     "format-muted": "󰖁",
     "format-icons": ["󰕿", "󰖀", "󰕾"],
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pavucontrol",
     "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
     "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
     "tooltip": false,
@@ -127,6 +130,7 @@
     "format-source": "󰍬 {volume}%",
     "format-source-muted": "󰍭",
     "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+    "on-click-right": "pavucontrol",
     "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +2%",
     "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -2%",
     "tooltip": false,
@@ -140,5 +144,6 @@
     },
     "tooltip-format": "bluetoothctl",
     "on-click":"bluetoothToggle.sh",
+    "on-click-right": "blueman-manager",
   },
 }

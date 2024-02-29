@@ -70,7 +70,7 @@ return {
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
                 ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-                ['<C-l>'] = cmp.mapping.complete(),
+                ['<C-c>'] = cmp.mapping.complete(),
                 ['<C-k>'] = cmp.mapping.scroll_docs(-4),
                 ['<C-j>'] = cmp.mapping.scroll_docs(4),
                 ['<Tab>'] = cmp.mapping(function(fallback)
@@ -95,18 +95,37 @@ return {
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
                 { name = 'luasnip' },
+                { name = 'path' },
             }, {
                 { name = 'buffer' },
             }),
         })
+        cmp.setup.cmdline('/', {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = {
+                { name = 'buffer' }
+            }
+        })
+        cmp.setup.cmdline(':', {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = cmp.config.sources({
+                { name = 'path' }
+            }, {
+                {
+                    name = 'cmdline',
+                    option = {
+                        ignore_cmds = { 'Man', '!' }
+                    }
+                }
+            })
+        })
 
-        -- what is this for?
         vim.diagnostic.config({
             -- update_in_insert = true,
             float = {
                 focusable = false,
                 style = "minimal",
-                border = "rounded",
+                border = "single",
                 source = "always",
                 header = "",
                 prefix = "",
@@ -114,10 +133,14 @@ return {
         })
 
         local signs = {
-            Error = " ",
-            Info = "󰋽 ",
-            Warn = " ",
-            Hint = "󱠃 ",
+            Error = "E",
+            Info = "I",
+            Warn = "W",
+            Hint = "H",
+            -- Error = " ",
+            -- Info = "󰋽 ",
+            -- Warn = " ",
+            -- Hint = "󱠃 ",
         }
 
         for type, icon in pairs(signs) do

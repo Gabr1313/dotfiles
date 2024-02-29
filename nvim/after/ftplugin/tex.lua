@@ -13,7 +13,7 @@ vim.keymap.set("n", "<BS>e", "<cmd>VimtexErrors<CR>", { desc = 'VimTex [E]rrors'
 vim.keymap.set("n", "<BS>v", "<cmd>VimtexView<CR>", { desc = 'VimTex [V]iew' })
 vim.keymap.set("n", "<BS>t", "<cmd>VimtexTocToggle<CR>", { desc = 'VimTex [T]oc' })
 vim.keymap.set("n", "<BS>d", toggle_conceallevel, { desc = '' })
-vim.keymap.set({"n", "v"}, ",j", "Jgqq", { desc = 'Join and format' })
+vim.keymap.set({"n", "v"}, "<BS>j", "Jgqq", { desc = 'Join and format' })
 
 vim.keymap.set('n', 'ds$', '<plug>(vimtex-env-delete-math)')
 vim.keymap.set('n', 'cs$', '<plug>(vimtex-env-change-math)')
@@ -230,6 +230,10 @@ luasnip.add_snippets("tex", {
 	s( -- vec
 		{ trig = "([A-Za-z]),v", regTrig = true },
 		{ f(function(_, snip) return "\\vec{" .. snip.captures[1] .. "}" end, {}), }
+	),
+	s( -- vec
+		{ trig = "([A-Za-z]),b", regTrig = true },
+		{ f(function(_, snip) return "\\bar{" .. snip.captures[1] .. "}" end, {}), }
 	),
 	s( -- underline
 		{ trig = "([A-Za-z]),u", regTrig = true },

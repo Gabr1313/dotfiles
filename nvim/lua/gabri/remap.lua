@@ -7,14 +7,16 @@ vim.keymap.set("c", "<C-n>", "<C-f>", { desc = "Esc" })
 vim.keymap.set("n", "<leader>/", "/\\C", { desc = "[/] ignore case" })
 vim.keymap.set("n", "<leader>?", "?\\C", { desc = "[?] ignore case" })
 vim.keymap.set("n", "<C-/>", function()
-        if vim.api.nvim_get_option('hlsearch') == true then
-            vim.api.nvim_set_option('hlsearch', false)
-        else
-            vim.api.nvim_set_option('hlsearch', true)
-        end
-    end, { desc = "No Highlight" })
+    if vim.api.nvim_get_option('hlsearch') == true then
+        vim.api.nvim_set_option('hlsearch', false)
+    else
+        vim.api.nvim_set_option('hlsearch', true)
+    end
+end, { desc = "No Highlight" })
 
 vim.keymap.set("n", "<leader>cd", "<cmd>cd %:h<CR>", { silent = true, desc = "Change directory" })
+vim.keymap.set("n", "<leader>w", "<cmd>wa<CR>", { silent = true, desc = "[W]rite all" })
+vim.keymap.set("n", "<leader>q", "<cmd>qa!<CR>", { silent = true, desc = "[Q]uit all" })
 
 vim.keymap.set("n", "<C-j>", ":m +1<CR>", { desc = "Move line up" })
 vim.keymap.set("n", "<C-k>", ":m -2<CR>", { desc = "Move line down" })
@@ -57,17 +59,8 @@ vim.keymap.set("x", ">", ">gv", { desc = "Indent right" })
 
 vim.keymap.set("n", "<leader>zm", "<cmd>set foldmethod=marker<CR>", { desc = "[Z]fold [M]arker" })
 
-vim.keymap.set("n", "<leader>w", function()
-        vim.opt.wrap = true
-        vim.keymap.set("n", "j", "gj", { desc = "[j] wrapping on" })
-        vim.keymap.set("n", "k", "gk", { desc = "[k] wrapping on" })
-        vim.keymap.set("n", "$", "g$", { desc = "[$] wrapping on" })
-        vim.keymap.set("n", "0", "g0", { desc = "[0] wrapping on" })
-        vim.keymap.set("n", "^", "g^", { desc = "[^] wrapping on" })
-        vim.keymap.set("n", "_", "g_", { desc = "[_] wrapping on" })
-    end , { desc = "[W]rap on (+keymaps)" })
-
 vim.keymap.set("n", "<leader>W", function()
+    if vim.api.nvim_win_get_option(vim.api.nvim_get_current_win(), 'wrap') then
         vim.opt.wrap = false
         vim.keymap.del("n", "j")
         vim.keymap.del("n", "k")
@@ -75,4 +68,13 @@ vim.keymap.set("n", "<leader>W", function()
         vim.keymap.del("n", "0")
         vim.keymap.del("n", "^")
         vim.keymap.del("n", "_")
-    end , { desc = "[W]rap off (+keymaps)" })
+    else
+        vim.opt.wrap = true
+        vim.keymap.set("n", "j", "gj", { desc = "[j] wrapping on" })
+        vim.keymap.set("n", "k", "gk", { desc = "[k] wrapping on" })
+        vim.keymap.set("n", "$", "g$", { desc = "[$] wrapping on" })
+        vim.keymap.set("n", "0", "g0", { desc = "[0] wrapping on" })
+        vim.keymap.set("n", "^", "g^", { desc = "[^] wrapping on" })
+        vim.keymap.set("n", "_", "g_", { desc = "[_] wrapping on" })
+    end
+end, { desc = "[W]rap toggle" })

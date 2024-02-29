@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+folders="$HOME/ $HOME/projects/ $HOME/projects/polimi/*/ $HOME/projects/.dotfiles/ \
+    $HOME/projects/.dotfiles/nvim/lua/ $(pwd)/"
+
+selected=$(find -L $(eval echo $folders) -mindepth 1 -maxdepth 1 -type d | fzf)
+if ! [[ -z $selected ]]; then
+    cd $selected
+fi

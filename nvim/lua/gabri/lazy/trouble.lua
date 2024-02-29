@@ -9,12 +9,12 @@ return {
             end)
 
             vim.keymap.set("n", "]]", function()
-                require("trouble").next({skip_groups = true, jump = true, desc = 'Next [T]rouble' })
-            end)
+                require("trouble").next({skip_groups = true, jump = true})
+            end,{desc = 'Next [T]rouble' })
 
-            vim.keymap.set("n", "[[", function()
-                require("trouble").previous({skip_groups = true, jump = true, desc = 'Previous [T]rouble' });
-            end)
+            vim.keymap.set("n", "]]", function()
+                require("trouble").previous({skip_groups = true, jump = true})
+            end,{desc = 'Previous [T]rouble' })
 
         end
     },

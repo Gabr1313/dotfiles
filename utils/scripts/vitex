@@ -1,0 +1,14 @@
+#!/bin/sh
+
+STR=""
+for var in "$@"
+do
+    STR+="$var"
+done
+STR+=".tex"
+
+if ! test -f $STR; then
+    cp ~/gitMine/utils/template.tex $STR
+fi
+nvim $STR 
+

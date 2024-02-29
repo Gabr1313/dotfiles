@@ -1,0 +1,14 @@
+#!/bin/sh
+
+STR=""
+for var in "$@"
+do
+    STR+="$var"
+done
+STR+=".cpp"
+
+if ! test -f $STR; then
+    cp ~/gitMine/utils/cp/template.cpp $STR
+fi
+nvim $STR 
+
