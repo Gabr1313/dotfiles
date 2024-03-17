@@ -103,6 +103,11 @@ export ARCHFLAGS="-arch x86_64"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
+# use vim commands on terminal
+bindkey -v
+KEYTIMEOUT=1 # min time, so there is almost no delay when pressing esc 
+
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -113,18 +118,4 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vi='nvim'
 alias f='. $HOME/.local/scripts/kitty-sessionizer'
-alias e='find | fzf | xargs -r $EDITOR\n'
-
-# alias btop='btop --utf-force'
-# Set up the prompt
-
-# use vim commands on terminal
-bindkey -v
-KEYTIMEOUT=1 # min time, so there is almost no delay when pressing esc 
-
-# cpan YAML::Tiny -> latexindent
-# PATH="/home/gabri/perl5/bin${PATH:+:${PATH}}"; export PATH;
-# PERL5LIB="/home/gabri/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-# PERL_LOCAL_LIB_ROOT="/home/gabri/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-# PERL_MB_OPT="--install_base \"/home/gabri/perl5\""; export PERL_MB_OPT;
-# PERL_MM_OPT="INSTALL_BASE=/home/gabri/perl5"; export PERL_MM_OPT;
+alias g='find | fzf | xargs -r $EDITOR\n'

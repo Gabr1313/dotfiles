@@ -73,7 +73,7 @@ return {
                 ['<C-c>'] = cmp.mapping.complete(),
                 ['<C-k>'] = cmp.mapping.scroll_docs(-4),
                 ['<C-j>'] = cmp.mapping.scroll_docs(4),
-                ['<Tab>'] = cmp.mapping(function(fallback)
+                ['<C-l>'] = cmp.mapping(function(fallback)
                     if luasnip.jumpable(1) then
                         luasnip.jump(1)
                     elseif luasnip.expand_or_jumpable() then
@@ -84,7 +84,7 @@ return {
                         fallback()
                     end
                 end, { "i", "s", }),
-                ["<S-Tab>"] = cmp.mapping(function(fallback)
+                ["<C-h>"] = cmp.mapping(function(fallback)
                     if luasnip.jumpable(-1) then
                         luasnip.jump(-1)
                     else

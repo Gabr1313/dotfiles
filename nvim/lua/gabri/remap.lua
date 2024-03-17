@@ -18,10 +18,11 @@ vim.keymap.set("n", "<leader>cd", "<cmd>cd %:h<CR>", { silent = true, desc = "Ch
 vim.keymap.set("n", "<leader>w", "<cmd>wa<CR>", { silent = true, desc = "[W]rite all" })
 vim.keymap.set("n", "<leader>q", "<cmd>qa!<CR>", { silent = true, desc = "[Q]uit all" })
 
-vim.keymap.set("n", "<C-j>", ":m +1<CR>", { desc = "Move line up" })
-vim.keymap.set("n", "<C-k>", ":m -2<CR>", { desc = "Move line down" })
-vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv", { desc = "Move line up" })
-vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv", { desc = "Move line down" })
+
+vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Window [h]' })
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Window [l]' })
+vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Window [j]' })
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Window [k]' })
 
 vim.keymap.set("n", "J", "mzJ`z", { desc = "[J]oin line" })
 
@@ -40,13 +41,10 @@ vim.keymap.set("n", "<C-n>", "<cmd>cnext<CR>zz", { desc = "Quickfix list [N]ext"
 vim.keymap.set("n", "<C-S-p>", "<cmd>lprev<CR>zz", { desc = "Local quickfix list [P]revious" })
 vim.keymap.set("n", "<C-S-n>", "<cmd>lnext<CR>zz", { desc = "Local quickfix list [V]ext" })
 
-vim.keymap.set("n", "<C-Up>", "2<C-w>+", { desc = "Change window bigger vertically" })
+vim.keymap.set("n", "<C-Up>", "2<C-w>+", { desc = "Resize window vertically" })
 vim.keymap.set("n", "<C-Down>", "2<C-w>-", { desc = "Change window smaller vertically" })
 vim.keymap.set("n", "<C-Right>", "2<C-w>>", { desc = "Change window bigger horizontally" })
 vim.keymap.set("n", "<C-Left>", "2<C-w><", { desc = "Change window smaller horizontally" })
-
--- vim.keymap.set("n", "<C-]>", "<C-]>zz", { desc = "Goto Definition" })
--- vim.keymap.set("n", "<C-t>", "<C-t>zz", { desc = "Back form Defition" })
 
 vim.keymap.set("n", "<leader>se", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "[S]ubsitute [E]nd" })
 vim.keymap.set("n", "<leader>sb", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], { desc = "[S]ubsitute [B]eginning" })
@@ -78,3 +76,7 @@ vim.keymap.set("n", "<leader>W", function()
         vim.keymap.set("n", "_", "g_", { desc = "[_] wrapping on" })
     end
 end, { desc = "[W]rap toggle" })
+
+vim.keymap.set("i", "<C-space>{", "{<CR>}<Esc>O", { desc = "Autopari {}" })
+vim.keymap.set("i", "<C-space>[", "{<CR>}<Esc>O", { desc = "Autopari []" })
+vim.keymap.set("i", "<C-space>(", "{<CR>}<Esc>O", { desc = "Autopari ()" })

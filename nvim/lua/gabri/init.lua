@@ -31,14 +31,14 @@ autocmd('LspAttach', {
 
         vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = 'Hover Documentation' })
         vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, { buffer = bufnr, desc = '[V]iew [D]iagnostic' })
-        vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, { buffer = bufnr, desc = 'Help' })
+        vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, { buffer = bufnr, desc = 'Signature help' })
 
         vim.keymap.set("n", "<leader>rr", vim.lsp.buf.references, { buffer = bufnr, desc = '[R]efe[r]ences' })
         vim.keymap.set({ "v", "n" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = '[C]ode [A]ction' })
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr, desc = '[R]e[n]ame' })
 
-        vim.keymap.set("n", "][", vim.diagnostic.goto_next, { buffer = bufnr, desc = 'Previous [D]iagnostic' })
-        vim.keymap.set("n", "[]", vim.diagnostic.goto_prev, { buffer = bufnr, desc = 'Next [D]iagnostic' })
+        vim.keymap.set("n", "[d", vim.diagnostic.goto_next, { buffer = bufnr, desc = 'Previous [D]iagnostic' })
+        vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, { buffer = bufnr, desc = 'Next [D]iagnostic' })
 
         vim.keymap.set('n', 'fr', require('telescope.builtin').lsp_references,
             { buffer = bufnr, desc = '[F]zf [R]eferences' })

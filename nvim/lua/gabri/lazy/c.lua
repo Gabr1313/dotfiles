@@ -1,6 +1,6 @@
 return {
     "rose-pine/neovim",
-    config = function()
+        config = function()
         require('rose-pine').setup({
             disable_background = true,
             disable_flaoat_background = true,

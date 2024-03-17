@@ -39,9 +39,7 @@ return {
         config = function()
             require("gitlinker").setup({
                 opts = {
-                    callbacks = {
-                        ["git.comcast.com"] = require("gitlinker.hosts").get_github_type_url,
-                    },
+                    callbacks = { ["git.comcast.com"] = require("gitlinker.hosts").get_github_type_url },
                     add_current_line_on_normal_mode = true,
                     action_callback = require("gitlinker.actions").open_in_browser,
                     print_url = false,

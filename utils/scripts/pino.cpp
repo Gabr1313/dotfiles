@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 #ifdef DEBUG
-#include "/home/gabri/projects/.dotfiles/utils/cp/debug.h"
+#include "/home/gabri/gitMine/utils/cp/debug.h"
 #else
 #define dbg(...)
 #endif

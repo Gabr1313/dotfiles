@@ -1,10 +1,10 @@
 return {
 
-    {
-        "nvim-lua/plenary.nvim",
-        name = "plenary"
-    },
+	{
+		"nvim-lua/plenary.nvim",
+		name = "plenary"
+	},
 
-    "gpanders/editorconfig.nvim",
-    "nvim-tree/nvim-web-devicons",
+	'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+	"nvim-tree/nvim-web-devicons",
 }
