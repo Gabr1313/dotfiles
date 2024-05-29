@@ -133,14 +133,14 @@ return {
         })
 
         local signs = {
-            Error = "E",
-            Info = "I",
-            Warn = "W",
-            Hint = "H",
-            -- Error = " ",
-            -- Info = "󰋽 ",
-            -- Warn = " ",
-            -- Hint = "󱠃 ",
+            -- Error = "E",
+            -- Info = "I",
+            -- Warn = "W",
+            -- Hint = "H",
+            Error = "",
+            Info = "󰋽",
+            Warn = "",
+            Hint = "󱠃",
         }
 
         for type, icon in pairs(signs) do

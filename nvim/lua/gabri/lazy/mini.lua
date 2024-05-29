@@ -33,7 +33,6 @@ return {
                 miniclue.gen_clues.z(),
             },
         })
-        require('mini.cursorword').setup({ delay = 0 })
         require('mini.indentscope').setup({
             draw = {
                 delay = 0,
