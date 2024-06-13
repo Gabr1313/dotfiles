@@ -1,12 +1,11 @@
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 export ZSH=$HOME/.oh-my-zsh
 export PATH="$HOME/.local/bin":$PATH
 export PATH="$HOME/.local/scripts/":$PATH
@@ -89,6 +88,9 @@ fi
 export ARCHFLAGS="-arch x86_64"
 export XDG_CONFIG_HOME="$HOME/.config"
 
+# qt6 style
+export export QT_QPA_PLATFORMTHEME=gtk3
+
 # For a full list of active aliases, run `alias`.
 alias vi='nvim'
 alias f='. $HOME/.local/scripts/cd-fzf'
@@ -108,7 +110,3 @@ setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_find_no_dups
-
-bindkey '^ ' autosuggest-accept
-bindkey "^P" history-incremental-search-backward
-bindkey "^N" history-incremental-search-forward

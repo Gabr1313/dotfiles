@@ -3,3 +3,7 @@ vim.keymap.set("n", "<leader>ra",
 	{ desc = '[R]un [A]t fly' })
 vim.keymap.set("n", "<leader>RA", "<cmd>wall<CR><cmd>!gcc -Ofast %<CR><cmd>!./a.out<CR>",
 	{ desc = '[R]un [A]t fly release' })
+-- vim.keymap.set("n", "<leader>rc", [[<cmd>%s/^\(\s*\)assert/\1\/\/ assert<CR>]],
+-- 	{ desc = '[C]omment assert' })
+-- vim.keymap.set("n", "<leader>rC", [[<cmd>%s/^\(\s*\)\/\/ assert/\1assert<CR>]],
+-- 	{ desc = 'un[C]omment assert' })
