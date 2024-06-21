@@ -1,21 +1,14 @@
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH=$HOME/.oh-my-zsh
 export PATH="$HOME/.local/bin":$PATH
 export PATH="$HOME/.local/scripts/":$PATH
+export PATH="/usr/sbin/":$PATH
 
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="gabr1313"
-ZSH_THEME="powerlevel10k/powerlevel10k"
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
+fpath+=($HOME/.oh-my-zsh/custom/themes/pure/)
+autoload -U promptinit; promptinit
+prompt pure
+#
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -67,6 +60,7 @@ zstyle ':omz:update' mode disabled      # auto, disabled, reminder
 
 plugins=(
     git
+    dirhistory
     #not default but custom ones
     zsh-syntax-highlighting
     zsh-autosuggestions
@@ -87,6 +81,7 @@ fi
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
 export XDG_CONFIG_HOME="$HOME/.config"
+export MAN_POSIXLY_CORRECT=""
 
 # qt6 style
 export export QT_QPA_PLATFORMTHEME=gtk3
@@ -95,11 +90,17 @@ export export QT_QPA_PLATFORMTHEME=gtk3
 alias vi='nvim'
 alias f='. $HOME/.local/scripts/cd-fzf'
 alias g='find | fzf | xargs -r $EDITOR'
-alias h='Hyprland'
+# alias h='Hyprland'
+alias cat='bat -p'
+alias ls='eza'
+alias tree='eza --tree'
 
 # use vim commands on terminal
 KEYTIMEOUT=1 # min time, so there is almost no delay when pressing esc 
 bindkey -v
+bindkey "^Y" dirhistory_zle_dirhistory_up
+bindkey "^N" dirhistory_zle_dirhistory_future
+bindkey "^P" dirhistory_zle_dirhistory_back
 
 HISTSIZE=16384
 SAVEHIST=$HISTSIZE
