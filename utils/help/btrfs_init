@@ -1,0 +1,115 @@
+# This is a guide on how to install btrfs on Debian
+
+# https://medium.com/@inatagan/installing-debian-with-btrfs-snapper-backups-and-grub-btrfs-27212644175f
+# https://sysguides.com/install-fedora-with-snapshot-and-rollback-support
+
+# On disk partitioning obviously select "btrfs"
+# Before "install the base system" press "alt+ctrl+F2"
+
+df  # save the output of this for later (in particular what will be umounted)
+umount /target/boot/efi/
+umount /target/boot/
+umount /target/
+
+mount /dev/<disk_partition> /mnt # disk parition is where /target was mounted
+cd /mnt
+ls
+mv @rootfs/ @
+btrfs su cr @snapshots
+btrfs su cr @home
+btrfs su cr @home_snapshots
+btrfs su cr @cache              # temporary files
+btrfs su cr @crash              # temporary files
+btrfs su cr @tmp                # temporary files
+btrfs su cr @log                # prevent data loss 
+btrfs su cr @spool              # data waiting to be processed eg. mail
+btrfs su cr @AccountsService    # gnome snapshot login
+btrfs su cr @gdm3               # gnome snapshot login
+btrfs su cr @images             # virtual machines
+# btrfs su cr @containers         # ?
+# btrfs su cr @opt                # third party applications
+
+mount -o noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@ /dev/<disk_partition> /target
+cd /target
+mkdir -p .snapshots
+mount -o noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@snapshots         /dev/<disk_partition> /target/.snapshots
+mkdir -p home
+mount -o noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@home              /dev/<disk_partition> /target/home
+mkdir -p home/.snapshots
+mount -o noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@home_snapshots    /dev/<disk_partition> /target/home/.snapshots
+mkdir -p var/cache
+mount -o noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@cache             /dev/<disk_partition> /target/var/cache
+mkdir -p var/crash
+mount -o noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@crash             /dev/<disk_partition> /target/var/crash
+mkdir -p var/tmp
+mount -o noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@tmp               /dev/<disk_partition> /target/var/tmp
+mkdir -p var/log
+mount -o noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@log               /dev/<disk_partition> /target/var/log
+mkdir -p var/spool
+mount -o noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@spool             /dev/<disk_partition> /target/var/spool
+mkdir -p var/lib/AccountsService
+mount -o noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@AccountsService   /dev/<disk_partition> /target/var/lib/AccountsService
+mkdir -p var/lib/gdm3
+mount -o noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@gdm3              /dev/<disk_partition> /target/var/lib/gdm3
+mkdir -p var/lib/libvirt/images
+mount -o noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@images            /dev/<disk_partition> /target/var/lib/libvirt/images
+# mkdir -p var/lib/containers
+# mount -o noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@containers        /dev/<disk_partition> /target/var/lib/containers
+# mkdir -p opt 
+# mount -o noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@opt               /dev/<disk_partition> /target/opt
+mkdir -p var/lib/portables      # best practice
+mkdir -p var/lib/machines       # best practice
+
+mount /dev/sdX2 boot        # see df at the beggining
+mount /dev/sdX1 boot/efi    # see df at the beggining
+
+nano etc/fstab
+
+/dev/<disk_partition>/                          btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@                   0    0
+/dev/<disk_partition>/.snapshots                btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@snapshots          0    0
+/dev/<disk_partition>/home                      btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@home               0    0
+/dev/<disk_partition>/home/.snapshots           btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@home_snapshots     0    0
+/dev/<disk_partition>/var/cache                 btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@cache              0    0
+/dev/<disk_partition>/var/crash                 btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@crash              0    0
+/dev/<disk_partition>/var/tmp                   btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@tmp                0    0
+/dev/<disk_partition>/var/log                   btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@log                0    0
+/dev/<disk_partition>/var/spool                 btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@spool              0    0
+/dev/<disk_partition>/var/lib/AccountsService   btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@AccountsService    0    0
+/dev/<disk_partition>/var/lib/gdm3              btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@gdm3               0    0
+/dev/<disk_partition>/var/lib/libvirt/images    btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@images             0    0
+# /dev/<disk_partition>/var/lib/containers        btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@containers         0    0
+# /dev/<disk_partition>/opt                       btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@opt                0    0
+ 
+cd /
+unmount /mnt
+exit
+
+# "alt+ctrl+F1"
+# finish the installation
+# reboot
+
+# setting up snapper
+sudo apt install snapper inotify-tools git make neovim
+sudo umount /.snapshots
+sudo rm -r /.snapshots
+sudo snapper -c root create-config /
+sudo btrfs subvolume delete /.snapshots
+sudo mkdir /.snapshots
+sudo umount /home/.snapshots
+sudo rm -r /home/.snapshots
+sudo snapper -c home create-config /home
+sudo btrfs subvolume delete /home/.snapshots
+sudo mkdir /home/.snapshots
+sudo mount -av
+sudo systemctl disable snapper-boot.timer
+sudo nvim /etc/snapper/configs
+
+# grub-btrfs
+cd
+git clone https://github.com/Antynea/grub-btrfs.git
+cd grub-btrfs
+sudo make install
+sudo systemctl start grub-btrfsd
+sudo systemctl enable grub-btrfsd
+cd ..
+sudo rm -rf grub-btrfs/

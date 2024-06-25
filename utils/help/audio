@@ -1,0 +1,5 @@
+pulsemixer
+# gui app: helvum / pavucontrol
+
+# install wireplumber and dependencies (see arch wiki)
+paru sof-firmware (if it still does not work)

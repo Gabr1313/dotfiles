@@ -1,0 +1,56 @@
+# https://doc.opensuse.org/documentation/leap/reference/html/book-reference/cha-snapper.html
+
+# use --config to select which partition to use. Default is root
+sudo snapper -c root ...
+sudo snapper -c home ...
+
+# status
+sudo snapper ls -a
+sudo snapper list-configs
+sudo snapper diff <N>..0
+sudo snapper status <N>..0
+sudo btrfs fi du /home -s
+sudo btrfs fi df /home -h
+sudo btrfs inspect-internal rootid /.snapshots/10
+
+# create and delete
+sudo snapper create -d "message"
+sudo snapper rm <N>
+
+# config
+sudo nvim /etc/snapper/configs
+sudo nvim /lib/systemd/system/snapper-cleanup.timer
+sudo nvim /lib/systemd/system/snapper-boot.timer
+sudo nvim /lib/systemd/system/snapper-timeline.timer
+
+# mnt
+sudo btrfs subv list /  
+ls /home/.snapshots/<N>/snapshot/<user>/
+sudo mount -o subvolid=<ID> /dev/nvme0n1p2 /mnt
+
+# changes
+sudo snapper undochanges <N>..<M>
+
+sudo snapper rollback # && reboot
+# sudo snapper --ambit classic rollback <N> # && reboot
+# I still need to log in the new writable partition from grub! then ...
+sudo update-grub
+# and check read/write system
+sudo btrfs prop get -ts /
+# asnwer (read-only): ro=false
+
+# cleanup: automatic (see config) or ...
+sudo snapper cleanup number
+
+# disk usage
+df -h
+sudo btrfs fi du -s /
+sudo btrfs fi du -s /home
+sudo btrfs fi df -h /
+sudo btrfs fi df -h /home
+
+# checksum (better once a week)
+sudo btrfs scrub start /
+
+# balance
+sudo btrfs balance start -musage=50 -dusage=50 /

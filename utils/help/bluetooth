@@ -1,0 +1,15 @@
+sudo systemctl start bluetooth
+systemctl enable bluetooth
+
+bluetoothctl
+
+# scan on
+# discoverable on
+# pair AB::12::34::AB::12::34
+# connect AB::12::34::AB::12::34
+# paired-devices
+# devices
+# trust AB::12::34::AB::12::34
+# remove AB::12::34::AB::12::34
+# disconnect AB::12::34::AB::12::34
+# exit

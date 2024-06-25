@@ -91,7 +91,7 @@ alias vi='nvim'
 alias f='. $HOME/.local/scripts/cd-fzf'
 alias g='find | fzf | xargs -r $EDITOR'
 # alias h='Hyprland'
-alias cat='bat -p'
+alias cat='batcat -pp'
 alias ls='eza'
 alias tree='eza --tree'
 

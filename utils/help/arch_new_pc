@@ -1,0 +1,9 @@
+sudo pacman -S paru
+sudo pacman -S nvim
+
+sudo pacman -S reflector
+sudo nvim /etc/xdg/reflector/reflector.conf
+add> --country 'Italy'
+sudo systemctl enable reflector.service reflector.timer
+sudo systemctl start reflector.service reflector.timer
+cat /etc/pacman.d/mirrorlist

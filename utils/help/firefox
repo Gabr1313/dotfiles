@@ -1,0 +1,8 @@
+Tips:
+- Disable Alt
+    about:config -> `ui.key.menuAccessKeyFocuses = false`
+- Disable Firefox opened in another workspace
+    about:config -> `widget.disable-workspace-management = true`
+    settings -> general -> startup -> disable and re-enable `Open previous windows and tabs`
+
+

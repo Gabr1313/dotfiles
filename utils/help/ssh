@@ -1,0 +1,21 @@
+install ssh and sshd
+
+systemctl start sshd.service
+systemctl enable sshd.service
+
+# for automatic login
+vi .ssh/authorized_keys
+# and add the id_rsa.pub that is on the connecting device
+
+ssh user@server_name
+
+scp file/path user2@name2:file/path
+
+rsync -urltv --delete -e ssh /src.dir user@othermachine:/src.dir
+
+inotifywait -e close_write,moved_to,create -m . |
+while read -r directory events filename; do
+  if [ "$filename" = "prova.c" ]; then
+    gcc prova.c && ./a.out
+  fi
+done

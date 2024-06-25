@@ -1,0 +1,9 @@
+lsblk #check
+sudo mount /dev/sd[X][N] /mnt/usbstick/
+sudo umount /mnt/usbstick/ && echo 1 | sudo tee /sys/block/sd[X]/device/delete
+
+udisksctl mount -b /dev/sd[X][N]
+udisksctl unmount -b /dev/sd[X][N] && udisksctl power-off -b /dev/sd[X] 
+
+By udiskie they get mounted on /run/media/gabri
+udisksctl unmount -b /dev/sd[X][N] && udisksctl power-off -b /dev/sd[X] 

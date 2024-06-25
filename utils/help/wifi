@@ -1,0 +1,9 @@
+nmcli radio wifi [on/off]
+
+nmcli device wifi list
+nmcli device wifi rescan
+nmcli device wifi connect [ssid or bssid] password [password]
+
+nmcli conncetion show
+nmcli connection up [name_or_uuid]
+nmcli connection delete [name_or_uuid]

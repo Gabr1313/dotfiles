@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage[...]{package_name}
+% comments
+
+\begin{document}
+
+\include{other_file}
+
+\tableofcontents
+
+\section{section_name}
+
+\subsection{subsection_name}
+
+Here I insert a line.
+This line will be on the same as the previous
+\textit{italic} \textbf{bold} \underline{underlie}
+
+This will be a new line
+
+% lists
+\begin{itemsize}
+    \item item 1
+    \item[label] item 2
+
+This is a reference \ref{section_name}
+
+\begin{equation}
+\end{equation}
+
+Inline equation $x = 3\fract{1}{4}$
+
+\begin{lstlisting}[language=rust]
+let x = 4;
+\end{lstlisting}
+
+\footnote{footnote content}
+
+\end{document}
