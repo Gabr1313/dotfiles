@@ -1,4 +1,4 @@
-uod!/usr/bin/bash
+#!/usr/bin/env bash
 sudo nala install bat btop curl eza fzf gcc gdb kitty neofetch neovim ripgrep tldr zsh
 # others: git firefox
 
