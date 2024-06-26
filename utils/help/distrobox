@@ -1,0 +1,8 @@
+distrobox create -i quay.io/toolbx/arch-toolbox:latest -n arch
+distrobox enter arch
+ls
+sudo pacman -S --needed base-devel
+cd github
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
