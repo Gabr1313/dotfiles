@@ -1,5 +1,6 @@
-#!/usr/bin/bash
-sudo nala install zsh curl kitty neovim gcc gdb eza bat fzf btop neofetch ripgrep
+uod!/usr/bin/bash
+sudo nala install bat btop curl eza fzf gcc gdb kitty neofetch neovim ripgrep tldr zsh
+# others: git firefox
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 rm $HOME/.zshrc
@@ -15,6 +16,16 @@ ln -s $(pwd)/kitty $HOME/.config/kitty
 ln -s $(pwd)/nvim $HOME/.config/nvim
 ln -s $(pwd)/utils/scripts/ $HOME/.local/scripts
 ln -s $(pwd)/utils/help/ $HOME/help
+
+# ln -s $(pwd)/hypr $HOME/.config/hypr
+# ln -s $(pwd)/waybar $HOME/.config/waybar
+
+# ln -s $(pwd)/i3 $HOME/.config/i3
+# ln -s $(pwd)/paru $HOME/.config/paru
+# ln -s $(pwd)/sway $HOME/.config/sway
+# ln -s $(pwd)/tmux $HOME/.config/tmux
+# ln -s $(pwd)/wofi $HOME/.config/wofi
+# ln -s $(pwd)/zathura $HOME/.config/zathura
 
 # gnome related settings
     # dconf dump / >projects/.dotfiles/dconf-settings.ini
