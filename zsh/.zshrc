@@ -87,10 +87,12 @@ export MAN_POSIXLY_CORRECT=""
 export export QT_QPA_PLATFORMTHEME=gtk3
 
 # For a full list of active aliases, run `alias`.
-alias vi='nvim'
+alias v='nvim'
 alias f='. $HOME/.local/scripts/cd-fzf'
 alias g='find | fzf | xargs -r $EDITOR'
-# alias h='Hyprland'
+alias h='Hyprland'
+alias ls='eza --icons --group-directories-first'
+alias tree='eza --tree --icons --group-directories-first'
 
 if command -v lsb_release >/dev/null && [ "$(lsb_release -si)" = "Debian" ] ; then
   alias cat='batcat'
@@ -98,8 +100,13 @@ else
   alias cat='bat'
 fi
 
-alias ls='eza --icons --group-directories-first'
-alias tree='eza --tree --icons --group-directories-first'
+cd () { # ls after cd
+	if [ -n "$1" ]; then
+		builtin cd "$@" && ls
+	else
+		builtin cd ~ && ls
+	fi
+}
 
 # use vim commands on terminal
 KEYTIMEOUT=1 # min time, so there is almost no delay when pressing esc 
