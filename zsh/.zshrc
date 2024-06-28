@@ -98,8 +98,8 @@ else
   alias cat='bat'
 fi
 
-alias ls='eza'
-alias tree='eza --tree'
+alias ls='eza --icons --group-directories-first'
+alias tree='eza --tree -icons'
 
 # use vim commands on terminal
 KEYTIMEOUT=1 # min time, so there is almost no delay when pressing esc 
