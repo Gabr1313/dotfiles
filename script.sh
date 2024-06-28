@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-sudo nala install bat btop curl eza fzf gcc gdb kitty neofetch neovim ripgrep \
-tldr zsh python3
-# others: git firefox unzip distrobox
+sudo nala install bat btop curl eza fzf gcc gdb kitty fastfetch neovim ripgrep \
+tldr zsh python3 rsync fd-find cmake
+# others: git firefox unzip distrobox lua
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 rm $HOME/.zshrc
