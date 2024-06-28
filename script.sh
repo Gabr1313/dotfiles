@@ -21,6 +21,9 @@ ln -s $(pwd)/utils/help/ $HOME/help
 ln -s $(pwd)/hypr $HOME/.config/hypr
 ln -s $(pwd)/waybar $HOME/.config/waybar
 
+sudo ln -s $(pwd)/nixos/configuration.nix /etc/nixos/configuration.nix
+sudo ln -s $(pwd)/nixos/hardware-configuration.nix  /etc/nixos/hardware-configuration.nix
+
 # ln -s $(pwd)/paru $HOME/.config/paru
 # ln -s $(pwd)/i3 $HOME/.config/i3
 # ln -s $(pwd)/sway $HOME/.config/sway
