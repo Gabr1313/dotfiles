@@ -4,7 +4,7 @@
 
 { config, pkgs, ... }:
 
-{
+{ 
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -13,6 +13,14 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+
+  services.displayManager.sddm = {
+    wayland.enable = true;
+    enable = true;
+    theme = "catppuccin-mocha";
+    package = pkgs.kdePackages.sddm;
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -108,6 +116,7 @@
     swaybg
     tofi
     waybar
+    catppuccin-sddm
   ];
 
   xdg.portal.enable = true;

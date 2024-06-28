@@ -101,11 +101,11 @@ else
 fi
 
 cd () { # ls after cd
-	if [ -n "$1" ]; then
-		builtin cd "$@" && ls
-	else
-		builtin cd ~ && ls
-	fi
+  if [ -n "$1" ]; then
+    builtin cd "$@" && ls
+  else
+    builtin cd ~ && ls
+  fi
 }
 
 # use vim commands on terminal
