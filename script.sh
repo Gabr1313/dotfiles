@@ -20,6 +20,7 @@ ln -s $(pwd)/utils/help/ $HOME/help
 
 ln -s $(pwd)/hypr $HOME/.config/hypr
 ln -s $(pwd)/waybar $HOME/.config/waybar
+ln -s $(pwd)/wlogout $HOME/.config/wlogout
 
 sudo ln -s $(pwd)/nixos/configuration.nix /etc/nixos/configuration.nix
 sudo ln -s $(pwd)/nixos/hardware-configuration.nix  /etc/nixos/hardware-configuration.nix

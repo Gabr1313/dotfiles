@@ -95,6 +95,7 @@
     unzip
     killall
     git
+    ripgrep
     # Programming
     gcc
     gdb
@@ -114,10 +115,20 @@
     dunst
     libnotify
     swaybg
-    tofi
+    wofi
     waybar
     catppuccin-sddm
+    networkmanagerapplet
+    swaynotificationcenter
+    wlogout
+    hyprlock
   ];
+
+  environment.sessionVariables = {
+    TERMINAL = "kitty";
+    EDITOR = "nvim";
+    BROWSER = "firefox";
+  };
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
