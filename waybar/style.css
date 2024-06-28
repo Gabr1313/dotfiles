@@ -12,12 +12,12 @@ window#waybar {
 #workspaces {
   color: #000000;
   background: linear-gradient(90deg, #5178c4, #7fbbe5, #5178c4);
-  margin: 4px 4px;
-  padding: 5px 5px;
+  margin: 4px;
+  padding: 4px;
   border-radius: 16px;
 }
 #workspaces button {
-  padding: 0px 5px;
+  padding: 0px 4px;
   margin: 0px 3px;
   border-radius: 16px;
   color: #000000;
@@ -25,7 +25,7 @@ window#waybar {
   opacity: 0.5;
 }
 #workspaces button.active {
-  padding: 0px 5px;
+  padding: 0px 4px;
   margin: 0px 3px;
   border-radius: 16px;
   color: #000000;
@@ -50,7 +50,7 @@ tooltip label {
 #window, #pulseaudio, #bluetooth, #cpu, 
 #backlight, #memory {
   margin: 4px 2px;
-  padding: 0px 18px;
+  padding: 0px 16px;
   background: #e8e8e8;
   color: #000000;
   border-radius: 24px 10px 24px 10px;
@@ -61,7 +61,7 @@ tooltip label {
   color: #000000;
   margin: 4px 2px;
   border-radius: 10px 24px 10px 24px;
-  padding: 0px 18px;
+  padding: 0px 16px;
 }
 #custom-startmenu {
   color: #e8e8e8;
