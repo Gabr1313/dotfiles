@@ -1,6 +1,7 @@
 * {
   font-family: JetBrainsMono Nerd Font Mono;
   font-size: 16px;
+  font-weight: bold;
   border-radius: 0px;
   border: none;
   min-height: 0px;
@@ -10,36 +11,33 @@ window#waybar {
 }
 #workspaces {
   color: #000000;
-  background: #ff5c57;
+  background: linear-gradient(90deg, #5178c4, #7fbbe5, #5178c4);
   margin: 4px 4px;
   padding: 5px 5px;
   border-radius: 16px;
 }
 #workspaces button {
-  font-weight: bold;
   padding: 0px 5px;
   margin: 0px 3px;
   border-radius: 16px;
   color: #000000;
-  background: linear-gradient(45deg, #767676, #fd28ff);
+  background: #e8e8e8;
   opacity: 0.5;
 }
 #workspaces button.active {
-  font-weight: bold;
   padding: 0px 5px;
   margin: 0px 3px;
   border-radius: 16px;
   color: #000000;
-  background: linear-gradient(45deg, #767676, #fd28ff);
+  background: #e8e8e8;
   opacity: 1.0;
   min-width: 40px;
 }
 #workspaces button:hover {
-  font-weight: bold;
   border-radius: 16px;
   color: #000000;
-  background: linear-gradient(45deg, #767676, #fd28ff);
-  opacity: 0.8;
+  background: #dd6b9e;
+  opacity: 1;
 }
 tooltip {
   background: #000000;
@@ -47,40 +45,36 @@ tooltip {
   border-radius: 12px;
 }
 tooltip label {
-  color: #767676;
+  color: #e8e8e8;
 }
-#window, #pulseaudio, #bluetooth, #cpu, #memory, #idle_inhibitor {
-  font-weight: bold;
-  margin: 4px 0px;
-  margin-left: 7px;
+#window, #pulseaudio, #bluetooth, #cpu, 
+#backlight, #memory {
+  margin: 4px 2px;
   padding: 0px 18px;
-  background: #57c7ff;
+  background: #e8e8e8;
   color: #000000;
   border-radius: 24px 10px 24px 10px;
 }
+#network, #battery, #submap, #idle_inhibitor,
+#custom-notification, #tray, #custom-exit {
+  background: #e8e8e8;
+  color: #000000;
+  margin: 4px 2px;
+  border-radius: 10px 24px 10px 24px;
+  padding: 0px 18px;
+}
 #custom-startmenu {
-  color: #fffd00;
-  background: #19cb00;
+  color: #e8e8e8;
+  background: linear-gradient(90deg, #5178c4, #7fbbe5);
   font-size: 28px;
   margin: 0px;
   padding: 0px 30px 0px 15px;
   border-radius: 0px 0px 40px 0px;
 }
-#network, #battery, #submap,
-#custom-notification, #tray, #custom-exit {
-  font-weight: bold;
-  background: #ffffff;
-  color: #000000;
-  margin: 4px 0px;
-  margin-right: 7px;
-  border-radius: 10px 24px 10px 24px;
-  padding: 0px 18px;
-}
 #clock {
-  font-weight: bold;
-  color: #0D0E15;
-  background: linear-gradient(90deg, #14ffff, #fd28ff);
+  color: #e8e8e8;
+  background: linear-gradient(90deg, #7fbbe5, #5178c4);
   margin: 0px;
-  padding: 0px 15px 0px 30px;
+  padding: 0px 5px 0px 30px;
   border-radius: 0px 0px 0px 40px;
 }

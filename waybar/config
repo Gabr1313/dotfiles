@@ -12,33 +12,22 @@
     "pulseaudio",
     "pulseaudio#mic",
     "bluetooth", 
-    "cpu",
+    "backlight",
     "memory",
-    "idle_inhibitor",
+    "cpu",
   ],
   "modules-right" : [
+    "idle_inhibitor",
     "custom/notification",
-    "custom/exit",
-    "battery",
     "network",
     "tray",
+    "battery",
+    "custom/exit",
     "clock",
   ],
 
   "hyprland/workspaces" : {
     "format": "{icon}",
-    "format-icons": {
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "5": "5",
-      "6": "6",
-      "7": "7",
-      "8": "8",
-      "9": "9",
-      "10": "10",
-    },
     "on-click": "activate",
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1",
@@ -48,6 +37,8 @@
     "tooltip" : true,
     "tooltip-format" : "<big>{:%A, %d.%B %Y }</big>\n<tt><small>{calendar}</small></tt>",
     "format": " {:L%I:%M %p}",
+    "format-alt": " {:%H:%M:%S │ %m/%d/%Y}",
+    "interval": 1,
   },
 
   "hyprland/window" : {
@@ -61,11 +52,13 @@
   "memory": {
     "format": " {}%",
     "tooltip": true,
+    "interval": 1,
   },
 
   "cpu": {
     "format": " {usage}%",
     "tooltip": true,
+    "interval": 1,
   },
 
   "disk": {
@@ -81,6 +74,7 @@
     "tooltip-format": "{ipaddr}/{cidr}\n{bandwidthUpBits} up\n{bandwidthDownBits} down",
     "format-disconnected": "󰤮",
     "on-click": "wifiToggle.sh",
+    "interval": 1,
   },
 
   "tray": {
@@ -140,6 +134,12 @@
     "format-alt": "{icon} {time}",
     "format-icons": [ "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
     "tooltip" : false,
+  },
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
+    "on-scroll-up": "brightnessctl set +1%",
+    "on-scroll-down": "brightnessctl set 1%-",
   },
   "custom/exit" : {
     "tooltip" : false,
