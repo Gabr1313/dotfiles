@@ -96,10 +96,13 @@
     killall
     git
     ripgrep
+    jq
+    evince
     # Programming
     gcc
     gdb
     python3
+    evince
     # Others
     bat
     eza
@@ -112,7 +115,6 @@
     pulseaudio
     brightnessctl
     # Hyprland
-    dunst
     libnotify
     swaybg
     wofi
@@ -122,6 +124,9 @@
     swaynotificationcenter
     wlogout
     hyprlock
+    slurp
+    grim
+    wl-clipboard
   ];
 
   environment.sessionVariables = {

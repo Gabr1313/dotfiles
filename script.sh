@@ -25,6 +25,9 @@ ln -s $(pwd)/wlogout $HOME/.config/wlogout
 sudo ln -s $(pwd)/nixos/configuration.nix /etc/nixos/configuration.nix
 sudo ln -s $(pwd)/nixos/hardware-configuration.nix  /etc/nixos/hardware-configuration.nix
 
+# SECOND PART: build my env
+mkdir -p $HOME/screenshots
+
 # ln -s $(pwd)/paru $HOME/.config/paru
 # ln -s $(pwd)/i3 $HOME/.config/i3
 # ln -s $(pwd)/sway $HOME/.config/sway

@@ -73,7 +73,7 @@
     "tooltip" : true,
     "tooltip-format": "{ipaddr}/{cidr}\n{bandwidthUpBits} up\n{bandwidthDownBits} down",
     "format-disconnected": "󰤮",
-    "on-click": "wifiToggle.sh",
+    "on-click": "$HOME/.local/scripts/wifi-toggle",
     "interval": 1,
   },
 
@@ -111,7 +111,7 @@
       "disabled": "󰂲",
         "connected": "󰂱"
     },
-    "on-click":"bluetoothToggle.sh",
+    "on-click":"$HOME/.local/scripts/bluetooth-toggle",
     "on-click-right": "blueman-manager",
   },
 
@@ -121,7 +121,7 @@
       "activated": "",
       "deactivated": "",
     },
-    "tooltip": true,
+    "tooltip": false,
   },
   "battery": {
     "states": {
@@ -133,13 +133,21 @@
     "format-plugged": "󱘖 {capacity}%",
     "format-alt": "{icon} {time}",
     "format-icons": [ "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-    "tooltip" : false,
+    "tooltip" : true,
   },
   "backlight": {
     "format": "{icon} {percent}%",
     "format-icons": ["", "", "", "", "", "", "", "", ""],
     "on-scroll-up": "brightnessctl set +1%",
     "on-scroll-down": "brightnessctl set 1%-",
+  },
+  "idle_inhibitor" : {
+    "format" : "{icon}",
+    "format-icons" : {
+      "activated" : "",
+      "deactivated" : "",
+    },
+    "tooltip" : "true",
   },
   "custom/exit" : {
     "tooltip" : false,
@@ -150,14 +158,6 @@
     "tooltip" : false,
     "format" : "",
     "on-click" : "$HOME/.local/scripts/wofi-launcher",
-  },
-  "idle_inhibitor" : {
-    "format" : "{icon}",
-    "format-icons" : {
-      "activated" : "",
-      "deactivated" : "",
-    },
-    "tooltip" : "true",
   },
   "custom/notification" : {
     "tooltip" : false,
