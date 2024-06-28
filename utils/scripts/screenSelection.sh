@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 SSPATH=~/screenshots/screenshot-$(date +%y%m%d-%H%M%S).png
 
 grim -g "$(slurp)" "$SSPATH"

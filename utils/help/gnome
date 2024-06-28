@@ -18,3 +18,7 @@ gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-9" "['<Alt
 gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-9" "['<Alt><Shift>9']"
 gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-10" "['<Alt>0']"
 gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-10" "['<Alt><Shift>0']"
+
+sudo nvim /etc/gdm3/greeter.dconf-defaults
+# change `sleep-inactiva-ac-type="blank"`
+sudo systemctl restart gdm3

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 folders="$HOME/ $HOME/projects/ $HOME/projects/cp/ $HOME/projects/polimi/*/ \
 $HOME/projects/.dotfiles/ $HOME/projects/.dotfiles/nvim/lua/ $(pwd)/"
 

@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 STRING=`rfkill | grep "wlan" | sed 's/ //g'`
 
 if [[ "$STRING" == *"unblockedun"* ]]
