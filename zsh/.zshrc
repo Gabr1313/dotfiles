@@ -99,7 +99,7 @@ else
 fi
 
 alias ls='eza --icons --group-directories-first'
-alias tree='eza --tree -icons'
+alias tree='eza --tree --icons --group-directories-first'
 
 # use vim commands on terminal
 KEYTIMEOUT=1 # min time, so there is almost no delay when pressing esc 
