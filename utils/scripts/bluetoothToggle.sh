@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 STRING=`rfkill | grep "bluetooth"| sed 's/ //g'`
 
 if [[ "$STRING" == *"unblockedun"* ]]

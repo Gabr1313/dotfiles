@@ -91,11 +91,11 @@ alias vi='nvim'
 alias f='. $HOME/.local/scripts/cd-fzf'
 alias g='find | fzf | xargs -r $EDITOR'
 # alias h='Hyprland'
-if [[ $(echo $(lsb_release -is)) == "Debian" ]] then
-  alias cat='batcat -pp'
-else 
+# if [[ $(echo $(lsb_release -is)) == "Debian" ]] then
+  # alias cat='batcat -pp'
+# else 
   alias cat='bat -pp'
-fi
+# fi
 alias ls='eza'
 alias tree='eza --tree'
 

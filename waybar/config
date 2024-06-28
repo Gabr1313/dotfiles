@@ -7,9 +7,13 @@
 
   "modules-left": ["hyprland/workspaces", "hyprland/submap"],
   "modules-center": ["clock"],
-  "modules-right": ["custom/notification", "battery", "network", "disk", "memory", "cpu", "backlight", "bluetooth", "pulseaudio#mic", "pulseaudio"],
-  // "modules-right": ["battery", "hyprland/language", "network", "disk", "memory", "cpu", "temperature", "backlight","pulseaudio", "pulseaudio#mic", "bluetooth", "idle_inhibitor"],
-  // "modules-center": ["hyprland/window"],
+  "modules-right": ["tray", "custom/notification", "battery", "network", "disk", "memory", "cpu", "backlight", "bluetooth", "pulseaudio#mic", "pulseaudio"],
+
+  "modules-left": ["battery", "disk", "memory", "cpu", "network", "hyprland/submap"],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": ["custom/notification", "backlight", "bluetooth", "pulseaudio#mic", "pulseaudio", "clock" ],
+
+  // ["hyprland/window", "battery", "hyprland/language", "network", "disk", "memory", "cpu", "temperature", "backlight","pulseaudio", "pulseaudio#mic", "bluetooth", "idle_inhibitor"],
 
 
   "custom/notification": {
@@ -113,7 +117,7 @@
     "tooltip-format": "{ipaddr}/{cidr}\n{bandwidthUpBits} up\n{bandwidthDownBits} down",
     "format-disconnected": "⚠",
     "on-click": "wifiToggle.sh",
-    "on-click-right": "iwgtk",
+    // "on-click-right": "iwgtk",
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
@@ -131,6 +135,7 @@
     "format-source-muted": "󰍭",
     "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
     "on-click-right": "pavucontrol",
+    "scroll-setp": 2,
     "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +2%",
     "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -2%",
     "tooltip": false,

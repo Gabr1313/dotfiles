@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 sudo nala install bat btop curl eza fzf gcc gdb kitty neofetch neovim ripgrep \
 tldr zsh python3
 # others: git firefox unzip distrobox
@@ -18,8 +19,8 @@ ln -s $(pwd)/nvim $HOME/.config/nvim
 ln -s $(pwd)/utils/scripts/ $HOME/.local/scripts
 ln -s $(pwd)/utils/help/ $HOME/help
 
-# ln -s $(pwd)/hypr $HOME/.config/hypr
-# ln -s $(pwd)/waybar $HOME/.config/waybar
+ln -s $(pwd)/hypr $HOME/.config/hypr
+ln -s $(pwd)/waybar $HOME/.config/waybar
 
 # ln -s $(pwd)/paru $HOME/.config/paru
 # ln -s $(pwd)/i3 $HOME/.config/i3
