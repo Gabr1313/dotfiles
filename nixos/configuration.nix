@@ -14,7 +14,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-
   services.displayManager.sddm = {
     wayland.enable = true;
     enable = true;
@@ -102,7 +101,7 @@
     gcc
     gdb
     python3
-    evince
+    evince        # @todo better?
     # Others
     bat
     eza
@@ -114,7 +113,7 @@
     pavucontrol
     pulseaudio
     brightnessctl
-    # Hyprland
+    # Hyprland and Sway
     libnotify
     swaybg
     wofi
@@ -127,6 +126,8 @@
     slurp
     grim
     wl-clipboard
+    gammastep
+    playerctl
   ];
 
   environment.sessionVariables = {
@@ -151,6 +152,7 @@
 
   programs = {
     hyprland.enable = true;
+    sway.enable = true;
     zsh.enable = true;
   };
 

@@ -21,21 +21,22 @@ ln -s $(pwd)/utils/help/ $HOME/help
 ln -s $(pwd)/hypr $HOME/.config/hypr
 ln -s $(pwd)/waybar $HOME/.config/waybar
 ln -s $(pwd)/wlogout $HOME/.config/wlogout
+ln -s $(pwd)/wofi $HOME/.config/wofi
+ln -s $(pwd)/sway $HOME/.config/sway
 
 sudo ln -s $(pwd)/nixos/configuration.nix /etc/nixos/configuration.nix
 sudo ln -s $(pwd)/nixos/hardware-configuration.nix  /etc/nixos/hardware-configuration.nix
 
-# SECOND PART: build my env
-mkdir -p $HOME/screenshots
-
 # ln -s $(pwd)/paru $HOME/.config/paru
 # ln -s $(pwd)/i3 $HOME/.config/i3
-# ln -s $(pwd)/sway $HOME/.config/sway
 # ln -s $(pwd)/tmux $HOME/.config/tmux
-# ln -s $(pwd)/wofi $HOME/.config/wofi
 # ln -s $(pwd)/zathura $HOME/.config/zathura
 
 # gnome related settings
     # dconf dump / >projects/.dotfiles/dconf-settings.ini
 # dconf load / <$(pwd)/dconf-settings.ini
 # cp ~/.config/monitors.xml ~gdm3/.config/
+
+# SECOND PART: build my env
+mkdir -p $HOME/screenshots
+
