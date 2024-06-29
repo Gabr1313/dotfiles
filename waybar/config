@@ -67,7 +67,7 @@
   },
 
   "network": {
-    "format-ethernet": "󱎔 {bandwidthDownOctets}",
+    "format-ethernet": "󱎔",
     "format-wifi": "{icon} {signalStrength}% {essid}",
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "tooltip" : true,
@@ -78,7 +78,7 @@
   },
 
   "tray": {
-    "spacing" : "12",
+    "spacing" : "19",
   },
 
   "pulseaudio": {
@@ -156,7 +156,8 @@
   },
   "custom/startmenu" : {
     "tooltip" : false,
-    "format" : "",
+    // "format" : "",
+    "format" : "",
     "on-click" : "$HOME/.local/scripts/wofi-launcher",
   },
   "custom/notification" : {

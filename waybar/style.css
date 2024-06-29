@@ -1,7 +1,7 @@
 * {
   font-family: JetBrainsMono Nerd Font; 
   font-size: 16px;
-  font-weight: bold;
+  font-weight: bolder;
   border-radius: 0px;
   border: none;
   min-height: 0px;
@@ -75,6 +75,6 @@ tooltip label {
   color: #e8e8e8;
   background: linear-gradient(90deg, #7fbbe5, #5178c4);
   margin: 0px;
-  padding: 0px 5px 0px 30px;
+  padding: 0px 15px 0px 30px;
   border-radius: 0px 0px 0px 40px;
 }

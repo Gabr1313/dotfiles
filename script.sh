@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 sudo nala install bat btop curl eza fzf gcc gdb kitty fastfetch neovim ripgrep \
 tldr zsh python3 rsync fd-find cmake
-# others: git firefox unzip distrobox lua
+# others: git firefox unzip distrobox lua meson ninja-build cmake
+# sway sway-notification-center waybar pulseaudio pavucontrol wofi rfkill blueman
+# brightnessctl slurp grim wl-clipboard swaylock
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 rm $HOME/.zshrc
@@ -18,25 +20,24 @@ ln -s $(pwd)/nvim $HOME/.config/nvim
 ln -s $(pwd)/utils/scripts/ $HOME/.local/scripts
 ln -s $(pwd)/utils/help/ $HOME/help
 
-ln -s $(pwd)/hypr $HOME/.config/hypr
 ln -s $(pwd)/waybar $HOME/.config/waybar
 ln -s $(pwd)/wlogout $HOME/.config/wlogout
 ln -s $(pwd)/wofi $HOME/.config/wofi
 ln -s $(pwd)/sway $HOME/.config/sway
 
-sudo ln -s $(pwd)/nixos/configuration.nix /etc/nixos/configuration.nix
-sudo ln -s $(pwd)/nixos/hardware-configuration.nix  /etc/nixos/hardware-configuration.nix
-
+# # NixOs
+# sudo ln -s $(pwd)/nixos/configuration.nix /etc/nixos/configuration.nix
+# sudo ln -s $(pwd)/nixos/hardware-configuration.nix  /etc/nixos/hardware-configuration.nix
+# # Old
+# ln -s $(pwd)/hypr $HOME/.config/hypr
 # ln -s $(pwd)/paru $HOME/.config/paru
 # ln -s $(pwd)/i3 $HOME/.config/i3
 # ln -s $(pwd)/tmux $HOME/.config/tmux
 # ln -s $(pwd)/zathura $HOME/.config/zathura
-
-# gnome related settings
-    # dconf dump / >projects/.dotfiles/dconf-settings.ini
+# # Gnome related settings
+  # # dconf dump / >projects/.dotfiles/dconf-settings.ini
 # dconf load / <$(pwd)/dconf-settings.ini
 # cp ~/.config/monitors.xml ~gdm3/.config/
 
 # SECOND PART: build my env
-mkdir -p $HOME/screenshots
-
+# mkdir -p $HOME/Pictures/Screenshots/
