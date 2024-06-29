@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-SSPATH= $HOME/Pictures/Screenshots/screenshot-$(date +%y%m%d-%H%M%S).png
-
+SSPATH=$HOME/Pictures/Screenshots/screenshot-$(date +%y%m%d-%H%M%S).png
 grim -g "$(slurp)" "$SSPATH"
 wl-copy <$SSPATH

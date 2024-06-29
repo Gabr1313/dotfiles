@@ -20,6 +20,7 @@ set $up k
 set $right l
 set $term kitty
 set $browser firefox
+set $file-manager nautilus
 #}}}
 
 # Start config {{{
@@ -29,6 +30,8 @@ set $browser firefox
 input type:keyboard {
     xkb_layout us,it
     xkb_options grp:alt_caps_toggle
+    repeat_rate 64
+    repeat_delay 200
 }
 
 input type:pointer {
@@ -59,14 +62,11 @@ bindsym $modS+R reload
 bindsym $mod+Q kill
 bindsym $mod+V layout toggle split
 bindsym $mod+W exec $HOME/.local/scripts/waybar-reload
-bindsym $mod+T split h; exec $term
-bindsym $modS+T split v; exec $term
-bindsym $mod+B split h; exec $browser
-bindsym $modS+B split v; exec $browser
+bindsym $mod+T exec $term
+bindsym $mod+B exec $browser
 bindsym $mod+D exec $HOME/.local/scripts/wofi-launcher
 bindsym $mod+P exec wlogout
-bindsym $mod+e split h; exec nautilus
-bindsym $modS+e split v; exec nautilus
+bindsym $mod+e exec $file-manager
 # }}}
 
 # Window rule {{{
