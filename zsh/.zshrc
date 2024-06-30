@@ -88,9 +88,9 @@ alias ls='eza --icons --group-directories-first'
 alias tree='eza --tree --icons --group-directories-first'
 
 if command -v lsb_release >/dev/null && [ "$(lsb_release -si)" = "Debian" ] ; then
-  alias cat='batcat'
+  alias cat='batcat -pp'
 else
-  alias cat='bat'
+  alias cat='bat -pp'
 fi
 
 cd () { # ls after cd

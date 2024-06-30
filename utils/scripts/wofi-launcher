@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 
-pkill wofi 
-wofi --show drun
+if [ -z $(ps -e | rg wofi) ]
+then
+    wofi --show drun
+else 
+    pkill wofi 
+fi
