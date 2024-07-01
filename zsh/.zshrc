@@ -83,14 +83,17 @@ export export QT_QPA_PLATFORMTHEME=gtk3
 alias v='nvim'
 alias f='. $HOME/.local/scripts/cd-fzf'
 alias g='find | fzf | xargs -r $EDITOR'
-alias h='Hyprland'
-alias ls='eza --icons --group-directories-first'
-alias tree='eza --tree --icons --group-directories-first'
+# alias h='Hyprland'
 
-if command -v lsb_release >/dev/null && [ "$(lsb_release -si)" = "Debian" ] ; then
-  alias cat='batcat -pp'
-else
+if ! command -v eza & /dev/null ; then
+  alias ls='eza --icons --group-directories-first'
+  alias tree='eza --tree --icons --group-directories-first'
+fi
+
+if ! command -v bat &> /dev/null ; then
   alias cat='bat -pp'
+elif ! command -v batcat &> /dev/null ; then
+  alias cat='batcat -pp'
 fi
 
 cd () { # ls after cd
