@@ -85,14 +85,14 @@ alias f='. $HOME/.local/scripts/cd-fzf'
 alias g='find | fzf | xargs -r $EDITOR'
 # alias h='Hyprland'
 
-if ! command -v eza & /dev/null ; then
+if command -v eza &> /dev/null ; then
   alias ls='eza --icons --group-directories-first'
   alias tree='eza --tree --icons --group-directories-first'
 fi
 
-if ! command -v bat &> /dev/null ; then
+if command -v bat &> /dev/null ; then
   alias cat='bat -pp'
-elif ! command -v batcat &> /dev/null ; then
+elif command -v batcat &> /dev/null ; then
   alias cat='batcat -pp'
 fi
 
