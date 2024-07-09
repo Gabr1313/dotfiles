@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-sudo nala install bat btop curl eza fzf gcc gdb kitty fastfetch neovim ripgrep \
+sudo nala install bat btop curl fzf gcc gdb kitty neovim ripgrep \
 tldr zsh python3 rsync fd-find cmake
 # others: git firefox unzip distrobox lua meson ninja-build cmake
 # sway sway-notification-center waybar pulseaudio pavucontrol wofi rfkill blueman gammastep cliphist
@@ -25,10 +25,11 @@ ln -s $(pwd)/wlogout $HOME/.config/wlogout
 ln -s $(pwd)/wofi $HOME/.config/wofi
 ln -s $(pwd)/sway $HOME/.config/sway
 
-# # NixOs
+# NixOs
 # sudo ln -s $(pwd)/nixos/configuration.nix /etc/nixos/configuration.nix
 # sudo ln -s $(pwd)/nixos/hardware-configuration.nix  /etc/nixos/hardware-configuration.nix
-# # Old
+
+# Old
 # ln -s $(pwd)/hypr $HOME/.config/hypr
 # ln -s $(pwd)/paru $HOME/.config/paru
 # ln -s $(pwd)/i3 $HOME/.config/i3
