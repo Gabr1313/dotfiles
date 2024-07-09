@@ -56,7 +56,7 @@ tooltip label {
   border-radius: 24px 10px 24px 10px;
 }
 #network, #battery, #submap, #mode, #idle_inhibitor,
-#custom-notification, #tray, #custom-exit {
+#custom-clipboard, #custom-notification, #tray, #custom-exit {
   background: #e8e8e8;
   color: #000000;
   margin: 4px 2px;

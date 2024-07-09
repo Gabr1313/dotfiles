@@ -16,8 +16,8 @@ cd /mnt
 ls
 mv @rootfs/ @
 btrfs su cr @snapshots
-btrfs su cr @home
-btrfs su cr @home_snapshots
+btrfs su cr @home               # maybe saved on another parition?
+btrfs su cr @home_snapshots     # maybe saved on another parition?
 btrfs su cr @cache              # temporary files
 btrfs su cr @crash              # temporary files
 btrfs su cr @tmp                # temporary files

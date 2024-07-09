@@ -17,7 +17,8 @@
     "cpu",
   ],
   "modules-right" : [
-    "idle_inhibitor",
+    // "idle_inhibitor", // i don't use this
+    "custom/clipboard",
     "custom/notification",
     "network",
     "tray",
@@ -180,4 +181,13 @@
     "on-click-right": "swaync-client -t -sw",
     "escape": true
   },
+  "custom/clipboard": {
+      "format": "🄯",
+      "interval": "once",
+      "return-type": "json",
+      "on-click": "swaymsg -q exec '$clipboard'",
+      "on-click-right": "swaymsg -q exec '$clipboard-del'",
+      "on-click-middle": "swaymsg -q exec '$clipboard-del-all'",
+      "exec": "printf '{\"tooltip\":\"%s\"}' $(cliphist list | wc -l)",
+   },
 }

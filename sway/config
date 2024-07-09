@@ -2,11 +2,12 @@
 # Read `man 5 sway` for a complete reference.
 
 # Exec {{{
-exec "swaync"
-exec "waybar"
-exec "nm-applet"
-exec "blueman-applet"
-exec "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+exec swaync
+exec waybar
+exec nm-applet
+exec blueman-applet
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec wl-paste --watch cliphist store
 # exec udiskie -an -f nautilus	
 #}}}
 
@@ -14,6 +15,8 @@ exec "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
 # mod1 = alt, mod4 = super
 set $mod Mod1
 set $modS $mod+Shift
+set $modC $mod+Ctrl
+
 set $left h
 set $down j
 set $up k
@@ -21,6 +24,7 @@ set $right l
 set $term kitty
 set $browser firefox
 set $file-manager nautilus
+set $menu wofi -S dmenu
 #}}}
 
 # Start config {{{
@@ -42,8 +46,9 @@ input type:pointer {
 input type:touchpad {
     tap enabled
     dwt enabled  # disable while typing
-    natural_scroll disable
-    middle_emulation enabled
+    natural_scroll enable
+    scroll_factor 0.25
+    middle_emulation enabled # left + right = middle
 }
 # }}}
 
@@ -66,7 +71,17 @@ bindsym $mod+T exec $term
 bindsym $mod+B exec $browser
 bindsym $mod+D exec $HOME/.local/scripts/wofi-launcher
 bindsym $mod+P exec wlogout
-bindsym $mod+e exec $file-manager
+bindsym $mod+E exec $file-manager
+# }}}
+
+# Clipboad {{{
+set $clipboard cliphist list | $menu --no-exec -p "copy" | cliphist decode | wl-copy
+set $clipboard-del cliphist list | $menu --no-exec -p "delete" | cliphist delete
+set $clipboard-del-all rm -f ~/.cache/cliphist/db
+
+bindsym $mod+C exec $clipboard
+bindsym $modS+C exec $clipboard-del
+bindsym $modC+C exec $clipboard-del-all
 # }}}
 
 # Window rule {{{
@@ -224,13 +239,13 @@ bindsym $mod+shift+y mode "Brightness [1-10], [H]igher, [L]ower"
 # }}}
 
 # Connection {{{
-mode "Connection: [B]luetooth [W]ifi" {
-  bindsym w exec $HOME/.config/sway/scripts/wifi-toggle; mode "default"
-  bindsym b exec $HOME/.config/sway/scripts/bluetooth-toggle; mode "default"
+mode "Manager: [B]luetooth [W]ifi" {
+  bindsym w exec $HOME/.local/scripts/wifi-toggle; mode "default"
+  bindsym b exec $HOME/.local/scripts/bluetooth-toggle; mode "default"
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
-bindsym $mod+C mode "Connection: [B]luetooth [W]ifi"
+bindsym $modS+M mode "Manager: [B]luetooth [W]ifi"
 # }}}
 
 # Audio {{{

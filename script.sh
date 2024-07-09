@@ -2,7 +2,7 @@
 sudo nala install bat btop curl eza fzf gcc gdb kitty fastfetch neovim ripgrep \
 tldr zsh python3 rsync fd-find cmake
 # others: git firefox unzip distrobox lua meson ninja-build cmake
-# sway sway-notification-center waybar pulseaudio pavucontrol wofi rfkill blueman
+# sway sway-notification-center waybar pulseaudio pavucontrol wofi rfkill blueman gammastep cliphist
 # brightnessctl slurp grim wl-clipboard swaylock
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -37,7 +37,7 @@ ln -s $(pwd)/sway $HOME/.config/sway
 # # Gnome related settings
   # # dconf dump / >projects/.dotfiles/dconf-settings.ini
 # dconf load / <$(pwd)/dconf-settings.ini
-# cp ~/.config/monitors.xml ~gdm3/.config/
+# sudo cp /home/gabri/.config/monitors.xml /var/lib/gdm3/.config/monitors.xml
 
 # SECOND PART: build my env
 # mkdir -p $HOME/Pictures/Screenshots/
