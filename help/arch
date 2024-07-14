@@ -1,0 +1,7 @@
+# startup
+# install paru
+sudo systemctl enable reflector.service
+sudo systemctl start reflector.service
+
+# gpg key missing?
+gpg --recv-key <KEYID> && gpg --lsign <KEYID>

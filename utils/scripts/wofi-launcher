@@ -2,7 +2,7 @@
 
 if [ -z $(ps -e | rg wofi) ]
 then
-    wofi --show drun
+    wofi
 else 
     pkill wofi 
 fi

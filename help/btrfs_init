@@ -1,7 +1,8 @@
-# This is a guide on how to install btrfs on Debian
-
-# https://medium.com/@inatagan/installing-debian-with-btrfs-snapper-backups-and-grub-btrfs-27212644175f
+# Fedora
 # https://sysguides.com/install-fedora-with-snapshot-and-rollback-support
+
+# Debian (the rest)
+# https://medium.com/@inatagan/installing-debian-with-btrfs-snapper-backups-and-grub-btrfs-27212644175f
 
 # On disk partitioning obviously select "btrfs"
 # Before "install the base system" press "alt+ctrl+F2"
@@ -65,20 +66,20 @@ mount /dev/sdX1 boot/efi    # see df at the beggining
 
 nano etc/fstab
 
-/dev/<disk_partition>/                          btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@                   0    0
-/dev/<disk_partition>/.snapshots                btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@snapshots          0    0
-/dev/<disk_partition>/home                      btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@home               0    0
-/dev/<disk_partition>/home/.snapshots           btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@home_snapshots     0    0
-/dev/<disk_partition>/var/cache                 btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@cache              0    0
-/dev/<disk_partition>/var/crash                 btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@crash              0    0
-/dev/<disk_partition>/var/tmp                   btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@tmp                0    0
-/dev/<disk_partition>/var/log                   btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@log                0    0
-/dev/<disk_partition>/var/spool                 btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@spool              0    0
-/dev/<disk_partition>/var/lib/AccountsService   btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@AccountsService    0    0
-/dev/<disk_partition>/var/lib/gdm3              btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@gdm3               0    0
-/dev/<disk_partition>/var/lib/libvirt/images    btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@images             0    0
-# /dev/<disk_partition>/var/lib/containers        btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@containers         0    0
-# /dev/<disk_partition>/opt                       btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@opt                0    0
+/dev/<disk_partition>  /                          btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@                   0    0
+/dev/<disk_partition>  /.snapshots                btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@snapshots          0    0
+/dev/<disk_partition>  /home                      btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@home               0    0
+/dev/<disk_partition>  /home/.snapshots           btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@home_snapshots     0    0
+/dev/<disk_partition>  /var/cache                 btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@cache              0    0
+/dev/<disk_partition>  /var/crash                 btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@crash              0    0
+/dev/<disk_partition>  /var/tmp                   btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@tmp                0    0
+/dev/<disk_partition>  /var/log                   btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@log                0    0
+/dev/<disk_partition>  /var/spool                 btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@spool              0    0
+/dev/<disk_partition>  /var/lib/AccountsService   btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@AccountsService    0    0
+/dev/<disk_partition>  /var/lib/gdm3              btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@gdm3               0    0
+/dev/<disk_partition>  /var/lib/libvirt/images    btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@images             0    0
+# /dev/<disk_partition>  /var/lib/containers        btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@containers         0    0
+# /dev/<disk_partition>  /opt                       btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@opt                0    0
  
 cd /
 unmount /mnt

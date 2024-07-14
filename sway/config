@@ -5,7 +5,7 @@
 exec swaync
 exec waybar
 exec nm-applet
-exec blueman-applet
+# exec blueman-applet
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec wl-paste --watch cliphist store
 # exec udiskie -an -f nautilus	
@@ -98,7 +98,7 @@ set $display_laptop eDP-1
 set $display_external DP-2
 
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-set $wallpaper $HOME/Pictures/wallpapers/dt/0266.jpg
+set $wallpaper $HOME/Pictures/wallpapers/fedora/montclair_dark.webp
 output * bg $wallpaper fill
 output $display_laptop resolution 1920x1080 position 0,0
 output $display_external resolution 2560x1440 position 1920,0

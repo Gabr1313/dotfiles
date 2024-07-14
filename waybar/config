@@ -5,10 +5,16 @@
   // "modules-center": ["hyprland/workspaces"],
   // "modules-right": ["custom/notification", "backlight", "bluetooth", "pulseaudio#mic", "pulseaudio", "clock" ],
 
-  "modules-center" : [ "hyprland/workspaces", "hyprland/submap", "sway/workspaces", "sway/mode"  ],
+  "modules-center" : [ 
+    // "hyprland/window",
+    // "sway/window",
+    // "hyprland/workspaces", 
+    // "hyprland/submap", 
+    "sway/workspaces", 
+    "sway/mode",
+  ],
   "modules-left" : [
     "custom/startmenu",
-    // "hyprland/window",
     "pulseaudio",
     "pulseaudio#mic",
     "bluetooth", 
@@ -18,7 +24,7 @@
   ],
   "modules-right" : [
     // "idle_inhibitor", // i don't use this
-    "custom/clipboard",
+    // "custom/clipboard", // not supported on fedora
     "custom/notification",
     "network",
     "tray",

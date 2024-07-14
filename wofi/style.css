@@ -1,40 +1,95 @@
-* {
-  font-family: JetBrainsMono;
-  color: #e5e9f0;
-  /* background: transparent; */
-}
+@define-color base   #24273a;
+@define-color mantle #1e2030;
+@define-color crust  #181926;
 
-#window {
-  /* background: rgba(41, 46, 66, 0.5); */
-  margin: auto;
-  padding: 10px;
-  border-radius: 20px;
-  border: 5px solid #b072d1;
-}
+@define-color text     #cad3f5;
+@define-color subtext0 #a5adcb;
+@define-color subtext1 #b8c0e0;
 
-#input {
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 15px;
+@define-color surface0 #363a4f;
+@define-color surface1 #494d64;
+@define-color surface2 #5b6078;
+
+@define-color overlay0 #6e738d;
+@define-color overlay1 #8087a2;
+@define-color overlay2 #939ab7;
+
+@define-color blue      #8aadf4;
+@define-color lavender  #b7bdf8;
+@define-color sapphire  #7dc4e4;
+@define-color sky       #91d7e3;
+@define-color teal      #8bd5ca;
+@define-color green     #a6da95;
+@define-color yellow    #eed49f;
+@define-color peach     #f5a97f;
+@define-color maroon    #ee99a0;
+@define-color red       #ed8796;
+@define-color mauve     #c6a0f6;
+@define-color pink      #f5bde6;
+@define-color flamingo  #f0c6c6;
+@define-color rosewater #f4dbd6;
+
+window {
+    margin: 5px;
+    background-color: @crust;
+    opacity: 1;
+    border-radius: 10;
 }
 
 #outer-box {
-  padding: 20px;
+    margin: 5px;
+    /* border: 2px solid @maroon; */
+    background-color: @mantle;
+    border-radius: 10;
 }
 
-#img {
-  margin-right: 6px;
+#input {
+    margin: 5px;
+    border: 2px solid @lavender;
+    background-color: @surface0;
+    color: #f8f8f2;
+    font-size: 18px;
+}
+
+#inner-box {
+    margin: 5px;
+    background-color: @base;
+}
+
+#scroll {
+    margin: 5px;
+    border: 2px solid @pink;
+    background-color: @base;
+    font-size: 16px;
+    color: #f8f8f2;
+    border-radius: 10;
+}
+
+#scroll label {
+    margin: 2px 0px;
 }
 
 #entry {
-  padding: 10px;
-  border-radius: 15px;
+    background-color: @base;
+}
+#entry:selected {
+    background-color: @surface1;
+    border: 2px solid @mauve;
 }
 
-#entry:selected {
-  background-color: #2e3440;
+#img {
+    margin: 5px;
+}
+#img:selected {
+    background-color: @surface1;
 }
 
 #text {
-  margin: 2px;
+    margin: 5px;
+    border: none;
+    color: @text;
 }
+#text:selected {
+    background-color: @surface1;
+}
+
