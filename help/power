@@ -1,0 +1,4 @@
+powerprofilesctl
+powerprofilesctl set power-saver
+powerprofilesctl set balanced
+powerprofilesctl set performance

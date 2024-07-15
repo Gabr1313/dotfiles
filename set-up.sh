@@ -4,21 +4,8 @@ sudo nala install bat btop curl fzf gcc kitty neovim ripgrep tldr zsh python3 rs
                   snapper distrobox build-essential gdb kcachegrind massif-visualizer \
 	              hyperfine feh ffmpeg \
                   sway sway-notification-center waybar pavucontrol wofi rfkill blueman \
-                  gammastep brightnessctl slurp grim wl-clipboard cliphist wlogout swaylock
-
-# sudo nala install bat btop curl fzf gcc kitty neovim ripgrep tldr zsh python3 rsync fd-find make \
-#                 inotify-tools git unzip firefox fd-find fastfetch eza
-# others: snapper distrobox lua cmake meson ninja-build gdb kcachegrind massif-visualizer hyperfine 
-#         feh ffmpeg
-# sway:   sway sway-notification-center waybar pulseaudio pavucontrol wofi rfkill blueman gammastep
-#         brightnessctl slurp grim wl-clipboard cliphist wlogout swaylock
-
-# sudo paru -S bat btop curl fzf gcc kitty neovim ripgrep tldr zsh python3 rsync fd-find make 
-# inotify-tools git unzip firefox fd fastfetch eza snapper distrobox lua base-devel kcachegrind 
-# massif-visualizer hyperfine feh ffmpeg sway swaync waybar pavucontrol wofi rfkill blueman 
-# gammastep brightnessctl slurp grim wl-clipboard cliphist wlogout swaylock
-# pipewire pipewire-audio pipewire-alsa  pipewire-pulse wireplumber alsa-firmware alsa-utils
-# pulseaudio 
+                  gammastep brightnessctl slurp grim wl-clipboard cliphist wlogout swaylock \
+                  playerctl
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 rm $HOME/.zshrc
