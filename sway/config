@@ -59,7 +59,7 @@ input type:touchpad {
 default_border          pixel 2
 default_floating_border pixel 2
 #              (border)  (bg)      (text)    indicator  real border
-client.focused "#000000" "#000000" "#ffffff" "#7FBBE5"  "#7FBBE5"
+client.focused "#000000" "#000000" "#ffffff" "#7fbbe5"  "#7fbbe5"
 # client.unfocused "#2c3038" "#2c3038" "#2c3038" 
 # font pango: JetBrainsMono Nerd Font 14px
 gaps inner 8
