@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+
+layout=$(swaymsg -t get_workspaces | jq -r '.[] | select(.focused==true).layout')
+if [ "$layout" = "splith" ]; then
+    echo "splith"
+elif [ "$layout" = "splitv" ]; then 
+    echo "splitv"
+else
+    echo "boh"
+fi

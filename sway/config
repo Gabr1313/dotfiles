@@ -9,14 +9,18 @@ exec nm-applet
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec wl-paste --watch cliphist store
 # exec udiskie -an -f nautilus	
+set $wallpaper $HOME/Pictures/wallpapers/fedora/montclair_dark.webp
+output * bg $wallpaper fill
 #}}}
 
-# Mod and Variables {{{
+# Mod {{{
 # mod1 = alt, mod4 = super
 set $mod  Mod1
 set $modS $mod+Shift
 set $modC $mod+Ctrl
+#}}}
 
+# Variables {{{
 set $left         h
 set $down         j
 set $up           k
@@ -24,10 +28,9 @@ set $right        l
 set $term         kitty
 set $browser      firefox
 set $file-manager nautilus
-set $menu         wofi -S dmenu
 #}}}
 
-# Start config {{{
+# Config {{{
 # man sway-input
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # man 5 sway-input
@@ -52,36 +55,39 @@ input type:touchpad {
 }
 # }}}
 
-# Basic style {{{
+# Style and Colors {{{
 default_border          pixel 2
 default_floating_border pixel 2
-# color
-client.focused "#7FBBE5" "#7FBBE5" "#7FBBE5" "#7FBBE5"
+#              (border)  (bg)      (text)    indicator  real border
+client.focused "#000000" "#000000" "#ffffff" "#7FBBE5"  "#7FBBE5"
 # client.unfocused "#2c3038" "#2c3038" "#2c3038" 
 # font pango: JetBrainsMono Nerd Font 14px
 gaps inner 8
 # }}}
 
-# Basic bindings {{{
-bindsym $modS+R reload
-bindsym $mod+Q  kill
-bindsym $mod+V  layout toggle split
-bindsym $mod+W  exec $HOME/.local/scripts/waybar-reload
-bindsym $mod+T  exec $term
-bindsym $mod+B  exec $browser
-bindsym $mod+D  exec $HOME/.local/scripts/wofi-launcher
-bindsym $mod+P  exec wlogout
-bindsym $mod+E  exec $file-manager
-# }}}
-
-# Clipboad {{{
-set $clipboard         cliphist list | $menu --no-exec -p "copy"   | cliphist decode | wl-copy
-set $clipboard-del     cliphist list | $menu --no-exec -p "delete" | cliphist delete
-set $clipboard-del-all rm -f ~/.cache/cliphist/db
-
-bindsym $mod+C  exec $clipboard
-bindsym $modS+C exec $clipboard-del
-bindsym $modC+C exec $clipboard-del-all
+# Bindings {{{
+# man 5 sway
+bindsym $modS+R     reload
+bindsym $mod+Q      kill
+bindsym $mod+V      layout toggle split
+bindsym $mod+W      exec $HOME/.local/scripts/waybar-reload
+bindsym $mod+D      exec $HOME/.local/scripts/wofi-launcher
+bindsym $mod+T      exec $term
+bindsym $mod+B      exec $browser
+bindsym $mod+E      exec $file-manager
+bindsym $mod+P      exec wlogout
+bindsym $mod+N      exec swaync-client -t -sw
+bindsym $modS+N     exec swaync-client -d -sw
+bindsym $mod+C      exec cliphist list | wofi -S dmenu --no-exec -p "copy"   | cliphist decode | wl-copy
+bindsym $modS+C     exec cliphist list | wofi -S dmenu --no-exec -p "delete" | cliphist delete
+bindsym $modC+C     exec rm -f ~/.cache/cliphist/db
+bindsym $mod+slash  split toggle
+bindsym $mod+F      fullscreen
+bindsym $mod+space  focus mode_toggle
+bindsym $modS+space floating toggle
+# bindsym $mod+z      layout stacking
+# bindsym $mod+w      layout tabbed
+# bindsym $mod+a      focus parent
 # }}}
 
 # Window rule {{{
@@ -98,8 +104,6 @@ set $display_laptop   eDP-1
 set $display_external DP-2
 
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-set $wallpaper $HOME/Pictures/wallpapers/fedora/montclair_dark.webp
-output * bg $wallpaper fill
 output $display_laptop resolution 1920x1080 position 0,0
 output $display_external resolution 2560x1440 position 1920,0
 
@@ -117,11 +121,6 @@ bindsym $mod+S mode "Monitor: [1], [2], [B]oth"
 
 bindsym $mod+comma  move workspace to output left
 bindsym $mod+period move workspace to output right
-
-# TODO audio equalizer
-# exec-once=easyeffects --gapplication-service	# https://github.com/JackHack96/EasyEffects-Presets.git
-
-
 #}}}
 
 # Screenshot {{{
@@ -132,22 +131,6 @@ bindsym Print            exec $HOME/.local/scripts/screenshot-selection-only-cli
 # }}}
 
 # Workspaces {{{
-# man sway
-# @TODO don't work
-bindsym $mod+slash  splith
-bindsym $modS+slash splitv
-bindsym $mod+F      fullscreen
-# Toggle the current focus between tiling and floating mode
-bindsym $modS+space floating toggle
-# Swap focus between the tiling area and the floating area
-bindsym $mod+space  focus mode_toggle
-
-# bindsym $mod+z layout stacking
-# bindsym $mod+w layout tabbed
-# Move focus to the parent container
-# bindsym $mod+a focus parent
-# floating_modifier $mod normal
-
 bindsym $mod+$left   focus left
 bindsym $mod+$down   focus down
 bindsym $mod+$up     focus up
@@ -254,9 +237,9 @@ bindsym $modS+M mode "Manager: [B]luetooth [W]ifi"
 # Media
 # man alsamixer
 # https://forum.manjaro.org/t/howto-set-up-the-audio-card-in-samsung-galaxy-book/37090
-bindsym XF86AudioMute        exec wpctl set-mute   @DEFAULT_AUDIO_SINK@ toggle
 bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
 bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioMute        exec wpctl set-mute   @DEFAULT_AUDIO_SINK@ toggle
 bindsym XF86AudioMicMute     exec wpctl set-mute   @DEFAULT_AUDIO_SOURCE@ toggle
 bindsym XF86AudioPlay        exec playerctl play-pause
 bindsym XF86AudioPrev        exec playerctl next
@@ -277,8 +260,8 @@ mode "Audio: [1-10], [M]ute, [H]igher, [L]ower, [P]lay/Stop, [J]Next, [K]Previou
   bindsym l exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
   bindsym m exec wpctl set-mute   @DEFAULT_AUDIO_SINK@ toggle; mode "default"
   bindsym p exec playerctl play-pause;                         mode "default"
-  bindsym j exec playerctl previous
-  bindsym k exec playerctl next
+  bindsym j exec playerctl previous;
+  bindsym k exec playerctl next;
   bindsym Return                                               mode "default"
   bindsym Escape                                               mode "default"
 }

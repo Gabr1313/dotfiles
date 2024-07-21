@@ -5,76 +5,88 @@
   border-radius: 0px;
   border: none;
   min-height: 0px;
+  color: #000000; 
 }
+
 window#waybar {
   background: rgba(0,0,0,0);
 }
+
 #workspaces {
-  color: #000000;
   background: linear-gradient(90deg, #5178c4, #7fbbe5, #5178c4);
   margin: 4px;
   padding: 4px;
   border-radius: 16px;
 }
+
 #workspaces button {
   padding: 0px 4px;
   margin: 0px 3px;
   border-radius: 16px;
-  color: #000000;
-  background: #e8e8e8;
+  background: #e0e0e0;
   opacity: 0.5;
 }
+
 #workspaces button.active, #workspaces button.visible {
   padding: 0px 4px;
   margin: 0px 3px;
   border-radius: 16px;
-  color: #000000;
-  background: #e8e8e8;
+  background: #e0e0e0;
   opacity: 1.0;
   min-width: 40px;
 }
-#workspaces button:hover {
-  border-radius: 16px;
-  color: #000000;
-  background: #dd6b9e;
-  opacity: 1;
-}
+
 tooltip {
   background: #000000;
   border: 1px solid #767676;
   border-radius: 12px;
 }
+
 tooltip label {
-  color: #e8e8e8;
+  color: #e0e0e0;
 }
-#window, #pulseaudio, #bluetooth, #cpu, 
-#backlight, #memory {
+
+#window, #pulseaudio, #bluetooth, #cpu, #backlight, #memory {
   margin: 4px 2px;
   padding: 0px 16px;
-  background: #e8e8e8;
-  color: #000000;
+  background: #e0e0e0;
   border-radius: 24px 10px 24px 10px;
 }
+
 #network, #battery, #submap, #mode, #idle_inhibitor,
 #custom-clipboard, #custom-notification, #tray, #custom-exit {
-  background: #e8e8e8;
-  color: #000000;
+  background: #e0e0e0;
   margin: 4px 2px;
   border-radius: 10px 24px 10px 24px;
   padding: 0px 16px;
 }
+
 #custom-startmenu {
-  color: #e8e8e8;
+  color: #e0e0e0;
   background: linear-gradient(90deg, #5178c4, #7fbbe5);
   font-size: 24px;
   margin: 0px;
   padding: 0px 35px 0px 15px;
   border-radius: 0px 0px 40px 0px;
 }
+
 #clock {
-  color: #e8e8e8;
+  color: #e0e0e0;
   background: linear-gradient(90deg, #7fbbe5, #5178c4);
   margin: 0px;
   padding: 0px 15px 0px 30px;
   border-radius: 0px 0px 0px 40px;
 }
+
+#window:hover, #pulseaudio:hover, #bluetooth:hover, #cpu:hover, #backlight:hover,
+#memory:hover, #network:hover, #battery:hover, #submap:hover, #mode:hover,
+#idle_inhibitor:hover, #custom-clipboard:hover, #custom-notification:hover,
+#tray:hover, #custom-exit:hover, #custom-startmenu:hover, #clock:hover {
+  background: #dd6b9e;
+}
+#workspaces button:hover {
+  color: #e0e0e0;
+  background: #dd6b9e;
+  opacity: 1;
+}
+

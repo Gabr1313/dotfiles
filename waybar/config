@@ -8,23 +8,23 @@
   "modules-center" : [ 
     // "hyprland/window",
     // "sway/window",
-    // "hyprland/workspaces", 
-    // "hyprland/submap", 
+    "hyprland/workspaces", 
+    "hyprland/submap", 
     "sway/workspaces", 
     "sway/mode",
   ],
   "modules-left" : [
-    "custom/startmenu",
-    "pulseaudio",
-    "pulseaudio#mic",
-    "bluetooth", 
-    "backlight",
-    "memory",
-    "cpu",
+     "custom/startmenu",
+     "pulseaudio",
+     "pulseaudio#mic",
+     "bluetooth", 
+     "backlight",
+     "memory",
+     "cpu",
   ],
   "modules-right" : [
     // "idle_inhibitor", // i don't use this
-    // "custom/clipboard", // not supported on fedora
+    "custom/clipboard", // not supported on fedora
     "custom/notification",
     "network",
     "tray",
@@ -187,12 +187,12 @@
     "escape": true
   },
   "custom/clipboard": {
-      "format": "🄯",
+      "format": "󱛣",
       "interval": "once",
       "return-type": "json",
-      "on-click": "swaymsg -q exec '$clipboard'",
-      "on-click-right": "swaymsg -q exec '$clipboard-del'",
-      "on-click-middle": "swaymsg -q exec '$clipboard-del-all'",
+      "on-click": "cliphist list | wofi -S dmenu --no-exec -p 'copy'   | cliphist decode | wl-copy",
+      "on-click-right": "cliphist list | wofi -S dmenu --no-exec -p 'delete' | cliphist delete",
+      "on-click-middle": "rm -f ~/.cache/cliphist/db",
       "exec": "printf '{\"tooltip\":\"%s\"}' $(cliphist list | wc -l)",
    },
 }
