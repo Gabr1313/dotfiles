@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 SSPATH=$HOME/Pictures/Screenshots/screenshot-$(date +%y%m%d-%H%M%S).png
-# # Hyprland
-# grim -o $(hyprctl monitors -j | jq -r '.[] | select(.focused) | .name') $SSPATH
-# Sway
-grim -o $(swaymsg -t get_outputs  | jq -r '.[] | select(.focused) | .name') $SSPATH
+
+if [[ "$XDG_CURRENT_DESKTOP" == "Hyprland" ]] ; then
+  grim -o $(hyprctl monitors -j | jq -r '.[] | select(.focused) | .name') $SSPATH
+elif [[ "$XDG_CURRENT_DESKTOP" == "sway" ]] ; then
+  grim -o $(swaymsg -t get_outputs  | jq -r '.[] | select(.focused) | .name') $SSPATH
+fi
+
 wl-copy <$SSPATH

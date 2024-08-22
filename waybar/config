@@ -81,6 +81,7 @@
     "tooltip-format": "{ipaddr}/{cidr}\n{bandwidthUpBits} up\n{bandwidthDownBits} down",
     "format-disconnected": "󰤮",
     "on-click": "$HOME/.local/scripts/wifi-toggle",
+    "on-click-right": "nm-connection-editor",
     "interval": 1,
   },
 

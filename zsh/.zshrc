@@ -90,11 +90,10 @@ if command -v eza &> /dev/null ; then
   alias tree='eza --tree --icons --group-directories-first'
 fi
 
-if command -v bat &> /dev/null ; then
-  alias cat='bat -pp'
-elif command -v batcat &> /dev/null ; then
-  alias cat='batcat -pp'
+if command -v batcat &> /dev/null ; then
+  alias bat='batcat'
 fi
+alias cat='bat -pp'
 
 cd () { # ls after cd
   if [ -n "$1" ]; then

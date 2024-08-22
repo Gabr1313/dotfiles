@@ -9,13 +9,18 @@ sudo nala install bat btop curl fzf gcc kitty neovim ripgrep tldr zsh python3 rs
 
 # Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+mkdir $HOME/gitclone
+mv $HOME/.oh-my-zsh $HOME/gitclone/oh-my-zsh
+ln -s $(pwd)/gitclone/oh-my-zsh $HOME/.oh-my-zsh
 rm $HOME/.zshrc
-ln -s $(pwd)/zsh/.zshrc $HOME/.zshrc
-git clone https://github.com/sindresorhus/pure.git $HOME/.oh-my-zsh/custom/themes/pure
+git clone https://github.com/sindresorhus/pure.git             $HOME/github/pure
+git clone https://github.com/zsh-users/zsh-autosuggestions     $HOME/gitclone/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting $HOME/gitclone/zsh-syntax-highlighting
 mv $HOME/.oh-my-zsh/custom/themes/pure/pure.zsh $HOME/.oh-my-zsh/custom/themes/pure/pure.zsh.old
-ln -s $(pwd)/zsh/pure.zsh $HOME/.oh-my-zsh/custom/themes/pure/pure.zsh
-git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+ln -s $HOME/github/pure                         $HOME/.oh-my-zsh/custom/themes/pure
+ln -s $(pwd)/zsh/pure.zsh                       $HOME/.oh-my-zsh/custom/themes/pure/pure.zsh
+ln -s $HOME/gitclone/zsh-autosuggestions        $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+ln -s $HOME/gitclone/zsh-syntax-highlighting    $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 chsh -s $(which zsh)
 
 # Basics
@@ -24,7 +29,7 @@ ln -s $(pwd)/btop           $HOME/.config/btop
 ln -s $(pwd)/kitty          $HOME/.config/kitty
 ln -s $(pwd)/nvim           $HOME/.config/nvim
 ln -s $(pwd)/utils/scripts/ $HOME/.local/scripts
-ln -s $(pwd)/help/    $HOME/help
+ln -s $(pwd)/help/          $HOME/help
 
 # Sway / Hyprland
 ln -s $(pwd)/waybar  $HOME/.config/waybar
@@ -65,38 +70,49 @@ sudo ln -s $(pwd)/snapper/system/snapper-timeline.timer /lib/systemd/system/snap
 sudo ln -s $(pwd)/snapper/system/snapper-boot.timer     /lib/systemd/system/snapper-boot.timer
 sudo ln -s $(pwd)/snapper/system/snapper-cleanup.timer  /lib/systemd/system/snapper-cleanup.timer
 
-# Hyprland on Debian-testing
+# Hyprland on Debian-testing (hope it will be useless in a short period of time: it is on unstable!)
 sudo nala install libpugixml-dev libzip-dev librsvg2-dev libtomlplusplus-dev libghc-gi-pango-dev \
-                  libxcb-errors-dev build-essential git ninja-build meson libhyprlang-dev
+                  libxcb-errors-dev build-essential git ninja-build meson libhyprlang-dev hyprpaper \
+                  libxcursor-dev
 sudo apt-get build-dep wlroots
+cd $HOME/gitclone/
 git clone --recursive https://github.com/hyprwm/Hyprland
+git clone             https://github.com/hyprwm/hyprcursor.git
+git clone             https://github.com/hyprwm/hyprwayland-scanner.git
+git clone             https://github.com/hyprwm/aquamarine.git
+git clone             https://github.com/hyprwm/hyprutils.git
+
 mkdir Hyprland/dependencies
-cd Hyprland/dependencies
-# git clone https://github.com/hyprwm/hyprutils.git
-# cd hyprutils
-# cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -S . -B ./build
-# cmake --build ./build --config Release --target all -j`nproc 2>/dev/null || getconf _NPROCESSORS_CONF`
-# sudo cmake --install build
-# cd ..
-# git clone https://github.com/hyprwm/hyprlang.git
-# cd hyprlang
-# cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -S . -B ./build
-# cmake --build ./build --config Release --target hyprlang -j`nproc 2>/dev/null || getconf _NPROCESSORS_CONF`
-# sudo cmake --install ./build
-# cd ..
-git clone https://github.com/hyprwm/hyprcursor.git
-cd hyprcursor
+ln -s $(pwd)/hyprcursor          Hyprland/dependencies/hyprcursor
+ln -s $(pwd)/hyprwayland-scanner Hyprland/dependencies/hyprwayland-scanner
+ln -s $(pwd)/aquamarine          Hyprland/dependencies/aquamarine
+ln -s $(pwd)/hyprutils           Hyprland/dependencies/hyprutils
+
+# cd $HOME/gitclone/
+cd    Hyprland/dependencies/hyprcursor
+git   pull
 cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -S . -B ./build
 cmake --build ./build --config Release --target all -j`nproc 2>/dev/null || getconf _NPROCESSORS_CONF`
-sudo cmake --install build
-cd ..
-git clone https://github.com/hyprwm/hyprwayland-scanner.git
-cd hyprwayland-scanner
+sudo  cmake --install build
+cd    ../hyprwayland-scanner
+git   pull
 cmake -DCMAKE_INSTALL_PREFIX=/usr -B build
 cmake --build build -j `nproc`
-sudo cmake --install build
-cd ..
-meson subprojects update --reset
-meson setup build
-ninja -C build
-sudo ninja -C build install
+sudo  cmake --install build
+cd    ../aquamarine
+git   pull
+cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -S . -B ./build
+cmake --build ./build --config Release --target all -j`nproc 2>/dev/null || getconf _NPROCESSORS_CONF`
+sudo  cmake --install build
+cd    ../hyprutils
+git   pull
+cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -S . -B ./build
+cmake --build ./build --config Release --target all -j`nproc 2>/dev/null || getconf _NPROCESSORS_CONF`
+sudo  cmake --install build
+
+cd    ../..
+git   pull
+meson subprojects update --reset # ?
+sudo  meson setup --reconfigure build
+sudo  ninja -C build
+sudo  ninja -C build install

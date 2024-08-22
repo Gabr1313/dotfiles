@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-STATUS=`hyprctl monitors -j | jq -r '.[] | select(.lastwindowtitle="hyprctl workspaces -j") | .dpmsStatus'`
+STATUS=`hyprctl monitors -j | jq --arg monitor $1 -r '.[] | select(.name==$monitor) | .dpmsStatus'`
 
 if [[ $STATUS == *"false"* ]]
 then

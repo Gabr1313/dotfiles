@@ -24,6 +24,16 @@ sudo nvim /lib/systemd/system/snapper-boot.timer
 sudo nvim /lib/systemd/system/snapper-timeline.timer
 sudo nvim /etc/apt/apt.conf.d/80snapper # Debian (should be there by default)
 
+# Maintenance
+sudo btrfs-assistant # set maintenance balance, scrub and defrag once a month
+    # cleanup: automatic (see config) or ...
+    sudo snapper cleanup number
+    sudo snapper cleanup all
+    # checksum (better once a week)
+    sudo btrfs scrub start /
+    # balance
+    sudo btrfs balance start -musage=50 -dusage=50 /
+
 # mnt
 sudo btrfs subv list /  
 ls /home/.snapshots/<N>/snapshot/<user>/
@@ -40,19 +50,9 @@ sudo update-grub
 sudo btrfs prop get -ts /
 # answer (read-only): ro=false
 
-# cleanup: automatic (see config) or ...
-sudo snapper cleanup number
-sudo snapper cleanup all
-
 # disk usage
 df -h
 sudo btrfs fi du -s /
 sudo btrfs fi du -s /home
 sudo btrfs fi df -h /
 sudo btrfs fi df -h /home
-
-# checksum (better once a week)
-sudo btrfs scrub start /
-
-# balance
-sudo btrfs balance start -musage=50 -dusage=50 /

@@ -1,5 +1,5 @@
 sudo apt install zram-tools
-sudo nano /etc/default/zramswap
+sudo nvim /etc/default/zramswap
 sudo systemctl enable zramswap.service
 
 sudo systemctl disable zramswap.service
