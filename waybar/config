@@ -24,7 +24,7 @@
   ],
   "modules-right" : [
     // "idle_inhibitor", // i don't use this
-    "custom/clipboard", // not supported on fedora
+    "custom/clipboard", // not supported on Fedora
     "custom/notification",
     "network",
     "tray",
@@ -163,8 +163,10 @@
   },
   "custom/startmenu" : {
     "tooltip" : false,
-    // "format" : "",
-    "format" : "",
+    // "format" : "",
+    "format" : "{}",
+    "interval": "once",
+    "exec" : "$HOME/.local/scripts/wayland-logo.sh",
     "on-click" : "$HOME/.local/scripts/wofi-launcher",
   },
   "custom/notification" : {
@@ -188,12 +190,14 @@
     "escape": true
   },
   "custom/clipboard": {
-      "format": "󱛣",
-      "interval": "once",
-      "return-type": "json",
+      "format": "󱛣 {}",
+      "exec": "$HOME/.local/scripts/cliphist-lc.sh",
       "on-click": "cliphist list | wofi -S dmenu --no-exec -p 'copy'   | cliphist decode | wl-copy",
       "on-click-right": "cliphist list | wofi -S dmenu --no-exec -p 'delete' | cliphist delete",
       "on-click-middle": "rm -f ~/.cache/cliphist/db",
-      "exec": "printf '{\"tooltip\":\"%s\"}' $(cliphist list | wc -l)",
+      // "return-type": "json",
+      // "exec": "printf '{\"tooltip\":\"%s\"}' $(cliphist list | wc -l)",
+      // "interval": 1,
+      "interval": "once",
    },
 }

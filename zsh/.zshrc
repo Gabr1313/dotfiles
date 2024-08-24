@@ -83,7 +83,7 @@ export export QT_QPA_PLATFORMTHEME=gtk3
 alias v='nvim'
 alias f='. $HOME/.local/scripts/cd-fzf'
 alias g='find | fzf | xargs -r $EDITOR'
-# alias h='Hyprland'
+alias update='sudo nala update && sudo nala upgrade -y'
 
 if command -v eza &> /dev/null ; then
   alias ls='eza --icons --group-directories-first'
@@ -93,7 +93,7 @@ fi
 if command -v batcat &> /dev/null ; then
   alias bat='batcat'
 fi
-alias cat='bat -pp'
+alias cat='bat'
 
 cd () { # ls after cd
   if [ -n "$1" ]; then

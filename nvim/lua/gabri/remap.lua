@@ -3,7 +3,7 @@ vim.g.mapleader = " "
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set({ "n", "v" }, "<BS>", "<Nop>", { silent = true })
 vim.keymap.set("c", "<C-n>", "<C-f>", { desc = "Esc" })
-vim.keymap.set({ "t" }, "<Esc>", "<c-\\><c-n>", { silent = true, desc = "[Esc] terminal"})
+vim.keymap.set({ "t" }, "<Esc>", "<c-\\><c-n>", { silent = true, desc = "[Esc] terminal" })
 
 vim.keymap.set("n", "<C-/>", function()
     if vim.api.nvim_get_option('hlsearch') == true then
@@ -11,7 +11,7 @@ vim.keymap.set("n", "<C-/>", function()
     else
         vim.api.nvim_set_option('hlsearch', true)
     end
-end, { desc = "No Highlight" })
+end, { desc = "Highlight toggle" })
 
 vim.keymap.set("n", "<leader>cd", "<cmd>cd %:h<CR>", { silent = true, desc = "Change directory" })
 
