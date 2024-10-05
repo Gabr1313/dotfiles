@@ -14,11 +14,7 @@ vim.keymap.set("n", "<C-/>", function()
 end, { desc = "Highlight toggle" })
 
 vim.keymap.set("n", "<leader>cd", "<cmd>cd %:h<CR>", { silent = true, desc = "Change directory" })
-
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Window [h]' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Window [l]' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Window [j]' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Window [k]' })
+vim.keymap.set("n", "<leader><leader>", [[<cmd>%s/\s\+$//e<CR>]], { desc = "Remove trailing spaces" })
 
 vim.keymap.set("n", "J", "mzJ`z", { desc = "[J]oin line" })
 

@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export BROWSER="$HOME/.local/bin/zen-specific.AppImage"
 export ZSH=$HOME/.oh-my-zsh
 export PATH="$HOME/.local/bin":$PATH
 export PATH="$HOME/.local/scripts/":$PATH
@@ -61,7 +62,8 @@ zstyle ':omz:update' mode disabled      # auto, disabled, reminder
 plugins=(
     git
     dirhistory
-    #not default but custom ones
+    fzf
+    # custom
     zsh-syntax-highlighting
     zsh-autosuggestions
 )
@@ -97,15 +99,14 @@ alias cat='bat'
 
 cd () { # ls after cd
   if [ -n "$1" ]; then
-    builtin cd "$@" && ls
+    builtin cd "$@" && ls -a
   else
-    builtin cd ~ && ls
+    builtin cd ~ && ls -a
   fi
 }
 
-# use vim commands on terminal
-KEYTIMEOUT=1 # min time, so there is almost no delay when pressing esc 
-bindkey -v
+# bindkey -v   # use vim commands on terminal
+# KEYTIMEOUT=1 # min delay pressing ESC 
 bindkey "^Y" dirhistory_zle_dirhistory_up
 bindkey "^N" dirhistory_zle_dirhistory_future
 bindkey "^P" dirhistory_zle_dirhistory_back

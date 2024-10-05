@@ -7,7 +7,7 @@
 {
     "label" : "logout",
     "action" : "$HOME/.local/scripts/wlogout-wrapped", 
-    "text" : "Logout",
+    "text" : "Exit",
     "keybind" : "e"
 }
 {

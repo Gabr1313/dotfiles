@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 sudo nala install bat btop curl fzf gcc kitty neovim ripgrep tldr zsh python3 rsync fd-find make \
-                  inotify-tools git unzip fd-find fastfetch eza \
+                  inotify-tools git gh unzip fd-find fastfetch eza \
                   snapper distrobox build-essential gdb kcachegrind massif-visualizer \
-	          hyperfine feh ffmpeg \
+                  qalculate-gtk hyperfine feh ffmpeg vlc\
                   sway sway-notification-center waybar pavucontrol wofi rfkill blueman \
                   gammastep brightnessctl slurp grim wl-clipboard cliphist wlogout swaylock \
                   playerctl
@@ -16,6 +16,7 @@ rm $HOME/.zshrc
 git clone https://github.com/sindresorhus/pure.git             $HOME/github/pure
 git clone https://github.com/zsh-users/zsh-autosuggestions     $HOME/gitclone/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting $HOME/gitclone/zsh-syntax-highlighting
+
 mv $HOME/.oh-my-zsh/custom/themes/pure/pure.zsh $HOME/.oh-my-zsh/custom/themes/pure/pure.zsh.old
 ln -s $HOME/github/pure                         $HOME/.oh-my-zsh/custom/themes/pure
 ln -s $(pwd)/zsh/pure.zsh                       $HOME/.oh-my-zsh/custom/themes/pure/pure.zsh

@@ -7,3 +7,5 @@ vim.keymap.set("n", "<leader>RA", "<cmd>wall<CR><cmd>!gcc -Ofast %<CR><cmd>!./a.
 -- 	{ desc = '[C]omment assert' })
 -- vim.keymap.set("n", "<leader>rC", [[<cmd>%s/^\(\s*\)\/\/ assert/\1assert<CR>]],
 -- 	{ desc = 'un[C]omment assert' })
+vim.keymap.set("n", "<leader>cc", "<cmd>e %:r.c<CR>", { desc = '[C] open .[c]' })
+vim.keymap.set("n", "<leader>ch", "<cmd>e %:r.h<CR>", { desc = '[C] open .[h]' })
