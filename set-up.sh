@@ -6,6 +6,7 @@ sudo nala install bat btop curl fzf gcc kitty neovim ripgrep tldr zsh python3 rs
                   sway sway-notification-center waybar pavucontrol wofi rfkill blueman \
                   gammastep brightnessctl slurp grim wl-clipboard cliphist wlogout swaylock \
                   playerctl
+                  # texlive # texlive-science texlive-full
 
 # Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

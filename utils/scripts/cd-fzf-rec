@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# todo: see kitty-sessionizer
+
+folders="$(pwd)"
+
+selected=$(find -L $(eval echo $folders) -mindepth 1 -type d | fzf)
+if ! [[ -z $selected ]]; then
+    cd $selected
+fi

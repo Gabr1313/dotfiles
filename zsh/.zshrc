@@ -1,10 +1,11 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export BROWSER="$HOME/.local/bin/zen-specific.AppImage"
+export BROWSER="$HOME/.local/share/AppImage/ZenBrowser.AppImage"
 export ZSH=$HOME/.oh-my-zsh
 export PATH="$HOME/.local/bin":$PATH
 export PATH="$HOME/.local/scripts/":$PATH
 export PATH="/usr/sbin/":$PATH
+export EDITOR="nvim"
 
 fpath+=($HOME/.oh-my-zsh/custom/themes/pure/)
 autoload -U promptinit; promptinit
@@ -82,10 +83,12 @@ export MAN_POSIXLY_CORRECT=""
 export export QT_QPA_PLATFORMTHEME=gtk3
 
 # For a full list of active aliases, run `alias`.
-alias v='nvim'
-alias f='. $HOME/.local/scripts/cd-fzf'
-alias g='find | fzf | xargs -r $EDITOR'
-alias update='sudo nala update && sudo nala upgrade -y'
+alias v='$EDITOR'
+alias f='. $HOME/.local/scripts/cd-fzf'      # find dir
+alias fr='. $HOME/.local/scripts/cd-fzf-rec' # find dir  recursive
+alias ff='find | fzf'                        # find file
+alias fe='find | fzf | xargs -r $EDITOR'     # find file and edit
+alias update='sudo nala update && sudo nala upgrade --full -y'
 
 if command -v eza &> /dev/null ; then
   alias ls='eza --icons --group-directories-first'
@@ -95,7 +98,7 @@ fi
 if command -v batcat &> /dev/null ; then
   alias bat='batcat'
 fi
-alias cat='bat'
+alias cat='bat -pp'
 
 cd () { # ls after cd
   if [ -n "$1" ]; then

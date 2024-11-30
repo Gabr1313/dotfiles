@@ -3,9 +3,13 @@ install ssh and sshd
 systemctl start sshd.service
 systemctl enable sshd.service
 
+# firewall to disable?
+firewall-cmd --permanent --zone=public --add-service=ssh
+firewall-cmd --reload
+
 # for automatic login
-vi .ssh/authorized_keys
-# and add the id_rsa.pub that is on the connecting device
+# add the id_rsa.pub that is on the client
+# to ~/.ssh/authorized_keys on the server
 
 ssh user@server_name
 

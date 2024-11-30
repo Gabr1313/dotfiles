@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+vim.keymap.set({ "n", "v", "i"  }, "<F1>", "<Esc>", { silent = true })
 vim.keymap.set({ "n", "v" }, "<BS>", "<Nop>", { silent = true })
 vim.keymap.set("c", "<C-n>", "<C-f>", { desc = "Esc" })
 vim.keymap.set({ "t" }, "<Esc>", "<c-\\><c-n>", { silent = true, desc = "[Esc] terminal" })

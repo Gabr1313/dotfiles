@@ -141,24 +141,19 @@ fn get_input_files(dir: &PathBuf) -> Result<Vec<PathBuf>> {
 }
 
 fn cmd_args<'a>(file_name: &'a str, release: bool, warning: bool) -> Vec<&'a str> {
-    let mut args = if release {
-        vec!["-Ofast", file_name]
+    let mut args = vec!["-std=c++20", file_name];
+    if release {
+        args.append(&mut ["-Ofast"].to_vec());
     } else {
-        vec![
-            "-O0",
-            "-fsanitize=address,undefined",
-            "-DDEBUG",
-            "-g",
-            file_name,
-        ]
-    };
+        args.append(&mut ["-O0", "-fsanitize=address,undefined", "-DDEBUG", "-g3"].to_vec());
+    }
     if warning {
         args.append(
             &mut [
                 "-Wall",
                 "-Wextra",
                 "-Wno-sign-conversion",
-                // "-Wshadow",
+                "-Wshadow",
                 "-D_GLIBCXX_ASSERTIONS",
                 "-fmax-errors=2",
             ]
@@ -277,7 +272,11 @@ fn run(binary: &str, input_file: &PathBuf, file_number: Option<usize>) -> Result
 }
 
 fn print_cool<W: Write>(mid: &str, stdout: &mut W) -> Result<()> {
-    let col = if let Some((w, _)) = term_size::dimensions() { w } else { 100 };
+    let col = if let Some((w, _)) = term_size::dimensions() {
+        w
+    } else {
+        100
+    };
     let occupied = 4 + mid.len();
     let n1 = if occupied >= col {
         0

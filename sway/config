@@ -8,14 +8,14 @@ exec nm-applet
 # exec blueman-applet
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec wl-paste --watch cliphist store
-# exec udiskie -an -f nautilus	
 set $wallpaper $HOME/Pictures/wallpapers/fedora/montclair_dark.webp
 output * bg $wallpaper fill
+# exec udiskie -an -f nautilus
 #}}}
 
 # Mod {{{
-# mod1 = alt, mod4 = super
-set $mod  Mod1
+# Mod1 = alt, Mod4 = super
+set $mod  Mod4
 set $modS $mod+Shift
 set $modC $mod+Ctrl
 #}}}
@@ -26,17 +26,19 @@ set $down         j
 set $up           k
 set $right        l
 set $term         kitty
-set $browser      firefox
+set $browser      $HOME/.local/bin/zen-specific.AppImage
 set $file-manager nautilus
+set $display_laptop   eDP-1
+set $display_external DP-2
 #}}}
 
-# Config {{{
-# man sway-input
+# man sway-input {{{
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # man 5 sway-input
 input type:keyboard {
     xkb_layout   us,it
-    xkb_options  grp:alt_caps_toggle
+                 # swap SUPER-ALT    swap CAPS-ESC   ALT-CAPS to toggle layout
+    xkb_options  grp:alt_caps_toggle,caps:swapescape,altwin:swap_alt_win
     repeat_rate  64
     repeat_delay 200
 }
@@ -60,7 +62,7 @@ default_border          pixel 2
 default_floating_border pixel 2
 #              (border)  (bg)      (text)    indicator  real border
 client.focused "#000000" "#000000" "#ffffff" "#7fbbe5"  "#7fbbe5"
-# client.unfocused "#2c3038" "#2c3038" "#2c3038" 
+# client.unfocused "#2c3038" "#2c3038" "#2c3038"
 # font pango: JetBrainsMono Nerd Font 14px
 gaps inner 8
 # }}}
@@ -91,17 +93,15 @@ bindsym $modS+space floating toggle
 # }}}
 
 # Window rule {{{
-for_window [app_id="pavucontrol"]     floating enable
-for_window [app_id="keymapp"]         floating enable
-for_window [app_id="blueman-manager"] floating enable
+# for_window [app_id="pavucontrol"]     floating enable
+# for_window [app_id="keymapp"]         floating enable
+# for_window [app_id="blueman-manager"] floating enable
 # for_window [app_id="spotify"]         floating enable
 # }}}
 
-# Screen {{{
+# Monitors {{{
 # man sway
 # Devices
-set $display_laptop   eDP-1
-set $display_external DP-2
 
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 output $display_laptop resolution 1920x1080 position 0,0
@@ -169,7 +169,7 @@ bindsym $mod+down  resize grow   height 20px
 bindsym $mod+up    resize shrink height 20px
 bindsym $mod+right resize grow   width  20px
 bindsym $mod+left  resize shrink width  20px
-mode "resize" {
+mode "resize [H] [J] [K] [L]" {
     bindsym $down  resize grow   height 20px
     bindsym $up    resize shrink height 20px
     bindsym $right resize grow   width  20px
@@ -178,7 +178,7 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym $mod+r mode "resize [H] [J] [K] [L]"
 # }}}
 
 # Gammastep {{{
@@ -239,7 +239,7 @@ bindsym $modS+M mode "Manager: [B]luetooth [W]ifi"
 # https://forum.manjaro.org/t/howto-set-up-the-audio-card-in-samsung-galaxy-book/37090
 bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
 bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
-bindsym XF86AudioMute        exec wpctl set-mute   @DEFAULT_AUDIO_SINK@ toggle
+bindsym XF86AudioMute        exec wpctl set-mute   @DEFAULT_AUDIO_SINK@   toggle
 bindsym XF86AudioMicMute     exec wpctl set-mute   @DEFAULT_AUDIO_SOURCE@ toggle
 bindsym XF86AudioPlay        exec playerctl play-pause
 bindsym XF86AudioPrev        exec playerctl next

@@ -12,7 +12,7 @@ return {
                 auto_install = true,
                 highlight = {
                     enable = true,
-                    disable = { "latex" },
+                    disable = { "tex", "latex" },
                     -- additional_vim_regex_highlighting = { "markdown" },
                 },
                 indent = {

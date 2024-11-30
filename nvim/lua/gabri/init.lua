@@ -50,6 +50,8 @@ autocmd('LspAttach', {
 
         vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = '[L]sp [F]ormat' })
         vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<CR>", { desc = '[L]sp [R]estart' })
+        vim.keymap.set("n", "<leader>ls", "<cmd>LspStop<CR>", { desc = '[L]sp [S]top' })
+        vim.keymap.set("n", "<leader>lS", "<cmd>LspStart<CR>", { desc = '[L]sp [S]tart' })
     end
 })
 
