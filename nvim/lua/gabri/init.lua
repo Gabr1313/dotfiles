@@ -48,13 +48,20 @@ autocmd('LspAttach', {
         vim.keymap.set('n', '<leader>fsw', require('telescope.builtin').lsp_dynamic_workspace_symbols,
             { buffer = bufnr, desc = '[F]zf [S]ymbol [W]orkspace' })
 
+        local function toggle_diagnostics()
+            if vim.diagnostic.is_disabled() then
+                vim.diagnostic.enable()
+            else
+                vim.diagnostic.disable()
+            end
+        end
+
+        vim.diagnostic.disable()
+        vim.keymap.set("n", "<leader>ld", toggle_diagnostics, { desc = '[L]sp toggle [D]iagnostic' })
         vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = '[L]sp [F]ormat' })
         vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<CR>", { desc = '[L]sp [R]estart' })
-        vim.keymap.set("n", "<leader>ls", "<cmd>LspStop<CR>", { desc = '[L]sp [S]top' })
-        vim.keymap.set("n", "<leader>lS", "<cmd>LspStart<CR>", { desc = '[L]sp [S]tart' })
     end
 })
-
 
 -- local notify = vim.notify
 -- vim.notify = function(msg, ...)
