@@ -15,7 +15,10 @@ vim.keymap.set("n", "<C-/>", function()
 end, { desc = "Highlight toggle" })
 
 vim.keymap.set("n", "<leader>cd", "<cmd>cd %:h<CR>", { silent = true, desc = "Change directory" })
-vim.keymap.set("n", "<leader><leader>", [[<cmd>%s/\s\+$//e<CR>]], { desc = "Remove trailing spaces" })
+vim.keymap.set("n", "<leader>t", [[<cmd>%s/\s\+$//e<CR>]], { desc = "Remove trailing spaces" })
+vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>", { desc = "Lua execute file" })
+vim.keymap.set("n", "<leader>x", ":.lua<CR>", { desc = "Lua execute line" })
+vim.keymap.set("v", "<leader>x", ":lua<CR>", { desc = "Lua execute highlighted" })
 
 vim.keymap.set("n", "J", "mzJ`z", { desc = "[J]oin line" })
 
@@ -42,8 +45,8 @@ vim.keymap.set("n", "<C-Left>", "4<C-w><", { desc = "Change window smaller horiz
 vim.keymap.set("n", "<leader>se", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "[S]ubsitute [E]nd" })
 vim.keymap.set("n", "<leader>sb", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], { desc = "[S]ubsitute [B]eginning" })
 
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR><CR>", { desc = "E[x]ecutable" })
-vim.keymap.set("n", "<leader>X", "<cmd>!chmod -x %<CR><CR>", { desc = "No E[x]ecutable" })
+vim.keymap.set("n", "<leader>cx", "<cmd>!chmod +x %<CR>", { desc = "E[x]ecutable" })
+vim.keymap.set("n", "<leader><leader>cx", "<cmd>!chmod -x %<CR>", { desc = "No E[x]ecutable" })
 
 vim.keymap.set("x", "<", "<gv", { desc = "Indent left" })
 vim.keymap.set("x", ">", ">gv", { desc = "Indent right" })
@@ -71,7 +74,13 @@ vim.keymap.set("n", "<leader>w", function()
 end, { desc = "[W]rap toggle" })
 
 vim.keymap.set("i", "<C-space>{", "{}<Left>", { desc = "Autopair {}" })
+vim.keymap.set("i", "<C-space>}", "{\n}<ESC><S-O>", { desc = "Autopair {\\n}" })
 vim.keymap.set("i", "<C-space>[", "[]<Left>", { desc = "Autopair []" })
+vim.keymap.set("i", "<C-space>]", "[\n]<ESC><S-O>", { desc = "Autopair [\\n]" })
 vim.keymap.set("i", "<C-space>(", "()<Left>", { desc = "Autopair ()" })
+vim.keymap.set("i", "<C-space>)", "(\n)<ESC><S-O>", { desc = "Autopair (\\n)" })
+vim.keymap.set("i", "<C-space><", "<><Left>", { desc = "Autopair <>" })
+vim.keymap.set("i", "<C-space>>", "<\n><ESC><S-O>", { desc = "Autopair <\\n>" })
 vim.keymap.set("i", "<C-space>\"", "\"\"<Left>", { desc = "Autopair \"\"" })
-vim.keymap.set("i", "<C-space>(", "''<Left>", { desc = "Autopair ''" })
+vim.keymap.set("i", "<C-space>'", "''<Left>", { desc = "Autopair ''" })
+vim.keymap.set("i", "<C-space>`", "``<Left>", { desc = "Autopair ``" })
