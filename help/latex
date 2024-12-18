@@ -37,3 +37,32 @@ let x = 4;
 \footnote{footnote content}
 
 \end{document}
+
+
+# stop updating 
+echo "<package-name> hold"    | sudo dpkg --set-selections
+# restart updating 
+echo "<package-name> install" | sudo dpkg --set-selections
+# list what is happening
+dpkg --get-selections " | rg hold
+
+# what I have done
+echo "latex-cjk-all hold" | sudo dpkg --set-selections
+echo "latex-cjk-chinese hold" | sudo dpkg --set-selections
+echo "latex-cjk-chinese-arphic-bkai00mp hold" | sudo dpkg --set-selections
+echo "latex-cjk-chinese-arphic-bsmi00lp hold" | sudo dpkg --set-selections
+echo "latex-cjk-chinese-arphic-gbsn00lp hold" | sudo dpkg --set-selections
+echo "latex-cjk-chinese-arphic-gkai00mp hold" | sudo dpkg --set-selections
+echo "latex-cjk-common hold" | sudo dpkg --set-selections
+echo "latex-cjk-japanese hold" | sudo dpkg --set-selections
+echo "latex-cjk-japanese-wadalab hold" | sudo dpkg --set-selections
+echo "latex-cjk-korean hold" | sudo dpkg --set-selections
+echo "latex-cjk-thai hold" | sudo dpkg --set-selections
+echo "liblatex-tounicode-perl hold" | sudo dpkg --set-selections
+echo "preview-latex-style hold" | sudo dpkg --set-selections
+echo "texlive-latex-base hold" | sudo dpkg --set-selections
+echo "texlive-latex-base-doc hold" | sudo dpkg --set-selections
+echo "texlive-latex-extra hold" | sudo dpkg --set-selections
+echo "texlive-latex-extra-doc hold" | sudo dpkg --set-selections
+echo "texlive-latex-recommended hold" | sudo dpkg --set-selections
+echo "texlive-latex-recommended-doc hold" | sudo dpkg --set-selections
