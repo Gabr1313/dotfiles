@@ -19,6 +19,7 @@ gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-9" "['<Super
 gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-10" "['<Super>0']"
 gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-10" "['<Super><Shift>0']"
 gsettings set org.gnome.mutter overlay-key ""
+gsettings set org.gnome.SessionManager logout-prompt false
 
 sudo nvim /etc/gdm3/greeter.dconf-defaults
 # change `sleep-inactiva-ac-type="blank"`
