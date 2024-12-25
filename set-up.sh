@@ -26,12 +26,12 @@ ln -s $HOME/gitclone/zsh-syntax-highlighting    $HOME/.oh-my-zsh/custom/plugins/
 chsh -s $(which zsh)
 
 # Basics
-ln -s $(pwd)/set-up.sh      $HOME/.set-up.sh
-ln -s $(pwd)/btop           $HOME/.config/btop
-ln -s $(pwd)/kitty          $HOME/.config/kitty
-ln -s $(pwd)/nvim           $HOME/.config/nvim
-ln -s $(pwd)/utils/scripts/ $HOME/.local/scripts
-ln -s $(pwd)/help/          $HOME/help
+ln -s $(pwd)/help/     $HOME/help
+ln -s $(pwd)/scripts/  $HOME/scripts
+ln -s $(pwd)/set-up.sh $HOME/.set-up.sh
+ln -s $(pwd)/btop      $HOME/.config/btop
+ln -s $(pwd)/kitty     $HOME/.config/kitty
+ln -s $(pwd)/nvim      $HOME/.config/nvim
 
 # Sway / Hyprland
 ln -s $(pwd)/waybar  $HOME/.config/waybar
@@ -53,8 +53,8 @@ ln -s $(pwd)/tmux    $HOME/.config/tmux
 ln -s $(pwd)/zathura $HOME/.config/zathura
 
 # Gnome
-dconf load / <$(pwd)/dconf-settings.ini             # load settings
-dconf dump / >projects/.dotfiles/dconf-settings.ini # save settings
+dconf load / <$(pwd)/dconf-settings.ini # load settings
+dconf dump / >$(pwd)/dconf-settings.ini # save settings
 sudo cp /home/gabri/.config/monitors.xml /var/lib/gdm3/.config/monitors.xml
 
 # Snapper (only for home directory, change the first part for root)
