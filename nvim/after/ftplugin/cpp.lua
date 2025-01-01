@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 vim.keymap.set("n", "<leader>re", "<cmd>wa<CR><cmd>!cpp-io %<CR>",      { desc = 'cpp [R]un [E]xe' })
 vim.keymap.set("n", "<leader>rw", "<cmd>wa<CR><cmd>!cpp-io -w %<CR>",   { desc = 'cpp [R]un [W]arning' })
 vim.keymap.set("n", "<leader>ro", "<cmd>wa<CR><cmd>!cpp-io -o %<CR>",   { desc = 'cpp [R]un [O]ouput' })

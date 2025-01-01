@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 vim.keymap.set("n", "<leader>re", "<cmd>wall<CR><cmd>!rust-io %<CR>", { desc = '[R]un [E]xe' })
 vim.keymap.set("n", "<leader>ro", "<cmd>wall<CR><cmd>!rust-io -o %<CR>", { desc = '[R]un [O]ouput' })
 vim.keymap.set("n", "<leader>RE", "<cmd>wall<CR><cmd>!rust-io -r %<CR>", { desc = '[R]un [E]xe Release' })

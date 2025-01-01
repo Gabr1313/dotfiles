@@ -6,6 +6,7 @@ local function toggle_conceallevel()
 	end
 end
 
+---@diagnostic disable: missing-fields
 vim.keymap.set("n", "<BS>c", "<cmd>w<CR><cmd>VimtexCompile<CR>", { desc = 'VimTex [C]ompile' })
 vim.keymap.set("v", "<BS>c", "<cmd>VimtexCompileSelected<CR><CR>", { desc = 'VimTex [C]ompile' })
 vim.keymap.set("n", "<BS>s", "<cmd>VimtexStop<CR>", { desc = 'VimTex Compile [S]top' })
@@ -14,6 +15,7 @@ vim.keymap.set("n", "<BS>v", "<cmd>VimtexView<CR>", { desc = 'VimTex [V]iew' })
 vim.keymap.set("n", "<BS>t", "<cmd>VimtexTocToggle<CR>", { desc = 'VimTex [T]oc' })
 vim.keymap.set("n", "<BS>d", toggle_conceallevel, { desc = '' })
 vim.keymap.set({"n", "v"}, "<BS>j", "Jgqq", { desc = 'Join and format' })
+---@diagnostic enable: missing-fields
 
 vim.keymap.set('n', 'ds$', '<plug>(vimtex-env-delete-math)')
 vim.keymap.set('n', 'cs$', '<plug>(vimtex-env-change-math)')
@@ -94,7 +96,7 @@ luasnip.setup({
 	enable_autosnippets = true,
 	store_selection_keys = "<Tab>",
 	ft_func = function()
-		return vim.split(vim.bo.filetype, ".", true)
+		return vim.split(vim.bo.filetype, ".")
 	end,
 })
 
