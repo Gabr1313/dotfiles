@@ -2,7 +2,6 @@
     set -f normal_color set_color normal
     set -f status_color set_color brgreen
     set -f cwd_color    set_color brblue #$fish_color_cwd
-    set -f vcs_color    set_color brpurple
     set -f prompt_color set_color brmagenta
     set -f time_color   set_color yellow
 
@@ -52,7 +51,7 @@ end
 
 function git_prompt
     set -f vcs_color      set_color magenta
-    set -f symbol_color   set_color blue
+    set -f symbol_color   set_color cyan
     set -f detached_color set_color yellow
     set -f white_color    set_color white
     set -f normal_color   set_color normal

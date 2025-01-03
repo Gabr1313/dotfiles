@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# todo: see kitty-sessionizer
 
 folders="$(pwd) $HOME/ $HOME/projects/ $HOME/projects/cp/ $HOME/projects/polimi/*/ \
 $HOME/projects/dotfiles/ $HOME/projects/dotfiles/nvim/lua/ $HOME/gitclone/ "

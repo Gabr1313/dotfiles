@@ -1,25 +1,40 @@
 gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-1" "['<Super>1']"
-gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-1" "['<Super><Shift>1']"
+gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-1" "['<Control><Super>1']"
 gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-2" "['<Super>2']"
-gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-2" "['<Super><Shift>2']"
+gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-2" "['<Control><Super>2']"
 gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-3" "['<Super>3']"
-gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-3" "['<Super><Shift>3']"
+gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-3" "['<Control><Super>3']"
 gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-4" "['<Super>4']"
-gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-4" "['<Super><Shift>4']"
+gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-4" "['<Control><Super>4']"
 gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-5" "['<Super>5']"
-gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-5" "['<Super><Shift>5']"
+gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-5" "['<Control><Super>5']"
 gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-6" "['<Super>6']"
-gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-6" "['<Super><Shift>6']"
+gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-6" "['<Control><Super>6']"
 gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-7" "['<Super>7']"
-gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-7" "['<Super><Shift>7']"
+gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-7" "['<Control><Super>7']"
 gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-8" "['<Super>8']"
-gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-8" "['<Super><Shift>8']"
+gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-8" "['<Control><Super>8']"
 gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-9" "['<Super>9']"
-gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-9" "['<Super><Shift>9']"
+gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-9" "['<Control><Super>9']"
 gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-10" "['<Super>0']"
-gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-10" "['<Super><Shift>0']"
+gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-10" "['<Control><Super>0']"
+
+gsettings set "org.gnome.desktop.wm.keybindings" "switch-windows-backward" "['<Control><Super>w']"
+gsettings set "org.gnome.desktop.wm.keybindings" "cycle-windows-backward" "['<Control><Super>s']"
+gsettings set "org.gnome.desktop.wm.keybindings" "cycle-group-backward" "['<Control><Super>x']"
+
+# gsettings set org.gnome.desktop.input-sources xkb-options "['altwin:swap_alt_win', 'ctrl:swapcaps']"
+gsettings set org.gnome.desktop.input-sources xkb-options "['altwin:swap_alt_win', 'ctrl:nocaps']"
+
 gsettings set org.gnome.mutter overlay-key ""
+# gsettings list-recursively | grep -i terminal
 gsettings set org.gnome.SessionManager logout-prompt false
+
+gsettings set "org.gnome.desktop.default-applications.terminal" "exec" "ghostty"
+# if this does not work, then
+sudo nvim /usr/share/applications/nvim.desktop # or other terminal applications 
+# and change both `Terminal=true` to `Terminal=false` 
+#             and `nvim %F`       to `ghostty -e nvim %F`
 
 sudo nvim /etc/gdm3/greeter.dconf-defaults
 # change `sleep-inactiva-ac-type="blank"`

@@ -85,10 +85,11 @@ export export QT_QPA_PLATFORMTHEME=gtk3
 # For a full list of active aliases, run `alias`.
 alias v='$EDITOR'
 alias f='. $HOME/.local/scripts/cd-fzf'      # find dir
-alias fr='. $HOME/.local/scripts/cd-fzf-rec' # find dir  recursive
+alias fr='. $HOME/.local/scripts/cd-fzf-rec' # find dir recursive
 alias ff='find | fzf'                        # find file
 alias fe='find | fzf | xargs -r $EDITOR'     # find file and edit
-alias update='sudo nala update && sudo nala upgrade --full -y'
+# alias update='sudo nala update && sudo nala upgrade --full -y'
+alias upgrade='sudo dnf upgarde -y'
 
 if command -v eza &> /dev/null ; then
   alias ls='eza --icons --group-directories-first'
