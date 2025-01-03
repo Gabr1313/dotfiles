@@ -4,10 +4,18 @@ if status is-interactive
 	set fish_color_command green
 
 	set -g fish_key_bindings fish_vi_key_bindings
-	bind --mode insert \cp prevd-or-backward-word
-	bind --mode insert \cn nextd-or-backward-word
-	bind --mode normal \cp prevd-or-backward-word
-	bind --mode normal \cn nextd-or-backward-word
+	bind --mode insert  \cb prevd-or-barkward-word
+	bind --mode default \cb prevd-or-backward-word
+	bind --mode visual  \cb prevd-or-backward-word
+	bind --mode insert  \cf nextd-or-forward-word
+	bind --mode default \cf nextd-or-forward-word
+	bind --mode visual  \cf nextd-or-forward-word
+	bind --mode insert  \cn complete
+	bind --mode visual  \cn complete
+	bind --mode default \cn complete
+	bind --mode insert  \cp complete-and-search
+	bind --mode visual  \cp complete-and-search
+	bind --mode default \cp complete-and-search
 
 	alias v='nvim'
 
