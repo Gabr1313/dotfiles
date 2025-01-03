@@ -7,10 +7,10 @@ vim.keymap.set("c", "<C-n>", "<C-f>", { desc = "Esc" })
 vim.keymap.set({ "t" }, "<Esc>", "<c-\\><c-n>", { silent = true, desc = "[Esc] terminal" })
 
 vim.keymap.set("n", "<C-/>", function()
-    if vim.api.nvim_get_option('hlsearch') == true then
-        vim.api.nvim_set_option('hlsearch', false)
+    if vim.api.nvim_get_option_value('hlsearch', {}) == true then
+        vim.api.nvim_set_option_vlaue('hlsearch', false)
     else
-        vim.api.nvim_set_option('hlsearch', true)
+        vim.api.nvim_set_option_vlaue('hlsearch', true)
     end
 end, { desc = "Highlight toggle" })
 
@@ -54,7 +54,7 @@ vim.keymap.set("x", ">", ">gv", { desc = "Indent right" })
 vim.keymap.set("n", "<leader>zm", "<cmd>set foldmethod=marker<CR>", { desc = "[Z]fold [M]arker" })
 
 vim.keymap.set("n", "<leader>w", function()
-    if vim.api.nvim_win_get_option(vim.api.nvim_get_current_win(), 'wrap') then
+    if vim.api.nvim_win_get_option_value(vim.api.nvim_get_current_win(), 'wrap') then
         vim.opt.wrap = false
         vim.keymap.del("n", "j")
         vim.keymap.del("n", "k")

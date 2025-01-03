@@ -23,7 +23,7 @@ return {
 		vim.keymap.set('n', '<leader>fg', builtin.git_files, { desc = '[F]ind [G]it' })
 		vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = '[F]ind [O]ld (recently opened) files' })
 		vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
-		vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = '[F]ind [R]esume' })
+		vim.keymap.set('n', '<leader>fl', builtin.resume, { desc = '[F]ind [L]ast searched' })
 		vim.keymap.set('n', '<leader>fc', builtin.grep_string, { desc = '[F]ind [C]urrent word' })
 		vim.keymap.set('n', '<leader>fw', builtin.live_grep, { desc = '[F]ind [W]ord' })
 		vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })

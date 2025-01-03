@@ -1,136 +1,126 @@
 return {
-	"neovim/nvim-lspconfig",
-	dependencies = {
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
-		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-path",
-		"hrsh7th/cmp-cmdline",
-		"hrsh7th/nvim-cmp",
-		"L3MON4D3/LuaSnip",
-		"saadparwaiz1/cmp_luasnip",
-		"j-hui/fidget.nvim",
-		{
-			"folke/lazydev.nvim",
-			ft = "lua",
-			opts = { library = { { path = "${3rd}/luv/library", words = { "vim%.uv" } }, } }
-		}
+	{
+		'saghen/blink.cmp',
+		dependencies = 'rafamadriz/friendly-snippets',
+		version = '*',
+		opts = {
+			keymap = {
+				preset = 'default',
+				['<C-c>'] = { 'show', 'hide' },
+				['<C-y>'] = { 'select_and_accept' },
+				['<C-p>'] = { 'select_prev', 'fallback' },
+				['<C-n>'] = { 'select_next', 'fallback' },
+				['<C-l>'] = { 'snippet_forward', 'fallback' },
+				['<C-h>'] = { 'snippet_backward', 'fallback' },
+				['<C-s>'] = { 'show_documentation', 'hide_documentation' },
+				['<C-j>'] = { 'scroll_documentation_up', 'fallback' },
+				['<C-k>'] = { 'scroll_documentation_down', 'fallback' },
+			},
+			sources = { default = { 'lsp', 'path', 'snippets', 'buffer' }, },
+			completion = {
+				-- ghost_text = { enabled = true },
+				menu = {
+					border = 'single',
+					draw = {
+						columns = {
+							-- @todo remove label_description when ready
+							{ "kind_icon", "label", "label_description", "kind", gap = 1 },
+						},
+						treesitter = { 'lsp' },
+					},
+				},
+				documentation = {
+					auto_show = true,
+					auto_show_delay_ms = 0,
+					window = { border = 'single' }
+				},
+			},
+			signature = {
+				enabled = true,
+				window = { border = 'single' }
+			},
+		},
+		opts_extend = { "sources.default" }
 	},
-	config = function()
-		local cmp = require('cmp')
-		local cmp_lsp = require("cmp_nvim_lsp")
-		local capabilities = vim.tbl_deep_extend(
-			"force",
-			{},
-			vim.lsp.protocol.make_client_capabilities(),
-			cmp_lsp.default_capabilities()
-		)
-
-		require("fidget").setup({})
-		require("mason").setup()
-		require("mason-lspconfig").setup({
-			ensure_installed = {
-				"clangd",
-				"rust_analyzer",
-				"lua_ls",
-			},
-			handlers = {
-				function(server_name)
-					require("lspconfig")[server_name].setup { capabilities = capabilities }
-				end,
+	{
+		'neovim/nvim-lspconfig',
+		dependencies = {
+			'saghen/blink.cmp',
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+			"j-hui/fidget.nvim",
+			{
+				"folke/lazydev.nvim",
+				ft = "lua",
+				opts = { library = { { path = "${3rd}/luv/library", words = { "vim%.uv" } } } }
 			}
-		})
-
-		local cmp_select = { behavior = cmp.SelectBehavior.Select }
-		local luasnip = require('luasnip')
-
-		cmp.setup({
-			window = {
-				completion = { border = 'single' },
-				documentation = { border = 'single' },
-			},
-			snippet = {
-				expand = function(args)
-					luasnip.lsp_expand(args.body)
-				end,
-			},
-			mapping = cmp.mapping.preset.insert({
-				['<CR>'] = nil,
-				['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-				['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-				['<C-y>'] = cmp.mapping.confirm({ select = true }),
-				['<C-c>'] = cmp.mapping.complete(),
-				['<C-k>'] = cmp.mapping.scroll_docs(-4),
-				['<C-j>'] = cmp.mapping.scroll_docs(4),
-				['<C-l>'] = cmp.mapping(function(fallback)
-					if luasnip.jumpable(1) then
-						luasnip.jump(1)
-					elseif luasnip.expand_or_jumpable() then
-						luasnip.expand_or_jump()
-					elseif luasnip.expandable() then
-						luasnip.expand()
-					else
-						fallback()
-					end
-				end, { "i", "s", }),
-				["<C-h>"] = cmp.mapping(function(fallback)
-					if luasnip.jumpable(-1) then
-						luasnip.jump(-1)
-					else
-						fallback()
-					end
-				end, { "i", "s", }),
-			}),
-			sources = cmp.config.sources({
-				{ name = 'nvim_lsp' },
-				{ name = 'luasnip' },
-				{ name = 'path' },
-			}, {
-				{ name = 'buffer' },
-			}),
-		})
-		cmp.setup.cmdline('/', {
-			mapping = cmp.mapping.preset.cmdline(),
-			sources = {
-				{ name = 'buffer' }
-			}
-		})
-		cmp.setup.cmdline(':', {
-			mapping = cmp.mapping.preset.cmdline(),
-			sources = cmp.config.sources({
-				{ name = 'path' }
-			}, {
-				{
-					name = 'cmdline',
-					option = {
-						ignore_cmds = { 'Man', '!' }
-					}
-				}
+		},
+		config = function(_, _)
+			local capabilities = require('blink.cmp').get_lsp_capabilities()
+			require("fidget").setup({})
+			require("mason").setup()
+			require("mason-lspconfig").setup({
+				ensure_installed = { "clangd", "rust_analyzer", "lua_ls", },
+				handlers = {
+					function(server_name)
+						require("lspconfig")[server_name].setup { capabilities = capabilities }
+					end,
+				},
+				automatic_installation = true,
 			})
-		})
 
-		vim.diagnostic.config({
-			-- update_in_insert = true,
-			float = {
-				focusable = false,
-				style = "minimal",
-				border = "single",
-				source = "always",
-				header = "",
-				prefix = "",
-			},
-		})
+			local signs = { Error = "", Info = "󰋽", Warn = "", Hint = "󱠃", }
+			for type, icon in pairs(signs) do
+				local hl = "DiagnosticSign" .. type
+				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+			end
 
-		local signs = {
-			Error = "",
-			Info = "󰋽",
-			Warn = "",
-			Hint = "󱠃",
-		}
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-		end
-	end
+			vim.api.nvim_create_autocmd('LspAttach', {
+				callback = function(_, bufnr)
+					---@diagnostic disable: missing-fields
+					vim.diagnostic.config({ float = { border = "single", }, })
+					vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single", })
+					vim.diagnostic.enable(false)
+
+					vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = '[G]oto [D]efinition' })
+					vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = bufnr, desc = '[G]oto [D]eclaration' })
+					vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition,
+						{ buffer = bufnr, desc = '[G]oto [T]ype definition' })
+					vim.keymap.set('n', 'gi', vim.lsp.buf.implementation,
+						{ buffer = bufnr, desc = '[G]oto [I]mplementation' })
+
+					vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = 'Hover Documentation' })
+					vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float,
+						{ buffer = bufnr, desc = '[V]iew [D]iagnostic' })
+
+					vim.keymap.set("n", "<leader>rr", vim.lsp.buf.references, { buffer = bufnr, desc = '[R]efe[r]ences' })
+					vim.keymap.set({ "v", "n" }, "<leader>ca", vim.lsp.buf.code_action,
+						{ buffer = bufnr, desc = '[C]ode [A]ction' })
+					vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr, desc = '[R]e[n]ame' })
+
+					vim.keymap.set("n", "[d", vim.diagnostic.goto_next,
+						{ buffer = bufnr, desc = 'Previous [D]iagnostic' })
+					vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, { buffer = bufnr, desc = 'Next [D]iagnostic' })
+
+					vim.keymap.set('n', '<leader>fr', require('telescope.builtin').lsp_references,
+						{ buffer = bufnr, desc = '[F]zf [R]eferences' })
+					vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics,
+						{ desc = '[F]zf [D]iagnostics' })
+					vim.keymap.set('n', '<leader>fsd', require('telescope.builtin').lsp_document_symbols,
+						{ buffer = bufnr, desc = '[F]zf [S]ymbols [D]ocument' })
+					vim.keymap.set('n', '<leader>fsw', require('telescope.builtin').lsp_dynamic_workspace_symbols,
+						{ buffer = bufnr, desc = '[F]zf [S]ymbol [W]orkspace' })
+
+					vim.keymap.set("n", "<leader>ld",
+						function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end,
+						{ desc = '[L]sp toggle [D]iagnostic' })
+					vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = '[L]sp [F]ormat' })
+					vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<CR>", { desc = '[L]sp [R]estart' })
+					vim.keymap.set("n", "<leader>ls", "<cmd>LspStop<CR>", { desc = '[L]sp [S]top' })
+					vim.keymap.set("n", "<leader><leader>ls", "<cmd>LspStart<CR>", { desc = '[L]sp [S]tart' })
+					---@diagnostic enable: missing-fields
+				end
+			})
+		end,
+	},
 }

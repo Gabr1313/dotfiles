@@ -8,11 +8,10 @@ return {
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = { "c", "cpp", "python", "bash", "lua", "vim", "vimdoc", "go", "rust" },
+				ignore_install = { "tex", "latex" },
 				sync_install = true,
 				auto_install = true,
-				-- ignore_install = { "tex", "latex" },
 				highlight = {
-					enable = true,
 					-- disable = { "tex", "latex" },
 					disable = function(lang, buf)
 						if lang == "tex" or lang == "latex" then
@@ -24,11 +23,6 @@ return {
 							return true
 						end
 					end,
-					additional_vim_regex_highlighting = false,
-				},
-				indent = {
-					enable = true,
-					disable = { "python" },
 				},
 				textobjects = {
 					select = {
@@ -50,18 +44,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter-context",
 		config = function()
-			require("treesitter-context").setup({
-				enable = true,
-				max_lines = 6,
-				min_window_height = 0,
-				line_numbers = true,
-				multiline_threshold = 20,
-				trim_scope = 'outer',
-				mode = 'cursor',
-				separator = nil,
-				zindex = 20,
-			})
-			--       vim.keymap.set('n', '<leader>oc', '<cmd>TSContextToggle<CR>', { desc = '[O]ption [C]ontext toggle' })
+			require("treesitter-context").setup({})
 		end
 	}
 }

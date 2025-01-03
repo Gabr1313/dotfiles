@@ -4,5 +4,4 @@ return {
 		name = "plenary"
 	},
 	-- 'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-	"nvim-tree/nvim-web-devicons",
 }
