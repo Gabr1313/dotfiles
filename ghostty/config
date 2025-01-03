@@ -1,0 +1,64 @@
+# ghostty +show-config --default --docs
+# https://ghostty.org/docs/config
+
+background-opacity = 0.925
+# not working yet
+# background-blur-radius = 20
+
+# ghostty +list-fonts | less
+# font-family = "FiraCode Nerd Font Mono"
+# font-size   = 14
+# font-family = "Zed Mono"
+
+# disable ligatures
+font-feature = -calt
+
+# ghostty +list-themes | less
+theme = "catppuccin-macchiato"
+mouse-hide-while-typing = true
+copy-on-select = true
+
+window-decoration = false
+adw-toolbar-style = raised-border
+
+keybind = ctrl+semicolon>o=toggle_tab_overview
+keybind = ctrl+semicolon>y=toggle_window_decorations
+
+keybind = ctrl+semicolon>r=reload_config
+
+keybind = ctrl+semicolon>t=new_tab
+keybind = ctrl+semicolon>comma=previous_tab
+keybind = ctrl+one=goto_tab:1
+keybind = ctrl+two=goto_tab:2
+keybind = ctrl+three=goto_tab:3
+keybind = ctrl+four=goto_tab:4
+keybind = ctrl+five=goto_tab:5
+keybind = ctrl+six=goto_tab:6
+keybind = ctrl+seven=goto_tab:7
+keybind = ctrl+eight=goto_tab:8
+keybind = ctrl+nine=goto_tab:9
+
+keybind = ctrl+semicolon>s=new_split:down
+keybind = ctrl+semicolon>v=new_split:right
+
+keybind = ctrl+semicolon>h=goto_split:left
+keybind = ctrl+semicolon>j=goto_split:bottom
+keybind = ctrl+semicolon>k=goto_split:top
+keybind = ctrl+semicolon>l=goto_split:right
+
+keybind = ctrl+shift+e=scroll_page_lines:+1
+keybind = ctrl+shift+y=scroll_page_lines:-1
+keybind = ctrl+shift+d=scroll_page_down
+keybind = ctrl+shift+u=scroll_page_up
+keybind = ctrl+semicolon>u=scroll_to_bottom
+keybind = ctrl+semicolon>d=scroll_to_top
+
+keybind = ctrl+shift+down=resize_split:down,10
+keybind = ctrl+shift+left=resize_split:left,10
+keybind = ctrl+shift+right=resize_split:right,10
+keybind = ctrl+shift+up=resize_split:up,10
+
+keybind = ctrl+semicolon>e=write_screen_file:open
+
+keybind = ctrl+shift+n=jump_to_prompt:+1
+keybind = ctrl+shift+p=jump_to_prompt:-1
