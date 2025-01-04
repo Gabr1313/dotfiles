@@ -40,6 +40,12 @@ ln -s $(pwd)/btop      $HOME/.config/btop
 ln -s $(pwd)/nvim      $HOME/.config/nvim
 ln -s $(pwd)/ghostty   $HOME/.config/ghostty
 
+# Bat Catppuccin
+mkdir -p "$(bat --config-dir)/themes"
+wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Macchiato.tmTheme
+bat cache --build
+# BAT_THEME="Catppuccin Macchiato"
+
 # Gnome
 dconf load / <$(pwd)/dconf-settings.ini # load settings
 # dconf dump / >$(pwd)/dconf-settings.ini # save settings

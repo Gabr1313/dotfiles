@@ -12,39 +12,59 @@
 -- end
 
 return {
-    {
-        "rose-pine/neovim",
-        config = function()
-            require('rose-pine').setup({
-                disable_background = true,
-                disable_float_background = true,
-            })
-            -- vim.cmd.colorscheme("rose-pine")
-        end
-    },
+	{
+		"rose-pine/neovim",
+		config = function()
+			require('rose-pine').setup({
+				disable_background = true,
+				disable_float_background = true,
+			})
+			-- vim.cmd.colorscheme("rose-pine")
+		end
+	},
 
-    {
-        "catppuccin/nvim",
-        config = function()
-            require('catppuccin').setup({
-                flavour = 'macchiato',
-                transparent_background = true,
-            })
-            vim.cmd("colorscheme catppuccin")
-        end
-    },
+	{
+		"catppuccin/nvim",
+		config = function()
+			require('catppuccin').setup({
+				flavour = 'macchiato',
+				transparent_background = true,
+			})
+			-- vim.cmd("colorscheme catppuccin")
+		end
+	},
 
-    {
-        "folke/tokyonight.nvim",
-        config = function()
-            require("tokyonight").setup({
-                style = "storm",
-                transparent = true,
-                styles = {
-                    floats = "transparent",
-                },
-            })
-            -- vim.cmd("colorscheme tokyonight")
-        end
-    },
+	{
+		"polirritmico/monokai-nightasty.nvim",
+		config = function()
+			require('monokai-nightasty').setup({
+				dark_style_background = "transparent",
+				hl_styles = {
+					floats = "transparent",
+					sidebars = "transparent",
+				},
+				on_colors = function(colors)
+					colors.bg_highlight = "#202020"
+					colors.bg_statusline = "#202020"
+				end
+			})
+			vim.cmd("colorscheme monokai-nightasty")
+			-- vim.cmd("hi CursorLine guibg=Grey16")
+			-- vim.cmd("hi TelescopeSelection guibg=Grey16")
+		end
+	},
+
+	{
+		"folke/tokyonight.nvim",
+		config = function()
+			require("tokyonight").setup({
+				style = "storm",
+				transparent = true,
+				styles = {
+					floats = "transparent",
+				},
+			})
+			-- vim.cmd("colorscheme tokyonight")
+		end
+	}
 }

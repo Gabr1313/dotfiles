@@ -13,8 +13,9 @@ background-opacity = 0.925
 # disable ligatures
 font-feature = -calt
 
-# ghostty +list-themes | less
-theme = "catppuccin-macchiato"
+# ghostty +list-themes
+# theme = "catppuccin-macchiato"
+theme = "Monokai Soda"
 mouse-hide-while-typing = true
 copy-on-select = true
 
