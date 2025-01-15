@@ -2,7 +2,7 @@ if status is-interactive
 	set PATH $HOME/.local/bin $HOME/.local/scripts /usr/sbin $PATH
 	set EDITOR nvim
 	set fish_color_command green
-	# set -gx BAT_THEME 'Catppuccin Macchiato'
+	set -gx BAT_THEME 'Catppuccin Macchiato'
 
 	# ls after cd
 	functions --copy cd _cd

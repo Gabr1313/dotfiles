@@ -1,12 +1,40 @@
-#!/usr/bin/env bash
-sudo nala install bat btop curl fzf gcc kitty neovim ripgrep tldr zsh python3 rsync make \
-                  inotify-tools git gh unzip fd fastfetch eza \
-                  snapper distrobox build-essential gdb kcachegrind massif-visualizer \
-                  qalculate-gtk hyperfine feh ffmpeg vlc\
-                  sway sway-notification-center waybar pavucontrol wofi rfkill blueman \
-                  gammastep brightnessctl slurp grim wl-clipboard cliphist wlogout swaylock \
-                  playerctl
-                  # texlive # texlive-science texlive-full
+!/usr/bin/env bash
+
+# Debian
+sudo apt-get install nala
+sudo nala install \
+	bat btop curl fzf gcc kitty neovim ripgrep tldr zsh python3 rsync make \
+	inotify-tools git gh unzip fd fastfetch eza \
+	snapper distrobox build-essential gdb kcachegrind massif-visualizer \
+	qalculate-gtk hyperfine feh ffmpeg vlc\
+	sway sway-notification-center waybar pavucontrol wofi rfkill blueman \
+	gammastep brightnessctl slurp grim wl-clipboard cliphist wlogout swaylock \
+	playerctl \
+	texlive-full
+
+# Fedora
+sudo nvim /etd/dnf/dnf.conf
+#   defaultyes=true
+#   max_parallel_downloads=16
+#   fastestmirror=true
+
+# NixOs
+sudo ln -s $(pwd)/nixos/configuration.nix /etc/nixos/configuration.nix
+sudo ln -s $(pwd)/nixos/hardware-configuration.nix  /etc/nixos/hardware-configuration.nix
+
+
+sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E fedora).noarch.rpm \
+	https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install \
+	fish bat btop curl fzf gcc kitty neovim ripgrep tldr zsh zip \
+	python3 rsync inotify-tools git gh unzip fd fastfetch eza snapper \
+	distrobox kcachegrind massif-visualizer qalculate-gtk hyperfine \
+	make cmake libasan libubsan dnf-plugins-core dnf-plugins-extra \
+	maven java-17-openjdk-devel \
+	gtk3 webkit2gtk3 libusb \
+	qbittorrent calibre \
+	texlive-scheme-full pdflatex pandoc \
+sudo dnf copr enable pgdev/ghostty && sudo dnf install ghostty
 
 mkdir $HOME/gitclone
 cd    $HOME/gitclone
@@ -61,10 +89,6 @@ ln -s $(pwd)/hypr    $HOME/.config/hypr
 
 # Arch
 ln -s $(pwd)/paru    $HOME/.config/paru
-
-# NixOs
-sudo ln -s $(pwd)/nixos/configuration.nix /etc/nixos/configuration.nix
-sudo ln -s $(pwd)/nixos/hardware-configuration.nix  /etc/nixos/hardware-configuration.nix
 
 # Old
 ln -s $(pwd)/i3      $HOME/.config/i3

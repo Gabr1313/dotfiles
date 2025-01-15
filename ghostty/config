@@ -14,16 +14,18 @@ background-opacity = 0.925
 font-feature = -calt
 
 # ghostty +list-themes
-# theme = "catppuccin-macchiato"
-theme = "Monokai Soda"
+theme = "catppuccin-macchiato"
+# theme = "Monokai Soda"
 mouse-hide-while-typing = true
 copy-on-select = true
 
 window-decoration = false
 adw-toolbar-style = raised-border
+unfocused-split-opacity = 0.85
 
 keybind = ctrl+semicolon>o=toggle_tab_overview
 keybind = ctrl+semicolon>y=toggle_window_decorations
+keybind = ctrl+semicolon>equal=equalize_splits
 
 keybind = ctrl+semicolon>r=reload_config
 
