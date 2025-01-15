@@ -19,6 +19,7 @@ return {
 			sources = { default = { 'lsp', 'path', 'snippets', 'buffer' }, },
 			completion = {
 				-- ghost_text = { enabled = true },
+				list = { selection = { preselect = false, auto_insert = true , } },
 				menu = {
 					border = 'single',
 					draw = {

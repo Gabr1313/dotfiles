@@ -8,7 +8,10 @@ return {
 		},
 		config = function()
 			require("nvim-treesitter.configs").setup({
-				ensure_installed = { "c", "cpp", "python", "bash", "lua", "vim", "vimdoc", "go", "rust" },
+				ensure_installed = {
+					"c", "cpp", "python", "bash", "lua", "vim", "vimdoc", "go",
+					"rust", "markdown", "markdown_inline"
+				},
 				ignore_install = { "tex", "latex" },
 				sync_install = true,
 				auto_install = true,

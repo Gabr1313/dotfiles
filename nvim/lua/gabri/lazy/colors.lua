@@ -30,7 +30,7 @@ return {
 				flavour = 'macchiato',
 				transparent_background = true,
 			})
-			-- vim.cmd("colorscheme catppuccin")
+			vim.cmd("colorscheme catppuccin")
 		end
 	},
 
@@ -44,13 +44,11 @@ return {
 					sidebars = "transparent",
 				},
 				on_colors = function(colors)
-					colors.bg_highlight = "#202020"
-					colors.bg_statusline = "#202020"
+					colors.bg_highlight = "#282828"
+					colors.bg_statusline = "#282828"
 				end
 			})
-			vim.cmd("colorscheme monokai-nightasty")
-			-- vim.cmd("hi CursorLine guibg=Grey16")
-			-- vim.cmd("hi TelescopeSelection guibg=Grey16")
+			-- vim.cmd("colorscheme monokai-nightasty")
 		end
 	},
 

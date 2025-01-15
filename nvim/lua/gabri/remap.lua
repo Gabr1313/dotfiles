@@ -8,9 +8,9 @@ vim.keymap.set({ "t" }, "<Esc>", "<c-\\><c-n>", { silent = true, desc = "[Esc] t
 
 vim.keymap.set("n", "<C-/>", function()
     if vim.api.nvim_get_option_value('hlsearch', {}) == true then
-        vim.api.nvim_set_option_vlaue('hlsearch', false)
+        vim.api.nvim_set_option_value('hlsearch', false, {})
     else
-        vim.api.nvim_set_option_vlaue('hlsearch', true)
+        vim.api.nvim_set_option_value('hlsearch', true, {})
     end
 end, { desc = "Highlight toggle" })
 
