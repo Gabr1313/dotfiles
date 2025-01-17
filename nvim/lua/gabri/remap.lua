@@ -1,10 +1,8 @@
 vim.g.mapleader = " "
 
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
-vim.keymap.set({ "n", "v", "i"  }, "<F1>", "<Esc>", { silent = true })
-vim.keymap.set({ "n", "v" }, "<BS>", "<Nop>", { silent = true })
-vim.keymap.set("c", "<C-n>", "<C-f>", { desc = "Esc" })
-vim.keymap.set({ "t" }, "<Esc>", "<c-\\><c-n>", { silent = true, desc = "[Esc] terminal" })
+vim.keymap.set({ "n", "v" }, "<BS>",    "<Nop>", { silent = true })
+vim.keymap.set({ "t" }, "<Esc><Esc>", "<c-\\><c-n>", { silent = true, desc = "[Esc] terminal" })
 
 vim.keymap.set("n", "<C-/>", function()
     if vim.api.nvim_get_option_value('hlsearch', {}) == true then
@@ -16,6 +14,7 @@ end, { desc = "Highlight toggle" })
 
 vim.keymap.set("n", "<leader>cd", "<cmd>cd %:h<CR>", { silent = true, desc = "Change directory" })
 vim.keymap.set("n", "<leader>t", [[<cmd>%s/\s\+$//e<CR>]], { desc = "Remove trailing spaces" })
+
 vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>", { desc = "Lua execute file" })
 vim.keymap.set("n", "<leader>x", ":.lua<CR>", { desc = "Lua execute line" })
 vim.keymap.set("v", "<leader>x", ":lua<CR>", { desc = "Lua execute highlighted" })
@@ -44,12 +43,6 @@ vim.keymap.set("n", "<C-Left>", "4<C-w><", { desc = "Change window smaller horiz
 
 vim.keymap.set("n", "<leader>se", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "[S]ubsitute [E]nd" })
 vim.keymap.set("n", "<leader>sb", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], { desc = "[S]ubsitute [B]eginning" })
-
-vim.keymap.set("n", "<leader>cx", "<cmd>!chmod +x %<CR>", { desc = "E[x]ecutable" })
-vim.keymap.set("n", "<leader><leader>cx", "<cmd>!chmod -x %<CR>", { desc = "No E[x]ecutable" })
-
-vim.keymap.set("x", "<", "<gv", { desc = "Indent left" })
-vim.keymap.set("x", ">", ">gv", { desc = "Indent right" })
 
 vim.keymap.set("n", "<leader>zm", "<cmd>set foldmethod=marker<CR>", { desc = "[Z]fold [M]arker" })
 

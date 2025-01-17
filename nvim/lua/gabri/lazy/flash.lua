@@ -6,7 +6,7 @@ return {
 			-- search = { enabled = true },
 			char = {
 				jump_labels = true,
-				-- multi_line = false,
+				multi_line = false, -- use `s` instead
 				char_actions = function(_)
 					return {
 						[";"] = "next",

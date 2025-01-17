@@ -4,8 +4,8 @@ return {
 		config = function()
 			vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = '[G]it status' })
 			-- @todo: what do the following commands do?
-			vim.keymap.set("n", "gu", "<cmd>diffget //2<CR>", { desc = '[G]it ?' })
-			vim.keymap.set("n", "gh", "<cmd>diffget //3<CR>", { desc = '[G]it ?' })
+			-- vim.keymap.set("n", "gu", "<cmd>diffget //2<CR>", { desc = '[G]it ?' })
+			-- vim.keymap.set("n", "gh", "<cmd>diffget //3<CR>", { desc = '[G]it ?' })
 
 			local fugitive_group = vim.api.nvim_create_augroup("fugitive_group", {})
 			local autocmd = vim.api.nvim_create_autocmd
@@ -27,8 +27,6 @@ return {
 					vim.keymap.set("n", "<leader>P", function()
 						vim.cmd.Git({ 'pull', '--rebase' })
 					end, { desc = 'Git [P]ull' }, opts)
-
-					vim.keymap.set("n", "<leader>t", ":Git push -u origin ", { desc = 'Git [P]ull' }, opts);
 				end,
 			})
 		end

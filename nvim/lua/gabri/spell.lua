@@ -19,4 +19,18 @@ local function replace_accented_letters()
     vim.cmd("%s/\\CU'/Ù/ge")
 end
 
+local function replace_accented_letters_confirm()
+    vim.cmd("%s/\\Ca'/à/gec")
+    vim.cmd("%s/\\Ce'/è/gec")
+    vim.cmd("%s/\\Ci'/ì/gec")
+    vim.cmd("%s/\\Co'/ò/gec")
+    vim.cmd("%s/\\Cu'/ù/gec")
+    vim.cmd("%s/\\CA'/À/gec")
+    vim.cmd("%s/\\CE'/È/gec")
+    vim.cmd("%s/\\CI'/Ì/gec")
+    vim.cmd("%s/\\CO'/Ò/gec")
+    vim.cmd("%s/\\CU'/Ù/gec")
+end
+
+vim.keymap.set("n", "<leader>sc", replace_accented_letters_confirm, { desc = "[s]pell replace [a]ccented letters [confim]" })
 vim.keymap.set("n", "<leader>sa", replace_accented_letters, { desc = "[s]pell replace [a]ccented letters" })

@@ -13,7 +13,6 @@ return {
 				hex_color = hipatterns.gen_highlighter.hex_color(),
 			},
 		})
-		-- vim.keymap.set('n', 'gB', '/\\*\\/<CR>vl"_d?\\/\\*<CR>v2l"_d', { desc = '[B]lock uncomment' })
 		local miniclue = require('mini.clue')
 		miniclue.setup({
 			triggers = {
