@@ -5,14 +5,21 @@ return {
 		modes = {
 			-- search = { enabled = true },
 			char = {
-				jump_labels = true,
-				multi_line = false, -- use `s` instead
-				char_actions = function(_)
-					return {
-						[";"] = "next",
-						[","] = "prev",
-					}
+				-- enabled = false,
+				jump_labels = false, -- `dtx` command would be ugly otherwise
+				multi_line = false,
+				char_actions = function(_) -- i hate that `f` does not start another search
+					return { [";"] = "next", [","] = "prev", }
 				end,
+			},
+		},
+		highlight = {
+			backdrop = false,
+			groups = {
+				match = "IncSearch",
+				current = "IncSearch",
+				label =  "CurSearch",
+				backdrop = "", -- otherwise it color when pressing `f`
 			},
 		},
 	},
