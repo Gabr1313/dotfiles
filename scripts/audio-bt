@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+mac=$(bluetoothctl devices | sed 's/^[^ ]* //' | fzf | awk '{print $1}')
+if [[ -n "$mac" ]]; then
+	bluetoothctl power on
+	bluetoothctl connect $mac
+	mac_dot=$(echo $mac | tr ':' '.')
+	hp_sink=$(pactl list sinks short | awk '{print $2}' | sed -n "/$mac_dot/p" | sed -n '/output/p')
+	if [[ -n "$hp_sink" ]]; then
+		pactl set-default-sink $hp_sink
+	fi
+fi

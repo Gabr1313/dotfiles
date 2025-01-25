@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+output=$(pactl --f=json list sinks)
+selection=$(echo $output | jq '.[].description' | fzf)
+if [[ -n "$selection" ]]; then
+	src=$(pactl --f=json list sinks | jq -r ".[] | select(.description == $selection) | .name")
+	if [[ -n "$src" ]]; then pactl set-default-sink $src fi
+fi
