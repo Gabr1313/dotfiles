@@ -1,6 +1,7 @@
 vim.o.mouse = 'a'
 vim.opt.guicursor = "a:blinkwait200-blinkon200-blinkoff200,n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20"
 
+vim.opt.showmode = false
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -17,7 +18,8 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
-vim.opt.hlsearch = false
+-- vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 -- vim.opt.ignorecase = true
 -- vim.opt.smartcase = true
@@ -25,7 +27,7 @@ vim.opt.inccommand = "split"
 
 vim.opt.termguicolors = true
 
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 4
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 

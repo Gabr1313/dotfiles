@@ -6,25 +6,35 @@ return {
 		opts = {
 			keymap = {
 				preset = 'default',
-				['<C-c>'] = { 'show', 'hide' },
-				['<C-y>'] = { 'select_and_accept' },
-				['<C-p>'] = { 'select_prev', 'fallback' },
-				['<C-n>'] = { 'select_next', 'fallback' },
-				['<C-l>'] = { 'snippet_forward', 'fallback' },
+				['<C-c>'] = { 'show', 'hide' }, -- completion
+				['<C-n>'] = { 'show', 'select_next', 'fallback' },
+				['<C-i>'] = { 'show_documentation', 'hide_documentation' }, -- info
 				['<C-h>'] = { 'snippet_backward', 'fallback' },
-				['<C-s>'] = { 'show_documentation', 'hide_documentation' },
 				['<C-j>'] = { 'scroll_documentation_up', 'fallback' },
 				['<C-k>'] = { 'scroll_documentation_down', 'fallback' },
+				['<C-l>'] = { 'snippet_forward', 'fallback' },
 			},
 			sources = { default = { 'lsp', 'path', 'snippets', 'buffer' }, },
 			completion = {
-				-- ghost_text = { enabled = true },
-				list = { selection = { preselect = false, auto_insert = true , } },
+				-- I don't know if this is a bug, but I really enjoy this:
+				-- it display ghost_text even without menu (`menu.auto_show = false`)
+
+				ghost_text = { enabled = true },
+				list = { selection = { 
+					preselect = function(ctx) return ctx.mode == 'default' end, 
+					auto_insert = true,
+				} }, 
 				menu = {
+					auto_show = false,
+
+				-- ghost_text = { enabled = false },
+				-- list = { selection = { preselect = false, auto_insert = true, } },
+				-- menu = {
+				-- 	auto_show = true,
+
 					border = 'single',
 					draw = {
 						columns = {
-							-- @todo remove label_description when ready
 							{ "kind_icon", "label", "label_description", "kind", gap = 1 },
 						},
 						treesitter = { 'lsp' },

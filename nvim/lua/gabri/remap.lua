@@ -4,13 +4,15 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set({ "n", "v" }, "<BS>",    "<Nop>", { silent = true })
 vim.keymap.set({ "t" }, "<Esc><Esc>", "<c-\\><c-n>", { silent = true, desc = "[Esc] terminal" })
 
-vim.keymap.set("n", "<C-/>", function()
-    if vim.api.nvim_get_option_value('hlsearch', {}) == true then
-        vim.api.nvim_set_option_value('hlsearch', false, {})
-    else
-        vim.api.nvim_set_option_value('hlsearch', true, {})
-    end
-end, { desc = "Highlight toggle" })
+-- vim.keymap.set("n", "<C-/>", function()
+--     if vim.api.nvim_get_option_value('hlsearch', {}) == true then
+--         vim.api.nvim_set_option_value('hlsearch', false, {})
+--     else
+--         vim.api.nvim_set_option_value('hlsearch', true, {})
+--     end
+-- end, { desc = "Highlight toggle" })
+
+vim.keymap.set("n", "<C-/>", "<cmd>noh<cr>", { desc = "Highlight toggle" })
 
 vim.keymap.set("n", "<leader>cd", "<cmd>cd %:h<CR>", { silent = true, desc = "Change directory" })
 vim.keymap.set("n", "<leader>t", [[<cmd>%s/\s\+$//e<CR>]], { desc = "Remove trailing spaces" })
@@ -35,6 +37,11 @@ vim.keymap.set("n", "<C-p>", "<cmd>cprev<CR>zz", { desc = "Quickfix list [P]revi
 vim.keymap.set("n", "<C-n>", "<cmd>cnext<CR>zz", { desc = "Quickfix list [N]ext" })
 vim.keymap.set("n", "<C-S-p>", "<cmd>lprev<CR>zz", { desc = "Local quickfix list [P]revious" })
 vim.keymap.set("n", "<C-S-n>", "<cmd>lnext<CR>zz", { desc = "Local quickfix list [V]ext" })
+
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to window left" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to window down" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to window up" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to window right" })
 
 vim.keymap.set("n", "<C-Up>", "4<C-w>+", { desc = "Resize window vertically" })
 vim.keymap.set("n", "<C-Down>", "4<C-w>-", { desc = "Change window smaller vertically" })
@@ -62,18 +69,18 @@ vim.keymap.set("n", "<leader>w", function()
         vim.keymap.set("n", "$", "g$", { desc = "[$] wrapping on" })
         vim.keymap.set("n", "0", "g0", { desc = "[0] wrapping on" })
         vim.keymap.set("n", "^", "g^", { desc = "[^] wrapping on" })
-        vim.keymap.set("n", "_", "g_", { desc = "[_] wrapping on" })
+		vim.keymap.set("n", "_", "g_", { desc = "[_] wrapping on" })
     end
 end, { desc = "[W]rap toggle" })
 
-vim.keymap.set("i", "<C-space>{", "{}<Left>", { desc = "Autopair {}" })
-vim.keymap.set("i", "<C-space>}", "{\n}<ESC><S-O>", { desc = "Autopair {\\n}" })
-vim.keymap.set("i", "<C-space>[", "[]<Left>", { desc = "Autopair []" })
-vim.keymap.set("i", "<C-space>]", "[\n]<ESC><S-O>", { desc = "Autopair [\\n]" })
-vim.keymap.set("i", "<C-space>(", "()<Left>", { desc = "Autopair ()" })
-vim.keymap.set("i", "<C-space>)", "(\n)<ESC><S-O>", { desc = "Autopair (\\n)" })
-vim.keymap.set("i", "<C-space><", "<><Left>", { desc = "Autopair <>" })
-vim.keymap.set("i", "<C-space>>", "<\n><ESC><S-O>", { desc = "Autopair <\\n>" })
-vim.keymap.set("i", "<C-space>\"", "\"\"<Left>", { desc = "Autopair \"\"" })
-vim.keymap.set("i", "<C-space>'", "''<Left>", { desc = "Autopair ''" })
-vim.keymap.set("i", "<C-space>`", "``<Left>", { desc = "Autopair ``" })
+vim.keymap.set("i", "<C-f>{", "{}<Left>", { desc = "Autopair {}" })
+vim.keymap.set("i", "<C-f>}", "{\n}<ESC><S-O>", { desc = "Autopair {\\n}" })
+vim.keymap.set("i", "<C-f>[", "[]<Left>", { desc = "Autopair []" })
+vim.keymap.set("i", "<C-f>]", "[\n]<ESC><S-O>", { desc = "Autopair [\\n]" })
+vim.keymap.set("i", "<C-f>(", "()<Left>", { desc = "Autopair ()" })
+vim.keymap.set("i", "<C-f>)", "(\n)<ESC><S-O>", { desc = "Autopair (\\n)" })
+vim.keymap.set("i", "<C-f><", "<><Left>", { desc = "Autopair <>" })
+vim.keymap.set("i", "<C-f>>", "<\n><ESC><S-O>", { desc = "Autopair <\\n>" })
+vim.keymap.set("i", "<C-f>\"", "\"\"<Left>", { desc = "Autopair \"\"" })
+vim.keymap.set("i", "<C-f>'", "''<Left>", { desc = "Autopair ''" })
+vim.keymap.set("i", "<C-f>`", "``<Left>", { desc = "Autopair ``" })
