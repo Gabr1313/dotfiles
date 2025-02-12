@@ -1,9 +1,10 @@
 	function fish_prompt --description 'Write out the prompt'
     set -f normal_color set_color normal
     set -f status_color set_color brgreen
-    set -f cwd_color    set_color brblue #$fish_color_cwd
+    set -f cwd_color    set_color brblue
     set -f prompt_color set_color brmagenta
     set -f time_color   set_color yellow
+    set -f hour_color   set_color brmagenta
 
     set -f last_status $status
     set -f prompt_status ""
@@ -39,11 +40,11 @@
 	if test $minutes -gt 0; set -f human_time (string join '' $human_time $minutes m ' '); end
 	set -f human_time (string join '' $human_time $seconds s)
 
-		# ($normal_color) '[' (date +%X) ']' ' ' \
 	echo -es '\n' \
 		($cwd_color) (prompt_pwd) ' ' \
 		(git_prompt) \
 		($time_color) $human_time ' ' \
+		($hour_color) '{' (date +%X) '} ' \
 		$prompt_status '\n' \
 		$(fish_default_mode_prompt) \
     	($prompt_color) $suffix ' ' ($normal_color)

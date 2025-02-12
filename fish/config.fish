@@ -1,8 +1,10 @@
 if status is-interactive
-	set PATH $HOME/.local/bin $HOME/.local/scripts /usr/sbin $PATH
+	set PATH $PATH $HOME/.local/bin $HOME/.local/scripts /usr/sbin $HOME/gitclone/Odin
 	set EDITOR nvim
-	set fish_color_command green
-	set -gx BAT_THEME 'Catppuccin Macchiato'
+
+	set fish_color_command white # green 
+	set fish_color_param white # cyan
+	# set -gx BAT_THEME 'Catppuccin Macchiato'
 
 	# ls after cd
 	functions --copy cd _cd
@@ -32,6 +34,8 @@ if status is-interactive
 	bind --mode default \cp complete-and-search
 	bind --mode insert  \cp complete-and-search
 	bind --mode visual  \cp complete-and-search
+
+	alias odin='~/gitclone/Odin/odin'
 
 	alias v='nvim'
 

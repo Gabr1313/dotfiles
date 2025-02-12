@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+output=$(pactl --f=json list sinks | jq -r '.[] | select(.ports[].availability != "not available")')
+selection=$(echo $output | jq -r '.description' | fzf)
+if [[ -n "$selection" ]]; then
+	echo $selection
+	src=$(echo $output | jq -r "select(.description == \"$selection\") | .name")
+	if [[ -n "$src" ]]; then 
+		pactl set-default-sink $src
+	fi
+fi

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+selection=$(bluetoothctl devices | awk '{for (i=3; i<=NF; i++) printf (i==NF ? $i : $i " "); print ""}' | fzf)
+if [[ -n "$selection" ]]; then
+	echo $selection
+	mac=$(bluetoothctl devices | grep -F "$selection" | awk '{print $2}')
+
+	# maybe the following could be an alternative on other systems?
+	# bluetoothctl power on #
+	if [[ -n $(rfkill list bluetooth | rg "Soft blocked: yes") ]] ; then
+		rfkill unblock bluetooth
+		sleep 1 # don't know why
+	fi
+
+	bluetoothctl connect $mac
+	mac_dot=$(echo $mac | tr ':' '.')
+	hp_sink=$(pactl list sinks short | awk '{print $2}' | sed -n "/$mac_dot/p" | sed -n '/output/p')
+	if [[ -n "$hp_sink" ]]; then
+		pactl set-default-sink $hp_sink
+	fi
+fi

@@ -8,7 +8,7 @@ done
 STR+=".cpp"
 
 if ! test -f $STR; then
-    cp ~/projects/.dotfiles/utils/cp/template.cpp $STR
+    cp ~/projects/dotfiles/utils/cp/template.cpp $STR
 fi
 nvim $STR 
 

@@ -12,3 +12,5 @@ vim.api.nvim_create_autocmd('textyankpost', {
         })
     end,
 })
+
+vim.cmd [[cabbrev rg silent grep]]

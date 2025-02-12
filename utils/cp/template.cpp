@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 #ifdef DEBUG
-#include "/home/gabri/projects/.dotfiles/utils/cp/debug.h"
+#include "/home/gabri/projects/dotfiles/utils/cp/debug.h"
 #else
 #define dbg(...) 42
 #endif

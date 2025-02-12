@@ -13,6 +13,7 @@ return {
 				['<C-j>'] = { 'scroll_documentation_up', 'fallback' },
 				['<C-k>'] = { 'scroll_documentation_down', 'fallback' },
 				['<C-l>'] = { 'snippet_forward', 'fallback' },
+				['<C-s>'] = { 'show_signature', 'hide_signature', 'fallback' },
 			},
 			sources = { default = { 'lsp', 'path', 'snippets', 'buffer' }, },
 			completion = {
@@ -47,7 +48,8 @@ return {
 				},
 			},
 			signature = {
-				enabled = true,
+				-- enabled = true,
+				enabled = false,
 				window = { border = 'single' }
 			},
 		},
@@ -125,6 +127,9 @@ return {
 					vim.keymap.set("n", "<leader>ld",
 						function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end,
 						{ desc = '[L]sp toggle [D]iagnostic' })
+					vim.keymap.set("n", "<leader>lc", vim.diagnostic.setqflist, 
+						{ desc = '[L]sp diagnostics quickfix list' })
+
 					vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = '[L]sp [F]ormat' })
 					vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<CR>", { desc = '[L]sp [R]estart' })
 					vim.keymap.set("n", "<leader>ls", "<cmd>LspStop<CR>", { desc = '[L]sp [S]top' })

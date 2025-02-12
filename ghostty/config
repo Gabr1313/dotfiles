@@ -1,26 +1,37 @@
 # ghostty +show-config --default --docs
 # https://ghostty.org/docs/config
 
-background-opacity = 0.925
-# not working yet
+# @future not working yet
+# background-opacity = 0.925
 # background-blur-radius = 20
 
 # ghostty +list-fonts | less
+# font-family =             "JetBrainsMono NFM SemiBold"
+# font-family-bold =        "JetBrainsMono NFM ExtraBold"
+# font-family-italic =      "JetBrainsMono NFM SemiBold Italic"
+# font-family-bold-italic = "JetBrainsMono NFM ExtraBold Italic"
 # font-family = "FiraCode Nerd Font Mono"
-# font-size   = 14
-# font-family = "Zed Mono"
+# font-family = "Zed Mono Extended"
+# font-size   = 13
 
 # disable ligatures
-font-feature = -calt
+font-feature = -calt, -liga, -dlig
 
 # ghostty +list-themes
-theme = "catppuccin-macchiato"
-# theme = "Monokai Soda"
-mouse-hide-while-typing = true
-copy-on-select = true
+# theme = "catppuccin-macchiato"
+# theme = "Monokai Pro Machine"
+theme = "rose-pine-moon"
+background = #282c34
 
-window-decoration = false
-adw-toolbar-style = raised-border
+# @future blink at a higher rate
+cursor-text = #202020
+
+mouse-hide-while-typing = true
+# @future hope they implement "copy-on-release" and not "copy-always"
+# copy-on-select = clipboard 
+ 
+# @future not working yet
+window-decoration = none
 unfocused-split-opacity = 0.85
 
 keybind = ctrl+semicolon>o=toggle_tab_overview

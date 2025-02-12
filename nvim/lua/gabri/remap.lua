@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
-vim.keymap.set({ "n", "v" }, "<BS>",    "<Nop>", { silent = true })
+vim.keymap.set({ "n", "v" }, "<BS>", "<Nop>", { silent = true })
 vim.keymap.set({ "t" }, "<Esc><Esc>", "<c-\\><c-n>", { silent = true, desc = "[Esc] terminal" })
 
 -- vim.keymap.set("n", "<C-/>", function()
@@ -33,10 +33,17 @@ vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "[P]ut no yank" })
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "[Y]ank to clipboard" })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "[Y]ank to clipboard" })
 
+vim.keymap.set("n", "<C-c>", function()
+	for _, win in pairs(vim.fn.getwininfo()) do
+		if win["quickfix"] == 1 then
+			vim.cmd("cclose")
+			return
+		end
+	end
+	vim.cmd("copen")
+end, { desc = "Quickfix list toggle" })
 vim.keymap.set("n", "<C-p>", "<cmd>cprev<CR>zz", { desc = "Quickfix list [P]revious" })
 vim.keymap.set("n", "<C-n>", "<cmd>cnext<CR>zz", { desc = "Quickfix list [N]ext" })
-vim.keymap.set("n", "<C-S-p>", "<cmd>lprev<CR>zz", { desc = "Local quickfix list [P]revious" })
-vim.keymap.set("n", "<C-S-n>", "<cmd>lnext<CR>zz", { desc = "Local quickfix list [V]ext" })
 
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to window left" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to window down" })
@@ -54,23 +61,23 @@ vim.keymap.set("n", "<leader>sb", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], 
 vim.keymap.set("n", "<leader>zm", "<cmd>set foldmethod=marker<CR>", { desc = "[Z]fold [M]arker" })
 
 vim.keymap.set("n", "<leader>w", function()
-    if vim.api.nvim_win_get_option_value(vim.api.nvim_get_current_win(), 'wrap') then
-        vim.opt.wrap = false
-        vim.keymap.del("n", "j")
-        vim.keymap.del("n", "k")
-        vim.keymap.del("n", "$")
-        vim.keymap.del("n", "0")
-        vim.keymap.del("n", "^")
-        vim.keymap.del("n", "_")
-    else
-        vim.opt.wrap = true
-        vim.keymap.set("n", "j", "gj", { desc = "[j] wrapping on" })
-        vim.keymap.set("n", "k", "gk", { desc = "[k] wrapping on" })
-        vim.keymap.set("n", "$", "g$", { desc = "[$] wrapping on" })
-        vim.keymap.set("n", "0", "g0", { desc = "[0] wrapping on" })
-        vim.keymap.set("n", "^", "g^", { desc = "[^] wrapping on" })
+	if vim.api.nvim_win_get_option_value(vim.api.nvim_get_current_win(), 'wrap') then
+		vim.opt.wrap = false
+		vim.keymap.del("n", "j")
+		vim.keymap.del("n", "k")
+		vim.keymap.del("n", "$")
+		vim.keymap.del("n", "0")
+		vim.keymap.del("n", "^")
+		vim.keymap.del("n", "_")
+	else
+		vim.opt.wrap = true
+		vim.keymap.set("n", "j", "gj", { desc = "[j] wrapping on" })
+		vim.keymap.set("n", "k", "gk", { desc = "[k] wrapping on" })
+		vim.keymap.set("n", "$", "g$", { desc = "[$] wrapping on" })
+		vim.keymap.set("n", "0", "g0", { desc = "[0] wrapping on" })
+		vim.keymap.set("n", "^", "g^", { desc = "[^] wrapping on" })
 		vim.keymap.set("n", "_", "g_", { desc = "[_] wrapping on" })
-    end
+	end
 end, { desc = "[W]rap toggle" })
 
 vim.keymap.set("i", "<C-f>{", "{}<Left>", { desc = "Autopair {}" })

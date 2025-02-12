@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+sudo dnf install llvm18-devel
+sudo dnf install clang
+cd $HOME/gitclone
+git clone https://github.com/odin-lang/Odin
+cd Odin
+git checkout dev-2025-01
+make release-native
+
+# either of the 2 (i have put it in config.fish)
+# - in config.fish write: 
+#     set PATH $PATH $HOME/gitclone/Odin
+# - in .bashrc: 
+#     echo 'export PATH="/path/to/Odin/folder:$PATH"' >> ~/.bashrc

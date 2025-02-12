@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+selection=$(nmcli -f SSID -t device wifi list | fzf)
+if [[ -n "$selection" ]]; then
+	echo $selection
+	echo nmcli device wifi connect \"$selection\"
+
+	# surprisingly the following line doesn't work
+	# nmcli device wifi connect \"$selection\"
+	eval nmcli device wifi connect \"$selection\"
+fi
