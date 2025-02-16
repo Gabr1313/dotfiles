@@ -1,4 +1,4 @@
--- TOOOOOOOOOOO SLOW. It is unusable with a 2k lines file, even with highlights disabled
+-- TOOOOOOOOOOO SLOW. It is unusable with a 2k lines file (even with highlights disabled)
 return {
 	-- {
 	-- 	"nvim-treesitter/nvim-treesitter",

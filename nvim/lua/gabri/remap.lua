@@ -1,8 +1,9 @@
 vim.g.mapleader = " "
 
-vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
-vim.keymap.set({ "n", "v" }, "<BS>", "<Nop>", { silent = true })
-vim.keymap.set({ "t" }, "<Esc><Esc>", "<c-\\><c-n>", { silent = true, desc = "[Esc] terminal" })
+vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>")
+vim.keymap.set({ "n", "v" }, "<BS>", "<Nop>")
+vim.keymap.set({ "t" }, "<Esc><Esc>", "<c-\\><c-n>", { desc = "[Esc] terminal" })
+vim.keymap.set("n", "<esc>", "<cmd>noh<CR>", { desc = "Highlight toggle" })
 
 -- vim.keymap.set("n", "<C-/>", function()
 --     if vim.api.nvim_get_option_value('hlsearch', {}) == true then
@@ -12,9 +13,10 @@ vim.keymap.set({ "t" }, "<Esc><Esc>", "<c-\\><c-n>", { silent = true, desc = "[E
 --     end
 -- end, { desc = "Highlight toggle" })
 
-vim.keymap.set("n", "<C-/>", "<cmd>noh<cr>", { desc = "Highlight toggle" })
+vim.keymap.set("n", "<C-/>", "/\\c", { desc = "Change directory" })
+vim.keymap.set("n", "<C-S-/>", "?\\", { desc = "Change directory" })
 
-vim.keymap.set("n", "<leader>cd", "<cmd>cd %:h<CR>", { silent = true, desc = "Change directory" })
+vim.keymap.set("n", "<leader>cd", "<cmd>cd %:h<CR>", { desc = "Change directory" })
 vim.keymap.set("n", "<leader>t", [[<cmd>%s/\s\+$//e<CR>]], { desc = "Remove trailing spaces" })
 
 vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>", { desc = "Lua execute file" })
@@ -41,6 +43,7 @@ vim.keymap.set("n", "<C-c>", function()
 		end
 	end
 	vim.cmd("copen")
+	vim.cmd("wincmd p")
 end, { desc = "Quickfix list toggle" })
 vim.keymap.set("n", "<C-p>", "<cmd>cprev<CR>zz", { desc = "Quickfix list [P]revious" })
 vim.keymap.set("n", "<C-n>", "<cmd>cnext<CR>zz", { desc = "Quickfix list [N]ext" })

@@ -69,6 +69,7 @@ return {
 
 				dap.configurations.cpp = dap.configurations.c
 				dap.configurations.rust = dap.configurations.c
+				dap.configurations.odin = dap.configurations.c
 			end
 
 			vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "[B]reakpoint" })
@@ -78,7 +79,7 @@ return {
 			vim.keymap.set("n", "<leader>dr", dap.clear_breakpoints, { desc = "[D]ap [R]eset breakpoint" })
 			vim.keymap.set("n", "<leader>dl", function()
 				dap.list_breakpoints()
-				vim.cmd("copen")
+				vim.cmd("cw 4")
 			end, { desc = "[D]ap [L]ist breakpoint" })
 
 			vim.keymap.set("n", "<leader>dt", function()

@@ -1,5 +1,6 @@
 vim.o.mouse = 'a'
-vim.opt.guicursor = "a:blinkwait200-blinkon200-blinkoff200,n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20"
+-- vim.opt.guicursor = "a:blinkwait200-blinkon200-blinkoff200,n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
+vim.opt.guicursor = "a:blinkon0,n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
 
 vim.opt.showmode = false
 vim.opt.nu = true
