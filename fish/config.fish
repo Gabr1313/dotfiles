@@ -34,6 +34,9 @@ if status is-interactive
 	bind --mode default \cp complete-and-search
 	bind --mode insert  \cp complete-and-search
 	bind --mode visual  \cp complete-and-search
+	# ctrl-c for accepting them
+	bind --mode default \cy accept-autosuggestion
+	bind --mode insert  \cy accept-autosuggestion
 
 	alias odin='~/gitclone/Odin/odin'
 

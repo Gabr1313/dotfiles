@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 sudo dnf install llvm18-devel
+sudo ln -s /usr/bin/llvm-symbolizer-18 /usr/bin/llvm-symbolizer
 sudo dnf install clang
 cd $HOME/gitclone
 git clone https://github.com/odin-lang/Odin
