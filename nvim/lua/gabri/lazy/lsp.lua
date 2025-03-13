@@ -1,12 +1,13 @@
 return {
 	{
 		'saghen/blink.cmp',
-		dependencies = 'rafamadriz/friendly-snippets',
+		dependencies = {
+			'rafamadriz/friendly-snippets',
+		},
 		version = '*',
 		opts = {
 			keymap = {
-				preset = 'default',
-				['<C-c>'] = { 'show', 'hide' }, -- completion
+				['<C-c>'] = { 'show', 'hide' },                 -- completion
 				['<C-n>'] = { 'show', 'select_next', 'fallback' },
 				['<C-i>'] = { 'show_documentation', 'hide_documentation' }, -- info
 				['<C-h>'] = { 'snippet_backward', 'fallback' },
@@ -14,6 +15,22 @@ return {
 				['<C-k>'] = { 'scroll_documentation_down', 'fallback' },
 				['<C-l>'] = { 'snippet_forward', 'fallback' },
 				['<C-s>'] = { 'show_signature', 'hide_signature', 'fallback' },
+				['<tab>'] = { 'fallback' },
+				['<s-tab>'] = { 'fallback' },
+			},
+			cmdline = {
+				keymap = {
+					['<C-c>'] = { 'show', 'hide' },              -- completion
+					['<C-n>'] = { 'show', 'select_next', 'fallback' },
+					['<C-i>'] = { 'show_documentation', 'hide_documentation' }, -- info
+					['<C-h>'] = { 'snippet_backward', 'fallback' },
+					['<C-j>'] = { 'scroll_documentation_up', 'fallback' },
+					['<C-k>'] = { 'scroll_documentation_down', 'fallback' },
+					['<C-l>'] = { 'snippet_forward', 'fallback' },
+					['<C-s>'] = { 'show_signature', 'hide_signature', 'fallback' },
+					['<tab>'] = { 'fallback' },
+					['<s-tab>'] = { 'fallback' },
+				}
 			},
 			sources = { default = { 'lsp', 'path', 'snippets', 'buffer' }, },
 			completion = {
@@ -21,17 +38,19 @@ return {
 				-- it display ghost_text even without menu (`menu.auto_show = false`)
 
 				ghost_text = { enabled = true },
-				list = { selection = { 
-					preselect = function(ctx) return ctx.mode == 'default' end, 
-					auto_insert = true,
-				} }, 
+				list = {
+					selection = {
+						preselect = function(ctx) return ctx.mode == 'default' end,
+						auto_insert = true,
+					}
+				},
 				menu = {
 					auto_show = false,
 
-				-- ghost_text = { enabled = false },
-				-- list = { selection = { preselect = false, auto_insert = true, } },
-				-- menu = {
-				-- 	auto_show = true,
+					-- ghost_text = { enabled = false },
+					-- list = { selection = { preselect = false, auto_insert = true, } },
+					-- menu = {
+					-- 	auto_show = true,
 
 					border = 'single',
 					draw = {
@@ -127,7 +146,7 @@ return {
 					vim.keymap.set("n", "<leader>ld",
 						function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end,
 						{ desc = '[L]sp toggle [D]iagnostic' })
-					vim.keymap.set("n", "<leader>lc", vim.diagnostic.setqflist, 
+					vim.keymap.set("n", "<leader>lc", vim.diagnostic.setqflist,
 						{ desc = '[L]sp diagnostics quickfix list' })
 
 					vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = '[L]sp [F]ormat' })

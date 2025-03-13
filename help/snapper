@@ -1,0 +1,54 @@
+https://github.com/openSUSE/snapper/tree/master/data
+
+cat /usr/lib/systemd/system/snapper-timeline.timer
+
+```
+[Unit]
+Description=Timeline of Snapper Snapshots
+Documentation=man:snapper(8) man:snapper-configs(5)
+
+[Timer]
+OnCalendar=hourly
+
+[Install]
+WantedBy=timers.target
+```
+
+cat /usr/lib/systemd/system/snapper-cleanup.timer
+
+```
+[Unit]
+Description=Daily Cleanup of Snapper Snapshots
+Documentation=man:snapper(8) man:snapper-configs(5)
+
+[Timer]
+OnBootSec=10m
+OnUnitActiveSec=1h
+
+[Install]
+WantedBy=timers.target
+```
+
+Created symlink '/etc/systemd/system/timers.target.wants/snapper-timeline.timer' → '/usr/lib/systemd/system/snapper-timeline.timer'.
+Created symlink '/etc/systemd/system/timers.target.wants/snapper-cleanup.timer' → '/usr/lib/systemd/system/snapper-cleanup.timer'.
+
+sudo umount /home/.snapshots
+sudo rm -r /home/.snapshots
+sudo mv /etc/snapper/configs/home     /etc/snapper/configs/home.old
+sudo snapper -c home create-config /home
+sudo mv /etc/snapper/configs/home     /etc/snapper/configs/home.bk
+sudo mv /etc/snapper/configs/home.old /etc/snapper/configs/home
+sudo btrfs subvolume delete /home/.snapshots
+sudo mkdir /home/.snapshots
+sudo mount -av
+
+sudo mv /lib/systemd/system/snapper-timeline.timer /lib/systemd/system/snapper-timeline.timer.bk
+sudo mv /lib/systemd/system/snapper-cleanup.timer /lib/systemd/system/snapper-cleanup.timer.bk
+sudo cp /home/gabri/projects/dotfiles/snapper/system/snapper-timeline.timer /lib/systemd/system/snapper-timeline.timer
+sudo cp /home/gabri/projects/dotfiles/snapper/system/snapper-cleanup.timer  /lib/systemd/system/snapper-cleanup.timer
+
+sudo systemctl enable --now snapper-timeline.timer
+sudo systemctl enable --now snapper-cleanup.timer
+
+# Created symlink '/etc/systemd/system/timers.target.wants/snapper-timeline.timer' → '/usr/lib/systemd/system/snapper-timeline.timer'.
+# Created symlink '/etc/systemd/system/timers.target.wants/snapper-cleanup.timer' → '/usr/lib/systemd/system/snapper-cleanup.timer'.

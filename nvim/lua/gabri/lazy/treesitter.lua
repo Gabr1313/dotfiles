@@ -1,4 +1,5 @@
--- TOOOOOOOOOOO SLOW. It is unusable with a 2k lines file (even with highlights disabled)
+-- TOOOOOOOOOOO SLOW. It is unusable with a 2k lines file in Odin (even with highlights disabled)
+-- maybe the odin one is poorly written
 return {
 	-- {
 	-- 	"nvim-treesitter/nvim-treesitter",

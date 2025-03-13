@@ -68,7 +68,7 @@ vim.keymap.set('x', 'ac', '<plug>(vimtex-ac)')
 vim.keymap.set('o', 'ic', '<plug>(vimtex-ic)')
 vim.keymap.set('o', 'ac', '<plug>(vimtex-ac)')
 
--- https://github.com/L3MON4D3/LuaSnip/blob/master/Examples/snippets.lua
+--[[ -- https://github.com/L3MON4D3/LuaSnip/blob/master/Examples/snippets.lua
 -- https://github.com/L3MON4D3/LuaSnip/wiki/Cool-Snippets
 local luasnip = require("luasnip")
 local s = luasnip.snippet
@@ -244,4 +244,4 @@ luasnip.add_snippets("tex", {
 }, {
 	type = "autosnippets",
 	key = "tex",
-})
+}) ]]

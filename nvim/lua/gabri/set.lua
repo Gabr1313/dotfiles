@@ -44,3 +44,5 @@ vim.opt.synmaxcol = 256
 vim.opt.cursorline = true
 
 vim.opt.completeopt = 'menu,menuone,preview'
+
+vim.o.exrc = true

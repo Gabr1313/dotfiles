@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+nmcli device wifi rescan
 selection=$(nmcli -f SSID -t device wifi list | fzf)
 if [[ -n "$selection" ]]; then
 	echo $selection

@@ -51,5 +51,8 @@ return {
 		-- 		line_up = '<M-k>',
 		-- 	},
 		-- })
+		require('mini.splitjoin').setup({
+			mappings = { toggle = 'gs', },
+		})
 	end,
 }
