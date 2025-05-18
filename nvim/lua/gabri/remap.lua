@@ -3,15 +3,7 @@ vim.g.mapleader = " "
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>")
 vim.keymap.set({ "n", "v" }, "<BS>", "<Nop>")
 vim.keymap.set({ "t" }, "<Esc><Esc>", "<c-\\><c-n>", { desc = "[Esc] terminal" })
-vim.keymap.set("n", "<esc>", "<cmd>noh<CR>", { desc = "Highlight toggle" })
-
--- vim.keymap.set("n", "<C-/>", function()
---     if vim.api.nvim_get_option_value('hlsearch', {}) == true then
---         vim.api.nvim_set_option_value('hlsearch', false, {})
---     else
---         vim.api.nvim_set_option_value('hlsearch', true, {})
---     end
--- end, { desc = "Highlight toggle" })
+vim.keymap.set("n", "<esc>", "<cmd>noh<CR>", { desc = "No highlight" })
 
 vim.keymap.set("n", "<C-/>", "/\\c", { desc = "Change directory" })
 vim.keymap.set("n", "<C-S-/>", "?\\", { desc = "Change directory" })
@@ -35,28 +27,42 @@ vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "[P]ut no yank" })
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "[Y]ank to clipboard" })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "[Y]ank to clipboard" })
 
-vim.keymap.set("n", "<C-c>", function()
+vim.keymap.set("n", "<C-q>", function()
 	for _, win in pairs(vim.fn.getwininfo()) do
 		if win["quickfix"] == 1 then
 			vim.cmd("cclose")
 			return
 		end
 	end
-	vim.cmd("copen")
+	vim.cmd("6copen")
 	-- vim.cmd("wincmd p")
 end, { desc = "Quickfix list toggle" })
-vim.keymap.set("n", "<C-p>", "<cmd>cprev<CR>zz", { desc = "Quickfix list [P]revious" })
-vim.keymap.set("n", "<C-n>", "<cmd>cnext<CR>zz", { desc = "Quickfix list [N]ext" })
+
+local function cprev_cnext(cwhat, warm_msg)
+    local ok = pcall(vim.cmd, cwhat)
+    if ok ~= true then
+        vim.notify(warm_msg, vim.log.levels.WARN)
+        return
+    end
+    vim.cmd("norm! zz")
+    local qf_winid = vim.fn.getqflist({ winid = 0 }).winid
+    if qf_winid ~= 0 then
+        vim.fn.win_execute(qf_winid, "norm! zt")
+    end 
+end
+
+vim.keymap.set("n", "<C-p>", function() cprev_cnext("cprev", "REACHED FIRST ITEM") end, { desc = "Quickfix list [P]revious" })
+vim.keymap.set("n", "<C-n>", function() cprev_cnext("cnext", "REACHED LAST ITEM") end, { desc = "Quickfix list [N]ext" })
 
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to window left" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to window down" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to window up" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to window right" })
 
-vim.keymap.set("n", "<C-Up>", "4<C-w>+", { desc = "Resize window vertically" })
-vim.keymap.set("n", "<C-Down>", "4<C-w>-", { desc = "Change window smaller vertically" })
-vim.keymap.set("n", "<C-Right>", "4<C-w>>", { desc = "Change window bigger horizontally" })
-vim.keymap.set("n", "<C-Left>", "4<C-w><", { desc = "Change window smaller horizontally" })
+vim.keymap.set("n", "<C-Up>", "2<C-w>+", { desc = "Resize window vertically" })
+vim.keymap.set("n", "<C-Down>", "2<C-w>-", { desc = "Change window smaller vertically" })
+vim.keymap.set("n", "<C-Right>", "2<C-w>>", { desc = "Change window bigger horizontally" })
+vim.keymap.set("n", "<C-Left>", "2<C-w><", { desc = "Change window smaller horizontally" })
 vim.keymap.set("n", "<leader>se", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "[S]ubsitute [E]nd" })
 vim.keymap.set("n", "<leader>sb", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], { desc = "[S]ubsitute [B]eginning" })
 
@@ -64,34 +70,34 @@ vim.keymap.set("n", "<leader>zm", "<cmd>set foldmethod=marker<CR>", { desc = "[Z
 
 local function wrap_on()
 	vim.opt.wrap = true
-	vim.keymap.set({"n", "v"}, "j", "gj", { noremap = true, desc = "[j]  wrapping on" })
-	vim.keymap.set({"n", "v"}, "k", "gk", { noremap = true, desc = "[k]  wrapping on" })
-	vim.keymap.set({"n", "v"}, "$", "g$", { noremap = true, desc = "[$]  wrapping on" })
-	vim.keymap.set({"n", "v"}, "0", "g0", { noremap = true, desc = "[0]  wrapping on" })
-	vim.keymap.set({"n", "v"}, "^", "g^", { noremap = true, desc = "[^]  wrapping on" })
-	vim.keymap.set({"n", "v"}, "_", "g_", { noremap = true, desc = "[_]  wrapping on" })
-	vim.keymap.set({"n", "v"}, "gj", "j", { noremap = true, desc = "[gj] wrapping on" })
-	vim.keymap.set({"n", "v"}, "gk", "k", { noremap = true, desc = "[gk] wrapping on" })
-	vim.keymap.set({"n", "v"}, "g$", "$", { noremap = true, desc = "[g$] wrapping on" })
-	vim.keymap.set({"n", "v"}, "g0", "0", { noremap = true, desc = "[g0] wrapping on" })
-	vim.keymap.set({"n", "v"}, "g^", "^", { noremap = true, desc = "[g^] wrapping on" })
-	vim.keymap.set({"n", "v"}, "g_", "_", { noremap = true, desc = "[g_] wrapping on" })
+	vim.keymap.set({"n"}, "j", "gj", { noremap = true, desc = "[j]  wrapping on" })
+	vim.keymap.set({"n"}, "gj", "j", { noremap = true, desc = "[gj] wrapping on" })
+	vim.keymap.set({"n"}, "k", "gk", { noremap = true, desc = "[k]  wrapping on" })
+	vim.keymap.set({"n"}, "gk", "k", { noremap = true, desc = "[gk] wrapping on" })
+	-- vim.keymap.set({"n", "v"}, "$", "g$", { noremap = true, desc = "[$]  wrapping on" })
+	-- vim.keymap.set({"n", "v"}, "g$", "$", { noremap = true, desc = "[g$] wrapping on" })
+	-- vim.keymap.set({"n", "v"}, "^", "g^", { noremap = true, desc = "[^]  wrapping on" })
+	-- vim.keymap.set({"n", "v"}, "g^", "^", { noremap = true, desc = "[g^] wrapping on" })
+	-- vim.keymap.set({"n", "v"}, "0", "g0", { noremap = true, desc = "[0]  wrapping on" })
+	-- vim.keymap.set({"n", "v"}, "g0", "0", { noremap = true, desc = "[g0] wrapping on" })
+	-- vim.keymap.set({"n", "v"}, "_", "g_", { noremap = true, desc = "[_]  wrapping on" })
+	-- vim.keymap.set({"n", "v"}, "g_", "_", { noremap = true, desc = "[g_] wrapping on" })
 end
 
 local function wrap_off()
 	vim.opt.wrap = false
-	vim.keymap.del({"n", "v"}, "j")
-	vim.keymap.del({"n", "v"}, "k")
-	vim.keymap.del({"n", "v"}, "$")
-	vim.keymap.del({"n", "v"}, "0")
-	vim.keymap.del({"n", "v"}, "^")
-	vim.keymap.del({"n", "v"}, "_")
-	vim.keymap.del({"n", "v"}, "gj")
-	vim.keymap.del({"n", "v"}, "gk")
-	vim.keymap.del({"n", "v"}, "g$")
-	vim.keymap.del({"n", "v"}, "g0")
-	vim.keymap.del({"n", "v"}, "g^")
-	vim.keymap.del({"n", "v"}, "g_")
+	vim.keymap.del({"n"}, "j")
+	vim.keymap.del({"n"}, "gj")
+	vim.keymap.del({"n"}, "k")
+	vim.keymap.del({"n"}, "gk")
+	-- vim.keymap.del({"n", "v"}, "$")
+	-- vim.keymap.del({"n", "v"}, "g$")
+	-- vim.keymap.del({"n", "v"}, "^")
+	-- vim.keymap.del({"n", "v"}, "g^")
+	-- vim.keymap.del({"n", "v"}, "0")
+	-- vim.keymap.del({"n", "v"}, "g0")
+	-- vim.keymap.del({"n", "v"}, "_")
+	-- vim.keymap.del({"n", "v"}, "g_")
 end
 
 local function wrap_toggle()

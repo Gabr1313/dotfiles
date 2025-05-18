@@ -5,6 +5,7 @@ return {
 		config = function()
 			require("lualine").setup({
 				options = {
+                    globalstatus = true,
 					theme = 'auto',
 					-- section_separators = { left = '', right = '' },
 					section_separators = { left = '', right = '' },
@@ -16,7 +17,7 @@ return {
 					lualine_b = { 'branch', 'diff',
 						-- { 'diagnostics', symbols = { error = '', warn = '', info = '', hint = '' } }
 					},
-					lualine_c = { 'filename' },
+					lualine_c = { {'filename', path = 1} },
 					-- lualine_x = {'encoding', {'fileformat'}, 'filetype'},
 					lualine_x = { 'filetype' },
 					lualine_y = { 'progress' },

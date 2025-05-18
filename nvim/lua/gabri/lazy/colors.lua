@@ -3,7 +3,6 @@ function color_my_pencil(name)
 	vim.api.nvim_set_hl(0, "IlluminatedWordText", { underline = true })
 	vim.api.nvim_set_hl(0, "IlluminatedWordRead", { underline = true })
 	vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { underline = true })
-	-- vim.api.nvim_set_hl(0, "Visual", { reverse = true })
 end
 
 return {
@@ -15,7 +14,7 @@ return {
 				styles = { transparency = true },
 			})
 			color_my_pencil("rose-pine")
-			vim.api.nvim_set_hl(0, "Visual", { bg = "#4f4a60" })
+			vim.api.nvim_set_hl(0, "QuickFixLine", {})
 		end
 	},
 

@@ -18,7 +18,7 @@ return {
 			groups = {
 				match = "IncSearch",
 				current = "IncSearch",
-				-- label =  "CurSearch",
+				label =  "Search",
 				backdrop = "", -- otherwise it color when pressing `f`
 			},
 		},

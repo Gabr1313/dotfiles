@@ -18,11 +18,6 @@ sudo nvim /etd/dnf/dnf.conf
 #   max_parallel_downloads=16
 #   fastestmirror=true
 
-# NixOs
-sudo ln -s $(pwd)/nixos/configuration.nix /etc/nixos/configuration.nix
-sudo ln -s $(pwd)/nixos/hardware-configuration.nix  /etc/nixos/hardware-configuration.nix
-
-
 sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E fedora).noarch.rpm \
 	https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf install \
@@ -35,6 +30,12 @@ sudo dnf install \
 	qbittorrent calibre \
 	texlive-scheme-full pdflatex pandoc \
 sudo dnf copr enable pgdev/ghostty && sudo dnf install ghostty
+
+# NixOs
+sudo ln -s $(pwd)/nixos/configuration.nix /etc/nixos/configuration.nix
+sudo ln -s $(pwd)/nixos/hardware-configuration.nix  /etc/nixos/hardware-configuration.nix
+
+
 
 mkdir $HOME/gitclone
 cd    $HOME/gitclone

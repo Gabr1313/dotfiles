@@ -11,7 +11,7 @@ if status is-interactive
 	function cd; _cd $argv && ls -a; end
 
 	# better man
-	function man; command man $argv | bat -p -l man; end
+	# function man; command man $argv | bat -p -l man; end
 
 	set -g fish_key_bindings fish_vi_key_bindings
 	# previous directory (currently `ls after cd` is bugged with repaint)
@@ -34,22 +34,30 @@ if status is-interactive
 	bind --mode default \cp complete-and-search
 	bind --mode insert  \cp complete-and-search
 	bind --mode visual  \cp complete-and-search
-	# ctrl-c for accepting them
+	# ctrl-y for accepting them
 	bind --mode default \cy accept-autosuggestion
 	bind --mode insert  \cy accept-autosuggestion
+	# ctrl-[ as esc
+	bind --mode default \c\[ \e
+	bind --mode insert  \c\[ \e
+	bind --mode visual  \c\[ \e
 
 	alias odin='~/gitclone/Odin/odin'
 
 	alias v='nvim'
 
 	alias upgrade='sudo dnf upgrade -y'
-	alias ls='eza --icons --group-directories-first'
-	alias tree='eza --icons --group-directories-first --tree'
-	alias cat='bat -pp'
+    if type -q eza 
+        alias ls='eza --icons --group-directories-first'
+        alias tree='eza --icons --group-directories-first --tree'
+    end
+    if type -q bat
+        alias cat='bat -pp'
+    end
 
 	# see also functions `f` (quick find) and `fr` (quick find recursive)
 	# quick find file
 	alias ff='find -L -type f | fzf --preview \'bat --style=numbers --color=always --line-range :256 {}\''
 	# quick find file and edit
-	alias fe='find | fzf --preview \'bat --style=numbers --color=always --line-range :256 {}\'| xargs -r $EDITOR'
+	alias fe='find -L -type f | fzf --preview \'bat --style=numbers --color=always --line-range :256 {}\'| xargs -r $EDITOR'
 end

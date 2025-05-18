@@ -1,18 +1,31 @@
 # ghostty +show-config --default --docs
 # https://ghostty.org/docs/config
 
+background-opacity = 0.925
+background-blur-radius = 20 
 # @future not working yet
-# background-opacity = 0.925
-# background-blur-radius = 20
 
 # ghostty +list-fonts | less
-# font-family =             "JetBrainsMono NFM SemiBold"
-# font-family-bold =        "JetBrainsMono NFM ExtraBold"
-# font-family-italic =      "JetBrainsMono NFM SemiBold Italic"
-# font-family-bold-italic = "JetBrainsMono NFM ExtraBold Italic"
-# font-family = "FiraCode Nerd Font Mono"
-# font-family = "Zed Mono Extended"
+# font-family = "JetBrainsMono NF"
+# font-family = "FiraCode Nerd Font"
 # font-size   = 13
+
+# font-family = "Iosevka Nerd Font"
+# font-size   = 14
+
+font-family             = "VictorMono NF"
+font-style              = "Medium"
+font-style-bold         = "Bold"
+font-style-italic       = "Medium"
+font-style-bold-italic  = "Bold"
+# font-style-italic       = "Medium Oblique"
+# font-style-bold-italic  = "Bold Oblique"
+# font-style-italic       = "Medium Italic"
+# font-style-bold-italic  = "Bold Italic" 
+font-size = 14
+
+# font-family = "ZedMono Nerd Font"
+# font-size   = 14
 
 # disable ligatures
 font-feature = -calt, -liga, -dlig
@@ -21,7 +34,8 @@ font-feature = -calt, -liga, -dlig
 # theme = "catppuccin-macchiato"
 # theme = "Monokai Pro Machine"
 theme = "rose-pine-moon"
-background = #282c34
+# background = #282c34
+background = #181818
 
 # @future blink at a higher rate
 # cursor-text = #202020
@@ -50,10 +64,10 @@ keybind = ctrl+four=goto_tab:4
 keybind = ctrl+five=goto_tab:5
 keybind = ctrl+zero=goto_tab:1000
 
-keybind = ctrl+semicolon>semicolon=move_tab:1
-keybind = ctrl+semicolon>slash=move_tab:-1
-keybind = ctrl+semicolon>period=next_tab
-keybind = ctrl+semicolon>comma=previous_tab
+keybind = ctrl+semicolon>comma=move_tab:-1
+keybind = ctrl+semicolon>period=move_tab:1
+keybind = ctrl+semicolon>semicolon=next_tab
+keybind = ctrl+semicolon>slash=previous_tab
 
 keybind = ctrl+semicolon>s=new_split:down
 keybind = ctrl+semicolon>v=new_split:right

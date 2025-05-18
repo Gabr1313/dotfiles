@@ -9,7 +9,7 @@ vim.opt.relativenumber = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.expandtab = false
+vim.opt.expandtab = true
 
 vim.opt.smartindent = true -- vim.opt.cindent = true
 vim.opt.wrap = false
@@ -28,7 +28,7 @@ vim.opt.inccommand = "split"
 
 vim.opt.termguicolors = true
 
-vim.opt.scrolloff = 4
+-- vim.opt.scrolloff = 4
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
@@ -38,10 +38,11 @@ vim.opt.updatetime = 50
 
 vim.opt.history = 256
 vim.opt.list = true
-vim.opt.listchars = "tab:→ ,eol:↵" -- nbsp:∙
+-- vim.opt.listchars = "tab:→ ,eol:↵" -- nbsp:∙
+vim.opt.listchars = "tab: ,eol:󰌑" -- nbsp:∙
 
 vim.opt.synmaxcol = 256
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 
 vim.opt.completeopt = 'menu,menuone,preview'
 

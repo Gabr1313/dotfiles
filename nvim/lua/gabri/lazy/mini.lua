@@ -18,13 +18,13 @@ return {
 			triggers = {
 				{ mode = 'n', keys = '<Leader>' }, { mode = 'x', keys = '<Leader>' },
 				{ mode = 'i', keys = '<C-x>' },
-				{ mode = 'n', keys = 'g' }, { mode = 'x', keys = 'g' },
-				{ mode = 'n', keys = "'" }, { mode = 'x', keys = "'" },
-				{ mode = 'n', keys = '`' }, { mode = 'x', keys = '`' },
-				{ mode = 'n', keys = '"' }, { mode = 'x', keys = '"' },
-				{ mode = 'c', keys = '<C-r>' }, { mode = 'i', keys = '<C-r>' },
+				{ mode = 'n', keys = 'g' },        { mode = 'x', keys = 'g' },
+				{ mode = 'n', keys = "'" },        { mode = 'x', keys = "'" },
+				{ mode = 'n', keys = '`' },        { mode = 'x', keys = '`' },
+				{ mode = 'n', keys = '"' },        { mode = 'x', keys = '"' },
+				{ mode = 'c', keys = '<C-r>' },    { mode = 'i', keys = '<C-r>' },
 				{ mode = 'n', keys = '<C-w>' },
-				{ mode = 'n', keys = 'z' }, { mode = 'x', keys = 'z' },
+				{ mode = 'n', keys = 'z' },        { mode = 'x', keys = 'z' },
 			},
 			clues = {
 				miniclue.gen_clues.builtin_completion(),
@@ -39,20 +39,9 @@ return {
 		require('mini.indentscope').setup({
 			draw = { delay = 0, animation = function() return 0 end }
 		})
-		-- require('mini.move').setup({
-		-- 	mappings = {
-		-- 		left = '<M-h>',
-		-- 		right = '<M-l>',
-		-- 		down = '<M-j>',
-		-- 		up = '<M-k>',
-		-- 		line_left = '<M-h>',
-		-- 		line_right = '<M-l>',
-		-- 		line_down = '<M-j>',
-		-- 		line_up = '<M-k>',
-		-- 	},
-		-- })
 		require('mini.splitjoin').setup({
-			mappings = { toggle = 'gs', },
+		    mappings = { toggle = 'gs', },
 		})
+        require('mini.align').setup()
 	end,
 }
