@@ -16,7 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	spec = "gabri.lazy",
-	change_detection = { enabled = false }, -- no hot reload
+	change_detection = { enabled = false }, -- hot reload
 	checker = { enabled = false },          -- automatic updates
-	rocks = { enabled = false },            -- no luarocks
+	rocks = { enabled = false },            -- luarocks
 })
