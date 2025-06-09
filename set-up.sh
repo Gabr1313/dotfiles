@@ -30,6 +30,7 @@ sudo dnf install \
 	qbittorrent calibre \
 	texlive-scheme-full pdflatex pandoc \
 sudo dnf copr enable pgdev/ghostty && sudo dnf install ghostty
+curl -fsSL https://repo.librewolf.net/librewolf.repo | pkexec tee /etc/yum.repos.d/librewolf.repo && sudo dnf install librewolf
 
 # NixOs
 sudo ln -s $(pwd)/nixos/configuration.nix /etc/nixos/configuration.nix

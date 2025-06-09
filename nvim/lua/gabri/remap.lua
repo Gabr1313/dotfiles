@@ -68,49 +68,6 @@ vim.keymap.set("n", "<leader>sb", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], 
 
 vim.keymap.set("n", "<leader>zm", "<cmd>set foldmethod=marker<CR>", { desc = "[Z]fold [M]arker" })
 
-local function wrap_on()
-	vim.opt.wrap = true
-	vim.keymap.set({"n"}, "j", "gj", { noremap = true, desc = "[j]  wrapping on" })
-	vim.keymap.set({"n"}, "gj", "j", { noremap = true, desc = "[gj] wrapping on" })
-	vim.keymap.set({"n"}, "k", "gk", { noremap = true, desc = "[k]  wrapping on" })
-	vim.keymap.set({"n"}, "gk", "k", { noremap = true, desc = "[gk] wrapping on" })
-	-- vim.keymap.set({"n", "v"}, "$", "g$", { noremap = true, desc = "[$]  wrapping on" })
-	-- vim.keymap.set({"n", "v"}, "g$", "$", { noremap = true, desc = "[g$] wrapping on" })
-	-- vim.keymap.set({"n", "v"}, "^", "g^", { noremap = true, desc = "[^]  wrapping on" })
-	-- vim.keymap.set({"n", "v"}, "g^", "^", { noremap = true, desc = "[g^] wrapping on" })
-	-- vim.keymap.set({"n", "v"}, "0", "g0", { noremap = true, desc = "[0]  wrapping on" })
-	-- vim.keymap.set({"n", "v"}, "g0", "0", { noremap = true, desc = "[g0] wrapping on" })
-	-- vim.keymap.set({"n", "v"}, "_", "g_", { noremap = true, desc = "[_]  wrapping on" })
-	-- vim.keymap.set({"n", "v"}, "g_", "_", { noremap = true, desc = "[g_] wrapping on" })
-end
-
-local function wrap_off()
-	vim.opt.wrap = false
-	vim.keymap.del({"n"}, "j")
-	vim.keymap.del({"n"}, "gj")
-	vim.keymap.del({"n"}, "k")
-	vim.keymap.del({"n"}, "gk")
-	-- vim.keymap.del({"n", "v"}, "$")
-	-- vim.keymap.del({"n", "v"}, "g$")
-	-- vim.keymap.del({"n", "v"}, "^")
-	-- vim.keymap.del({"n", "v"}, "g^")
-	-- vim.keymap.del({"n", "v"}, "0")
-	-- vim.keymap.del({"n", "v"}, "g0")
-	-- vim.keymap.del({"n", "v"}, "_")
-	-- vim.keymap.del({"n", "v"}, "g_")
-end
-
-local function wrap_toggle()
-	if vim.api.nvim_win_get_option_value(vim.api.nvim_get_current_win(), 'wrap') then
-		wrap_off()
-	else
-		wrap_on()
-	end
-end
-
-wrap_on()
-vim.keymap.set("n", "<leader>w", wrap_toggle, { desc = "[W]rap toggle" })
-
 vim.keymap.set("i", "<C-f>{", "{}<Left>", { desc = "Autopair {}" })
 vim.keymap.set("i", "<C-f>}", "{\n}<ESC><S-O>", { desc = "Autopair {\\n}" })
 vim.keymap.set("i", "<C-f>[", "[]<Left>", { desc = "Autopair []" })
