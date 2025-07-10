@@ -4,9 +4,10 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>")
 vim.keymap.set({ "n", "v" }, "<BS>", "<Nop>")
 vim.keymap.set({ "t" }, "<Esc><Esc>", "<c-\\><c-n>", { desc = "[Esc] terminal" })
 vim.keymap.set("n", "<esc>", "<cmd>noh<CR>", { desc = "No highlight" })
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "tmux sessionizer" })
 
-vim.keymap.set("n", "<C-/>", "/\\c", { desc = "Change directory" })
-vim.keymap.set("n", "<C-S-/>", "?\\", { desc = "Change directory" })
+vim.keymap.set("n", "<leader>/", "/\\c", { desc = "Search ignore case" })
+vim.keymap.set("n", "<leader>?", "?\\c", { desc = "Search ignore case" })
 
 vim.keymap.set("n", "<leader>cd", "<cmd>cd %:h<CR>", { desc = "Change directory" })
 vim.keymap.set("n", "<leader>t", [[<cmd>%s/\s\+$//e<CR>]], { desc = "Remove trailing spaces" })

@@ -1,0 +1,65 @@
+font:
+  normal:
+    family: "VictorMono NFM"
+    style: "Regular"
+  bold:
+    family: "VictorMono NFM"
+    style: "SemiBold"
+  italic:
+    family: "VictorMono NFM"
+    style: "Oblique"
+  bold_italic:
+    family: "VictorMono NFM"
+    style: "SemiBoldOblique"
+  size: 13.0
+
+# window:
+#   decorations: "None"
+
+colors:
+  normal:
+    black:   "#393552"
+    red:     "#eb6f92"
+    green:   "#3e8fb0"
+    yellow:  "#f6c177"
+    blue:    "#9ccfd8"
+    magenta: "#c4a7e7"
+    cyan:    "#ea9a97"
+    white:   "#e0def4"
+  bright:
+    black:   "#6e6a86"
+    red:     "#eb6f92"
+    green:   "#3e8fb0"
+    yellow:  "#f6c177"
+    blue:    "#9ccfd8"
+    magenta: "#c4a7e7"
+    cyan:    "#ea9a97"
+    white:   "#e0def4"
+
+selection:
+  save_to_clipboard: true
+
+cursor:
+  style:
+    shape: "Beam" # see .bashrc, I use escape codes instead, so it does not reset when exiting from vim or similar
+    blinking: "Always"
+  vi_mode_style:
+    shape: "Block"
+    blinking: "Always"
+  blink_interval: 300
+  blink_timeout: 0
+
+# terminal:
+#   shell:
+#     program: "tmux"
+
+keyboard:
+  bindings:
+    - { key: "Escape", mods: "Control", action: "ToggleViMode" }
+    # - { key: "U", mods: "Control|Shift", action: "ScrollHalfPageUp" }
+    # - { key: "D", mods: "Control|Shift", action: "ScrollHalfPageDown" }
+    # - { key: "Y", mods: "Control|Shift", action: "ScrollLineUp" }
+    # - { key: "E", mods: "Control|Shift", action: "ScrollLineDown" }
+    # - { key: "Up", mods: "Control|Shift", action: "ScrollToTop" }
+    # - { key: "Down", mods: "Control|Shift", action: "ScrollToBottom" }
+    # - { key: "?", mods: "Control|Shift", action: "SearchBackward" }

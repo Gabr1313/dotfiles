@@ -3,7 +3,9 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    folders="/home/ $HOME/ $HOME/cp $HOME/projects $HOME/gitPub/ $HOME/gitMine/.dotfiles $HOME/gitMine/ $HOME/polimi/*/ /run/media/$USER/"
+    # sync with cd-fzf
+    folders="$(pwd) $HOME/ $HOME/projects/ $HOME/projects/cp/ $HOME/projects/polimi/*/ \
+        $HOME/projects/dotfiles/ $HOME/projects/dotfiles/nvim/lua/ $HOME/gitclone/ "
     selected=$(find -L $(echo $folders) -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
@@ -14,13 +16,12 @@ fi
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
-    exit 0
-fi
-
 if ! tmux has-session -t=$selected_name 2> /dev/null; then
     tmux new-session -ds $selected_name -c $selected
 fi
 
-tmux switch-client -t $selected_name
+if [[ -z $TMUX ]]; then
+    tmux attach -t $selected_name
+else
+    tmux switch-client -t $selected_name
+fi

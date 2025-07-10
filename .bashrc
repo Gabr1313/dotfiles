@@ -10,8 +10,11 @@ export EDITOR="nvim"
 
 ######## MISCELLANEOUS ########
 
+# Ctrl-S and Ctrl-Q works normally
+stty -ixon
+
 # don't put duplicate lines or lines starting with space in the history. (See bash(1) for more options)
-HISTCONTROL=ignoreboth
+HISTCONTROL=ignoreboth:erasedups
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -42,7 +45,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-. "$HOME/.cargo/env"
 
 ######## ALIASES ########
 
@@ -61,6 +63,11 @@ fi
 if command -v eza >/dev/null 2>&1; then
     alias ls='eza --icons --group-directories-first'
     alias tree='eza --icons --group-directories-first --tree'
+fi
+
+if command -v exa >/dev/null 2>&1; then
+    alias ls='exa --icons --group-directories-first'
+    alias tree='exa --icons --group-directories-first --tree'
 fi
 
 if command -v bat >/dev/null 2>&1; then
@@ -95,7 +102,7 @@ f() {
         "$HOME/gitclone/"
     )
     selected=$(find -L "${folders[@]}" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | \
-        fzf --preview 'command -v eza >/dev/null 2>&1 && eza -a --icons=always --color=always {} || cat {}')
+        fzf --preview 'command -v eza >/dev/null 2>&1 && eza -a --icons --color=always {} || ls -A {}')
     if [[ -n "$selected" ]]; then
         cd "$selected"
     fi
@@ -103,7 +110,7 @@ f() {
 
 fr() {
     selected=$(find -L $(pwd) -mindepth 1 -type d 2>/dev/null | \
-        fzf --preview 'command -v eza >/dev/null 2>&1 && eza -a --icons=always --color=always {} || cat {}')
+        fzf --preview 'command -v eza >/dev/null 2>&1 && eza -a --icons --color=always {} || cat {}')
     if [[ -n "$selected" ]]; then
         cd "$selected"
     fi
@@ -168,7 +175,7 @@ format_duration() {
 }
 
 show_exit_status() {
-    [[ $LAST_EXIT_CODE -ne 0 ]] && echo -n "$LAST_EXIT_CODE"
+    [[ $LAST_EXIT_CODE -ne 0 ]] && echo -n "[$LAST_EXIT_CODE]"
 }
 
 parse_git_branch() {
@@ -182,6 +189,7 @@ trap 'timer_start' DEBUG
 PROMPT_COMMAND='timer_end'
 
 PS1="\n\
+\e[6 q\
 ${BOLD_BLUE}\w \
 \$(parse_git_branch)\
 ${YELLOW}\$(format_duration \${CMD_DURATION:-0}) \
@@ -190,5 +198,4 @@ ${BOLD_RED}\$(show_exit_status) \
 ${RESET}\n\
 ❯ "
 
-# Bar as cursor
-echo -ne '\e[6 q'
+bind -x '"\C-f":tmux-sessionizer'

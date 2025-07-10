@@ -77,12 +77,12 @@ keybind = ctrl+semicolon>j=goto_split:bottom
 keybind = ctrl+semicolon>k=goto_split:top
 keybind = ctrl+semicolon>l=goto_split:right
 
-keybind = ctrl+shift+e=scroll_page_lines:+1
-keybind = ctrl+shift+y=scroll_page_lines:-1
-keybind = ctrl+shift+d=scroll_page_down
-keybind = ctrl+shift+u=scroll_page_up
-keybind = ctrl+semicolon>u=scroll_to_bottom
-keybind = ctrl+semicolon>d=scroll_to_top
+keybind = ctrl+shift+y=scroll_page_lines:+1
+keybind = ctrl+shift+e=scroll_page_lines:-1
+keybind = ctrl+shift+j=scroll_page_down
+keybind = ctrl+shift+k=scroll_page_up
+keybind = ctrl+shift+h=scroll_to_bottom
+keybind = ctrl+shift+l=scroll_to_top
 
 keybind = ctrl+shift+down=resize_split:down,10
 keybind = ctrl+shift+left=resize_split:left,10

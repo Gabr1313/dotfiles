@@ -8,7 +8,7 @@ return {
 		-- version = 'v0.12.4', -- update this. I need a bit of stability
 		opts = {
 			keymap = {
-				['<C-c>'] = { 'show', 'hide', 'fallback' }, -- completion
+				['<C-e>'] = { 'show', 'hide', 'fallback' }, -- completion
 				['<C-n>'] = { 'show', 'select_next', 'fallback' },
 				['<C-p>'] = { 'show', 'select_prev', 'fallback' },
 				['<C-i>'] = { 'show_documentation', 'hide_documentation', 'fallback' }, -- info
@@ -23,25 +23,20 @@ return {
 				['<up>']      = { 'fallback' },
 				['<C-b>']     = { 'fallback' },
 				['<C-f>']     = { 'fallback' },
-				['<C-e>']     = { 'fallback' },
 				['<tab>']     = { 'fallback' },
 				['<S-tab>']   = { 'fallback' },
 				['<C-space>'] = { 'fallback' },
 			},
 			cmdline = {
 				keymap = {
-					['<C-c>'] = { 'show', 'hide', 'fallback' }, -- completion
+                    preset = 'default',
+					['<C-e>'] = { 'show', 'hide', 'fallback' }, -- completion
 					['<C-n>'] = { 'show', 'select_next', 'fallback' },
 					['<C-p>'] = { 'show', 'select_prev', 'fallback' },
-					['<C-i>'] = { 'show_documentation', 'hide_documentation' }, -- info
 					['<C-h>'] = { 'snippet_backward', 'fallback' },
-					['<C-j>'] = { 'scroll_documentation_up', 'fallback' },
-					['<C-k>'] = { 'scroll_documentation_down', 'fallback' },
 					['<C-l>'] = { 'snippet_forward', 'fallback' },
-					['<C-s>'] = { 'show_signature', 'hide_signature', 'fallback' },
-					['<C-e>'] = { 'fallback' },
-					['<tab>'] = { 'fallback' },
-					['<s-tab>'] = { 'fallback' },
+                    ['<Tab>'] = { 'fallback' },
+                    ['<S-Tab>'] = { 'fallback' },
 				},
 			},
 			sources = { default = { 'buffer', 'omni', 'lsp', 'path', 'snippets' }, },
@@ -95,10 +90,10 @@ return {
 		'neovim/nvim-lspconfig',
 		dependencies = {
 			'saghen/blink.cmp',
-            "mason-org/mason.nvim",
-            "mason-org/mason-lspconfig.nvim",
-            -- { "mason-org/mason.nvim", version = "^1.0.0" },
-            -- { "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
+            -- "mason-org/mason.nvim",
+            -- "mason-org/mason-lspconfig.nvim",
+            { "mason-org/mason.nvim", version = "^1.0.0" },
+            { "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
 			"j-hui/fidget.nvim",
 			{
 				"folke/lazydev.nvim",

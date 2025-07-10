@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# usage: ./mv_earlier_than "1 year ago" src/dir/ dst/dir
+
+touch --date="$1" .tmp_referce_file
+mkdir -p "$3"
+find "$2" -newer .tmp_referce_file -type d | sed -e "s|$2||g" -e "s|^/||" | xargs -0 -t -I {} mkdir -p "$3/{}"
+find "$2" -newer .tmp_referce_file -type f -print0 | sed -z -e "s|$2/||g" | xargs -0 -t -I {} mv "$2/{}" "$3/{}"
+rm .tmp_referce_file

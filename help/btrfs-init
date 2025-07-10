@@ -17,16 +17,28 @@ cd /mnt
 ls
 mv @rootfs/ @
 btrfs su cr @snapshots
-btrfs su cr @home               # maybe saved on another parition?
-btrfs su cr @home_snapshots     # maybe saved on another parition?
-btrfs su cr @cache              # temporary files
-btrfs su cr @crash              # temporary files
-btrfs su cr @tmp                # temporary files
-btrfs su cr @log                # prevent data loss 
-btrfs su cr @spool              # data waiting to be processed eg. mail
-btrfs su cr @AccountsService    # gnome snapshot login
-btrfs su cr @gdm3               # gnome snapshot login
-btrfs su cr @images             # virtual machines
+cd ..
+umount /mnt
+
+mount /dev/<disk_partition_home> /mnt # disk parition is where /target was mounted
+cd /mnt
+ls
+btrfs su cr @home
+btrfs su cr @home_snapshots
+cd ..
+umount /mnt
+
+
+# btrfs su cr @home               # maybe saved on another parition?
+# btrfs su cr @home_snapshots     # maybe saved on another parition?
+# btrfs su cr @cache              # temporary files
+# btrfs su cr @crash              # temporary files
+# btrfs su cr @tmp                # temporary files
+# btrfs su cr @log                # prevent data loss 
+# btrfs su cr @spool              # data waiting to be processed eg. mail
+# btrfs su cr @AccountsService    # gnome snapshot login
+# btrfs su cr @gdm3               # gnome snapshot login
+# btrfs su cr @images             # virtual machines
 # btrfs su cr @containers         # ?
 # btrfs su cr @opt                # third party applications
 
@@ -58,31 +70,30 @@ mount -o noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@images
 # mount -o noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@containers        /dev/<disk_partition> /target/var/lib/containers
 # mkdir -p opt 
 # mount -o noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@opt               /dev/<disk_partition> /target/opt
-mkdir -p var/lib/portables      # best practice
-mkdir -p var/lib/machines       # best practice
-
-mount /dev/sdX2 boot        # see df at the beggining
-mount /dev/sdX1 boot/efi    # see df at the beggining
-
-nano etc/fstab
+nano etc/fstab (ctrl-k ctrl-u ctrl-u)
 
 /dev/<disk_partition>  /                          btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@                   0    0
 /dev/<disk_partition>  /.snapshots                btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@snapshots          0    0
-/dev/<disk_partition>  /home                      btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@home               0    0
-/dev/<disk_partition>  /home/.snapshots           btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@home_snapshots     0    0
-/dev/<disk_partition>  /var/cache                 btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@cache              0    0
-/dev/<disk_partition>  /var/crash                 btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@crash              0    0
-/dev/<disk_partition>  /var/tmp                   btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@tmp                0    0
-/dev/<disk_partition>  /var/log                   btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@log                0    0
-/dev/<disk_partition>  /var/spool                 btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@spool              0    0
-/dev/<disk_partition>  /var/lib/AccountsService   btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@AccountsService    0    0
-/dev/<disk_partition>  /var/lib/gdm3              btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@gdm3               0    0
-/dev/<disk_partition>  /var/lib/libvirt/images    btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@images             0    0
+/dev/<disk_partition_home>  /home                 btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@home               0    0
+/dev/<disk_partition_home>  /home/.snapshots      btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@home_snapshots     0    0
+# /dev/<disk_partition>  /var/cache                 btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@cache              0    0
+# /dev/<disk_partition>  /var/crash                 btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@crash              0    0
+# /dev/<disk_partition>  /var/tmp                   btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@tmp                0    0
+# /dev/<disk_partition>  /var/log                   btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@log                0    0
+# /dev/<disk_partition>  /var/spool                 btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@spool              0    0
+# /dev/<disk_partition>  /var/lib/AccountsService   btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@AccountsService    0    0
+# /dev/<disk_partition>  /var/lib/gdm3              btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@gdm3               0    0
+# /dev/<disk_partition>  /var/lib/libvirt/images    btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@images             0    0
 # /dev/<disk_partition>  /var/lib/containers        btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@containers         0    0
 # /dev/<disk_partition>  /opt                       btrfs  noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@opt                0    0
  
+# mkdir -p var/lib/portables      # best practice
+# mkdir -p var/lib/machines       # best practice
+
+# mount /dev/<disk_partition_boot> boot     # see df at the beggining
+mount /dev/<disk_partition_boot> boot/efi    # see df at the beggining
 cd /
-unmount /mnt
+
 exit
 
 # "alt+ctrl+F1"
