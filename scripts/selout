@@ -1,11 +1,30 @@
 #!/usr/bin/env bash
 
-output=$(pactl --f=json list sinks | jq -r '.[] | select(.ports[].availability != "not available")')
-selection=$(echo $output | jq -r '.description' | fzf)
-if [[ -n "$selection" ]]; then
-	echo $selection
-	src=$(echo $output | jq -r "select(.description == \"$selection\") | .name")
-	if [[ -n "$src" ]]; then 
-		pactl set-default-sink $src
-	fi
+if command -v pactl >/dev/null; then
+    output=$(pactl --f=json list sinks | jq -r '.[] | select(.ports[].availability != "not available")')
+    selection=$(echo $output | jq -r '.description' | fzf)
+    if [[ -z "$selection" ]]; then
+        exit 0
+    fi
+    echo $selection
+    src=$(echo $output | jq -r "select(.description == \"$selection\") | .name")
+    if [[ -n "$src" ]]; then 
+        pactl set-default-sink $src
+    fi
+elif command -v wpctl >/dev/null; then
+    sink_id=$(wpctl status | awk '
+    /Sinks:/ {found=1; next}
+    found {
+    if ($2 == "") exit
+        print
+    }
+    ' | fzf --ansi --prompt="Select sink number: " | awk '{sub(/\./, "", $2); print $2}')
+    [ -z "$sink_id" ] && exit 0
+    if [[ "$sink_id" == "*" ]]; then
+        echo "Channel already selected"
+        exit 0
+    fi
+    wpctl set-default "$sink_id"
+else
+    echo "No method found"
 fi

@@ -4,13 +4,14 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>")
 vim.keymap.set({ "n", "v" }, "<BS>", "<Nop>")
 vim.keymap.set({ "t" }, "<Esc><Esc>", "<c-\\><c-n>", { desc = "[Esc] terminal" })
 vim.keymap.set("n", "<esc>", "<cmd>noh<CR>", { desc = "No highlight" })
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "tmux sessionizer" })
+-- vim.keymap.set("n", "<C-b>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "tmux sessionizer" })
 
 vim.keymap.set("n", "<leader>/", "/\\c", { desc = "Search ignore case" })
 vim.keymap.set("n", "<leader>?", "?\\c", { desc = "Search ignore case" })
 
 vim.keymap.set("n", "<leader>cd", "<cmd>cd %:h<CR>", { desc = "Change directory" })
-vim.keymap.set("n", "<leader>t", [[<cmd>%s/\s\+$//e<CR>]], { desc = "Remove trailing spaces" })
+vim.keymap.set("n", "<leader>ts", [[<cmd>%s/\s\+$//e<CR>]], { desc = "Remove [T]railing [S]paces" })
+vim.keymap.set("n", "<leader>tc", [[<cmd>s/\([A-Z]\)/_\L\1/g | s/\(\s\+\)_/\1/g<CR>]], { desc = "Pascal case to snake [C]ase" })
 
 vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>", { desc = "Lua execute file" })
 vim.keymap.set("n", "<leader>x", ":.lua<CR>", { desc = "Lua execute line" })

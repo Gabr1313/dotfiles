@@ -1,17 +1,17 @@
 font:
   normal:
-    family: "VictorMono NFM"
-    style: "Regular"
+    family: "VictorMonoNFM"
+    style: "Medium"
   bold:
-    family: "VictorMono NFM"
-    style: "SemiBold"
+    family: "VictorMonoNFM"
+    style: "Bold"
   italic:
-    family: "VictorMono NFM"
-    style: "Oblique"
+    family: "VictorMonoNFM"
+    style: "Medium Oblique"
   bold_italic:
-    family: "VictorMono NFM"
-    style: "SemiBoldOblique"
-  size: 13.0
+    family: "VictorMonoNFM"
+    style: "Bold Oblique"
+  size: 14.0
 
 # window:
 #   decorations: "None"

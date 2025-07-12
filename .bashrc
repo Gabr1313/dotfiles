@@ -198,4 +198,4 @@ ${BOLD_RED}\$(show_exit_status) \
 ${RESET}\n\
 ❯ "
 
-bind -x '"\C-f":tmux-sessionizer'
+bind -x '"\C-b":tmux-sessionizer'

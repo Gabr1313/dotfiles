@@ -7,7 +7,7 @@ sudo nala install \
 	bat btop curl fzf gcc kitty neovim ripgrep tldr zsh python3 rsync build-essential \
 	cmake ninja-build alacritty tmux inotify-tools git unzip exa wl-clipboard \
 	snapper distrobox build-essential gdb fd-find \
-	qalculate-gtk hyperfine feh ffmpeg vlc\
+	qalculate-gtk hyperfine feh ffmpeg vlc nasm universal-ctags \
 	# sway sway-notification-center waybar pavucontrol wofi rfkill blueman \
 	# gammastep brightnessctl slurp grim wl-clipboard cliphist wlogout swaylock \
 	# playerctl \
@@ -135,3 +135,16 @@ sudo ln -s $(pwd)/snapper/system/snapper-cleanup.timer  /lib/systemd/system/snap
 # NixOs
 sudo ln -s $(pwd)/nixos/configuration.nix /etc/nixos/configuration.nix
 sudo ln -s $(pwd)/nixos/hardware-configuration.nix  /etc/nixos/hardware-configuration.nix
+
+#firefox
+extension:
+    uBlockOrigin
+    AdGuard
+    Dark Reader
+about:config
+    browser.tabs.closeWindowWithLastTab false
+
+#spotify
+curl -sS https://download.spotify.com/debian/pubkey_C85668DF69375001.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg &&
+echo "deb https://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list &&
+sudo apt-get update && sudo apt-get install spotify-client
