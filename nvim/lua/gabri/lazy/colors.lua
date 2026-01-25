@@ -14,7 +14,7 @@ return {
 				styles = { transparency = true },
 			})
 			color_my_pencil("rose-pine")
-			vim.api.nvim_set_hl(0, "QuickFixLine", {})
+            vim.api.nvim_set_hl(0, "QuickFixLine", {})
 		end
 	},
 
@@ -26,17 +26,6 @@ return {
 				transparent_background = true,
 			})
 			-- color_my_pencil("catppuccin")
-		end
-	},
-
-	{
-		"loctvl842/monokai-pro.nvim",
-		config = function()
-			require("monokai-pro").setup({
-				-- transparent_background = true,
-				filter = "machine",
-			})
-			-- color_my_pencil("monokai-pro")
 		end
 	},
 }

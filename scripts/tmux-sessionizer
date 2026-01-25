@@ -4,7 +4,7 @@ if [[ $# -eq 1 ]]; then
     selected=$1
 else
     # sync with cd-fzf
-    folders="$(pwd) $HOME/ $HOME/projects/ $HOME/projects/cp/ $HOME/projects/polimi/*/ \
+    folders="$(pwd) /home $HOME/ $HOME/projects/ $HOME/projects/cp/ $HOME/projects/eth/*/ \
         $HOME/projects/dotfiles/ $HOME/projects/dotfiles/nvim/lua/ $HOME/gitclone/ "
     selected=$(find -L $(echo $folders) -mindepth 1 -maxdepth 1 -type d | fzf)
 fi

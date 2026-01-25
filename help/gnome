@@ -53,3 +53,6 @@ sudo -u Debian-gdm dbus-run-session gsettings set org.gnome.settings-daemon.plug
 dconf dump / > ~/projects/.dotfiles/dconf-settings.ini
 # load saved settings
 dconf load / < projects/.dotfiles/dconf-settings.ini
+
+# monitor scales
+gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"

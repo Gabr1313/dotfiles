@@ -6,8 +6,8 @@
 #endif
 
 #define ALL(x)        begin(x), end(x)
-#define REP(i, a, b)  for (int i = a; i < (b); i++)
-#define REPI(i, a, b) for (int i = b - 1; i >= (a); i--)
+#define REP(i_, a_, b_)  for (int i_ = a_; i_ < (b_); i_++)
+#define REPI(i_, a_, b_) for (int i_ = b_ - 1; i_ >= (a_); i_--)
 
 using namespace std;
 using ll  = long long;

@@ -25,9 +25,9 @@ vim.keymap.set("n", "n", "nzzzv", { desc = "n" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "N" })
 
 vim.keymap.set("x", "<leader>d", [["_d]], { desc = "[D]elete no yank" }) -- in normal mode I use 'd' to debug
-vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "[P]ut no yank" })
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "[Y]ank to clipboard" })
-vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "[Y]ank to clipboard" })
+vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "[P]ut no yank" }) -- TODO: remove, useless since it is same as `P`
+-- vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "[Y]ank to clipboard" })
+-- vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "[Y]ank to clipboard" })
 
 vim.keymap.set("n", "<C-q>", function()
 	for _, win in pairs(vim.fn.getwininfo()) do
@@ -56,10 +56,10 @@ end
 vim.keymap.set("n", "<C-p>", function() cprev_cnext("cprev", "REACHED FIRST ITEM") end, { desc = "Quickfix list [P]revious" })
 vim.keymap.set("n", "<C-n>", function() cprev_cnext("cnext", "REACHED LAST ITEM") end, { desc = "Quickfix list [N]ext" })
 
-vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to window left" })
-vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to window down" })
-vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to window up" })
-vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to window right" })
+-- vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to window left" })
+-- vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to window down" })
+-- vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to window up" })
+-- vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to window right" })
 
 vim.keymap.set("n", "<C-Up>", "2<C-w>+", { desc = "Resize window vertically" })
 vim.keymap.set("n", "<C-Down>", "2<C-w>-", { desc = "Change window smaller vertically" })

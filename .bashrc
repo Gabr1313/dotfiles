@@ -60,14 +60,17 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+if command -v exa >/dev/null 2>&1; then
+    alias eza='exa'
+fi
+
 if command -v eza >/dev/null 2>&1; then
     alias ls='eza --icons --group-directories-first'
     alias tree='eza --icons --group-directories-first --tree'
 fi
 
-if command -v exa >/dev/null 2>&1; then
-    alias ls='exa --icons --group-directories-first'
-    alias tree='exa --icons --group-directories-first --tree'
+if command -v batcat >/dev/null 2>&1; then
+    alias bat='batcat'
 fi
 
 if command -v bat >/dev/null 2>&1; then
@@ -77,7 +80,8 @@ fi
 alias ll='ls -Alh'
 alias l='ls -CF'
 alias v='nvim'
-alias upgrade='sudo dnf upgrade -y'
+# alias upgrade='sudo dnf upgrade -y'
+alias upgrade='sudo nala update && sudo nala full-upgrade -y'
 alias odin='~/gitclone/Odin/odin'
 
 cd() {
@@ -86,35 +90,10 @@ cd() {
     fi
 }
 
-# quick find file
-alias ff="find -L -type f | fzf --preview \"bat --style=numbers --color=always --line-range :256 {}\""
-# quick find file and edit
-alias fe="find -L -type f | fzf --preview \"bat --style=numbers --color=always --line-range :256 {}\"| xargs -r $EDITOR"
-f() {
-    folders=(
-        "$(pwd)"
-        "$HOME/"
-        "$HOME/projects/"
-        "$HOME/projects/cp/"
-        "$HOME/projects/polimi/"*/
-        "$HOME/projects/dotfiles/"
-        "$HOME/projects/dotfiles/nvim/lua/"
-        "$HOME/gitclone/"
-    )
-    selected=$(find -L "${folders[@]}" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | \
-        fzf --preview 'command -v eza >/dev/null 2>&1 && eza -a --icons --color=always {} || ls -A {}')
-    if [[ -n "$selected" ]]; then
-        cd "$selected"
-    fi
-}
-
-fr() {
-    selected=$(find -L $(pwd) -mindepth 1 -type d 2>/dev/null | \
-        fzf --preview 'command -v eza >/dev/null 2>&1 && eza -a --icons --color=always {} || cat {}')
-    if [[ -n "$selected" ]]; then
-        cd "$selected"
-    fi
-}
+alias f=". cd-fzf"      # find (directories)
+alias fr=". cd-fzf-rec" # find (directories) recursively
+alias ff="find -L -type f | fzf --preview \"bat --style=numbers --color=always --line-range :256 {}\""                   # quick find file
+alias fe="find -L -type f | fzf --preview \"bat --style=numbers --color=always --line-range :256 {}\"| xargs -r $EDITOR" # quick find file and edit
 
 ######## PROMPT ########
 
@@ -141,6 +120,8 @@ CMD_DURATION=""
 LAST_EXIT_CODE=""
 
 timer_start() {
+    # Skip this stupid command
+    [[ "$BASH_COMMAND" == "__systemd_osc_context_precmdline" ]] && return
     # Only record if no timer is active
     if [[ -z "$CMD_START_TIME" ]]; then
         CMD_START_TIME=$(date +%s.%N)
@@ -188,8 +169,18 @@ parse_git_branch() {
 trap 'timer_start' DEBUG
 PROMPT_COMMAND='timer_end'
 
+
+# PS1="\n\
+# \e[6 q\
+# ${BOLD_BLUE}\w \
+# \$(parse_git_branch)\
+# ${YELLOW}\$(format_duration \${CMD_DURATION:-0}) \
+# ${MAGENTA}{\@} \
+# ${BOLD_RED}\$(show_exit_status) \
+# ${RESET}\n\
+# ❯ "
+
 PS1="\n\
-\e[6 q\
 ${BOLD_BLUE}\w \
 \$(parse_git_branch)\
 ${YELLOW}\$(format_duration \${CMD_DURATION:-0}) \

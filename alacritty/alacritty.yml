@@ -35,6 +35,12 @@ colors:
     magenta: "#c4a7e7"
     cyan:    "#ea9a97"
     white:   "#e0def4"
+  # cursor:
+  #   text:    "#000000"
+  #   cursor:  "#00ff00"
+  # vi_mode_cursor:
+  #   text:    "#000000"
+  #   cursor:  "#00ff00"
 
 selection:
   save_to_clipboard: true

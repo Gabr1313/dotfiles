@@ -1,0 +1,27 @@
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# systemd generates mount units based on this file, see systemd.mount(5).
+# Please run 'systemctl daemon-reload' after making changes here.
+#
+# <file system> <mount point>                   <type>   <options>                                                                        <dump>  <pass>
+# / was on /dev/nvme0n1p3 during installation
+/dev/nvme0n1p3  /                               btrfs    noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@                0       0
+/dev/nvme0n1p3  /.snapshots                     btrfs    noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@snapshots       0       0
+/dev/nvme0n1p6  /home                           btrfs    noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@home            0       0
+/dev/nvme0n1p6  /home/.snapshots                btrfs    noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@home_snapshots  0       0
+/dev/nvme0n1p3  /var/log                        btrfs    noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@log             0       0
+/dev/nvme0n1p3  /var/cache                      btrfs    noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@cache           0       0
+/dev/nvme0n1p3  /var/crash                      btrfs    noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@crash           0       0
+/dev/nvme0n1p3  /tmp                            btrfs    noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@tmp             0       0
+/dev/nvme0n1p3  /spool                          btrfs    noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@spool           0       0
+/dev/nvme0n1p3  /var/lib/libvirt/images         btrfs    noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@images          0       0
+/dev/nvme0n1p3  /var/lib/AccountsService        btrfs    noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@AccountsService 0       0
+/dev/nvme0n1p3  /var/lib/gdm3                   btrfs    noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@gdm3            0       0
+# /boot was on /dev/nvme0n1p2 during installation
+UUID=82b996d1-3c58-4467-a178-8ff1fd1a4eb9 /boot ext4     defaults                                                                         0       2
+# /boot/efi was on /dev/nvme0n1p1 during installation
+UUID=B1CE-7C3E  /boot/efi                       vfat     umask=0077                                                                       0       1

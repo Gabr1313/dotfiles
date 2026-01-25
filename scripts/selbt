@@ -3,10 +3,10 @@
 selection=$(bluetoothctl devices | awk '{for (i=3; i<=NF; i++) printf (i==NF ? $i : $i " "); print ""}' | fzf)
 [ -z "$selection" ] && exit 0
 bluetoothctl power on
+mac=$(bluetoothctl devices | grep -F "$selection" | awk '{print $2}')
+bluetoothctl connect $mac
 
 if command -v pactl >/dev/null; then
-    mac=$(bluetoothctl devices | grep -F "$selection" | awk '{print $2}')
-    bluetoothctl connect $mac
     mac_dot=$(echo $mac | tr ':' '.')
     hp_sink=$(pactl list sinks short | awk '{print $2}' | sed -n "/$mac_dot/p" | sed -n '/output/p')
     if [[ -n "$hp_sink" ]]; then

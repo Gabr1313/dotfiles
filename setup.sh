@@ -4,25 +4,24 @@
 sudo apt-get install nala
 sudo nala update && 
 sudo nala install \
-	bat btop curl fzf gcc kitty neovim ripgrep tldr zsh python3 rsync build-essential \
-	cmake ninja-build alacritty tmux inotify-tools git unzip exa wl-clipboard \
-	snapper distrobox build-essential gdb fd-find \
-	qalculate-gtk hyperfine feh ffmpeg vlc nasm universal-ctags \
+	bat btop curl fzf gcc vim ripgrep zsh python3 rsync build-essential llvm\
+	cmake ninja-build alacritty tmux inotify-tools git unzip eza wl-clipboard \
+	snapper distrobox build-essential gdb fd-find gettext evince zip \
+	qalculate-gtk hyperfine feh ffmpeg vlc nasm universal-ctags qbittorrent \
+    openconnect \
+# tldr # ???
 	# sway sway-notification-center waybar pavucontrol wofi rfkill blueman \
 	# gammastep brightnessctl slurp grim wl-clipboard cliphist wlogout swaylock \
 	# playerctl \
 	# kcachegrind massif-visualizer 
 	# texlive-full
 sudo nala install extrepo && sudo extrepo enable librewolf && sudo nala update && sudo nala install librewolf
-sudo ln -s /usr/bin/batcat /usr/bin/bat
-sudo ln -s /usr/bin/exa    /usr/bin/eza
 
 # Fedora
 sudo nvim /etd/dnf/dnf.conf
 #   defaultyes=true
 #   max_parallel_downloads=16
 #   fastestmirror=true
-
 sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E fedora).noarch.rpm \
 	https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf install \
@@ -40,8 +39,8 @@ curl -fsSL https://repo.librewolf.net/librewolf.repo | pkexec tee /etc/yum.repos
 # dwl
 sudo dnf install libinput-devel wlroots-devel libxkbcommon-devel libxcb-devel wayland-protocols-devel xcb-util-wm wlr-randr
 
-# usefule for debugging: `evtest` (3a is the code showed by evtest)
 # remap Caps Lock to Left Ctrl
+# useful for debugging: `evtest` (3a is the code showed by evtest)
 # echo -e 'evdev:input:b*\n KEYBOARD_KEY_3a=leftctrl' | sudo tee /etc/udev/hwdb.d/90-caps-to-ctrl.hwdb && sudo systemd-hwdb update && sudo udevadm trigger
 # swap alt with super
 # echo -e 'evdev:input:b*\n KEYBOARD_KEY_38=leftmeta\n KEYBOARD_KEY_db=leftalt' | sudo tee /etc/udev/hwdb.d/90-alt-super-swap.hwdb && sudo systemd-hwdb update && sudo udevadm trigger
