@@ -69,12 +69,19 @@ if command -v eza >/dev/null 2>&1; then
     alias tree='eza --icons --group-directories-first --tree'
 fi
 
+
+alias f=". cd-fzf"      # find (directories)
+alias fr=". cd-fzf-rec" # find (directories) recursively
 if command -v batcat >/dev/null 2>&1; then
     alias bat='batcat'
+    alias ff="find -L -type f | fzf --preview \"batcat --style=numbers --color=always --line-range :256 {}\""                   # quick find file
+    alias fe="find -L -type f | fzf --preview \"batcat --style=numbers --color=always --line-range :256 {}\"| xargs -r $EDITOR" # quick find file and edit
 fi
 
 if command -v bat >/dev/null 2>&1; then
     alias cat='bat -pp'
+    alias ff="find -L -type f | fzf --preview \"bat --style=numbers --color=always --line-range :256 {}\""                   # quick find file
+    alias fe="find -L -type f | fzf --preview \"bat --style=numbers --color=always --line-range :256 {}\"| xargs -r $EDITOR" # quick find file and edit
 fi
 
 alias ll='ls -Alh'
@@ -89,11 +96,6 @@ cd() {
         ls -a
     fi
 }
-
-alias f=". cd-fzf"      # find (directories)
-alias fr=". cd-fzf-rec" # find (directories) recursively
-alias ff="find -L -type f | fzf --preview \"bat --style=numbers --color=always --line-range :256 {}\""                   # quick find file
-alias fe="find -L -type f | fzf --preview \"bat --style=numbers --color=always --line-range :256 {}\"| xargs -r $EDITOR" # quick find file and edit
 
 ######## PROMPT ########
 

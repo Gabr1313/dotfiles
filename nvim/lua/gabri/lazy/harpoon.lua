@@ -12,7 +12,7 @@ return {
     keys = function()
         local keys = {
             {
-                "<C-a>",
+                "<C-p>",
                 function() require("harpoon"):list():add() end,
                 desc = "Harpoon File",
             },
