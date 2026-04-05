@@ -20,9 +20,7 @@ rsync -a --info=progress2 --relative \
 books \
 certificate \
 Documents \
-Downloads/barenghi \
-Downloads/polimiRun \
-Downloads/rimborso-swerc \
+Downloads \
 nice-things-to-try \
 oryx \
 projects \
@@ -37,17 +35,17 @@ projects \
 .vimrc \
 .bash_history \
 .bash_logout \
-.zsh_history \
 `# others` \
 bitTorrent \
 Downloads \
 Pictures \
 Videos \
-`# others, even less important` \
-.local/share/fonts \
-.mozilla \
-.cache \
 $1
+
+# `# others, even less important` \
+# .local/share/fonts \
+# .mozilla \
+# .cache \
 
 # gitclone/computer_enhance \
 # gitclone/glibc \

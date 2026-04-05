@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Example commands:
+# sudo sysctl kernel.perf_event_paranoid=1
+# perf stat -r 10 -- sudo nice -n -5 taskset -c 1 ls 
+
 # Usage:
 # - no arguments -> set defaults
 # - number       -> set cpu freq to that number in case it is in range [MIN_FREQ, MAX_FREQ]
@@ -14,6 +18,8 @@ NUM_CPUS=$(nproc)
 # Reset to deafults
 if [ -z "$1" ]; then
     for ((i = 0; i < NUM_CPUS; i++)); do
+        sudo bash -c "echo 0 > /sys/devices/system/cpu/intel_pstate/no_turbo"
+        sudo bash -c "echo powersave > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor"
         sudo bash -c "echo $MIN_FREQ > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_min_freq"
         sudo bash -c "echo $MAX_FREQ > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_max_freq"
     done
@@ -22,20 +28,20 @@ fi
 
 FIX_FREQ=$1
 
-# Check if FIX_FREQ is a number
 if ! [[ "$FIX_FREQ" =~ ^[0-9]+$ ]]; then
     echo "Error: FIX_FREQ must be a numeric value."
     exit 1
 fi
 
-# Validate FIX_FREQ is within range
 if [ "$FIX_FREQ" -lt "$MIN_FREQ" ] || [ "$FIX_FREQ" -gt "$MAX_FREQ" ]; then
     echo "Error: FIX_FREQ must be between $MIN_FREQ and $MAX_FREQ."
     exit 1
 fi
 
-# Fix frequences
 for ((i = 0; i < NUM_CPUS; i++)); do
+    sudo bash -c "echo 1 > /sys/devices/system/cpu/intel_pstate/no_turbo"
+    sudo bash -c "echo performance > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor"
     sudo bash -c "echo $FIX_FREQ > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_min_freq"
     sudo bash -c "echo $FIX_FREQ > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_max_freq"
 done
+

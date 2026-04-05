@@ -39,7 +39,10 @@ return {
                     ['<S-Tab>'] = { 'fallback' },
                 },
             },
-            sources = { default = { 'buffer', 'omni', 'lsp', 'path', 'snippets' }, },
+            sources = { 
+                default = { 'buffer', 'omni', 'lsp', 'path', 'snippets' }, 
+                providers = { buffer = { opts = { get_bufnrs = function() return vim.api.nvim_list_bufs() end } } }
+            },
             completion = {
                 -- I don't know if this is a bug, but I really enjoy this:
                 -- it display ghost_text even without menu (`menu.auto_show = false`)

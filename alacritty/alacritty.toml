@@ -3,7 +3,7 @@ normal      = { family="VictorMono NFM", style="Medium" } # Regular
 bold        = { family="VictorMono NFM", style="Bold" }
 italic      = { family="VictorMono NFM", style="MediumOblique" }
 bold_italic = { family="VictorMono NFM", style="SemiBoldOblique" }
-size = 14.0
+size = 13.0
 
 # [window]
 # decorations = "None"

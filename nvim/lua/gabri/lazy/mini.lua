@@ -1,7 +1,7 @@
 return {
 	'echasnovski/mini.nvim',
 	config = function()
-		require('mini.ai').setup { n_lines = 256 }
+		-- require('mini.ai').setup { n_lines = 256 }
 		-- require('mini.surround').setup() -- `s` is already used by flash
 		local hipatterns = require('mini.hipatterns')
 		hipatterns.setup({

@@ -4,7 +4,13 @@
 folders="$(pwd) /home $HOME/ $HOME/projects/ $HOME/projects/cp/ $HOME/projects/eth/*/ \
     $HOME/projects/dotfiles/ $HOME/projects/dotfiles/nvim/lua/ $HOME/gitclone/ "
 
-selected=$(find -L $(eval echo $folders) -mindepth 1 -maxdepth 1 -type d | fzf)
+singular_folders="/tmp"
+
+selected=$( (
+    find -L $(eval echo $folders) -mindepth 1 -maxdepth 1 -type d
+    echo $singular_folders
+) | fzf)
+
 if ! [[ -z $selected ]]; then
     cd $selected
 fi
