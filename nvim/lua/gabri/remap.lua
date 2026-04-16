@@ -6,8 +6,7 @@ vim.keymap.set({ "t" }, "<Esc><Esc>", "<c-\\><c-n>", { desc = "[Esc] terminal" }
 vim.keymap.set("n", "<esc>", "<cmd>noh<CR>", { desc = "No highlight" })
 -- vim.keymap.set("n", "<C-b>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "tmux sessionizer" })
 
-vim.keymap.set("n", "<leader>/", "/\\c", { desc = "Search ignore case" })
-vim.keymap.set("n", "<leader>?", "?\\c", { desc = "Search ignore case" })
+vim.keymap.set("n", "<leader>#", "<cmd>%s/..27;5;106.#\\?/\\r/g<CR>", { desc = "Clean pasted garbage" })
 
 vim.keymap.set("n", "<leader>cd", "<cmd>cd %:h<CR>", { desc = "Change directory" })
 vim.keymap.set("n", "<leader>ts", [[<cmd>%s/\s\+$//e<CR>]], { desc = "Remove [T]railing [S]paces" })

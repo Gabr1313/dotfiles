@@ -18,22 +18,23 @@ sudo nala install \
 sudo nala install extrepo && sudo extrepo enable librewolf && sudo nala update && sudo nala install librewolf
 
 # Fedora
-sudo nvim /etd/dnf/dnf.conf
+sudo nvim /etc/dnf/dnf.conf
 #   defaultyes=true
 #   max_parallel_downloads=16
 #   fastestmirror=true
 sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E fedora).noarch.rpm \
 	https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf install \
-	fish bat btop curl fzf gcc kitty neovim ripgrep tldr zsh zip \
-	python3 rsync inotify-tools git gh unzip fd fastfetch eza snapper \
-	distrobox kcachegrind massif-visualizer qalculate-gtk hyperfine \
-	make cmake libasan libubsan dnf-plugins-core dnf-plugins-extra \
-	maven java-17-openjdk-devel \
-	gtk3 webkit2gtk3 libusb \
-	qbittorrent calibre \
-	texlive-scheme-full pdflatex pandoc \
-    alacritty
+	bat btop curl fzf gcc vim neovim ripgrep tldr zsh zip alacritty \
+	python3 rsync inotify-tools git gh unzip eza \
+    snapper libdnf5-plugin-actions \
+	make cmake libasan libubsan nasm ctags gdb docker-cli \
+	texlive-scheme-full pdflatex pandoc vlc ffmpeg \
+	qbittorrent
+    # dnf-plugins-core dnf-plugins-extra \
+	# gtk3 webkit2gtk3 libusb \
+	# maven java-17-openjdk-devel \
+	# distrobox kcachegrind massif-visualizer qalculate-gtk hyperfine \
 curl -fsSL https://repo.librewolf.net/librewolf.repo | pkexec tee /etc/yum.repos.d/librewolf.repo && sudo dnf install librewolf
 
 # dwl

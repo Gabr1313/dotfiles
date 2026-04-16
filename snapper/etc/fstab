@@ -1,0 +1,31 @@
+
+#
+# /etc/fstab
+# Created by anaconda on Sun Apr  5 09:40:39 2026
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk/'.
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info.
+#
+# After editing this file, run 'systemctl daemon-reload' to update systemd
+# units generated from this file.
+
+# Original:
+# UUID=6b93c2f2-efd8-4d73-8f6c-91b7aa95cd99 / ext4 defaults 1 1
+# UUID=24F1-E6BE                            /boot/efi vfat umask=0077,shortname=winnt 0 2
+# UUID=47a87d42-24a3-48d2-b38e-c939c585cd78 /home btrfs subvol=@home 0 0
+# UUID=47a87d42-24a3-48d2-b38e-c939c585cd78 /home/.snapshots btrfs subvol=@home_snapshots 0 0
+
+# Original modified:
+UUID=6b93c2f2-efd8-4d73-8f6c-91b7aa95cd99 /                   ext4    defaults                                                                        1       1
+UUID=24F1-E6BE                            /boot/efi           vfat    umask=0077,ro,shortname=winnt                                                   0       2
+UUID=47a87d42-24a3-48d2-b38e-c939c585cd78 /home               btrfs   noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@home           0       0
+UUID=47a87d42-24a3-48d2-b38e-c939c585cd78 /home/.snapshots    btrfs   noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@home_snapshots 0       0
+
+# Should be more readable, but does not work don't know why
+# <file system> <mount point>      <type>  <options>                                                                       <dump>  <pass>
+# /dev/nvme0n1p1 /boot/efi           vfat    umask=0077,ro,shortname=winnt                                                   0       2
+# /dev/nvme0n1p2 /                   ext4    defaults                                                                        1       1
+# /dev/nvme0n1p6 /home               btrfs   noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@home           0       0
+# /dev/nvme0n1p6 /home/.snapshots    btrfs   noatime,space_cache=v2,compress=zstd:1,ssd,discard=async,subvol=@home_snapshots 0       0
+# /dev/nvme0n1p3 none                swap    sw                                                                              0       0
+

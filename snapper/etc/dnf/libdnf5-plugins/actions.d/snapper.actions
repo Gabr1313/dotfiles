@@ -1,0 +1,4 @@
+# Create a pre-transaction snapshot
+pre_transaction::::snapper create -t pre -c number -d "DNF5 transaction" -p > /var/tmp/snapper-apt-id
+# Create a post-transaction snapshot
+# post_transaction::::snapper create -t post -c number -d "DNF5 transaction" --pre-number=$(cat /var/tmp/snapper-apt-id

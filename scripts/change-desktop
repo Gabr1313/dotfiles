@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+current=$(gsettings get org.gnome.desktop.background picture-uri | tr -d "'")
+
+PINK_WP="file://$HOME/Pictures/wp/pink.jpg"
+DEFAULT_LIGHT="file:///usr/share/backgrounds/gnome/amber-l.jxl"
+DEFAULT_DARK="file:///usr/share/backgrounds/gnome/amber-d.jxl"
+
+if [ "$current" = "$PINK_WP" ]; then
+    gsettings set org.gnome.desktop.background picture-uri "$DEFAULT_LIGHT"
+    gsettings set org.gnome.desktop.background picture-uri-dark "$DEFAULT_DARK"
+else
+    gsettings set org.gnome.desktop.background picture-uri "$PINK_WP"
+    gsettings set org.gnome.desktop.background picture-uri-dark "$PINK_WP"
+fi

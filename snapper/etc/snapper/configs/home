@@ -1,4 +1,3 @@
-
 # subvolume to snapshot
 SUBVOLUME="/home"
 
@@ -19,12 +18,11 @@ FREE_LIMIT="0.2"
 
 # users and groups allowed to work with config
 ALLOW_USERS=""
-# ALLOW_GROUPS="sudo"
-ALLOW_GROUPS="root"
+ALLOW_GROUPS=""
 
 # sync users and groups from ALLOW_USERS and ALLOW_GROUPS to .snapshots
 # directory
-SYNC_ACL="yes"
+SYNC_ACL="no"
 
 
 # start comparing pre- and post-snapshot in background after creating
@@ -48,9 +46,8 @@ TIMELINE_CLEANUP="yes"
 
 # limits for timeline cleanup
 TIMELINE_MIN_AGE="1800"
-TIMELINE_LIMIT_HOURLY="24" # see /lib/systemd/system/snapper-timeline.timer 
-                           # (now i take them once every 30 minutes)
-TIMELINE_LIMIT_DAILY="7"
+TIMELINE_LIMIT_HOURLY="48"
+TIMELINE_LIMIT_DAILY="10"
 TIMELINE_LIMIT_WEEKLY="4"
 TIMELINE_LIMIT_MONTHLY="0"
 TIMELINE_LIMIT_YEARLY="0"

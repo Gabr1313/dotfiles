@@ -85,17 +85,20 @@ if command -v bat >/dev/null 2>&1; then
 fi
 
 alias ll='ls -Alh'
-alias l='ls -CF'
 alias v='nvim'
-# alias upgrade='sudo dnf upgrade -y'
-alias upgrade='sudo nala update && sudo nala full-upgrade -y'
-alias odin='~/gitclone/Odin/odin'
+if command -v dnf >/dev/null 2>&1; then
+    alias upgrade='sudo dnf upgrade -y'
+elif command -v dnf >/dev/null 2>&1; then
+    alias upgrade='sudo nala update && sudo nala full-upgrade -y'
+fi
 
 cd() {
     if builtin cd "$@"; then
         ls -a
     fi
 }
+
+bind -x '"\C-b":tmux-sessionizer'
 
 ######## PROMPT ########
 
@@ -106,7 +109,7 @@ GREEN="\e[0;32m"
 YELLOW="\e[0;33m"
 BLUE="\e[0;34m"
 MAGENTA="\e[0;35m"
-BOLD_CYAN="\e[1;36m"
+CYAN="\e[0;36m"
 WHITE="\e[0;37m"
 
 BOLD_RED="\e[1;31m"
@@ -183,6 +186,7 @@ PROMPT_COMMAND='timer_end'
 # ❯ "
 
 PS1="\n\
+${BOLD_CYAN}\u@\h \
 ${BOLD_BLUE}\w \
 \$(parse_git_branch)\
 ${YELLOW}\$(format_duration \${CMD_DURATION:-0}) \
@@ -190,5 +194,3 @@ ${MAGENTA}{\@} \
 ${BOLD_RED}\$(show_exit_status) \
 ${RESET}\n\
 ❯ "
-
-bind -x '"\C-b":tmux-sessionizer'
