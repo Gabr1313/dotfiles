@@ -1,10 +1,13 @@
 #!/bin/bash
 
 # Usage: 
-# cd ~ && rsync.sh /media/gabri/gbEXT4/laptop
+# rsync.sh /media/gabri/gbEXT4/laptop
+# rsync.sh /run/media/gabri/gbEXT4/laptop/
 
 # In case I need to sinc to ntfs, this is the best way to mount it (less error while transferring files)
 # sudo mount -t ntfs-3g /dev/<sda1> /mnt/
+
+cd ~
 
 if [ -z "$1" ]; then
   echo "Error: missing destination directory"
